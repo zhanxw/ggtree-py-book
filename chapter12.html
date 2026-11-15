@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>12. ggtree Utilities | Data Integration, Manipulation and Visualization of Phylogenetic Trees (ggtree-py)</title>
+  <link rel="stylesheet" href="assets/style.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-left">
+      <button type="button" class="sidebar-toggle" id="sidebar-toggle-btn" aria-label="Toggle Menu">&#9776;</button>
+      <a class="topbar-brand" href="index.html">
+        Data Integration, Manipulation and Visualization of Phylogenetic Trees
+        <span class="topbar-sub">(ggtree-py Edition)</span>
+      </a>
+    </div>
+    <div class="topbar-actions">
+      <a class="tool-btn" href="gallery.html">Gallery Index</a>
+      <button type="button" class="tool-btn" id="toggle-all-code-btn">Expand All Code</button>
+      <button type="button" class="tool-btn" id="theme-toggle-btn">Theme: Light</button>
+    </div>
+  </header>
+
+  <div class="book-shell">
+    <nav class="book-sidebar" id="book-sidebar" aria-label="Book Chapters">
+      <div class="sidebar-search-wrap">
+        <input type="search" class="sidebar-search" id="book-search-input" placeholder="Search chapters, figures, APIs..." autocomplete="off"/>
+        <div class="search-results" id="book-search-results"></div>
+      </div>
+      <div class="nav-part">Preface</div><ul class="nav-list">
+<li><a class="nav-link" href="index.html">Welcome &amp; Overview</a></li>
+</ul>
+<div class="nav-part">Part I: Tree Data I/O &amp; Manipulation</div><ul class="nav-list">
+<li><a class="nav-link" href="chapter1.html"><span class="nav-num">1.</span>Importing Tree with Data</a></li>
+<li><a class="nav-link" href="chapter2.html"><span class="nav-num">2.</span>Manipulating Tree with Data</a></li>
+<li><a class="nav-link" href="chapter3.html"><span class="nav-num">3.</span>Exporting Trees with Data</a></li>
+</ul>
+<div class="nav-part">Part II: Visualization &amp; Annotation</div><ul class="nav-list">
+<li><a class="nav-link" href="chapter4.html"><span class="nav-num">4.</span>Phylogenetic Tree Visualization</a></li>
+<li><a class="nav-link" href="chapter5.html"><span class="nav-num">5.</span>Phylogenetic Tree Annotation</a></li>
+<li><a class="nav-link" href="chapter6.html"><span class="nav-num">6.</span>Visual Exploration of Trees</a></li>
+<li><a class="nav-link" href="chapter7.html"><span class="nav-num">7.</span>Plotting Tree with Data</a></li>
+<li><a class="nav-link" href="chapter8.html"><span class="nav-num">8.</span>Silhouettes &amp; Sub-plots</a></li>
+</ul>
+<div class="nav-part">Part III: ggtree Extensions</div><ul class="nav-list">
+<li><a class="nav-link" href="chapter9.html"><span class="nav-num">9.</span>Other Tree-like Structures</a></li>
+<li><a class="nav-link" href="chapter10.html"><span class="nav-num">10.</span>ggtreeExtra Circular Rings</a></li>
+<li><a class="nav-link" href="chapter11.html"><span class="nav-num">11.</span>Other ggtree Extensions</a></li>
+<li><a class="nav-link active" href="chapter12.html"><span class="nav-num">12.</span>ggtree Utilities</a></li>
+</ul>
+<div class="nav-part">Part IV: Miscellaneous Topics</div><ul class="nav-list">
+<li><a class="nav-link" href="chapter13.html"><span class="nav-num">13.</span>Gallery of Examples</a></li>
+</ul>
+<div class="nav-part">Appendix &amp; Index</div><ul class="nav-list">
+<li><a class="nav-link" href="faq.html"><span class="nav-num">A.</span>Frequently Asked Questions</a></li>
+<li><a class="nav-link" href="api.html"><span class="nav-num">B.</span>ggtree-py API Reference</a></li>
+<li><a class="nav-link" href="gallery.html"><span class="nav-num">★</span>All Figures Gallery &amp; Index</a></li>
+</ul>
+    </nav>
+
+    <main class="book-main">
+      <article class="book-article">
+        <div class="part-kicker">Part III: ggtree Extensions</div>
+        <h1 class="chapter-title">12. ggtree Utilities</h1>
+<p>Complete reproduction of all 11 Chapter 12 utility workflows in <code>ggtree-py</code>: facet proportion and label control, subset-aware geometric layers, dynamic layout transformations, per-panel axis limits, tidy filtering and unnesting, tip-order extraction, padded tip labels, and interactive SVG clade annotation.</p>
+<h2 id="facet-widths">12.1.1 facet_widths</h2>
+<p><code>facet_widths()</code> adjusts relative panel column widths consistently for both composite <code>ggtree + geom_facet</code> plates and standard multi-facet <code>ggplot</code> panels.</p>
+<div class="book-figure-card" id="fig-12-1">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_12_1.svg" alt="Figure 12.1: Adjust relative widths of ggplot facets." loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure 12.1: Adjust relative widths of ggplot facets..</strong> Adjust relative widths of ggplot facets. The facet_widths() function works with ggtree (A) as well as ggplot (B).</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">facet_widths</span><span class="api-pill">geom_facet</span><span class="api-pill">geom_bar</span><span class="api-pill">facet_grid</span><button type="button" class="copy-btn" data-code-target="code-blk-81">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-81"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
+    set_seed<span class="tok-op">,</span> rtree<span class="tok-op">,</span> runif<span class="tok-op">,</span> data_frame<span class="tok-op">,</span> melt<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> geom_tiplab<span class="tok-op">,</span>
+    geom_facet<span class="tok-op">,</span> geom_bar<span class="tok-op">,</span> aes<span class="tok-op">,</span> xlim_tree<span class="tok-op">,</span> facet_widths<span class="tok-op">,</span> ggplot<span class="tok-op">,</span>
+    geom_point<span class="tok-op">,</span> facet_grid<span class="tok-op">,</span> read_table<span class="tok-op">,</span> system_file<span class="tok-op">,</span> theme<span class="tok-op">,</span> plot_list<span class="tok-op">,</span>
+<span class="tok-op">)</span>
+
+<span class="tok-call">set_seed</span><span class="tok-op">(</span><span class="tok-num">123</span><span class="tok-op">)</span>
+tree <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">30</span><span class="tok-op">)</span>
+p <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>tree<span class="tok-op">,</span> branch_length<span class="tok-op">=</span><span class="tok-str">&quot;none&quot;</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">theme</span><span class="tok-op">(</span>legend_position<span class="tok-op">=</span><span class="tok-str">&quot;none&quot;</span><span class="tok-op">)</span>
+a <span class="tok-op">=</span> <span class="tok-call">runif</span><span class="tok-op">(</span><span class="tok-num">30</span><span class="tok-op">,</span> <span class="tok-num">0</span><span class="tok-op">,</span> <span class="tok-num">1</span><span class="tok-op">)</span>
+b <span class="tok-op">=</span> <span class="tok-op">[</span><span class="tok-num">1.0</span> <span class="tok-op">-</span> v <span class="tok-kw">for</span> v <span class="tok-kw">in</span> a<span class="tok-op">]</span>
+df <span class="tok-op">=</span> <span class="tok-call">melt</span><span class="tok-op">(</span><span class="tok-call">data_frame</span><span class="tok-op">(</span>label<span class="tok-op">=</span>tree<span class="tok-op">.</span>tip_label<span class="tok-op">,</span> a<span class="tok-op">=</span>a<span class="tok-op">,</span> b<span class="tok-op">=</span>b<span class="tok-op">)</span><span class="tok-op">,</span> id_vars<span class="tok-op">=</span><span class="tok-op">[</span><span class="tok-str">&quot;label&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span>
+p2 <span class="tok-op">=</span> <span class="tok-op">(</span>
+    p
+    <span class="tok-op">+</span> <span class="tok-call">geom_facet</span><span class="tok-op">(</span>
+        panel<span class="tok-op">=</span><span class="tok-str">&quot;bar&quot;</span><span class="tok-op">,</span>
+        data<span class="tok-op">=</span>df<span class="tok-op">,</span>
+        geom<span class="tok-op">=</span>geom_bar<span class="tok-op">,</span>
+        mapping<span class="tok-op">=</span><span class="tok-call">aes</span><span class="tok-op">(</span>x<span class="tok-op">=</span><span class="tok-str">&quot;value&quot;</span><span class="tok-op">,</span> fill<span class="tok-op">=</span><span class="tok-str">&quot;factor(variable)&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span>
+        orientation<span class="tok-op">=</span><span class="tok-str">&quot;y&quot;</span><span class="tok-op">,</span>
+        width<span class="tok-op">=</span><span class="tok-num">0.8</span><span class="tok-op">,</span>
+        stat<span class="tok-op">=</span><span class="tok-str">&quot;identity&quot;</span><span class="tok-op">,</span>
+    <span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">xlim_tree</span><span class="tok-op">(</span><span class="tok-num">9</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+pa <span class="tok-op">=</span> <span class="tok-call">facet_widths</span><span class="tok-op">(</span>p2<span class="tok-op">,</span> <span class="tok-op">{</span><span class="tok-str">&quot;Tree&quot;</span><span class="tok-op">:</span> <span class="tok-num">0.5</span><span class="tok-op">}</span><span class="tok-op">)</span>
+
+iris <span class="tok-op">=</span> <span class="tok-call">read_table</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;TDbook&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;iris.tsv&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> header<span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span> sep<span class="tok-op">=</span><span class="tok-str">&quot;\t&quot;</span><span class="tok-op">)</span>
+pb <span class="tok-op">=</span> <span class="tok-call">facet_widths</span><span class="tok-op">(</span>
+    <span class="tok-call">ggplot</span><span class="tok-op">(</span>iris<span class="tok-op">,</span> <span class="tok-call">aes</span><span class="tok-op">(</span><span class="tok-str">&quot;Sepal.Width&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;Petal.Length&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">geom_point</span><span class="tok-op">(</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">facet_grid</span><span class="tok-op">(</span><span class="tok-str">&quot;.~Species&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span>
+    <span class="tok-op">{</span><span class="tok-str">&quot;setosa&quot;</span><span class="tok-op">:</span> <span class="tok-num">0.5</span><span class="tok-op">}</span><span class="tok-op">,</span>
+<span class="tok-op">)</span>
+<span class="tok-call">plot_list</span><span class="tok-op">(</span>pa<span class="tok-op">,</span> pb<span class="tok-op">,</span> ncol<span class="tok-op">=</span><span class="tok-num">2</span><span class="tok-op">,</span> tag_levels<span class="tok-op">=</span><span class="tok-str">&quot;A&quot;</span><span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
+<h2 id="facet-labeller">12.1.2 facet_labeller</h2>
+<p><code>facet_labeller()</code> renames one or more facet strip headers and composes seamlessly with <code>facet_widths()</code>.</p>
+<div class="book-figure-card" id="fig-12-2">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_12_2.svg" alt="Figure 12.2: Rename facet labels." loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure 12.2: Rename facet labels..</strong> Rename facet labels. Rename multiple labels simultaneously (A) or only for a specific one (B) are all supported. facet_labeller() can combine with facet_widths() to rename facet label and then adjust relative widths (B).</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">facet_labeller</span><span class="api-pill">facet_widths</span><span class="api-pill">geom_facet</span><span class="api-pill">geom_bar</span><button type="button" class="copy-btn" data-code-target="code-blk-82">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-82"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
+    set_seed<span class="tok-op">,</span> rtree<span class="tok-op">,</span> runif<span class="tok-op">,</span> data_frame<span class="tok-op">,</span> melt<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> geom_tiplab<span class="tok-op">,</span>
+    geom_facet<span class="tok-op">,</span> geom_bar<span class="tok-op">,</span> aes<span class="tok-op">,</span> xlim_tree<span class="tok-op">,</span> facet_labeller<span class="tok-op">,</span> facet_widths<span class="tok-op">,</span>
+    theme<span class="tok-op">,</span> plot_list<span class="tok-op">,</span>
+<span class="tok-op">)</span>
+
+<span class="tok-call">set_seed</span><span class="tok-op">(</span><span class="tok-num">123</span><span class="tok-op">)</span>
+tree <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">30</span><span class="tok-op">)</span>
+p <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>tree<span class="tok-op">,</span> branch_length<span class="tok-op">=</span><span class="tok-str">&quot;none&quot;</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">theme</span><span class="tok-op">(</span>legend_position<span class="tok-op">=</span><span class="tok-str">&quot;none&quot;</span><span class="tok-op">)</span>
+a <span class="tok-op">=</span> <span class="tok-call">runif</span><span class="tok-op">(</span><span class="tok-num">30</span><span class="tok-op">,</span> <span class="tok-num">0</span><span class="tok-op">,</span> <span class="tok-num">1</span><span class="tok-op">)</span>
+b <span class="tok-op">=</span> <span class="tok-op">[</span><span class="tok-num">1.0</span> <span class="tok-op">-</span> v <span class="tok-kw">for</span> v <span class="tok-kw">in</span> a<span class="tok-op">]</span>
+df <span class="tok-op">=</span> <span class="tok-call">melt</span><span class="tok-op">(</span><span class="tok-call">data_frame</span><span class="tok-op">(</span>label<span class="tok-op">=</span>tree<span class="tok-op">.</span>tip_label<span class="tok-op">,</span> a<span class="tok-op">=</span>a<span class="tok-op">,</span> b<span class="tok-op">=</span>b<span class="tok-op">)</span><span class="tok-op">,</span> id_vars<span class="tok-op">=</span><span class="tok-op">[</span><span class="tok-str">&quot;label&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span>
+p2 <span class="tok-op">=</span> <span class="tok-op">(</span>
+    p
+    <span class="tok-op">+</span> <span class="tok-call">geom_facet</span><span class="tok-op">(</span>
+        panel<span class="tok-op">=</span><span class="tok-str">&quot;bar&quot;</span><span class="tok-op">,</span>
+        data<span class="tok-op">=</span>df<span class="tok-op">,</span>
+        geom<span class="tok-op">=</span>geom_bar<span class="tok-op">,</span>
+        mapping<span class="tok-op">=</span><span class="tok-call">aes</span><span class="tok-op">(</span>x<span class="tok-op">=</span><span class="tok-str">&quot;value&quot;</span><span class="tok-op">,</span> fill<span class="tok-op">=</span><span class="tok-str">&quot;factor(variable)&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span>
+        orientation<span class="tok-op">=</span><span class="tok-str">&quot;y&quot;</span><span class="tok-op">,</span>
+        width<span class="tok-op">=</span><span class="tok-num">0.8</span><span class="tok-op">,</span>
+        stat<span class="tok-op">=</span><span class="tok-str">&quot;identity&quot;</span><span class="tok-op">,</span>
+    <span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">xlim_tree</span><span class="tok-op">(</span><span class="tok-num">9</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+pa <span class="tok-op">=</span> <span class="tok-call">facet_labeller</span><span class="tok-op">(</span>p2<span class="tok-op">,</span> <span class="tok-op">{</span><span class="tok-str">&quot;Tree&quot;</span><span class="tok-op">:</span> <span class="tok-str">&quot;phylogeny&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;bar&quot;</span><span class="tok-op">:</span> <span class="tok-str">&quot;HELLO&quot;</span><span class="tok-op">}</span><span class="tok-op">)</span>
+pb <span class="tok-op">=</span> <span class="tok-call">facet_widths</span><span class="tok-op">(</span><span class="tok-call">facet_labeller</span><span class="tok-op">(</span>p2<span class="tok-op">,</span> <span class="tok-op">{</span><span class="tok-str">&quot;Tree&quot;</span><span class="tok-op">:</span> <span class="tok-str">&quot;phylogeny&quot;</span><span class="tok-op">}</span><span class="tok-op">)</span><span class="tok-op">,</span> <span class="tok-op">{</span><span class="tok-str">&quot;Tree&quot;</span><span class="tok-op">:</span> <span class="tok-num">0.4</span><span class="tok-op">}</span><span class="tok-op">)</span>
+<span class="tok-call">plot_list</span><span class="tok-op">(</span>pa<span class="tok-op">,</span> pb<span class="tok-op">,</span> ncol<span class="tok-op">=</span><span class="tok-num">2</span><span class="tok-op">,</span> tag_levels<span class="tok-op">=</span><span class="tok-str">&quot;A&quot;</span><span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
+<h2 id="geom-layers-subset">12.2 Geometric Layers</h2>
+<p><code>geom_text2()</code> and <code>geom_label2()</code> evaluate row-level <code>subset</code> predicates identically in both Cartesian <code>ggplot</code> charts and phylogenetic trees.</p>
+<div class="book-figure-card" id="fig-12-3">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_12_3.svg" alt="Figure 12.3: Geometric layers that support subsetting." loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure 12.3: Geometric layers that support subsetting..</strong> Geometric layers that support subsetting. These layers work with ggplot2 (A) and ggtree (B).</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">geom_text2</span><span class="api-pill">geom_label2</span><span class="api-pill">coord_cartesian</span><span class="api-pill">theme_light</span><button type="button" class="copy-btn" data-code-target="code-blk-83">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-83"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
+    read_table<span class="tok-op">,</span> system_file<span class="tok-op">,</span> ggplot<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> rtree<span class="tok-op">,</span> aes<span class="tok-op">,</span>
+    geom_point<span class="tok-op">,</span> geom_text2<span class="tok-op">,</span> geom_label2<span class="tok-op">,</span> coord_cartesian<span class="tok-op">,</span>
+    theme_light<span class="tok-op">,</span> theme<span class="tok-op">,</span> plot_list<span class="tok-op">,</span>
+<span class="tok-op">)</span>
+
+mpg <span class="tok-op">=</span> <span class="tok-call">read_table</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;TDbook&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;mpg.tsv&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> header<span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span> sep<span class="tok-op">=</span><span class="tok-str">&quot;\t&quot;</span><span class="tok-op">)</span>
+p <span class="tok-op">=</span> <span class="tok-op">(</span>
+    <span class="tok-call">ggplot</span><span class="tok-op">(</span>mpg<span class="tok-op">,</span> <span class="tok-call">aes</span><span class="tok-op">(</span>x<span class="tok-op">=</span><span class="tok-str">&quot;displ&quot;</span><span class="tok-op">,</span> y<span class="tok-op">=</span><span class="tok-str">&quot;hwy&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_point</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span>color<span class="tok-op">=</span><span class="tok-str">&quot;class&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_text2</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span>label<span class="tok-op">=</span><span class="tok-str">&quot;manufacturer&quot;</span><span class="tok-op">,</span> subset<span class="tok-op">=</span><span class="tok-str">&quot;(hwy &gt; 40) | (displ &gt; 6.5)&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> nudge_y<span class="tok-op">=</span><span class="tok-num">1</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">coord_cartesian</span><span class="tok-op">(</span>clip<span class="tok-op">=</span><span class="tok-str">&quot;off&quot;</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">theme_light</span><span class="tok-op">(</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">theme</span><span class="tok-op">(</span>legend_position<span class="tok-op">=</span><span class="tok-op">[</span><span class="tok-num">0.85</span><span class="tok-op">,</span> <span class="tok-num">0.75</span><span class="tok-op">]</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+p2 <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span><span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">10</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">geom_label2</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span>subset<span class="tok-op">=</span><span class="tok-str">&quot;node &lt; 5&quot;</span><span class="tok-op">,</span> label<span class="tok-op">=</span><span class="tok-str">&quot;label&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+<span class="tok-call">plot_list</span><span class="tok-op">(</span>p<span class="tok-op">,</span> p2<span class="tok-op">,</span> ncol<span class="tok-op">=</span><span class="tok-num">2</span><span class="tok-op">,</span> tag_levels<span class="tok-op">=</span><span class="tok-str">&quot;A&quot;</span><span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
+<h2 id="layout-utilities">12.3 Layout Utilities</h2>
+<p>Layout modifiers (<code>layout_dendrogram()</code>, <code>layout_rectangular()</code>, <code>layout_circular()</code>, <code>layout_fan()</code>, <code>layout_inward_circular()</code>) recompute coordinate geometry dynamically without rebuilding tree layers.</p>
+<div class="book-figure-card" id="fig-12-4">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_12_4.svg" alt="Figure 12.4: Layout functions for transforming among different layouts." loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure 12.4: Layout functions for transforming among different layouts..</strong> Layout functions for transforming among different layouts. Default rectangular layout (A); transform rectangular to dendrogram layout (B); transform circular to rectangular layout (C); transform rectangular to circular layout (D); transform rectangular to fan layout (E); transform rectangular to inward circular layout (F).</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">layout_dendrogram</span><span class="api-pill">layout_rectangular</span><span class="api-pill">layout_circular</span><span class="api-pill">layout_fan</span><button type="button" class="copy-btn" data-code-target="code-blk-84">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-84"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
+    set_seed<span class="tok-op">,</span> rtree<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> layout_dendrogram<span class="tok-op">,</span> layout_rectangular<span class="tok-op">,</span>
+    layout_circular<span class="tok-op">,</span> layout_fan<span class="tok-op">,</span> layout_inward_circular<span class="tok-op">,</span>
+    geom_tiplab<span class="tok-op">,</span> plot_list<span class="tok-op">,</span>
+<span class="tok-op">)</span>
+
+<span class="tok-call">set_seed</span><span class="tok-op">(</span><span class="tok-num">2019</span><span class="tok-op">)</span>
+x <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">20</span><span class="tok-op">)</span>
+p <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>x<span class="tok-op">)</span>
+pa <span class="tok-op">=</span> p
+pb <span class="tok-op">=</span> p <span class="tok-op">+</span> <span class="tok-call">layout_dendrogram</span><span class="tok-op">(</span><span class="tok-op">)</span>
+pc <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>x<span class="tok-op">,</span> layout<span class="tok-op">=</span><span class="tok-str">&quot;circular&quot;</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">layout_rectangular</span><span class="tok-op">(</span><span class="tok-op">)</span>
+pd <span class="tok-op">=</span> p <span class="tok-op">+</span> <span class="tok-call">layout_circular</span><span class="tok-op">(</span><span class="tok-op">)</span>
+pe <span class="tok-op">=</span> p <span class="tok-op">+</span> <span class="tok-call">layout_fan</span><span class="tok-op">(</span>angle<span class="tok-op">=</span><span class="tok-num">90</span><span class="tok-op">)</span>
+pf <span class="tok-op">=</span> p <span class="tok-op">+</span> <span class="tok-call">layout_inward_circular</span><span class="tok-op">(</span>xlim<span class="tok-op">=</span><span class="tok-num">4</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span>hjust<span class="tok-op">=</span><span class="tok-num">1</span><span class="tok-op">)</span>
+<span class="tok-call">plot_list</span><span class="tok-op">(</span>pa<span class="tok-op">,</span> pb<span class="tok-op">,</span> pc<span class="tok-op">,</span> pd<span class="tok-op">,</span> pe<span class="tok-op">,</span> pf<span class="tok-op">,</span> ncol<span class="tok-op">=</span><span class="tok-num">3</span><span class="tok-op">,</span> tag_levels<span class="tok-op">=</span><span class="tok-str">&quot;A&quot;</span><span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
+<h2 id="xlim-expand">12.4.1 Expand x Limit for a Specific Facet Panel</h2>
+<p>Combine <code>xlim_tree()</code> and <code>xlim_expand(limits, panel)</code> to tune axis spans for individual <code>geom_facet()</code> or <code>facet_grid()</code> panels independently.</p>
+<div class="book-figure-card" id="fig-12-5">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_12_5.svg" alt="Figure 12.5: Setting xlim for user-specific facet panels." loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure 12.5: Setting xlim for user-specific facet panels..</strong> Setting xlim for user-specific facet panels. Using xlim_tree() to set the Tree panel of the ggtree output (A) and xlim_expand() to set the Dot panel of the ggtree output (A) and the Virginica panel of the ggplot output (B).</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">xlim_tree</span><span class="api-pill">xlim_expand</span><span class="api-pill">geom_facet</span><span class="api-pill">facet_grid</span><button type="button" class="copy-btn" data-code-target="code-blk-85">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-85"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
+    set_seed<span class="tok-op">,</span> rtree<span class="tok-op">,</span> rnorm<span class="tok-op">,</span> data_frame<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> geom_tiplab<span class="tok-op">,</span>
+    geom_facet<span class="tok-op">,</span> geom_point<span class="tok-op">,</span> aes<span class="tok-op">,</span> xlim_tree<span class="tok-op">,</span> xlim_expand<span class="tok-op">,</span>
+    ggplot<span class="tok-op">,</span> facet_grid<span class="tok-op">,</span> read_table<span class="tok-op">,</span> system_file<span class="tok-op">,</span> plot_list<span class="tok-op">,</span>
+<span class="tok-op">)</span>
+
+<span class="tok-call">set_seed</span><span class="tok-op">(</span><span class="tok-num">2019</span> <span class="tok-op">-</span> <span class="tok-num">5</span> <span class="tok-op">-</span> <span class="tok-num">2</span><span class="tok-op">)</span>
+x <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">30</span><span class="tok-op">)</span>
+p <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>x<span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span><span class="tok-op">)</span>
+d <span class="tok-op">=</span> <span class="tok-call">data_frame</span><span class="tok-op">(</span>label<span class="tok-op">=</span>x<span class="tok-op">.</span>tip_label<span class="tok-op">,</span> value<span class="tok-op">=</span><span class="tok-call">rnorm</span><span class="tok-op">(</span><span class="tok-num">30</span><span class="tok-op">)</span><span class="tok-op">)</span>
+p2 <span class="tok-op">=</span> p <span class="tok-op">+</span> <span class="tok-call">geom_facet</span><span class="tok-op">(</span>panel<span class="tok-op">=</span><span class="tok-str">&quot;Dot&quot;</span><span class="tok-op">,</span> data<span class="tok-op">=</span>d<span class="tok-op">,</span> geom<span class="tok-op">=</span>geom_point<span class="tok-op">,</span> mapping<span class="tok-op">=</span><span class="tok-call">aes</span><span class="tok-op">(</span>x<span class="tok-op">=</span><span class="tok-str">&quot;value&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+pa <span class="tok-op">=</span> p2 <span class="tok-op">+</span> <span class="tok-call">xlim_tree</span><span class="tok-op">(</span><span class="tok-num">6</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">xlim_expand</span><span class="tok-op">(</span><span class="tok-op">[</span><span class="tok-op">-</span><span class="tok-num">10</span><span class="tok-op">,</span> <span class="tok-num">10</span><span class="tok-op">]</span><span class="tok-op">,</span> <span class="tok-str">&quot;Dot&quot;</span><span class="tok-op">)</span>
+
+iris <span class="tok-op">=</span> <span class="tok-call">read_table</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;TDbook&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;iris.tsv&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> header<span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span> sep<span class="tok-op">=</span><span class="tok-str">&quot;\t&quot;</span><span class="tok-op">)</span>
+g <span class="tok-op">=</span> <span class="tok-call">ggplot</span><span class="tok-op">(</span>iris<span class="tok-op">,</span> <span class="tok-call">aes</span><span class="tok-op">(</span><span class="tok-str">&quot;Sepal.Length&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;Sepal.Width&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">geom_point</span><span class="tok-op">(</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">facet_grid</span><span class="tok-op">(</span><span class="tok-str">&quot;.~Species&quot;</span><span class="tok-op">,</span> scales<span class="tok-op">=</span><span class="tok-str">&quot;free_x&quot;</span><span class="tok-op">)</span>
+pb <span class="tok-op">=</span> g <span class="tok-op">+</span> <span class="tok-call">xlim_expand</span><span class="tok-op">(</span><span class="tok-op">[</span><span class="tok-num">0</span><span class="tok-op">,</span> <span class="tok-num">15</span><span class="tok-op">]</span><span class="tok-op">,</span> <span class="tok-str">&quot;virginica&quot;</span><span class="tok-op">)</span>
+<span class="tok-call">plot_list</span><span class="tok-op">(</span>pa<span class="tok-op">,</span> pb<span class="tok-op">,</span> ncol<span class="tok-op">=</span><span class="tok-num">2</span><span class="tok-op">,</span> tag_levels<span class="tok-op">=</span><span class="tok-str">&quot;A&quot;</span><span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
+<h2 id="hexpand-vexpand">12.4.2 Expand Plot Limit by Ratio (hexpand / vexpand)</h2>
+<p><code>hexpand()</code> and <code>vexpand()</code> enlarge data bounds by a relative fraction in either direction (<code>direction=-1</code> expands left/bottom).</p>
+<div class="book-figure-card" id="fig-12-6">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_12_6.svg" alt="Figure 12.6: Expanding plot limits by a fraction of the x or y range." loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure 12.6: Expanding plot limits by a fraction of the x or y range..</strong> Expanding plot limits by a fraction of the x or y range. Expand x limit at right-hand side by default (A), and expand x limit for left-hand side when direction = -1 and expand y limit at the upper side (B).</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">hexpand</span><span class="api-pill">vexpand</span><span class="api-pill">geom_tiplab</span><span class="api-pill">ggplot</span><button type="button" class="copy-btn" data-code-target="code-blk-86">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-86"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
+    set_seed<span class="tok-op">,</span> rtree<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> geom_tiplab<span class="tok-op">,</span> hexpand<span class="tok-op">,</span> vexpand<span class="tok-op">,</span>
+    ggplot<span class="tok-op">,</span> aes<span class="tok-op">,</span> geom_point<span class="tok-op">,</span> read_table<span class="tok-op">,</span> system_file<span class="tok-op">,</span> plot_list<span class="tok-op">,</span>
+<span class="tok-op">)</span>
+
+<span class="tok-call">set_seed</span><span class="tok-op">(</span><span class="tok-num">2019</span> <span class="tok-op">-</span> <span class="tok-num">5</span> <span class="tok-op">-</span> <span class="tok-num">2</span><span class="tok-op">)</span>
+x <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">30</span><span class="tok-op">)</span>
+x<span class="tok-op">.</span>tip_label <span class="tok-op">=</span> <span class="tok-op">[</span><span class="tok-str">f&quot;to make the label longer_{lbl}&quot;</span> <span class="tok-kw">for</span> lbl <span class="tok-kw">in</span> x<span class="tok-op">.</span>tip_label<span class="tok-op">]</span>
+p1 <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>x<span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">hexpand</span><span class="tok-op">(</span><span class="tok-num">0.4</span><span class="tok-op">)</span>
+
+iris <span class="tok-op">=</span> <span class="tok-call">read_table</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;TDbook&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;iris.tsv&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> header<span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span> sep<span class="tok-op">=</span><span class="tok-str">&quot;\t&quot;</span><span class="tok-op">)</span>
+p2 <span class="tok-op">=</span> <span class="tok-op">(</span>
+    <span class="tok-call">ggplot</span><span class="tok-op">(</span>iris<span class="tok-op">,</span> <span class="tok-call">aes</span><span class="tok-op">(</span><span class="tok-str">&quot;Sepal.Width&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;Petal.Width&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_point</span><span class="tok-op">(</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">hexpand</span><span class="tok-op">(</span><span class="tok-num">0.2</span><span class="tok-op">,</span> direction<span class="tok-op">=</span><span class="tok-op">-</span><span class="tok-num">1</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">vexpand</span><span class="tok-op">(</span><span class="tok-num">0.2</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+<span class="tok-call">plot_list</span><span class="tok-op">(</span>p1<span class="tok-op">,</span> p2<span class="tok-op">,</span> tag_levels<span class="tok-op">=</span><span class="tok-str">&quot;A&quot;</span><span class="tok-op">,</span> widths<span class="tok-op">=</span><span class="tok-op">[</span><span class="tok-num">0.6</span><span class="tok-op">,</span> <span class="tok-num">0.4</span><span class="tok-op">]</span><span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
+<h2 id="td-filter">12.5.1 Filter Tree Data (td_filter)</h2>
+<p>Pass <code>td_filter(...)</code> as layer <code>data</code> to restrict geometric layers to computed node subsets such as <code>offspring()</code> of an internal ancestor.</p>
+<div class="book-figure-card" id="fig-12-7">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_12_7.svg" alt="Figure 12.7: Filtering ggtree plot data in geom layers." loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure 12.7: Filtering ggtree plot data in geom layers..</strong> Filtering ggtree plot data in geom layers. Only selected tips (offspring of the node indicated by the blue circle point) were labeled.</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">td_filter</span><span class="api-pill">offspring</span><span class="api-pill">geom_text</span><span class="api-pill">geom_nodepoint</span><button type="button" class="copy-btn" data-code-target="code-blk-87">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-87"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
+    set_seed<span class="tok-op">,</span> rtree<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> offspring<span class="tok-op">,</span> aes<span class="tok-op">,</span> geom_text<span class="tok-op">,</span>
+    geom_nodepoint<span class="tok-op">,</span> td_filter<span class="tok-op">,</span> hexpand<span class="tok-op">,</span>
+<span class="tok-op">)</span>
+
+<span class="tok-call">set_seed</span><span class="tok-op">(</span><span class="tok-num">2020</span><span class="tok-op">)</span>
+tree <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">50</span><span class="tok-op">)</span>
+p <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>tree<span class="tok-op">)</span>
+selected_nodes <span class="tok-op">=</span> <span class="tok-call">offspring</span><span class="tok-op">(</span>p<span class="tok-op">,</span> <span class="tok-num">67</span><span class="tok-op">)</span><span class="tok-op">[</span><span class="tok-str">&quot;node&quot;</span><span class="tok-op">]</span>
+res <span class="tok-op">=</span> <span class="tok-op">(</span>
+    p
+    <span class="tok-op">+</span> <span class="tok-call">geom_text</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span>label<span class="tok-op">=</span><span class="tok-str">&quot;label&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> data<span class="tok-op">=</span><span class="tok-call">td_filter</span><span class="tok-op">(</span><span class="tok-str">&quot;isTip &amp; node in selected_nodes&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> hjust<span class="tok-op">=</span><span class="tok-num">0</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_nodepoint</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span>subset<span class="tok-op">=</span><span class="tok-str">&quot;node == 67&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">5</span><span class="tok-op">,</span> color<span class="tok-op">=</span><span class="tok-str">&quot;blue&quot;</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">hexpand</span><span class="tok-op">(</span><span class="tok-num">0.12</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+res
+</code></pre>
+  </details>
+</div>
+<h2 id="td-unnest">12.5.2 Flatten List-Column Tree Data (td_unnest)</h2>
+<p>Use <code>nest()</code> to store multi-observation list columns per tip and <code>td_unnest()</code> (optionally composed with <code>_f=td_filter(...)</code>) to expand them during plotting.</p>
+<div class="book-figure-card" id="fig-12-8">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_12_8.svg" alt="Figure 12.8: Flattening ggtree plot data." loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure 12.8: Flattening ggtree plot data..</strong> Flattening ggtree plot data. List-columns can be flattened by td_unnest() and two circle points were displayed on each tip simultaneously (A). Different tree data utilities can be combined to work together, e.g., filter data by td_filter(), and then flatten it by td_unnest()) (B).</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">nest</span><span class="api-pill">td_unnest</span><span class="api-pill">td_filter</span><span class="api-pill">scale_size</span><button type="button" class="copy-btn" data-code-target="code-blk-88">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-88"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
+    set_seed<span class="tok-op">,</span> rtree<span class="tok-op">,</span> rnorm<span class="tok-op">,</span> data_frame<span class="tok-op">,</span> rep<span class="tok-op">,</span> c<span class="tok-op">,</span> nest<span class="tok-op">,</span> ggtree<span class="tok-op">,</span>
+    geom_point<span class="tok-op">,</span> aes<span class="tok-op">,</span> td_unnest<span class="tok-op">,</span> td_filter<span class="tok-op">,</span> scale_size<span class="tok-op">,</span> plot_list<span class="tok-op">,</span>
+<span class="tok-op">)</span>
+
+<span class="tok-call">set_seed</span><span class="tok-op">(</span><span class="tok-num">1997</span><span class="tok-op">)</span>
+tr <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">5</span><span class="tok-op">)</span>
+d <span class="tok-op">=</span> <span class="tok-call">data_frame</span><span class="tok-op">(</span>
+    id<span class="tok-op">=</span><span class="tok-call">rep</span><span class="tok-op">(</span>tr<span class="tok-op">.</span>tip_label<span class="tok-op">,</span> <span class="tok-num">2</span><span class="tok-op">)</span><span class="tok-op">,</span>
+    value<span class="tok-op">=</span><span class="tok-op">[</span><span class="tok-call">abs</span><span class="tok-op">(</span>v<span class="tok-op">)</span> <span class="tok-kw">for</span> v <span class="tok-kw">in</span> <span class="tok-call">rnorm</span><span class="tok-op">(</span><span class="tok-num">10</span><span class="tok-op">,</span> <span class="tok-num">6</span><span class="tok-op">,</span> <span class="tok-num">2</span><span class="tok-op">)</span><span class="tok-op">]</span><span class="tok-op">,</span>
+    group<span class="tok-op">=</span><span class="tok-call">c</span><span class="tok-op">(</span><span class="tok-call">rep</span><span class="tok-op">(</span><span class="tok-str">&quot;A&quot;</span><span class="tok-op">,</span> <span class="tok-num">5</span><span class="tok-op">)</span><span class="tok-op">,</span> <span class="tok-call">rep</span><span class="tok-op">(</span><span class="tok-str">&quot;B&quot;</span><span class="tok-op">,</span> <span class="tok-num">5</span><span class="tok-op">)</span><span class="tok-op">)</span><span class="tok-op">,</span>
+<span class="tok-op">)</span>
+d2 <span class="tok-op">=</span> <span class="tok-call">nest</span><span class="tok-op">(</span>d<span class="tok-op">,</span> value<span class="tok-op">=</span><span class="tok-str">&quot;value&quot;</span><span class="tok-op">,</span> group<span class="tok-op">=</span><span class="tok-str">&quot;group&quot;</span><span class="tok-op">)</span>
+p <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>tr<span class="tok-op">)</span> <span class="tok-op">%</span> d2
+p2 <span class="tok-op">=</span> <span class="tok-op">(</span>
+    p
+    <span class="tok-op">+</span> <span class="tok-call">geom_point</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span><span class="tok-str">&quot;x&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;y&quot;</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-str">&quot;value&quot;</span><span class="tok-op">,</span> colour<span class="tok-op">=</span><span class="tok-str">&quot;group&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> data<span class="tok-op">=</span><span class="tok-call">td_unnest</span><span class="tok-op">(</span><span class="tok-op">[</span><span class="tok-str">&quot;value&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;group&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span><span class="tok-op">,</span> alpha<span class="tok-op">=</span><span class="tok-num">0.4</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">scale_size</span><span class="tok-op">(</span>range<span class="tok-op">=</span><span class="tok-op">[</span><span class="tok-num">3</span><span class="tok-op">,</span> <span class="tok-num">10</span><span class="tok-op">]</span><span class="tok-op">,</span> limits<span class="tok-op">=</span><span class="tok-op">[</span><span class="tok-num">3</span><span class="tok-op">,</span> <span class="tok-num">10</span><span class="tok-op">]</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+p3 <span class="tok-op">=</span> <span class="tok-op">(</span>
+    p
+    <span class="tok-op">+</span> <span class="tok-call">geom_point</span><span class="tok-op">(</span>
+        <span class="tok-call">aes</span><span class="tok-op">(</span><span class="tok-str">&quot;x&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;y&quot;</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-str">&quot;value&quot;</span><span class="tok-op">,</span> colour<span class="tok-op">=</span><span class="tok-str">&quot;group&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span>
+        data<span class="tok-op">=</span><span class="tok-call">td_unnest</span><span class="tok-op">(</span><span class="tok-op">[</span><span class="tok-str">&quot;value&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;group&quot;</span><span class="tok-op">]</span><span class="tok-op">,</span> _f<span class="tok-op">=</span><span class="tok-call">td_filter</span><span class="tok-op">(</span><span class="tok-str">&quot;isTip &amp; node == 4&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span><span class="tok-op">,</span>
+        alpha<span class="tok-op">=</span><span class="tok-num">0.4</span><span class="tok-op">,</span>
+    <span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">scale_size</span><span class="tok-op">(</span>range<span class="tok-op">=</span><span class="tok-op">[</span><span class="tok-num">3</span><span class="tok-op">,</span> <span class="tok-num">10</span><span class="tok-op">]</span><span class="tok-op">,</span> limits<span class="tok-op">=</span><span class="tok-op">[</span><span class="tok-num">3</span><span class="tok-op">,</span> <span class="tok-num">10</span><span class="tok-op">]</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+<span class="tok-call">plot_list</span><span class="tok-op">(</span>p2<span class="tok-op">,</span> p3<span class="tok-op">,</span> ncol<span class="tok-op">=</span><span class="tok-num">2</span><span class="tok-op">,</span> tag_levels<span class="tok-op">=</span><span class="tok-str">&quot;A&quot;</span><span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
+<h2 id="get-taxa-name">12.6.1 Extract Tip Order (get_taxa_name)</h2>
+<p><code>get_taxa_name(p)</code> returns displayed tip labels in vertical top-to-bottom visual order matching the plotted tree topology.</p>
+<div class="book-figure-card" id="fig-12-9">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_12_9.svg" alt="Figure 12.9: An example tree for demonstrating get_taxa_name() function." loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure 12.9: An example tree for demonstrating get_taxa_name() function..</strong> An example tree for demonstrating get_taxa_name() function.</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">get_taxa_name</span><span class="api-pill">geom_hilight</span><span class="api-pill">geom_tiplab</span><span class="api-pill">labs</span><button type="button" class="copy-btn" data-code-target="code-blk-89">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-89"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> set_seed<span class="tok-op">,</span> rtree<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> geom_tiplab<span class="tok-op">,</span> geom_hilight<span class="tok-op">,</span> get_taxa_name<span class="tok-op">,</span> labs
+
+<span class="tok-call">set_seed</span><span class="tok-op">(</span><span class="tok-num">123</span><span class="tok-op">)</span>
+tree <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">10</span><span class="tok-op">)</span>
+p <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>tree<span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">geom_hilight</span><span class="tok-op">(</span>node<span class="tok-op">=</span><span class="tok-num">12</span><span class="tok-op">,</span> extendto<span class="tok-op">=</span><span class="tok-num">2.5</span><span class="tok-op">)</span>
+x <span class="tok-op">=</span> <span class="tok-str">&quot;Taxa order: &quot;</span> <span class="tok-op">+</span> <span class="tok-str">&quot;, &quot;</span><span class="tok-op">.</span><span class="tok-call">join</span><span class="tok-op">(</span><span class="tok-call">get_taxa_name</span><span class="tok-op">(</span>p<span class="tok-op">)</span><span class="tok-op">)</span>
+p <span class="tok-op">+</span> <span class="tok-call">labs</span><span class="tok-op">(</span>title<span class="tok-op">=</span>x<span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
+<h2 id="label-pad">12.6.2 Padding Taxa Labels (label_pad)</h2>
+<p><code>label_pad()</code> left-pads tip names with dots or spaces to uniform character width for crisp monospace right-alignment alongside <code>geom_tiplab(..., align=True)</code>.</p>
+<div class="book-figure-card" id="fig-12-10">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_12_10.svg" alt="Figure 12.10: Align tip label to the end." loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure 12.10: Align tip label to the end..</strong> Align tip label to the end. With a dotted line (A) and without a dotted line (B).</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">label_pad</span><span class="api-pill">geom_tiplab</span><span class="api-pill">xlim</span><span class="api-pill">plot_list</span><button type="button" class="copy-btn" data-code-target="code-blk-90">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-90"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> set_seed<span class="tok-op">,</span> rtree<span class="tok-op">,</span> data_frame<span class="tok-op">,</span> label_pad<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> geom_tiplab<span class="tok-op">,</span> aes<span class="tok-op">,</span> xlim<span class="tok-op">,</span> NA<span class="tok-op">,</span> plot_list
+
+<span class="tok-call">set_seed</span><span class="tok-op">(</span><span class="tok-num">2015</span> <span class="tok-op">-</span> <span class="tok-num">12</span> <span class="tok-op">-</span> <span class="tok-num">21</span><span class="tok-op">)</span>
+tree <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">5</span><span class="tok-op">)</span>
+tree<span class="tok-op">.</span>tip_label<span class="tok-op">[</span><span class="tok-num">1</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-str">&quot;long string for test&quot;</span>
+d <span class="tok-op">=</span> <span class="tok-call">data_frame</span><span class="tok-op">(</span>
+    label<span class="tok-op">=</span>tree<span class="tok-op">.</span>tip_label<span class="tok-op">,</span>
+    newlabel<span class="tok-op">=</span><span class="tok-call">label_pad</span><span class="tok-op">(</span>tree<span class="tok-op">.</span>tip_label<span class="tok-op">)</span><span class="tok-op">,</span>
+    newlabel2<span class="tok-op">=</span><span class="tok-call">label_pad</span><span class="tok-op">(</span>tree<span class="tok-op">.</span>tip_label<span class="tok-op">,</span> pad<span class="tok-op">=</span><span class="tok-str">&quot; &quot;</span><span class="tok-op">)</span><span class="tok-op">,</span>
+<span class="tok-op">)</span>
+p <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>tree<span class="tok-op">)</span> <span class="tok-op">%</span> d <span class="tok-op">+</span> <span class="tok-call">xlim</span><span class="tok-op">(</span>NA<span class="tok-op">,</span> <span class="tok-num">5</span><span class="tok-op">)</span>
+p1 <span class="tok-op">=</span> p <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span>label<span class="tok-op">=</span><span class="tok-str">&quot;newlabel&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> align<span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span> family<span class="tok-op">=</span><span class="tok-str">&quot;mono&quot;</span><span class="tok-op">,</span> linetype<span class="tok-op">=</span><span class="tok-str">&quot;dotted&quot;</span><span class="tok-op">,</span> linesize<span class="tok-op">=</span><span class="tok-num">0.7</span><span class="tok-op">)</span>
+p2 <span class="tok-op">=</span> p <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span>label<span class="tok-op">=</span><span class="tok-str">&quot;newlabel2&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> align<span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span> family<span class="tok-op">=</span><span class="tok-str">&quot;mono&quot;</span><span class="tok-op">,</span> linetype<span class="tok-op">=</span><span class="tok-kw">None</span><span class="tok-op">,</span> offset<span class="tok-op">=</span><span class="tok-op">-</span><span class="tok-num">0.5</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">xlim</span><span class="tok-op">(</span>NA<span class="tok-op">,</span> <span class="tok-num">5</span><span class="tok-op">)</span>
+<span class="tok-call">plot_list</span><span class="tok-op">(</span>p1<span class="tok-op">,</span> p2<span class="tok-op">,</span> ncol<span class="tok-op">=</span><span class="tok-num">2</span><span class="tok-op">,</span> tag_levels<span class="tok-op">=</span><span class="tok-str">&quot;A&quot;</span><span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
+<h2 id="interactive-identify">12.7 Interactive ggtree Annotation (identify)</h2>
+<p>Interactive clade highlighting, labeling, and hover inspection powered by embedded SVG tooltips (<code>geom_hilight_interactive</code>, <code>geom_cladelab_interactive</code>, <code>geom_point_interactive</code>, <code>geom_tiplab_interactive</code>). Hover over nodes, tips, or highlighted clades below to test live tooltips.</p>
+<div class="book-figure-card" id="fig-12-11">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="820" height="560" viewBox="0 0 820 560">
+<rect width="820" height="560" fill="white"/>
+<style>.ggtree-interactive{cursor:pointer;transition:opacity .12s,stroke-width .12s;}.ggtree-interactive:hover{stroke:#111827;stroke-width:2px;opacity:1;}</style>
+<defs><clipPath id="ggtree_cart_clip_383070272"><rect x="28.00" y="0.00" width="804.00" height="560.00"/></clipPath></defs>
+<g clip-path="url(#ggtree_cart_clip_383070272)">
+<line x1="63.67" y1="495.27" x2="135.54" y2="495.27" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="181.45" y1="479.60" x2="193.25" y2="479.60" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="181.45" y1="463.92" x2="280.67" y2="463.92" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="142.76" y1="432.58" x2="175.07" y2="432.58" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="191.07" y1="416.90" x2="273.87" y2="416.90" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="305.34" y1="401.23" x2="351.16" y2="401.23" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="305.34" y1="385.55" x2="389.80" y2="385.55" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="260.41" y1="369.88" x2="383.09" y2="369.88" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="260.41" y1="354.21" x2="378.10" y2="354.21" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="232.20" y1="338.53" x2="235.61" y2="338.53" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="361.62" y1="322.86" x2="434.70" y2="322.86" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="361.62" y1="307.18" x2="425.38" y2="307.18" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="83.70" y1="448.25" x2="193.39" y2="448.25" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="360.68" y1="275.84" x2="395.80" y2="275.84" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="360.68" y1="260.16" x2="487.76" y2="260.16" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="231.36" y1="291.51" x2="274.41" y2="291.51" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="423.30" y1="228.82" x2="529.61" y2="228.82" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="423.30" y1="213.14" x2="429.60" y2="213.14" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="297.67" y1="244.49" x2="321.43" y2="244.49" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="416.50" y1="197.47" x2="491.10" y2="197.47" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="486.40" y1="181.79" x2="533.11" y2="181.79" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="486.40" y1="166.12" x2="538.81" y2="166.12" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="402.32" y1="103.42" x2="504.20" y2="103.42" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="535.45" y1="72.08" x2="554.96" y2="72.08" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="546.81" y1="56.40" x2="564.59" y2="56.40" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="546.81" y1="40.73" x2="560.99" y2="40.73" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="504.79" y1="87.75" x2="604.07" y2="87.75" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="456.51" y1="134.77" x2="475.67" y2="134.77" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="456.51" y1="119.10" x2="582.46" y2="119.10" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="407.91" y1="150.45" x2="429.34" y2="150.45" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="63.67" y1="342.18" x2="74.14" y2="342.18" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="74.14" y1="448.86" x2="80.40" y2="448.86" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="80.40" y1="471.76" x2="181.45" y2="471.76" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="80.40" y1="425.96" x2="83.70" y2="425.96" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="83.70" y1="403.68" x2="142.76" y2="403.68" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="142.76" y1="374.78" x2="163.85" y2="374.78" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="163.85" y1="405.15" x2="191.07" y2="405.15" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="191.07" y1="393.39" x2="305.34" y2="393.39" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="163.85" y1="344.41" x2="213.85" y2="344.41" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="213.85" y1="362.04" x2="260.41" y2="362.04" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="213.85" y1="326.78" x2="232.20" y2="326.78" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="232.20" y1="315.02" x2="361.62" y2="315.02" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="74.14" y1="235.49" x2="166.47" y2="235.49" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="166.47" y1="279.76" x2="231.36" y2="279.76" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="231.36" y1="268.00" x2="360.68" y2="268.00" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="166.47" y1="191.22" x2="239.06" y2="191.22" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="239.06" y1="232.73" x2="297.67" y2="232.73" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="297.67" y1="220.98" x2="423.30" y2="220.98" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="239.06" y1="149.71" x2="303.19" y2="149.71" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="303.19" y1="185.71" x2="416.50" y2="185.71" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="416.50" y1="173.96" x2="486.40" y2="173.96" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="303.19" y1="113.71" x2="389.82" y2="113.71" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="389.82" y1="88.73" x2="402.32" y2="88.73" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="402.32" y1="74.03" x2="504.79" y2="74.03" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="504.79" y1="60.32" x2="535.45" y2="60.32" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="535.45" y1="48.56" x2="546.81" y2="48.56" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="389.82" y1="138.69" x2="407.91" y2="138.69" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="407.91" y1="126.93" x2="456.51" y2="126.93" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="63.67" y1="418.72" x2="63.67" y2="495.27" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="181.45" y1="471.76" x2="181.45" y2="479.60" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="181.45" y1="471.76" x2="181.45" y2="463.92" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="142.76" y1="403.68" x2="142.76" y2="432.58" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="191.07" y1="405.15" x2="191.07" y2="416.90" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="305.34" y1="393.39" x2="305.34" y2="401.23" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="305.34" y1="393.39" x2="305.34" y2="385.55" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="260.41" y1="362.04" x2="260.41" y2="369.88" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="260.41" y1="362.04" x2="260.41" y2="354.21" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="232.20" y1="326.78" x2="232.20" y2="338.53" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="361.62" y1="315.02" x2="361.62" y2="322.86" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="361.62" y1="315.02" x2="361.62" y2="307.18" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="83.70" y1="425.96" x2="83.70" y2="448.25" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="360.68" y1="268.00" x2="360.68" y2="275.84" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="360.68" y1="268.00" x2="360.68" y2="260.16" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="231.36" y1="279.76" x2="231.36" y2="291.51" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="423.30" y1="220.98" x2="423.30" y2="228.82" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="423.30" y1="220.98" x2="423.30" y2="213.14" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="297.67" y1="232.73" x2="297.67" y2="244.49" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="416.50" y1="185.71" x2="416.50" y2="197.47" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="486.40" y1="173.96" x2="486.40" y2="181.79" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="486.40" y1="173.96" x2="486.40" y2="166.12" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="402.32" y1="88.73" x2="402.32" y2="103.42" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="535.45" y1="60.32" x2="535.45" y2="72.08" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="546.81" y1="48.56" x2="546.81" y2="56.40" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="546.81" y1="48.56" x2="546.81" y2="40.73" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="504.79" y1="74.03" x2="504.79" y2="87.75" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="456.51" y1="126.93" x2="456.51" y2="134.77" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="456.51" y1="126.93" x2="456.51" y2="119.10" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="407.91" y1="138.69" x2="407.91" y2="150.45" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="63.67" y1="418.72" x2="63.67" y2="342.18" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="74.14" y1="342.18" x2="74.14" y2="448.86" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="80.40" y1="448.86" x2="80.40" y2="471.76" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="80.40" y1="448.86" x2="80.40" y2="425.96" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="83.70" y1="425.96" x2="83.70" y2="403.68" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="142.76" y1="403.68" x2="142.76" y2="374.78" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="163.85" y1="374.78" x2="163.85" y2="405.15" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="191.07" y1="405.15" x2="191.07" y2="393.39" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="163.85" y1="374.78" x2="163.85" y2="344.41" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="213.85" y1="344.41" x2="213.85" y2="362.04" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="213.85" y1="344.41" x2="213.85" y2="326.78" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="232.20" y1="326.78" x2="232.20" y2="315.02" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="74.14" y1="342.18" x2="74.14" y2="235.49" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="166.47" y1="235.49" x2="166.47" y2="279.76" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="231.36" y1="279.76" x2="231.36" y2="268.00" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="166.47" y1="235.49" x2="166.47" y2="191.22" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="239.06" y1="191.22" x2="239.06" y2="232.73" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="297.67" y1="232.73" x2="297.67" y2="220.98" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="239.06" y1="191.22" x2="239.06" y2="149.71" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="303.19" y1="149.71" x2="303.19" y2="185.71" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="416.50" y1="185.71" x2="416.50" y2="173.96" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="303.19" y1="149.71" x2="303.19" y2="113.71" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="389.82" y1="113.71" x2="389.82" y2="88.73" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="402.32" y1="88.73" x2="402.32" y2="74.03" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="504.79" y1="74.03" x2="504.79" y2="60.32" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="535.45" y1="60.32" x2="535.45" y2="48.56" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="389.82" y1="113.71" x2="389.82" y2="138.69" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="407.91" y1="138.69" x2="407.91" y2="126.93" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<rect x="130.93" y="450.60" width="149.74" height="42.32" fill="#38BDF8" fill-opacity="0.25" stroke="none" stroke-width="0.00"/>
+<rect x="198.91" y="246.84" width="288.84" height="57.99" fill="#F59E0B" fill-opacity="0.25" stroke="none" stroke-width="0.00"/>
+<line x1="309.92" y1="479.60" x2="309.92" y2="463.92" stroke="#0284C7" stroke-width="0.90" stroke-opacity="1.00"/>
+<text x="316.09" y="475.84" text-anchor="start" font-family="sans-serif" font-size="12" fill="#0284C7">Clade A</text>
+<line x1="521.16" y1="291.51" x2="521.16" y2="260.16" stroke="#D97706" stroke-width="0.90" stroke-opacity="1.00"/>
+<text x="529.40" y="279.92" text-anchor="start" font-family="sans-serif" font-size="12" fill="#D97706">Clade B</text>
+<circle cx="135.54" cy="495.27" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t7"><title>t7</title></circle>
+<circle cx="193.25" cy="479.60" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t18"><title>t18</title></circle>
+<circle cx="280.67" cy="463.92" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t28"><title>t28</title></circle>
+<circle cx="175.07" cy="432.58" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t12"><title>t12</title></circle>
+<circle cx="273.87" cy="416.90" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t20"><title>t20</title></circle>
+<circle cx="351.16" cy="401.23" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t15"><title>t15</title></circle>
+<circle cx="389.80" cy="385.55" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t4"><title>t4</title></circle>
+<circle cx="383.09" cy="369.88" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t29"><title>t29</title></circle>
+<circle cx="378.10" cy="354.21" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t30"><title>t30</title></circle>
+<circle cx="235.61" cy="338.53" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t2"><title>t2</title></circle>
+<circle cx="434.70" cy="322.86" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t6"><title>t6</title></circle>
+<circle cx="425.38" cy="307.18" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t1"><title>t1</title></circle>
+<circle cx="193.39" cy="448.25" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t5"><title>t5</title></circle>
+<circle cx="395.80" cy="275.84" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t24"><title>t24</title></circle>
+<circle cx="487.76" cy="260.16" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t23"><title>t23</title></circle>
+<circle cx="274.41" cy="291.51" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t13"><title>t13</title></circle>
+<circle cx="529.61" cy="228.82" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t8"><title>t8</title></circle>
+<circle cx="429.60" cy="213.14" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t14"><title>t14</title></circle>
+<circle cx="321.43" cy="244.49" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t17"><title>t17</title></circle>
+<circle cx="491.10" cy="197.47" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t9"><title>t9</title></circle>
+<circle cx="533.11" cy="181.79" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t27"><title>t27</title></circle>
+<circle cx="538.81" cy="166.12" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t26"><title>t26</title></circle>
+<circle cx="504.20" cy="103.42" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t3"><title>t3</title></circle>
+<circle cx="554.96" cy="72.08" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t19"><title>t19</title></circle>
+<circle cx="564.59" cy="56.40" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t11"><title>t11</title></circle>
+<circle cx="560.99" cy="40.73" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t25"><title>t25</title></circle>
+<circle cx="604.07" cy="87.75" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t16"><title>t16</title></circle>
+<circle cx="475.67" cy="134.77" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t10"><title>t10</title></circle>
+<circle cx="582.46" cy="119.10" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t22"><title>t22</title></circle>
+<circle cx="429.34" cy="150.45" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="t21"><title>t21</title></circle>
+<circle cx="63.67" cy="418.72" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=31 | len=0"><title>node=31 | len=0</title></circle>
+<circle cx="74.14" cy="342.18" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=32 | len=0.0757"><title>node=32 | len=0.0757</title></circle>
+<circle cx="80.40" cy="448.86" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=33 | len=0.0452"><title>node=33 | len=0.0452</title></circle>
+<circle cx="181.45" cy="471.76" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=34 | len=0.73"><title>node=34 | len=0.73</title></circle>
+<circle cx="83.70" cy="425.96" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=35 | len=0.0238"><title>node=35 | len=0.0238</title></circle>
+<circle cx="142.76" cy="403.68" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=36 | len=0.427"><title>node=36 | len=0.427</title></circle>
+<circle cx="163.85" cy="374.78" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=37 | len=0.152"><title>node=37 | len=0.152</title></circle>
+<circle cx="191.07" cy="405.15" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=38 | len=0.197"><title>node=38 | len=0.197</title></circle>
+<circle cx="305.34" cy="393.39" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=39 | len=0.825"><title>node=39 | len=0.825</title></circle>
+<circle cx="213.85" cy="344.41" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=40 | len=0.361"><title>node=40 | len=0.361</title></circle>
+<circle cx="260.41" cy="362.04" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=41 | len=0.336"><title>node=41 | len=0.336</title></circle>
+<circle cx="232.20" cy="326.78" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=42 | len=0.133"><title>node=42 | len=0.133</title></circle>
+<circle cx="361.62" cy="315.02" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=43 | len=0.935"><title>node=43 | len=0.935</title></circle>
+<circle cx="166.47" cy="235.49" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=44 | len=0.667"><title>node=44 | len=0.667</title></circle>
+<circle cx="231.36" cy="279.76" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=45 | len=0.469"><title>node=45 | len=0.469</title></circle>
+<circle cx="360.68" cy="268.00" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=46 | len=0.934"><title>node=46 | len=0.934</title></circle>
+<circle cx="239.06" cy="191.22" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=47 | len=0.524"><title>node=47 | len=0.524</title></circle>
+<circle cx="297.67" cy="232.73" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=48 | len=0.423"><title>node=48 | len=0.423</title></circle>
+<circle cx="423.30" cy="220.98" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=49 | len=0.908"><title>node=49 | len=0.908</title></circle>
+<circle cx="303.19" cy="149.71" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=50 | len=0.463"><title>node=50 | len=0.463</title></circle>
+<circle cx="416.50" cy="185.71" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=51 | len=0.819"><title>node=51 | len=0.819</title></circle>
+<circle cx="486.40" cy="173.96" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=52 | len=0.505"><title>node=52 | len=0.505</title></circle>
+<circle cx="389.82" cy="113.71" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=53 | len=0.626"><title>node=53 | len=0.626</title></circle>
+<circle cx="402.32" cy="88.73" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=54 | len=0.0903"><title>node=54 | len=0.0903</title></circle>
+<circle cx="504.79" cy="74.03" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=55 | len=0.74"><title>node=55 | len=0.74</title></circle>
+<circle cx="535.45" cy="60.32" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=56 | len=0.221"><title>node=56 | len=0.221</title></circle>
+<circle cx="546.81" cy="48.56" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=57 | len=0.0821"><title>node=57 | len=0.0821</title></circle>
+<circle cx="407.91" cy="138.69" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=58 | len=0.131"><title>node=58 | len=0.131</title></circle>
+<circle cx="456.51" cy="126.93" r="4.32" fill="#1D4ED8" fill-opacity="1.00" stroke="white" stroke-width="0.5" class="ggtree-interactive" data-tooltip="node=59 | len=0.351"><title>node=59 | len=0.351</title></circle>
+<text x="139.54" y="498.33" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t7">t7<title>t7</title></text>
+<text x="197.25" y="482.66" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t18">t18<title>t18</title></text>
+<text x="284.67" y="466.98" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t28">t28<title>t28</title></text>
+<text x="179.07" y="435.64" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t12">t12<title>t12</title></text>
+<text x="277.87" y="419.96" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t20">t20<title>t20</title></text>
+<text x="355.16" y="404.29" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t15">t15<title>t15</title></text>
+<text x="393.80" y="388.61" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t4">t4<title>t4</title></text>
+<text x="387.09" y="372.94" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t29">t29<title>t29</title></text>
+<text x="382.10" y="357.27" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t30">t30<title>t30</title></text>
+<text x="239.61" y="341.59" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t2">t2<title>t2</title></text>
+<text x="438.70" y="325.92" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t6">t6<title>t6</title></text>
+<text x="429.38" y="310.24" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t1">t1<title>t1</title></text>
+<text x="197.39" y="451.31" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t5">t5<title>t5</title></text>
+<text x="399.80" y="278.90" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t24">t24<title>t24</title></text>
+<text x="491.76" y="263.22" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t23">t23<title>t23</title></text>
+<text x="278.41" y="294.57" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t13">t13<title>t13</title></text>
+<text x="533.61" y="231.88" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t8">t8<title>t8</title></text>
+<text x="433.60" y="216.20" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t14">t14<title>t14</title></text>
+<text x="325.43" y="247.55" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t17">t17<title>t17</title></text>
+<text x="495.10" y="200.53" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t9">t9<title>t9</title></text>
+<text x="537.11" y="184.85" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t27">t27<title>t27</title></text>
+<text x="542.81" y="169.18" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t26">t26<title>t26</title></text>
+<text x="508.20" y="106.48" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t3">t3<title>t3</title></text>
+<text x="558.96" y="75.14" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t19">t19<title>t19</title></text>
+<text x="568.59" y="59.46" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t11">t11<title>t11</title></text>
+<text x="564.99" y="43.79" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t25">t25<title>t25</title></text>
+<text x="608.07" y="90.81" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t16">t16<title>t16</title></text>
+<text x="479.67" y="137.83" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t10">t10<title>t10</title></text>
+<text x="586.46" y="122.16" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t22">t22<title>t22</title></text>
+<text x="433.34" y="153.51" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222" class="ggtree-interactive" data-tooltip="t21">t21<title>t21</title></text>
+</g>
+<line x1="28.00" y1="524.00" x2="777.00" y2="524.00" stroke="#1F2937" stroke-width="1.2"/>
+<line x1="63.67" y1="524.00" x2="63.67" y2="528.00" stroke="#1F2937" stroke-width="1"/>
+<text x="63.67" y="539.00" text-anchor="middle" font-family="sans-serif" font-size="9.5" fill="#374151">0</text>
+<line x1="202.09" y1="524.00" x2="202.09" y2="528.00" stroke="#1F2937" stroke-width="1"/>
+<text x="202.09" y="539.00" text-anchor="middle" font-family="sans-serif" font-size="9.5" fill="#374151">1</text>
+<line x1="340.51" y1="524.00" x2="340.51" y2="528.00" stroke="#1F2937" stroke-width="1"/>
+<text x="340.51" y="539.00" text-anchor="middle" font-family="sans-serif" font-size="9.5" fill="#374151">2</text>
+<line x1="478.93" y1="524.00" x2="478.93" y2="528.00" stroke="#1F2937" stroke-width="1"/>
+<text x="478.93" y="539.00" text-anchor="middle" font-family="sans-serif" font-size="9.5" fill="#374151">3</text>
+<line x1="617.35" y1="524.00" x2="617.35" y2="528.00" stroke="#1F2937" stroke-width="1"/>
+<text x="617.35" y="539.00" text-anchor="middle" font-family="sans-serif" font-size="9.5" fill="#374151">4</text>
+<line x1="755.78" y1="524.00" x2="755.78" y2="528.00" stroke="#1F2937" stroke-width="1"/>
+<text x="755.78" y="539.00" text-anchor="middle" font-family="sans-serif" font-size="9.5" fill="#374151">5</text>
+<g class="ggtree-tooltip-box" visibility="hidden" pointer-events="none"><rect x="0" y="0" width="160" height="24" rx="4" ry="4" fill="#111827" fill-opacity="0.92" stroke="#4B5563" stroke-width="0.8"/><text x="8" y="15.5" font-family="sans-serif" font-size="11" fill="#F9FAFB"></text></g><script><![CDATA[(function(){var sc=document.currentScript;var svg=sc&&sc.closest?sc.closest("svg"):null;if(!svg)return;var box=svg.querySelector(".ggtree-tooltip-box");if(!box)return;var rect=box.querySelector("rect"),txt=box.querySelector("text");function pt(e){var p=svg.createSVGPoint();p.x=e.clientX;p.y=e.clientY;var c=svg.getScreenCTM();return c?p.matrixTransform(c.inverse()):{x:10,y:10};}function show(e){var el=e.target&&e.target.closest?e.target.closest("[data-tooltip]"):null;if(!el){box.setAttribute("visibility","hidden");return;}var msg=el.getAttribute("data-tooltip")||"";txt.textContent=msg;var bb=txt.getBBox();var bw=Math.max(bb.width+16,48),bh=24;rect.setAttribute("width",bw);rect.setAttribute("height",bh);var q=pt(e);var vb=svg.viewBox&&svg.viewBox.baseVal?svg.viewBox.baseVal:{width:800,height:600};var tx=Math.min(q.x+10,(vb.width||800)-bw-6);var ty=Math.max(q.y-30,4);box.setAttribute("transform","translate("+tx.toFixed(1)+","+ty.toFixed(1)+")");box.setAttribute("visibility","visible");}svg.addEventListener("mousemove",show);svg.addEventListener("mouseleave",function(){box.setAttribute("visibility","hidden");});})();]]></script>
+</svg></div>
+    <figcaption class="figure-caption"><strong>Figure 12.11: Interactive phylogenetic tree using identify() method..</strong> Interactive phylogenetic tree using identify() method. Highlighting, labelling and rotating clades are all supported.</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">identify</span><span class="api-pill">geom_hilight_interactive</span><span class="api-pill">geom_cladelab_interactive</span><span class="api-pill">geom_point_interactive</span><button type="button" class="copy-btn" data-code-target="code-blk-91">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-91"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
+    set_seed<span class="tok-op">,</span> rtree<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> aes<span class="tok-op">,</span> geom_hilight_interactive<span class="tok-op">,</span>
+    geom_cladelab_interactive<span class="tok-op">,</span> geom_point_interactive<span class="tok-op">,</span>
+    geom_tiplab_interactive<span class="tok-op">,</span> hexpand<span class="tok-op">,</span> theme_tree2<span class="tok-op">,</span>
+<span class="tok-op">)</span>
+
+<span class="tok-call">set_seed</span><span class="tok-op">(</span><span class="tok-num">2021</span><span class="tok-op">)</span>
+tr <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">30</span><span class="tok-op">)</span>
+p <span class="tok-op">=</span> <span class="tok-op">(</span>
+    <span class="tok-call">ggtree</span><span class="tok-op">(</span>tr<span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_hilight_interactive</span><span class="tok-op">(</span>node<span class="tok-op">=</span><span class="tok-num">34</span><span class="tok-op">,</span> fill<span class="tok-op">=</span><span class="tok-str">&quot;#38BDF8&quot;</span><span class="tok-op">,</span> alpha<span class="tok-op">=</span><span class="tok-num">0.25</span><span class="tok-op">,</span> tooltip<span class="tok-op">=</span><span class="tok-str">&quot;Clade 34 highlighted&quot;</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_hilight_interactive</span><span class="tok-op">(</span>node<span class="tok-op">=</span><span class="tok-num">45</span><span class="tok-op">,</span> fill<span class="tok-op">=</span><span class="tok-str">&quot;#F59E0B&quot;</span><span class="tok-op">,</span> alpha<span class="tok-op">=</span><span class="tok-num">0.25</span><span class="tok-op">,</span> tooltip<span class="tok-op">=</span><span class="tok-str">&quot;Clade 45 highlighted&quot;</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_cladelab_interactive</span><span class="tok-op">(</span>node<span class="tok-op">=</span><span class="tok-num">34</span><span class="tok-op">,</span> label<span class="tok-op">=</span><span class="tok-str">&quot;Clade A&quot;</span><span class="tok-op">,</span> offset<span class="tok-op">=</span><span class="tok-num">0.18</span><span class="tok-op">,</span> barcolor<span class="tok-op">=</span><span class="tok-str">&quot;#0284C7&quot;</span><span class="tok-op">,</span> textcolor<span class="tok-op">=</span><span class="tok-str">&quot;#0284C7&quot;</span><span class="tok-op">,</span> tooltip<span class="tok-op">=</span><span class="tok-str">&quot;Interactive Clade A&quot;</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_cladelab_interactive</span><span class="tok-op">(</span>node<span class="tok-op">=</span><span class="tok-num">45</span><span class="tok-op">,</span> label<span class="tok-op">=</span><span class="tok-str">&quot;Clade B&quot;</span><span class="tok-op">,</span> offset<span class="tok-op">=</span><span class="tok-num">0.18</span><span class="tok-op">,</span> barcolor<span class="tok-op">=</span><span class="tok-str">&quot;#D97706&quot;</span><span class="tok-op">,</span> textcolor<span class="tok-op">=</span><span class="tok-str">&quot;#D97706&quot;</span><span class="tok-op">,</span> tooltip<span class="tok-op">=</span><span class="tok-str">&quot;Interactive Clade B&quot;</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_point_interactive</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span>tooltip<span class="tok-op">=</span><span class="tok-str">&quot;label&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">2.4</span><span class="tok-op">,</span> color<span class="tok-op">=</span><span class="tok-str">&quot;#1D4ED8&quot;</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_tiplab_interactive</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span>tooltip<span class="tok-op">=</span><span class="tok-str">&quot;label&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">2.4</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">hexpand</span><span class="tok-op">(</span><span class="tok-num">0.32</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">theme_tree2</span><span class="tok-op">(</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+p
+</code></pre>
+  </details>
+</div>
+        <nav class="chapter-pager" aria-label="Chapter Navigation"><a class="pager-link" href="chapter11.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">11. Other ggtree Extensions</span></a><a class="pager-link pager-next" href="chapter13.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">13. Gallery of Examples</span></a></nav>
+      </article>
+    </main>
+
+    <aside class="book-toc" aria-label="On this page">
+  <div class="toc-heading">On This Page</div>
+  <ul class="toc-list"><li><a class="" href="#facet-widths">12.1.1 facet_widths</a></li><li><a class="toc-fig-link" href="#fig-12-1">Fig. 12.1: Adjust relative widths of ggplot facets.</a></li><li><a class="" href="#facet-labeller">12.1.2 facet_labeller</a></li><li><a class="toc-fig-link" href="#fig-12-2">Fig. 12.2: Rename facet labels.</a></li><li><a class="" href="#geom-layers-subset">12.2 Geometric Layers</a></li><li><a class="toc-fig-link" href="#fig-12-3">Fig. 12.3: Geometric layers that support subsetting.</a></li><li><a class="" href="#layout-utilities">12.3 Layout Utilities</a></li><li><a class="toc-fig-link" href="#fig-12-4">Fig. 12.4: Layout functions for transforming among different layouts.</a></li><li><a class="" href="#xlim-expand">12.4.1 Expand x Limit for a Specific Facet Panel</a></li><li><a class="toc-fig-link" href="#fig-12-5">Fig. 12.5: Setting xlim for user-specific facet panels.</a></li><li><a class="" href="#hexpand-vexpand">12.4.2 Expand Plot Limit by Ratio (hexpand / vexpand)</a></li><li><a class="toc-fig-link" href="#fig-12-6">Fig. 12.6: Expanding plot limits by a fraction of the x or y range.</a></li><li><a class="" href="#td-filter">12.5.1 Filter Tree Data (td_filter)</a></li><li><a class="toc-fig-link" href="#fig-12-7">Fig. 12.7: Filtering ggtree plot data in geom layers.</a></li><li><a class="" href="#td-unnest">12.5.2 Flatten List-Column Tree Data (td_unnest)</a></li><li><a class="toc-fig-link" href="#fig-12-8">Fig. 12.8: Flattening ggtree plot data.</a></li><li><a class="" href="#get-taxa-name">12.6.1 Extract Tip Order (get_taxa_name)</a></li><li><a class="toc-fig-link" href="#fig-12-9">Fig. 12.9: An example tree for demonstrating get_taxa_name() function.</a></li><li><a class="" href="#label-pad">12.6.2 Padding Taxa Labels (label_pad)</a></li><li><a class="toc-fig-link" href="#fig-12-10">Fig. 12.10: Align tip label to the end.</a></li><li><a class="" href="#interactive-identify">12.7 Interactive ggtree Annotation (identify)</a></li><li><a class="toc-fig-link" href="#fig-12-11">Fig. 12.11: Interactive phylogenetic tree using identify() method.</a></li></ul>
+</aside>
+  </div>
+
+  <script src="assets/search_data.js"></script>
+  <script src="assets/book.js"></script>
+</body>
+</html>

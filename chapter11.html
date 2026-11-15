@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>11. Other ggtree Extensions | Data Integration, Manipulation and Visualization of Phylogenetic Trees (ggtree-py)</title>
+  <link rel="stylesheet" href="assets/style.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-left">
+      <button type="button" class="sidebar-toggle" id="sidebar-toggle-btn" aria-label="Toggle Menu">&#9776;</button>
+      <a class="topbar-brand" href="index.html">
+        Data Integration, Manipulation and Visualization of Phylogenetic Trees
+        <span class="topbar-sub">(ggtree-py Edition)</span>
+      </a>
+    </div>
+    <div class="topbar-actions">
+      <a class="tool-btn" href="gallery.html">Gallery Index</a>
+      <button type="button" class="tool-btn" id="toggle-all-code-btn">Expand All Code</button>
+      <button type="button" class="tool-btn" id="theme-toggle-btn">Theme: Light</button>
+    </div>
+  </header>
+
+  <div class="book-shell">
+    <nav class="book-sidebar" id="book-sidebar" aria-label="Book Chapters">
+      <div class="sidebar-search-wrap">
+        <input type="search" class="sidebar-search" id="book-search-input" placeholder="Search chapters, figures, APIs..." autocomplete="off"/>
+        <div class="search-results" id="book-search-results"></div>
+      </div>
+      <div class="nav-part">Preface</div><ul class="nav-list">
+<li><a class="nav-link" href="index.html">Welcome &amp; Overview</a></li>
+</ul>
+<div class="nav-part">Part I: Tree Data I/O &amp; Manipulation</div><ul class="nav-list">
+<li><a class="nav-link" href="chapter1.html"><span class="nav-num">1.</span>Importing Tree with Data</a></li>
+<li><a class="nav-link" href="chapter2.html"><span class="nav-num">2.</span>Manipulating Tree with Data</a></li>
+<li><a class="nav-link" href="chapter3.html"><span class="nav-num">3.</span>Exporting Trees with Data</a></li>
+</ul>
+<div class="nav-part">Part II: Visualization &amp; Annotation</div><ul class="nav-list">
+<li><a class="nav-link" href="chapter4.html"><span class="nav-num">4.</span>Phylogenetic Tree Visualization</a></li>
+<li><a class="nav-link" href="chapter5.html"><span class="nav-num">5.</span>Phylogenetic Tree Annotation</a></li>
+<li><a class="nav-link" href="chapter6.html"><span class="nav-num">6.</span>Visual Exploration of Trees</a></li>
+<li><a class="nav-link" href="chapter7.html"><span class="nav-num">7.</span>Plotting Tree with Data</a></li>
+<li><a class="nav-link" href="chapter8.html"><span class="nav-num">8.</span>Silhouettes &amp; Sub-plots</a></li>
+</ul>
+<div class="nav-part">Part III: ggtree Extensions</div><ul class="nav-list">
+<li><a class="nav-link" href="chapter9.html"><span class="nav-num">9.</span>Other Tree-like Structures</a></li>
+<li><a class="nav-link" href="chapter10.html"><span class="nav-num">10.</span>ggtreeExtra Circular Rings</a></li>
+<li><a class="nav-link active" href="chapter11.html"><span class="nav-num">11.</span>Other ggtree Extensions</a></li>
+<li><a class="nav-link" href="chapter12.html"><span class="nav-num">12.</span>ggtree Utilities</a></li>
+</ul>
+<div class="nav-part">Part IV: Miscellaneous Topics</div><ul class="nav-list">
+<li><a class="nav-link" href="chapter13.html"><span class="nav-num">13.</span>Gallery of Examples</a></li>
+</ul>
+<div class="nav-part">Appendix &amp; Index</div><ul class="nav-list">
+<li><a class="nav-link" href="faq.html"><span class="nav-num">A.</span>Frequently Asked Questions</a></li>
+<li><a class="nav-link" href="api.html"><span class="nav-num">B.</span>ggtree-py API Reference</a></li>
+<li><a class="nav-link" href="gallery.html"><span class="nav-num">★</span>All Figures Gallery &amp; Index</a></li>
+</ul>
+    </nav>
+
+    <main class="book-main">
+      <article class="book-article">
+        <div class="part-kicker">Part III: ggtree Extensions</div>
+        <h1 class="chapter-title">11. Other ggtree Extensions</h1>
+<p>Replicating Chapter 11 extensions in <code>ggtree-py</code>, including differential taxonomic clade cladograms via <code>ggdiffclade()</code> (ported from <em>MicrobiotaProcess</em>) and phylogenetic split networks via <code>read_nexus_networx()</code> + <code>ggsplitnet()</code> (ported from <em>phangorn</em> / <em>tanggle</em>).</p>
+<h2 id="microbiota-diffclade">11.1 Visualizing Quantitative Data with Tree Structure (ggdiffclade)</h2>
+<p><code>ggdiffclade()</code> constructs a hierarchical taxonomy cladogram directly from taxonomic assignment tables, highlights statistically enriched lineages radially, and annotates macro phyla alongside alphabetical legend keys for finer clades.</p>
+<div class="book-figure-card" id="fig-11-1">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_11_1.svg" alt="Figure 11.1: Visualize differential taxonomy clade." loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure 11.1: Visualize differential taxonomy clade..</strong> Visualize differential taxonomy clade.</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">ggdiffclade</span><span class="api-pill">scale_fill_manual</span><span class="api-pill">guides</span><span class="api-pill">guide_legend</span><button type="button" class="copy-btn" data-code-target="code-blk-79">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-79"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
+    read_table<span class="tok-op">,</span> system_file<span class="tok-op">,</span> ggdiffclade<span class="tok-op">,</span> scale_fill_manual<span class="tok-op">,</span>
+    guides<span class="tok-op">,</span> guide_legend<span class="tok-op">,</span> theme<span class="tok-op">,</span> element_rect<span class="tok-op">,</span> element_text<span class="tok-op">,</span>
+    margin<span class="tok-op">,</span> unit<span class="tok-op">,</span> NA<span class="tok-op">,</span>
+<span class="tok-op">)</span>
+
+taxa <span class="tok-op">=</span> <span class="tok-call">read_table</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;TDbook&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;df_alltax_info.tsv&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> header<span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span> sep<span class="tok-op">=</span><span class="tok-str">&quot;\t&quot;</span><span class="tok-op">)</span>
+dt <span class="tok-op">=</span> <span class="tok-call">read_table</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;TDbook&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;df_difftax.tsv&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> header<span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span> sep<span class="tok-op">=</span><span class="tok-str">&quot;\t&quot;</span><span class="tok-op">)</span>
+p <span class="tok-op">=</span> <span class="tok-op">(</span>
+    <span class="tok-call">ggdiffclade</span><span class="tok-op">(</span>
+        obj<span class="tok-op">=</span>taxa<span class="tok-op">,</span>
+        nodedf<span class="tok-op">=</span>dt<span class="tok-op">,</span>
+        factorName<span class="tok-op">=</span><span class="tok-str">&quot;DIAGNOSIS&quot;</span><span class="tok-op">,</span>
+        layout<span class="tok-op">=</span><span class="tok-str">&quot;radial&quot;</span><span class="tok-op">,</span>
+        skpointsize<span class="tok-op">=</span><span class="tok-num">0.6</span><span class="tok-op">,</span>
+        cladetext<span class="tok-op">=</span><span class="tok-num">2</span><span class="tok-op">,</span>
+        linewd<span class="tok-op">=</span><span class="tok-num">0.2</span><span class="tok-op">,</span>
+        taxlevel<span class="tok-op">=</span><span class="tok-num">3</span><span class="tok-op">,</span>
+        reduce<span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span>
+    <span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">scale_fill_manual</span><span class="tok-op">(</span>values<span class="tok-op">=</span><span class="tok-op">[</span><span class="tok-str">&quot;#00AED7&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;#009E73&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">guides</span><span class="tok-op">(</span>color<span class="tok-op">=</span><span class="tok-call">guide_legend</span><span class="tok-op">(</span>keywidth<span class="tok-op">=</span><span class="tok-num">0.1</span><span class="tok-op">,</span> keyheight<span class="tok-op">=</span><span class="tok-num">0.6</span><span class="tok-op">,</span> order<span class="tok-op">=</span><span class="tok-num">3</span><span class="tok-op">,</span> ncol<span class="tok-op">=</span><span class="tok-num">1</span><span class="tok-op">)</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">theme</span><span class="tok-op">(</span>
+        panel_background<span class="tok-op">=</span><span class="tok-call">element_rect</span><span class="tok-op">(</span>fill<span class="tok-op">=</span>NA<span class="tok-op">)</span><span class="tok-op">,</span>
+        legend_position<span class="tok-op">=</span><span class="tok-str">&quot;right&quot;</span><span class="tok-op">,</span>
+        plot_margin<span class="tok-op">=</span><span class="tok-call">margin</span><span class="tok-op">(</span><span class="tok-num">0</span><span class="tok-op">,</span> <span class="tok-num">0</span><span class="tok-op">,</span> <span class="tok-num">0</span><span class="tok-op">,</span> <span class="tok-num">0</span><span class="tok-op">)</span><span class="tok-op">,</span>
+        legend_spacing_y<span class="tok-op">=</span><span class="tok-call">unit</span><span class="tok-op">(</span><span class="tok-num">0.02</span><span class="tok-op">,</span> <span class="tok-str">&quot;cm&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span>
+        legend_title<span class="tok-op">=</span><span class="tok-call">element_text</span><span class="tok-op">(</span>size<span class="tok-op">=</span><span class="tok-num">7.5</span><span class="tok-op">)</span><span class="tok-op">,</span>
+        legend_text<span class="tok-op">=</span><span class="tok-call">element_text</span><span class="tok-op">(</span>size<span class="tok-op">=</span><span class="tok-num">5.5</span><span class="tok-op">)</span><span class="tok-op">,</span>
+        legend_box_spacing<span class="tok-op">=</span><span class="tok-call">unit</span><span class="tok-op">(</span><span class="tok-num">0.02</span><span class="tok-op">,</span> <span class="tok-str">&quot;cm&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span>
+    <span class="tok-op">)</span>
+<span class="tok-op">)</span>
+p
+</code></pre>
+  </details>
+</div>
+<h2 id="phylo-network">11.2 Visualizing Phylogenetic Network Using Tanggle (ggsplitnet)</h2>
+<p>Parses Nexus <code>NETWORK</code> split-network blocks with <code>read_nexus_networx()</code> and renders reticulate evolutionary edges via <code>ggsplitnet()</code> and <code>geom_splitnet()</code>.</p>
+<div class="book-figure-card" id="fig-11-2">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_11_2.svg" alt="Figure 11.2: Phylogenetic network." loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure 11.2: Phylogenetic network..</strong> Phylogenetic network.</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">read_nexus_networx</span><span class="api-pill">ggsplitnet</span><span class="api-pill">geom_splitnet</span><span class="api-pill">geom_tiplab2</span><button type="button" class="copy-btn" data-code-target="code-blk-80">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-80"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
+    read_nexus_networx<span class="tok-op">,</span> system_file<span class="tok-op">,</span> ggsplitnet<span class="tok-op">,</span> aes<span class="tok-op">,</span>
+    geom_tiplab2<span class="tok-op">,</span> geom_nodepoint<span class="tok-op">,</span> scale_color_manual<span class="tok-op">,</span>
+    rainbow<span class="tok-op">,</span> theme<span class="tok-op">,</span> ggexpand<span class="tok-op">,</span>
+<span class="tok-op">)</span>
+
+nnet <span class="tok-op">=</span> <span class="tok-call">read_nexus_networx</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;trees&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;woodmouse.nxs&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+p <span class="tok-op">=</span> <span class="tok-op">(</span>
+    <span class="tok-call">ggsplitnet</span><span class="tok-op">(</span>nnet<span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_tiplab2</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span>color<span class="tok-op">=</span><span class="tok-str">&quot;label&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> hjust<span class="tok-op">=</span><span class="tok-op">-</span><span class="tok-num">0.1</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_nodepoint</span><span class="tok-op">(</span>color<span class="tok-op">=</span><span class="tok-str">&quot;firebrick&quot;</span><span class="tok-op">,</span> alpha<span class="tok-op">=</span><span class="tok-num">0.4</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">scale_color_manual</span><span class="tok-op">(</span>values<span class="tok-op">=</span><span class="tok-call">rainbow</span><span class="tok-op">(</span><span class="tok-num">15</span><span class="tok-op">)</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">theme</span><span class="tok-op">(</span>legend_position<span class="tok-op">=</span><span class="tok-str">&quot;none&quot;</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">ggexpand</span><span class="tok-op">(</span><span class="tok-num">0.1</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">ggexpand</span><span class="tok-op">(</span><span class="tok-num">0.1</span><span class="tok-op">,</span> direction<span class="tok-op">=</span><span class="tok-op">-</span><span class="tok-num">1</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+p
+</code></pre>
+  </details>
+</div>
+        <nav class="chapter-pager" aria-label="Chapter Navigation"><a class="pager-link" href="chapter10.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">10. ggtreeExtra Circular Rings</span></a><a class="pager-link pager-next" href="chapter12.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">12. ggtree Utilities</span></a></nav>
+      </article>
+    </main>
+
+    <aside class="book-toc" aria-label="On this page">
+  <div class="toc-heading">On This Page</div>
+  <ul class="toc-list"><li><a class="" href="#microbiota-diffclade">11.1 Visualizing Quantitative Data with Tree Structure (ggdiffclade)</a></li><li><a class="toc-fig-link" href="#fig-11-1">Fig. 11.1: Visualize differential taxonomy clade.</a></li><li><a class="" href="#phylo-network">11.2 Visualizing Phylogenetic Network Using Tanggle (ggsplitnet)</a></li><li><a class="toc-fig-link" href="#fig-11-2">Fig. 11.2: Phylogenetic network.</a></li></ul>
+</aside>
+  </div>
+
+  <script src="assets/search_data.js"></script>
+  <script src="assets/book.js"></script>
+</body>
+</html>

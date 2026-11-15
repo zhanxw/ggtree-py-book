@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>1. Importing Tree with Data | Data Integration, Manipulation and Visualization of Phylogenetic Trees (ggtree-py)</title>
+  <link rel="stylesheet" href="assets/style.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-left">
+      <button type="button" class="sidebar-toggle" id="sidebar-toggle-btn" aria-label="Toggle Menu">&#9776;</button>
+      <a class="topbar-brand" href="index.html">
+        Data Integration, Manipulation and Visualization of Phylogenetic Trees
+        <span class="topbar-sub">(ggtree-py Edition)</span>
+      </a>
+    </div>
+    <div class="topbar-actions">
+      <a class="tool-btn" href="gallery.html">Gallery Index</a>
+      <button type="button" class="tool-btn" id="toggle-all-code-btn">Expand All Code</button>
+      <button type="button" class="tool-btn" id="theme-toggle-btn">Theme: Light</button>
+    </div>
+  </header>
+
+  <div class="book-shell">
+    <nav class="book-sidebar" id="book-sidebar" aria-label="Book Chapters">
+      <div class="sidebar-search-wrap">
+        <input type="search" class="sidebar-search" id="book-search-input" placeholder="Search chapters, figures, APIs..." autocomplete="off"/>
+        <div class="search-results" id="book-search-results"></div>
+      </div>
+      <div class="nav-part">Preface</div><ul class="nav-list">
+<li><a class="nav-link" href="index.html">Welcome &amp; Overview</a></li>
+</ul>
+<div class="nav-part">Part I: Tree Data I/O &amp; Manipulation</div><ul class="nav-list">
+<li><a class="nav-link active" href="chapter1.html"><span class="nav-num">1.</span>Importing Tree with Data</a></li>
+<li><a class="nav-link" href="chapter2.html"><span class="nav-num">2.</span>Manipulating Tree with Data</a></li>
+<li><a class="nav-link" href="chapter3.html"><span class="nav-num">3.</span>Exporting Trees with Data</a></li>
+</ul>
+<div class="nav-part">Part II: Visualization &amp; Annotation</div><ul class="nav-list">
+<li><a class="nav-link" href="chapter4.html"><span class="nav-num">4.</span>Phylogenetic Tree Visualization</a></li>
+<li><a class="nav-link" href="chapter5.html"><span class="nav-num">5.</span>Phylogenetic Tree Annotation</a></li>
+<li><a class="nav-link" href="chapter6.html"><span class="nav-num">6.</span>Visual Exploration of Trees</a></li>
+<li><a class="nav-link" href="chapter7.html"><span class="nav-num">7.</span>Plotting Tree with Data</a></li>
+<li><a class="nav-link" href="chapter8.html"><span class="nav-num">8.</span>Silhouettes &amp; Sub-plots</a></li>
+</ul>
+<div class="nav-part">Part III: ggtree Extensions</div><ul class="nav-list">
+<li><a class="nav-link" href="chapter9.html"><span class="nav-num">9.</span>Other Tree-like Structures</a></li>
+<li><a class="nav-link" href="chapter10.html"><span class="nav-num">10.</span>ggtreeExtra Circular Rings</a></li>
+<li><a class="nav-link" href="chapter11.html"><span class="nav-num">11.</span>Other ggtree Extensions</a></li>
+<li><a class="nav-link" href="chapter12.html"><span class="nav-num">12.</span>ggtree Utilities</a></li>
+</ul>
+<div class="nav-part">Part IV: Miscellaneous Topics</div><ul class="nav-list">
+<li><a class="nav-link" href="chapter13.html"><span class="nav-num">13.</span>Gallery of Examples</a></li>
+</ul>
+<div class="nav-part">Appendix &amp; Index</div><ul class="nav-list">
+<li><a class="nav-link" href="faq.html"><span class="nav-num">A.</span>Frequently Asked Questions</a></li>
+<li><a class="nav-link" href="api.html"><span class="nav-num">B.</span>ggtree-py API Reference</a></li>
+<li><a class="nav-link" href="gallery.html"><span class="nav-num">★</span>All Figures Gallery &amp; Index</a></li>
+</ul>
+    </nav>
+
+    <main class="book-main">
+      <article class="book-article">
+        <div class="part-kicker">Part I: Tree Data Input, Output and Manipulation</div>
+        <h1 class="chapter-title">1. Importing Tree with Data</h1>
+<p>Phylogenetic trees rarely exist in isolation: evolutionary analyses pair branching topologies with divergence times, posterior probabilities, substitution rates, placement counts, or gene-level selection statistics. In <code>ggtree-py</code>, <code>Phylo</code> holds core ape-compatible structure (<code>edge</code>, <code>tip_label</code>, <code>edge_length</code>, <code>node_label</code>), while <code>TreeData</code> binds rich node- and branch-indexed annotations in <code>td.data</code> and <code>td.extraInfo</code>.</p>
+<h2 id="overview">1.1 Overview</h2>
+<p>Standard readers in <code>ggtree-py</code> mirror both <code>ape</code> and <code>treeio</code>: plain Newick/Nexus files return a lightweight <code>Phylo</code> (or <code>MultiPhylo</code>), whereas BEAST, NHX, EPA/pplacer, jtree, RAxML, and CodeML parsers return a unified <code>TreeData</code> object ready for <code>aes()</code> aesthetic mapping.</p>
+<h2 id="tree-structure">1.2 Understanding Phylogenetic Tree Structure</h2>
+<p>A phylogenetic tree comprises tips (leaves), internal nodes representing ancestral lineages, a root node, and branch lengths encoding evolutionary divergence or time. <code>read_tree()</code> parses Newick strings from files or inline <code>text=...</code> arguments, and layers such as <code>geom_tippoint()</code>, <code>geom_nodepoint()</code>, <code>geom_rootpoint()</code>, and <code>geom_label()</code> inspect these structural elements directly.</p>
+<div class="book-figure-card" id="fig-1-1">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_1_1.svg" alt="Figure 1.1: Phylogenetic tree components: tips, internal nodes, root, and branch lengths" loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure 1.1: Phylogenetic tree components: tips, internal nodes, root, and branch lengths.</strong> A rooted phylogeny showing tip nodes (green), internal nodes (blue), the root node (red), numeric branch lengths displayed along edges, and an evolutionary distance scale bar.</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">read_tree</span><span class="api-pill">ggtree</span><span class="api-pill">geom_tippoint</span><span class="api-pill">geom_nodepoint</span><button type="button" class="copy-btn" data-code-target="code-blk-1">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-1">nwk <span class="tok-op">=</span> <span class="tok-op">(</span>
+    <span class="tok-str">&quot;(((virus1:0.28,virus2:0.52):0.34,((virus3:0.61,virus4:0.19):0.41,&quot;</span>
+    <span class="tok-str">&quot;(virus5:0.47,virus6:0.33):0.25):0.22):0.38,&quot;</span>
+    <span class="tok-str">&quot;((virus7:0.54,virus8:0.29):0.46,(virus9:0.31,virus10:0.64):0.18):0.44);&quot;</span>
+<span class="tok-op">)</span>
+tr <span class="tok-op">=</span> <span class="tok-call">read_tree</span><span class="tok-op">(</span>text<span class="tok-op">=</span>nwk<span class="tok-op">)</span>
+p <span class="tok-op">=</span> <span class="tok-op">(</span>
+    <span class="tok-call">ggtree</span><span class="tok-op">(</span>tr<span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_text</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span>x<span class="tok-op">=</span><span class="tok-str">&quot;branch&quot;</span><span class="tok-op">,</span> label<span class="tok-op">=</span><span class="tok-str">&quot;branch.length&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> color<span class="tok-op">=</span><span class="tok-str">&quot;#6B7280&quot;</span><span class="tok-op">,</span> vjust<span class="tok-op">=</span><span class="tok-op">-</span><span class="tok-num">0.45</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">2.9</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_tippoint</span><span class="tok-op">(</span>color<span class="tok-op">=</span><span class="tok-str">&quot;#00BA38&quot;</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">3.2</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_nodepoint</span><span class="tok-op">(</span>color<span class="tok-op">=</span><span class="tok-str">&quot;#619CFF&quot;</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">3.2</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_rootpoint</span><span class="tok-op">(</span>color<span class="tok-op">=</span><span class="tok-str">&quot;#F8766D&quot;</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">3.4</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span>offset<span class="tok-op">=</span><span class="tok-num">0.04</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">3.8</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_treescale</span><span class="tok-op">(</span>x<span class="tok-op">=</span><span class="tok-num">0.1</span><span class="tok-op">,</span> y<span class="tok-op">=</span><span class="tok-num">0.6</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">hexpand</span><span class="tok-op">(</span><span class="tok-num">0.14</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+p
+</code></pre>
+  </details>
+</div>
+<div class="book-figure-card" id="fig-1-2">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_1_2.svg" alt="Figure 1.2: Random Newick tree with aligned tip labels and branch-length labels" loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure 1.2: Random Newick tree with aligned tip labels and branch-length labels.</strong> Phylogeny parsed directly from an inline Newick text string with thick branches, dotted alignment guides via geom_tiplab(align=True), and boxed branch-length labels.</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">read_tree</span><span class="api-pill">ggtree</span><span class="api-pill">geom_tiplab</span><span class="api-pill">geom_label</span><button type="button" class="copy-btn" data-code-target="code-blk-2">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-2">tr <span class="tok-op">=</span> <span class="tok-call">read_tree</span><span class="tok-op">(</span>text<span class="tok-op">=</span><span class="tok-str">&quot;((t2:0.04,t1:0.34):0.89,(t5:0.37,(t4:0.03,t3:0.67):0.9):0.59);&quot;</span><span class="tok-op">)</span>
+p <span class="tok-op">=</span> <span class="tok-op">(</span>
+    <span class="tok-call">ggtree</span><span class="tok-op">(</span>tr<span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">2</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span>align<span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span> linetype<span class="tok-op">=</span><span class="tok-str">&quot;dotted&quot;</span><span class="tok-op">,</span> linesize<span class="tok-op">=</span><span class="tok-num">0.5</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">4.2</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_label</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span>x<span class="tok-op">=</span><span class="tok-str">&quot;branch&quot;</span><span class="tok-op">,</span> label<span class="tok-op">=</span><span class="tok-str">&quot;branch.length&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">3.4</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">hexpand</span><span class="tok-op">(</span><span class="tok-num">0.12</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+p
+</code></pre>
+  </details>
+</div>
+<h2 id="treeio-import">1.3 Importing Tree with treeio</h2>
+<p>Evolutionary analyses save annotations across heterogeneous file conventions—inline <code>[&amp;...]</code> BEAST tags, colon-delimited NHX attributes, PAML CodeML <code>rst</code>/<code>mlc</code> files, and JSON placements. <code>treeio</code> normalizes these parsers into common <code>Phylo</code> and <code>TreeData</code> containers seamlessly consumable by <code>tidytree</code> and <code>ggtree</code>.</p>
+<div class="book-figure-card" id="fig-1-3">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_1_3.svg" alt="Figure 1.3: Overview of treeio data integration and conversion workflow" loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure 1.3: Overview of treeio data integration and conversion workflow.</strong> Workflow architecture illustrating how treeio parses diverse evolutionary formats into unified Phylo and TreeData structures, integrates external tables via tidytree, and passes data to ggtree.</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">treeio_diagram</span><span class="api-pill">TreeDiagram</span><button type="button" class="copy-btn" data-code-target="code-blk-3">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-3"><span class="tok-call">treeio_diagram</span><span class="tok-op">(</span><span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
+<h2 id="extract-data">1.4 Extracting Data from Tree Object</h2>
+<p>Once imported into a <code>TreeData</code> (or converted via <code>as_tibble()</code> / <code>fortify()</code>), node and branch attributes such as <code>AA_subs</code> from <code>read_jtree()</code> become directly mappable columns inside <code>aes()</code>.</p>
+<div class="book-figure-card" id="fig-1-4">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_1_4.svg" alt="Figure 1.4: Visualizing jtree amino-acid substitutions stored along branches" loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure 1.4: Visualizing jtree amino-acid substitutions stored along branches.</strong> Tree imported from jtree format via read_jtree() with reconstructed amino-acid substitution tags (AA_subs) rendered directly above each internal and terminal branch.</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">read_jtree</span><span class="api-pill">ggtree</span><span class="api-pill">geom_text</span><span class="api-pill">geom_tiplab</span><button type="button" class="copy-btn" data-code-target="code-blk-4">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-4">pmltree <span class="tok-op">=</span> <span class="tok-call">read_jtree</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;TDbook&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;pmltree.jtree&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+p <span class="tok-op">=</span> <span class="tok-op">(</span>
+    <span class="tok-call">ggtree</span><span class="tok-op">(</span>pmltree<span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_text</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span>x<span class="tok-op">=</span><span class="tok-str">&quot;branch&quot;</span><span class="tok-op">,</span> label<span class="tok-op">=</span><span class="tok-str">&quot;AA_subs&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> vjust<span class="tok-op">=</span><span class="tok-op">-</span><span class="tok-num">0.5</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">2.3</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">hexpand</span><span class="tok-op">(</span><span class="tok-num">0.18</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+p
+</code></pre>
+  </details>
+</div>
+        <nav class="chapter-pager" aria-label="Chapter Navigation"><a class="pager-link" href="index.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Preface &amp; Overview</span></a><a class="pager-link pager-next" href="chapter2.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">2. Manipulating Tree with Data</span></a></nav>
+      </article>
+    </main>
+
+    <aside class="book-toc" aria-label="On this page">
+  <div class="toc-heading">On This Page</div>
+  <ul class="toc-list"><li><a class="" href="#overview">1.1 Overview</a></li><li><a class="" href="#tree-structure">1.2 Understanding Phylogenetic Tree Structure</a></li><li><a class="toc-fig-link" href="#fig-1-1">Fig. 1.1: Phylogenetic tree components: tips, internal nodes, root, and branch lengths</a></li><li><a class="toc-fig-link" href="#fig-1-2">Fig. 1.2: Random Newick tree with aligned tip labels and branch-length labels</a></li><li><a class="" href="#treeio-import">1.3 Importing Tree with treeio</a></li><li><a class="toc-fig-link" href="#fig-1-3">Fig. 1.3: Overview of treeio data integration and conversion workflow</a></li><li><a class="" href="#extract-data">1.4 Extracting Data from Tree Object</a></li><li><a class="toc-fig-link" href="#fig-1-4">Fig. 1.4: Visualizing jtree amino-acid substitutions stored along branches</a></li></ul>
+</aside>
+  </div>
+
+  <script src="assets/search_data.js"></script>
+  <script src="assets/book.js"></script>
+</body>
+</html>

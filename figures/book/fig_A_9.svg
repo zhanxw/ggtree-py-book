@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="760" height="440" viewBox="0 0 760 440">
+<rect width="760" height="440" fill="white"/>
+<defs><clipPath id="ggtree_cart_clip_385054752"><rect x="28.00" y="0.00" width="744.00" height="440.00"/></clipPath></defs>
+<g clip-path="url(#ggtree_cart_clip_385054752)">
+<line x1="82.49" y1="103.06" x2="161.78" y2="103.06" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="82.49" y1="35.82" x2="253.49" y2="35.82" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="243.39" y1="372.01" x2="449.06" y2="372.01" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="442.87" y1="304.77" x2="639.22" y2="304.77" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="442.87" y1="237.53" x2="632.59" y2="237.53" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="74.05" y1="170.30" x2="99.86" y2="170.30" stroke="black" stroke-width="0.90" stroke-opacity="1.00" stroke-dasharray="5,3"/>
+<line x1="74.05" y1="69.44" x2="82.49" y2="69.44" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="74.05" y1="321.58" x2="243.39" y2="321.58" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="243.39" y1="271.15" x2="442.87" y2="271.15" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="82.49" y1="69.44" x2="82.49" y2="103.06" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="82.49" y1="69.44" x2="82.49" y2="35.82" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="243.39" y1="321.58" x2="243.39" y2="372.01" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="442.87" y1="271.15" x2="442.87" y2="304.77" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="442.87" y1="271.15" x2="442.87" y2="237.53" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="74.05" y1="119.87" x2="74.05" y2="170.30" stroke="black" stroke-width="0.90" stroke-opacity="1.00" stroke-dasharray="5,3"/>
+<line x1="74.05" y1="119.87" x2="74.05" y2="69.44" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="74.05" y1="220.72" x2="74.05" y2="321.58" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="243.39" y1="321.58" x2="243.39" y2="271.15" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="74.05" y1="220.72" x2="74.05" y2="119.87" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<text x="165.78" y="106.46" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">t5</text>
+<text x="257.49" y="39.22" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">t1</text>
+<text x="453.06" y="375.41" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">t3</text>
+<text x="643.22" y="308.17" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">t4</text>
+<text x="636.59" y="240.93" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">t2</text>
+<text x="103.86" y="173.70" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">U</text>
+<line x1="61.14" y1="140.04" x2="86.95" y2="140.04" stroke="#222222" stroke-width="1.43" stroke-opacity="1.00"/>
+<line x1="61.14" y1="136.68" x2="61.14" y2="143.40" stroke="#222222" stroke-width="1.43"/>
+<line x1="86.95" y1="136.68" x2="86.95" y2="143.40" stroke="#222222" stroke-width="1.43"/>
+</g>
+<text x="584.8" y="312.0" font-family="sans-serif" font-size="10.0" font-weight="bold" fill="#1F2937">type</text>
+<line x1="584.8" y1="327.0" x2="597.8" y2="327.0" stroke="#111827" stroke-width="1.6" stroke-dasharray="5,3"/>
+<text x="599.3" y="330.5" font-family="sans-serif" font-size="9.0" fill="#374151">newly introduced</text>
+<line x1="584.8" y1="340.5" x2="597.8" y2="340.5" stroke="#111827" stroke-width="1.6"/>
+<text x="599.3" y="344.0" font-family="sans-serif" font-size="9.0" fill="#374151">original</text>
+</svg>

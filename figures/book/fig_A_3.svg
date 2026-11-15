@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="860" height="380" viewBox="0 0 860 380">
+<rect width="860" height="380" fill="white"/>
+<g transform="translate(0,0)">
+<defs><clipPath id="ggtree_cart_clip_391186224"><rect x="28.00" y="0.00" width="414.00" height="380.00"/></clipPath></defs>
+<g clip-path="url(#ggtree_cart_clip_391186224)">
+<line x1="81.03" y1="234.30" x2="162.62" y2="234.30" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="121.83" y1="133.70" x2="162.62" y2="133.70" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="121.83" y1="33.09" x2="162.62" y2="33.09" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="40.24" y1="334.91" x2="162.62" y2="334.91" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="40.24" y1="158.85" x2="81.03" y2="158.85" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="81.03" y1="83.39" x2="121.83" y2="83.39" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="81.03" y1="158.85" x2="81.03" y2="234.30" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="121.83" y1="83.39" x2="121.83" y2="133.70" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="121.83" y1="83.39" x2="121.83" y2="33.09" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="40.24" y1="246.88" x2="40.24" y2="334.91" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="40.24" y1="246.88" x2="40.24" y2="158.85" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="81.03" y1="158.85" x2="81.03" y2="83.39" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<text x="166.62" y="237.70" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222"><tspan font-style="italic">Gorilla</tspan> <tspan font-style="italic" font-weight="bold">gorilla</tspan> (Africa)</text>
+<text x="166.62" y="137.10" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222"><tspan font-style="italic">Pan</tspan> <tspan font-style="italic" font-weight="bold">spp.</tspan> (Africa)</text>
+<text x="166.62" y="36.49" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222"><tspan font-style="italic">Homo</tspan> <tspan font-style="italic" font-weight="bold">sapiens</tspan> (World)</text>
+<text x="166.62" y="338.31" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222"><tspan font-style="italic">Pongo</tspan> <tspan font-style="italic" font-weight="bold">pygmaeus</tspan> (Asia)</text>
+</g>
+
+<text x="10" y="18" font-family="sans-serif" font-size="13" font-weight="bold" fill="#111827">A</text>
+</g>
+<g transform="translate(430,0)">
+<defs><clipPath id="ggtree_cart_clip_391185408"><rect x="28.00" y="0.00" width="414.00" height="380.00"/></clipPath></defs>
+<g clip-path="url(#ggtree_cart_clip_391185408)">
+<line x1="100.67" y1="234.30" x2="221.54" y2="234.30" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="161.11" y1="133.70" x2="221.54" y2="133.70" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="161.11" y1="33.09" x2="221.54" y2="33.09" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="40.24" y1="334.91" x2="221.54" y2="334.91" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="40.24" y1="158.85" x2="100.67" y2="158.85" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="100.67" y1="83.39" x2="161.11" y2="83.39" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="100.67" y1="158.85" x2="100.67" y2="234.30" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="161.11" y1="83.39" x2="161.11" y2="133.70" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="161.11" y1="83.39" x2="161.11" y2="33.09" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="40.24" y1="246.88" x2="40.24" y2="334.91" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="40.24" y1="246.88" x2="40.24" y2="158.85" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="100.67" y1="158.85" x2="100.67" y2="83.39" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<rect x="221.54" y="226.30" width="156.80" height="16.00" rx="2.5" fill="white"/>
+<text x="225.54" y="237.70" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222"><tspan fill="#E495A5" font-style="italic">Gorilla</tspan> <tspan fill="#E495A5" font-style="italic" font-weight="bold">gorilla</tspan> (Africa)</text>
+<rect x="221.54" y="125.70" width="113.40" height="16.00" rx="2.5" fill="white"/>
+<text x="225.54" y="137.10" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222"><tspan fill="#ABB065" font-style="italic">Pan</tspan> <tspan fill="#ABB065" font-style="italic" font-weight="bold">spp.</tspan> (Africa)</text>
+<rect x="221.54" y="25.09" width="132.00" height="16.00" rx="2.5" fill="white"/>
+<text x="225.54" y="36.49" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222"><tspan fill="#39BEB1" font-style="italic">Homo</tspan> <tspan fill="#39BEB1" font-style="italic" font-weight="bold">sapiens</tspan> (World)</text>
+<rect x="221.54" y="326.91" width="138.20" height="16.00" rx="2.5" fill="white"/>
+<text x="225.54" y="338.31" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222"><tspan fill="#ACA4E2" font-style="italic">Pongo</tspan> <tspan fill="#ACA4E2" font-style="italic" font-weight="bold">pygmaeus</tspan> (Asia)</text>
+</g>
+
+<text x="10" y="18" font-family="sans-serif" font-size="13" font-weight="bold" fill="#111827">B</text>
+</g>
+</svg>

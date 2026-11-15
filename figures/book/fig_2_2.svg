@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1020" height="540" viewBox="0 0 1020 540">
+<rect width="1020" height="540" fill="white"/>
+<g transform="translate(0,0)">
+<defs><clipPath id="ggtree_cart_clip_118189456"><rect x="28.00" y="0.00" width="494.00" height="540.00"/></clipPath></defs>
+<g clip-path="url(#ggtree_cart_clip_118189456)">
+<line x1="184.43" y1="264.00" x2="258.92" y2="264.00" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="184.43" y1="189.45" x2="258.92" y2="189.45" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="184.43" y1="114.91" x2="258.92" y2="114.91" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="184.43" y1="40.36" x2="258.92" y2="40.36" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="109.94" y1="487.64" x2="258.92" y2="487.64" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="184.43" y1="413.09" x2="258.92" y2="413.09" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="184.43" y1="338.55" x2="258.92" y2="338.55" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="35.45" y1="152.18" x2="109.94" y2="152.18" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="109.94" y1="226.73" x2="184.43" y2="226.73" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="109.94" y1="77.64" x2="184.43" y2="77.64" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="35.45" y1="431.73" x2="109.94" y2="431.73" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="109.94" y1="375.82" x2="184.43" y2="375.82" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="184.43" y1="226.73" x2="184.43" y2="264.00" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="184.43" y1="226.73" x2="184.43" y2="189.45" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="184.43" y1="77.64" x2="184.43" y2="114.91" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="184.43" y1="77.64" x2="184.43" y2="40.36" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="109.94" y1="431.73" x2="109.94" y2="487.64" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="184.43" y1="375.82" x2="184.43" y2="413.09" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="184.43" y1="375.82" x2="184.43" y2="338.55" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="35.45" y1="291.95" x2="35.45" y2="152.18" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="109.94" y1="152.18" x2="109.94" y2="226.73" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="109.94" y1="152.18" x2="109.94" y2="77.64" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="35.45" y1="291.95" x2="35.45" y2="431.73" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="109.94" y1="431.73" x2="109.94" y2="375.82" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<text x="72.69" y="128.41" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#222222">92</text>
+<text x="147.18" y="202.95" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#222222">98</text>
+<text x="147.18" y="53.86" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#222222">99</text>
+<text x="72.69" y="407.95" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#222222">96</text>
+<text x="147.18" y="352.04" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#222222">98</text>
+<circle cx="258.92" cy="264.00" r="4.61" fill="#4DBBD5" fill-opacity="1.00" stroke="white" stroke-width="0.5"/>
+<circle cx="258.92" cy="189.45" r="5.84" fill="#4DBBD5" fill-opacity="1.00" stroke="white" stroke-width="0.5"/>
+<circle cx="258.92" cy="114.91" r="9.36" fill="#4DBBD5" fill-opacity="1.00" stroke="white" stroke-width="0.5"/>
+<circle cx="258.92" cy="40.36" r="3.96" fill="#4DBBD5" fill-opacity="1.00" stroke="white" stroke-width="0.5"/>
+<polygon points="258.92,482.88 254.78,491.16 263.06,491.16" fill="#E64B35" fill-opacity="1.00" stroke="white" stroke-width="0.5"/>
+<rect x="253.81" y="407.98" width="10.22" height="10.22" fill="#00A087" fill-opacity="1.00" stroke="white" stroke-width="0.5"/>
+<rect x="255.94" y="335.56" width="5.97" height="5.97" fill="#00A087" fill-opacity="1.00" stroke="white" stroke-width="0.5"/>
+<text x="273.35" y="267.06" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222">Rangifer_tarandus</text>
+<text x="273.35" y="192.51" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222">Cervus_elaphus</text>
+<text x="273.35" y="117.97" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222">Bos_taurus</text>
+<text x="273.35" y="43.42" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222">Ovis_orientalis</text>
+<text x="273.35" y="490.70" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222">Suricata_suricatta</text>
+<text x="273.35" y="416.15" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222">Cystophora_cristata</text>
+<text x="273.35" y="341.61" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222">Mephitis_mephitis</text>
+<rect x="11.92" y="284.45" width="47.06" height="15.00" rx="2.5" fill="#7F7F7F" stroke="#111827" stroke-width="0.8"/>
+<text x="35.45" y="295.01" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#222222">Mammals</text>
+<rect x="52.93" y="144.68" width="114.02" height="15.00" rx="2.5" fill="#edf8b1" stroke="#111827" stroke-width="0.8"/>
+<text x="109.94" y="155.24" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#222222">Even-toed ungulates</text>
+<rect x="160.90" y="219.23" width="47.06" height="15.00" rx="2.5" fill="#2c7fb8" stroke="#111827" stroke-width="0.8"/>
+<text x="184.43" y="229.79" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#222222">Cervids</text>
+<rect x="163.69" y="70.14" width="41.48" height="15.00" rx="2.5" fill="#3789b8" stroke="#111827" stroke-width="0.8"/>
+<text x="184.43" y="80.70" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#222222">Bovids</text>
+<rect x="78.04" y="424.23" width="63.80" height="15.00" rx="2.5" fill="#79c8bb" stroke="#111827" stroke-width="0.8"/>
+<text x="109.94" y="434.79" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#222222">Carnivores</text>
+<rect x="158.11" y="368.32" width="52.64" height="15.00" rx="2.5" fill="#4d9eb9" stroke="#111827" stroke-width="0.8"/>
+<text x="184.43" y="378.88" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#222222">Dog-like</text>
+</g>
+
+<text x="10" y="18" font-family="sans-serif" font-size="13" font-weight="bold" fill="#111827">A</text>
+</g>
+<g transform="translate(510,0)">
+<defs><clipPath id="ggtree_cart_clip_118188400"><rect x="28.00" y="0.00" width="494.00" height="540.00"/></clipPath></defs>
+<g clip-path="url(#ggtree_cart_clip_118188400)">
+<line x1="173.54" y1="264.00" x2="220.49" y2="264.00" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="173.54" y1="189.45" x2="220.49" y2="189.45" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="173.54" y1="114.91" x2="220.49" y2="114.91" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="173.54" y1="40.36" x2="220.49" y2="40.36" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="32.69" y1="487.64" x2="126.59" y2="487.64" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="79.64" y1="413.09" x2="126.59" y2="413.09" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="79.64" y1="338.55" x2="126.59" y2="338.55" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="32.69" y1="375.82" x2="79.64" y2="375.82" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="32.69" y1="152.18" x2="126.59" y2="152.18" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="126.59" y1="226.73" x2="173.54" y2="226.73" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="126.59" y1="77.64" x2="173.54" y2="77.64" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="173.54" y1="226.73" x2="173.54" y2="264.00" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="173.54" y1="226.73" x2="173.54" y2="189.45" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="173.54" y1="77.64" x2="173.54" y2="114.91" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="173.54" y1="77.64" x2="173.54" y2="40.36" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="32.69" y1="338.55" x2="32.69" y2="487.64" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="79.64" y1="375.82" x2="79.64" y2="413.09" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="79.64" y1="375.82" x2="79.64" y2="338.55" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="32.69" y1="338.55" x2="32.69" y2="375.82" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="32.69" y1="338.55" x2="32.69" y2="152.18" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="126.59" y1="152.18" x2="126.59" y2="226.73" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="126.59" y1="152.18" x2="126.59" y2="77.64" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<text x="56.17" y="352.04" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#222222">98</text>
+<text x="79.64" y="128.41" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#222222">92</text>
+<text x="150.07" y="202.95" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#222222">98</text>
+<text x="150.07" y="53.86" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#222222">99</text>
+<circle cx="220.49" cy="264.00" r="4.61" fill="#4DBBD5" fill-opacity="1.00" stroke="white" stroke-width="0.5"/>
+<circle cx="220.49" cy="189.45" r="5.84" fill="#4DBBD5" fill-opacity="1.00" stroke="white" stroke-width="0.5"/>
+<circle cx="220.49" cy="114.91" r="9.36" fill="#4DBBD5" fill-opacity="1.00" stroke="white" stroke-width="0.5"/>
+<circle cx="220.49" cy="40.36" r="3.96" fill="#4DBBD5" fill-opacity="1.00" stroke="white" stroke-width="0.5"/>
+<polygon points="126.59,482.88 122.45,491.16 130.73,491.16" fill="#E64B35" fill-opacity="1.00" stroke="white" stroke-width="0.5"/>
+<rect x="121.48" y="407.98" width="10.22" height="10.22" fill="#00A087" fill-opacity="1.00" stroke="white" stroke-width="0.5"/>
+<rect x="123.61" y="335.56" width="5.97" height="5.97" fill="#00A087" fill-opacity="1.00" stroke="white" stroke-width="0.5"/>
+<text x="231.06" y="267.06" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222">Rangifer_tarandus</text>
+<text x="231.06" y="192.51" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222">Cervus_elaphus</text>
+<text x="231.06" y="117.97" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222">Bos_taurus</text>
+<text x="231.06" y="43.42" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222">Ovis_orientalis</text>
+<text x="137.17" y="490.70" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222">Suricata_suricatta</text>
+<text x="137.17" y="416.15" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222">Cystophora_cristata</text>
+<text x="137.17" y="341.61" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222">Mephitis_mephitis</text>
+<rect x="53.32" y="368.32" width="52.64" height="15.00" rx="2.5" fill="#4d9eb9" stroke="#111827" stroke-width="0.8"/>
+<text x="79.64" y="378.88" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#222222">Dog-like</text>
+<rect x="69.58" y="144.68" width="114.02" height="15.00" rx="2.5" fill="#edf8b1" stroke="#111827" stroke-width="0.8"/>
+<text x="126.59" y="155.24" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#222222">Even-toed ungulates</text>
+<rect x="150.01" y="219.23" width="47.06" height="15.00" rx="2.5" fill="#2c7fb8" stroke="#111827" stroke-width="0.8"/>
+<text x="173.54" y="229.79" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#222222">Cervids</text>
+<rect x="152.80" y="70.14" width="41.48" height="15.00" rx="2.5" fill="#3789b8" stroke="#111827" stroke-width="0.8"/>
+<text x="173.54" y="80.70" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#222222">Bovids</text>
+</g>
+<text x="406.0" y="44.0" font-family="sans-serif" font-size="10.0" font-weight="bold" fill="#1F2937">trophic_habit</text>
+<polygon points="411.00,53.18 405.94,63.30 416.06,63.30" fill="#E64B35" fill-opacity="1.00" stroke="white" stroke-width="0.5"/>
+<text x="420.5" y="62.5" font-family="sans-serif" font-size="9.0" fill="#374151">carnivore</text>
+<circle cx="411.00" cy="72.50" r="4.40" fill="#4DBBD5" fill-opacity="1.00" stroke="white" stroke-width="0.5"/>
+<text x="420.5" y="76.0" font-family="sans-serif" font-size="9.0" fill="#374151">herbivore</text>
+<rect x="407.37" y="82.37" width="7.26" height="7.26" fill="#00A087" fill-opacity="1.00" stroke="white" stroke-width="0.5"/>
+<text x="420.5" y="89.5" font-family="sans-serif" font-size="9.0" fill="#374151">omnivore</text>
+<text x="406.0" y="106.5" font-family="sans-serif" font-size="10.0" font-weight="bold" fill="#1F2937">mass_in_kg</text>
+<circle cx="411.00" cy="121.50" r="2.00" fill="#111827" fill-opacity="0.95" stroke="white" stroke-width="0.5"/>
+<text x="420.5" y="125.0" font-family="sans-serif" font-size="9.0" fill="#374151">200</text>
+<circle cx="411.00" cy="135.00" r="2.64" fill="#111827" fill-opacity="0.95" stroke="white" stroke-width="0.5"/>
+<text x="420.5" y="138.5" font-family="sans-serif" font-size="9.0" fill="#374151">400</text>
+<circle cx="411.00" cy="148.50" r="3.32" fill="#111827" fill-opacity="0.95" stroke="white" stroke-width="0.5"/>
+<text x="420.5" y="152.0" font-family="sans-serif" font-size="9.0" fill="#374151">600</text>
+<text x="406.0" y="169.0" font-family="sans-serif" font-size="10.0" font-weight="bold" fill="#1F2937">posterior</text>
+<defs><linearGradient id="gggrad_2_68_6457" x1="0" y1="1" x2="0" y2="0"><stop offset="0.0%" stop-color="#EDF8B1"/><stop offset="50.0%" stop-color="#7FCDBB"/><stop offset="100.0%" stop-color="#2C7FB8"/></linearGradient></defs>
+<rect x="406.0" y="179.0" width="12" height="72" fill="url(#gggrad_2_68_6457)" stroke="#9CA3AF" stroke-width="0.5"/>
+<text x="422.0" y="187.0" font-family="sans-serif" font-size="9" fill="#374151">0.96</text>
+<text x="422.0" y="250.0" font-family="sans-serif" font-size="9" fill="#374151">0.81</text>
+
+<text x="10" y="18" font-family="sans-serif" font-size="13" font-weight="bold" fill="#111827">B</text>
+</g>
+</svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="380" viewBox="0 0 800 380">
+<rect width="800" height="380" fill="white"/>
+<g transform="translate(0,0)">
+<defs><clipPath id="ggtree_cart_clip_391305536"><rect x="28.00" y="0.00" width="384.00" height="380.00"/></clipPath></defs>
+<g clip-path="url(#ggtree_cart_clip_391305536)">
+<line x1="150.67" y1="334.91" x2="257.33" y2="334.91" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="150.67" y1="234.30" x2="257.33" y2="234.30" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="150.67" y1="133.70" x2="257.33" y2="133.70" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="150.67" y1="33.09" x2="257.33" y2="33.09" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="44.00" y1="284.61" x2="150.67" y2="284.61" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="44.00" y1="83.39" x2="150.67" y2="83.39" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="150.67" y1="284.61" x2="150.67" y2="334.91" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="150.67" y1="284.61" x2="150.67" y2="234.30" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="150.67" y1="83.39" x2="150.67" y2="133.70" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="150.67" y1="83.39" x2="150.67" y2="33.09" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="44.00" y1="184.00" x2="44.00" y2="284.61" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="44.00" y1="184.00" x2="44.00" y2="83.39" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<text x="261.33" y="338.31" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">A</text>
+<text x="261.33" y="237.70" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">B</text>
+<text x="261.33" y="137.10" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">C</text>
+<text x="261.33" y="36.49" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">D</text>
+</g>
+
+<text x="10" y="18" font-family="sans-serif" font-size="13" font-weight="bold" fill="#111827">A</text>
+</g>
+<g transform="translate(400,0)">
+<defs><clipPath id="ggtree_cart_clip_383536624"><rect x="28.00" y="0.00" width="384.00" height="380.00"/></clipPath></defs>
+<g clip-path="url(#ggtree_cart_clip_383536624)">
+<line x1="143.73" y1="334.91" x2="244.37" y2="334.91" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="143.73" y1="234.30" x2="244.37" y2="234.30" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="143.73" y1="133.70" x2="244.37" y2="133.70" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="143.73" y1="33.09" x2="244.37" y2="33.09" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="43.10" y1="284.61" x2="143.73" y2="284.61" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="43.10" y1="83.39" x2="143.73" y2="83.39" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="143.73" y1="284.61" x2="143.73" y2="334.91" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="143.73" y1="284.61" x2="143.73" y2="234.30" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="143.73" y1="83.39" x2="143.73" y2="133.70" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="143.73" y1="83.39" x2="143.73" y2="33.09" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="43.10" y1="184.00" x2="43.10" y2="284.61" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="43.10" y1="184.00" x2="43.10" y2="83.39" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<text x="248.37" y="338.31" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">sunflower</text>
+<text x="248.37" y="237.70" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">tree</text>
+<text x="248.37" y="137.10" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">snail</text>
+<text x="248.37" y="36.49" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">mushroom</text>
+</g>
+
+<text x="10" y="18" font-family="sans-serif" font-size="13" font-weight="bold" fill="#111827">B</text>
+</g>
+</svg>

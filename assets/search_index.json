@@ -1,0 +1,1437 @@
+[
+  {
+    "title": "Welcome & Book Overview",
+    "section": "Preface",
+    "context": "Home \u00b7 Structure & Quick Start",
+    "href": "index.html",
+    "keywords": "ggtree-py install quickstart treedata-book parts overview"
+  },
+  {
+    "title": "All Figures Gallery & Master Index (111 figures)",
+    "section": "Gallery",
+    "context": "Visual Gallery \u00b7 Master Table",
+    "href": "gallery.html",
+    "keywords": "gallery index all figures examples filter search"
+  },
+  {
+    "title": "Appendix B: ggtree-py API Reference",
+    "section": "API",
+    "context": "Complete Function Cross-Reference",
+    "href": "api.html",
+    "keywords": "read_tree read_beast read_codeml read_raxml gheatmap msaplot geom_fruit geom_motif geom_phylopic"
+  },
+  {
+    "title": "1. Importing Tree with Data",
+    "section": "1. Importing Tree with Data",
+    "context": "Part I: Tree Data Input, Output and Manipulation",
+    "href": "chapter1.html",
+    "keywords": "Phylogenetic trees rarely exist in isolation: evolutionary analyses pair branching topologies with divergence times, posterior probabilities, substitution rates, placement counts, or gene-level selection statistics. In <code>ggtree-py</code>, <code>Phylo</code> holds core ape-compatible structure (<code>edge</code>, <code>tip_label</code>, <code>edge_length</code>, <code>node_label</code>), while <code>TreeData</code> binds rich node- and branch-indexed annotations in <code>td.data</code> and <code>td.extraInfo</code>."
+  },
+  {
+    "title": "1.1 Overview",
+    "section": "1. Importing Tree with Data",
+    "context": "1. Importing Tree with Data",
+    "href": "chapter1.html#overview",
+    "keywords": "<p>Standard readers in <code>ggtree-py</code> mirror both <code>ape</code> and <code>treeio</code>: plain Newick/Nexus files return a lightweight <code>Phylo</code> (or <code>MultiPhylo</code>), whereas BEAST, NHX, EPA/pplacer, jtree, RAxML, and CodeML parsers return a unified <code>TreeData</code> object ready for <code>aes()</code> aesthetic mapping.</p>"
+  },
+  {
+    "title": "1.2 Understanding Phylogenetic Tree Structure",
+    "section": "1. Importing Tree with Data",
+    "context": "1. Importing Tree with Data",
+    "href": "chapter1.html#tree-structure",
+    "keywords": "<p>A phylogenetic tree comprises tips (leaves), internal nodes representing ancestral lineages, a root node, and branch lengths encoding evolutionary divergence or time. <code>read_tree()</code> parses Newick strings from files or inline <code>text=...</code> arguments, and layers such as <code>geom_tippoint()</code>, <code>geom_nodepoint()</code>, <code>geom_rootpoint()</code>, and <code>geom_label()</code> inspect these structural elements directly.</p>"
+  },
+  {
+    "title": "Figure 1.1: Phylogenetic tree components: tips, internal nodes, root, and branch lengths",
+    "section": "1.2 Understanding Phylogenetic Tree Structure",
+    "context": "1. Importing Tree with Data \u00b7 1.2 Understanding Phylogenetic Tree Structure",
+    "href": "chapter1.html#fig-1-1",
+    "keywords": "A rooted phylogeny showing tip nodes (green), internal nodes (blue), the root node (red), numeric branch lengths displayed along edges, and an evolutionary distance scale bar. read_tree ggtree geom_tippoint geom_nodepoint geom_rootpoint geom_tiplab geom_treescale"
+  },
+  {
+    "title": "Figure 1.2: Random Newick tree with aligned tip labels and branch-length labels",
+    "section": "1.2 Understanding Phylogenetic Tree Structure",
+    "context": "1. Importing Tree with Data \u00b7 1.2 Understanding Phylogenetic Tree Structure",
+    "href": "chapter1.html#fig-1-2",
+    "keywords": "Phylogeny parsed directly from an inline Newick text string with thick branches, dotted alignment guides via geom_tiplab(align=True), and boxed branch-length labels. read_tree ggtree geom_tiplab geom_label aes"
+  },
+  {
+    "title": "1.3 Importing Tree with treeio",
+    "section": "1. Importing Tree with Data",
+    "context": "1. Importing Tree with Data",
+    "href": "chapter1.html#treeio-import",
+    "keywords": "<p>Evolutionary analyses save annotations across heterogeneous file conventions\u2014inline <code>[&amp;...]</code> BEAST tags, colon-delimited NHX attributes, PAML CodeML <code>rst</code>/<code>mlc</code> files, and JSON placements. <code>treeio</code> normalizes these parsers into common <code>Phylo</code> and <code>TreeData</code> containers seamlessly consumable by <code>tidytree</code> and <code>ggtree</code>.</p>"
+  },
+  {
+    "title": "Figure 1.3: Overview of treeio data integration and conversion workflow",
+    "section": "1.3 Importing Tree with treeio",
+    "context": "1. Importing Tree with Data \u00b7 1.3 Importing Tree with treeio",
+    "href": "chapter1.html#fig-1-3",
+    "keywords": "Workflow architecture illustrating how treeio parses diverse evolutionary formats into unified Phylo and TreeData structures, integrates external tables via tidytree, and passes data to ggtree. treeio_diagram TreeDiagram"
+  },
+  {
+    "title": "1.4 Extracting Data from Tree Object",
+    "section": "1. Importing Tree with Data",
+    "context": "1. Importing Tree with Data",
+    "href": "chapter1.html#extract-data",
+    "keywords": "<p>Once imported into a <code>TreeData</code> (or converted via <code>as_tibble()</code> / <code>fortify()</code>), node and branch attributes such as <code>AA_subs</code> from <code>read_jtree()</code> become directly mappable columns inside <code>aes()</code>.</p>"
+  },
+  {
+    "title": "Figure 1.4: Visualizing jtree amino-acid substitutions stored along branches",
+    "section": "1.4 Extracting Data from Tree Object",
+    "context": "1. Importing Tree with Data \u00b7 1.4 Extracting Data from Tree Object",
+    "href": "chapter1.html#fig-1-4",
+    "keywords": "Tree imported from jtree format via read_jtree() with reconstructed amino-acid substitution tags (AA_subs) rendered directly above each internal and terminal branch. read_jtree ggtree geom_text geom_tiplab system_file"
+  },
+  {
+    "title": "2. Manipulating Tree with Data",
+    "section": "2. Manipulating Tree with Data",
+    "context": "Part I: Tree Data Input, Output and Manipulation",
+    "href": "chapter2.html",
+    "keywords": "Integrating evolutionary inference outputs and external experimental metadata should never require fragile row-reordering hacks. <code>ggtree-py</code> implements <code>tidytree</code> tidy verbs, tree-data merging, rerooting, rescaling, subsetting, and multi-tree co-plotting helpers."
+  },
+  {
+    "title": "2.1 Combining Tree Data with merge_tree()",
+    "section": "2. Manipulating Tree with Data",
+    "context": "2. Manipulating Tree with Data",
+    "href": "chapter2.html#merge-tree",
+    "keywords": "<p>Separate analyses run on the same taxon topology\u2014such as a dated BEAST tree and a CodeML selection run\u2014can be combined with <code>merge_tree()</code> so joint distributions of rates, <code>dN</code>, <code>dS</code>, and <code>dN/dS</code> can be explored cleanly via <code>fortify()</code>, <code>gather()</code>, and <code>geom_hex()</code>.</p>"
+  },
+  {
+    "title": "Figure 2.1: Joint distribution of BEAST evolutionary rate vs. CodeML dN/dS, dN, and dS",
+    "section": "2.1 Combining Tree Data with merge_tree()",
+    "context": "2. Manipulating Tree with Data \u00b7 2.1 Combining Tree Data with merge_tree()",
+    "href": "chapter2.html#fig-2-1",
+    "keywords": "Correlating BEAST branch substitution rates with CodeML synonymous (dS), non-synonymous (dN), and dN/dS ratios after combining outputs via merge_tree() and reshaping with gather(). read_beast read_codeml merge_tree fortify gather ggplot geom_hex facet_wrap"
+  },
+  {
+    "title": "2.2 Joining External Tables &amp; Rerooting Trees",
+    "section": "2. Manipulating Tree with Data",
+    "context": "2. Manipulating Tree with Data",
+    "href": "chapter2.html#join-reroot",
+    "keywords": "<p>Using <code>left_join()</code> merges tip and internal-node attribute tables (resolving duplicate columns with suffixes like <code>.x</code> and <code>.y</code>), while <code>root(trda, outgroup=..., edgelabel=True)</code> reroots topologies while keeping edge and node annotations properly synchronized.</p>"
+  },
+  {
+    "title": "Figure 2.2: Joining tip/node metadata and rerooting a phylogeny with root()",
+    "section": "2.2 Joining External Tables &amp; Rerooting Trees",
+    "context": "2. Manipulating Tree with Data \u00b7 2.2 Joining External Tables &amp; Rerooting Trees",
+    "href": "chapter2.html#fig-2-2",
+    "keywords": "Comparison of a carnivoran tree joined with tip and internal-node annotations before (A) and after (B) rerooting on Suricata_suricatta via root(..., edgelabel=True), keeping clade labels, posterior support fills, and tip traits aligned. read_tree read_table left_join root ggtree geom_nodelab scale_fill_distiller plot_list"
+  },
+  {
+    "title": "2.3 Rescaling Tree Branches",
+    "section": "2. Manipulating Tree with Data",
+    "context": "2. Manipulating Tree with Data",
+    "href": "chapter2.html#rescale-tree",
+    "keywords": "<p><code>rescale_tree(merged_tree, branch_length='dN')</code> replaces raw branch lengths with any numeric annotation column (such as <code>dN</code> or evolutionary <code>rate</code>), enabling side-by-side evolutionary comparisons.</p>"
+  },
+  {
+    "title": "Figure 2.3: Rescaling branch lengths using CodeML dN and BEAST evolutionary rate",
+    "section": "2.3 Rescaling Tree Branches",
+    "context": "2. Manipulating Tree with Data \u00b7 2.3 Rescaling Tree Branches",
+    "href": "chapter2.html#fig-2-3",
+    "keywords": "The merged Flu A H3 tree plotted with original divergence times (A), rescaled by synonymous-normalized non-synonymous substitutions dN (B), and rescaled by BEAST molecular clock rate (C) via rescale_tree(). merge_tree rescale_tree ggtree theme_tree2 plot_list"
+  },
+  {
+    "title": "2.4 Subsetting and Pruning Trees",
+    "section": "2. Manipulating Tree with Data",
+    "context": "2. Manipulating Tree with Data",
+    "href": "chapter2.html#drop-subset",
+    "keywords": "<p><code>drop_tip()</code> prunes unwanted taxa while remapping associated <code>TreeData</code> attributes cleanly. For large phylogenies, <code>tree_subset()</code> isolates local focal neighborhoods by tip label or internal node ID\u2014tracking ancestry groups, preserved node data, and optional <code>root_edge</code> stems via <code>geom_rootedge()</code>.</p>"
+  },
+  {
+    "title": "Figure 2.4: Pruning taxa from an NHX TreeData object while preserving node tags",
+    "section": "2.4 Subsetting and Pruning Trees",
+    "context": "2. Manipulating Tree with Data \u00b7 2.4 Subsetting and Pruning Trees",
+    "href": "chapter2.html#fig-2-4",
+    "keywords": "Original phyldog NHX tree with three target tips highlighted in red (A) compared against the pruned subtree obtained via drop_tip(nhx, to_drop) (B). read_nhx drop_tip ggtree scale_color_manual geom_tiplab plot_list"
+  },
+  {
+    "title": "Figure 2.5: Subsetting around a focal tip with preserved annotations and root-edge placement",
+    "section": "2.4 Subsetting and Pruning Trees",
+    "context": "2. Manipulating Tree with Data \u00b7 2.4 Subsetting and Pruning Trees",
+    "href": "chapter2.html#fig-2-5",
+    "keywords": "Full Flu A H3 BEAST tree (A); 4-level subset around A/Swine/HK/168/2012 highlighting the focal lineage (B); subset annotated with preserved rate values (C); positioned at its ancestral root coordinate (D); and rendered with geom_rootedge() on the original time scale (E). read_beast tree_subset ggtree geom_rootedge scale_fill_continuous plot_list"
+  },
+  {
+    "title": "Figure 2.6: Extracting clade neighborhoods by internal node ID and taxonomic group",
+    "section": "2.4 Subsetting and Pruning Trees",
+    "context": "2. Manipulating Tree with Data \u00b7 2.4 Subsetting and Pruning Trees",
+    "href": "chapter2.html#fig-2-6",
+    "keywords": "Clade extraction at internal node 121 with levels_back=0 (A) and levels_back=2 (B); highlighting Plecotus bats via groupOTU() in a 916-tip chiroptera phylogeny (C); and zooming into the Plecotus clade via MRCA() and tree_subset() (D). read_beast read_tree MRCA tree_subset groupOTU ggtree plot_list"
+  },
+  {
+    "title": "2.5 Visualizing Multiple Trees Together",
+    "section": "2. Manipulating Tree with Data",
+    "context": "2. Manipulating Tree with Data",
+    "href": "chapter2.html#multi-tree",
+    "keywords": "<p>Shifted or mirrored fortified tree frames (<code>fortify(tr)</code>) can be layered into a single canvas via <code>geom_tree(data=d2, layout=...)</code> alongside dual independent highlight scales (<code>new_scale_fill()</code>), shadowtext labels, and cross-tree correspondence lines.</p>"
+  },
+  {
+    "title": "Figure 2.7: Mirrored two-tree co-phylogeny with highlighted clades and tip connectors",
+    "section": "2.5 Visualizing Multiple Trees Together",
+    "context": "2. Manipulating Tree with Data \u00b7 2.5 Visualizing Multiple Trees Together",
+    "href": "chapter2.html#fig-2-7",
+    "keywords": "Two facing 30-tip trees rendered using roundrect (left) and mirrored ellipse (right) layouts, each carrying independent discrete clade highlight scales separated by new_scale_fill(), shadowtext tip labels, and tip links. rtree ggtree geom_tree geom_hilight new_scale_fill geom_line geom_tiplab"
+  },
+  {
+    "title": "Figure 2.8: Comparing three phylogenetic trees side-by-side with tip linkage",
+    "section": "2.5 Visualizing Multiple Trees Together",
+    "context": "2. Manipulating Tree with Data \u00b7 2.5 Visualizing Multiple Trees Together",
+    "href": "chapter2.html#fig-2-8",
+    "keywords": "Three 15-tip phylogenies arranged sequentially in a single coordinate space with translucent tip-correspondence lines colored by whether node indices belong to tips (node <= 15). rtree fortify ggtree geom_tree geom_line geom_tiplab"
+  },
+  {
+    "title": "3. Exporting Tree with Data",
+    "section": "3. Exporting Tree with Data",
+    "context": "Part I: Tree Data Input, Output and Manipulation",
+    "href": "chapter3.html",
+    "keywords": "Preserving node- and branch-level annotations during serialization allows reproducible archival and sharing across downstream phylogenetic tools such as FigTree without losing associated metadata."
+  },
+  {
+    "title": "3.1 Exporting Topologies via write_tree()",
+    "section": "3. Exporting Tree with Data",
+    "context": "3. Exporting Tree with Data",
+    "href": "chapter3.html#newick-export",
+    "keywords": "<p><code>write_tree(phy, file=...)</code> emits standard parenthetical Newick strings preserving internal node labels, branch lengths, and optional root stem edges.</p>"
+  },
+  {
+    "title": "3.2 Exporting Tree Data to BEAST Nexus &amp; JSON",
+    "section": "3. Exporting Tree with Data",
+    "context": "3. Exporting Tree with Data",
+    "href": "chapter3.html#beast-jtree",
+    "keywords": "<p><code>write_beast()</code> serializes any annotated <code>TreeData</code>\u2014such as NHX species tags or PAML CodeML substitution statistics\u2014into inline NEXUS <code>[&amp;...]</code> metadata comments that <code>read_beast()</code> restores cleanly into mappable branch attributes, whereas <code>write_jtree()</code> / <code>read_jtree()</code> exchanges structured JSON tree objects.</p>"
+  },
+  {
+    "title": "Figure 3.1: Round-trip BEAST Nexus export preserving NHX and CodeML annotations",
+    "section": "3.2 Exporting Tree Data to BEAST Nexus &amp; JSON",
+    "context": "3. Exporting Tree with Data \u00b7 3.2 Exporting Tree Data to BEAST Nexus &amp; JSON",
+    "href": "chapter3.html#fig-3-1",
+    "keywords": "Both NHX (phyldog.nhx, panel A) and PAML CodeML (panel B) TreeData objects serialized via write_beast() and re-imported via read_beast(), preserving continuous branch attributes (S and dN) for ggtree mapping. read_nhx read_codeml write_beast read_beast ggtree plot_list"
+  },
+  {
+    "title": "4. Phylogenetic Tree Visualization",
+    "section": "4. Phylogenetic Tree Visualization",
+    "context": "Part II: Tree Visualization, Interpretation and Annotation",
+    "href": "chapter4.html",
+    "keywords": "Visualizing evolutionary relationships effectively relies on choosing the right coordinate geometry, visual hierarchy, theme, and time axis. Extending <code>ggplot2</code>'s layered grammar, <code>ggtree()</code> turns any <code>Phylo</code>, <code>TreeData</code>, or <code>Hclust</code> into a customizable SVG/PNG canvas."
+  },
+  {
+    "title": "4.1 Visualizing Phylogenetic Tree with ggtree",
+    "section": "4. Phylogenetic Tree Visualization",
+    "context": "4. Phylogenetic Tree Visualization",
+    "href": "chapter4.html#basic-viz",
+    "keywords": "<p>The <code>ggtree()</code> function is a specialized wrapper around <code>ggplot() + geom_tree() + theme_tree()</code> with built-in support for ladderization, cladograms (<code>branch_length='none'</code>), and uniform branch styling.</p>"
+  },
+  {
+    "title": "Figure 4.1: Basic tree visualization",
+    "section": "4.1 Visualizing Phylogenetic Tree with ggtree",
+    "context": "4. Phylogenetic Tree Visualization \u00b7 4.1 Visualizing Phylogenetic Tree with ggtree",
+    "href": "chapter4.html#fig-4-1",
+    "keywords": "Basic tree visualization. Default ggtree output with ladderized effect (A), non-variable setting (e.g., color, size, line type) (B), non-ladderized tree (C), and cladogram that only displays tree topology without branch length information (D). ggplot ggtree geom_tree theme_tree read_tree"
+  },
+  {
+    "title": "4.2 Layouts and Derived Coordinate Systems",
+    "section": "4. Phylogenetic Tree Visualization",
+    "context": "4. Phylogenetic Tree Visualization",
+    "href": "chapter4.html#layouts",
+    "keywords": "<p>Supported layouts span phylograms and cladograms across <code>rectangular</code>, <code>roundrect</code>, <code>slanted</code>, <code>ellipse</code>, <code>circular</code>, <code>fan</code>, <code>equal_angle</code>, and <code>daylight</code>, plus derived orientations via <code>scale_x_reverse()</code>, <code>coord_flip()</code>, <code>layout_dendrogram()</code>, <code>layout_inward_circular()</code>, and rotated insets via <code>as_ggplot()</code>.</p>"
+  },
+  {
+    "title": "Figure 4.2: Tree layouts",
+    "section": "4.2 Layouts and Derived Coordinate Systems",
+    "context": "4. Phylogenetic Tree Visualization \u00b7 4.2 Layouts and Derived Coordinate Systems",
+    "href": "chapter4.html#fig-4-2",
+    "keywords": "Tree layouts. Phylogram: rectangular layout (A), rounded rectangular layout (B), slanted layout (C), ellipse layout (D), circular layout (E), and fan layout (F). Unrooted: equal-angle method (G) and daylight method (H). Cladogram: rectangular layout (I), ellipse (J), circular layout (K), and unrooted layout (L). ggtree rtree set_seed plot_list"
+  },
+  {
+    "title": "Figure 4.3: Derived Tree layouts",
+    "section": "4.2 Layouts and Derived Coordinate Systems",
+    "context": "4. Phylogenetic Tree Visualization \u00b7 4.2 Layouts and Derived Coordinate Systems",
+    "href": "chapter4.html#fig-4-3",
+    "keywords": "Derived Tree layouts: right-to-left rectangular layout (A), bottom-up rectangular layout (B), top-down rectangular layout (Dendrogram) (C), rotated rectangular layout (D), bottom-up slanted layout (E), top-down slanted layout (Cladogram) (F), circular layout (G), and circular inward layout (H and I). ggtree scale_x_reverse coord_flip layout_dendrogram layout_inward_circular as_ggplot xlim"
+  },
+  {
+    "title": "4.2.2\u20134.2.3 Time-Scaled Trees and Two-Dimensional Layouts",
+    "section": "4. Phylogenetic Tree Visualization",
+    "context": "4. Phylogenetic Tree Visualization",
+    "href": "chapter4.html#timescale-2d",
+    "keywords": "<p>Specifying the most recent sampling date (<code>mrsd</code>) calibrates horizontal coordinates in calendar years, and setting <code>yscale</code> with <code>yscale_mapping</code> projects trees into two-dimensional trait-by-time space.</p>"
+  },
+  {
+    "title": "Figure 4.4: Timescaled layout",
+    "section": "4.2.2\u20134.2.3 Time-Scaled Trees and Two-Dimensional Layouts",
+    "context": "4. Phylogenetic Tree Visualization \u00b7 4.2.2\u20134.2.3 Time-Scaled Trees and Two-Dimensional Layouts",
+    "href": "chapter4.html#fig-4-4",
+    "keywords": "Timescaled layout. The x-axis is the timescale (in units of the year). The divergence time in this example was inferred by BEAST using the molecular clock model. read_beast ggtree theme_tree2"
+  },
+  {
+    "title": "Figure 4.5: Two-dimensional tree layout",
+    "section": "4.2.2\u20134.2.3 Time-Scaled Trees and Two-Dimensional Layouts",
+    "context": "4. Phylogenetic Tree Visualization \u00b7 4.2.2\u20134.2.3 Time-Scaled Trees and Two-Dimensional Layouts",
+    "href": "chapter4.html#fig-4-5",
+    "keywords": "Two-dimensional tree layout. The trunk and other branches are highlighted in red (for swine) and blue (for humans). The x-axis is scaled to the branch length (in units of year) of the timescaled tree. The y-axis is scaled to the number of predicted N-linked glycosylation sites (NLG) on the hemagglutinin protein. read_beast groupOTU ggtree theme_classic scale_color_manual geom_nodepoint geom_rootpoint geom_tippoint annotate ylab"
+  },
+  {
+    "title": "4.3.1\u20134.3.4 Scale Bars, Nodes, Labels, and Root Edges",
+    "section": "4. Phylogenetic Tree Visualization",
+    "context": "4. Phylogenetic Tree Visualization",
+    "href": "chapter4.html#display-geoms",
+    "keywords": "<p>Add evolutionary distance bars with <code>geom_treescale()</code> or axis ticks with <code>theme_tree2()</code>, mark internal and tip nodes with <code>geom_nodepoint()</code> and <code>geom_tippoint()</code>, format radial or y-axis tip labels via <code>geom_tiplab()</code>, and draw outgroup stems via <code>geom_rootedge()</code>.</p>"
+  },
+  {
+    "title": "Figure 4.6: Display treescale",
+    "section": "4.3.1\u20134.3.4 Scale Bars, Nodes, Labels, and Root Edges",
+    "context": "4. Phylogenetic Tree Visualization \u00b7 4.3.1\u20134.3.4 Scale Bars, Nodes, Labels, and Root Edges",
+    "href": "chapter4.html#fig-4-6",
+    "keywords": "Display treescale. geom_treescale() automatically adds a scale bar for evolutionary distance (A). Users can modify the color, width, and position of the scale (B) as well as the size of the scale bar and text and their relative position (C). Another possible solution is to enable the x-axis which is useful for the timescaled tree (D). ggtree geom_treescale theme_tree2 plot_list"
+  },
+  {
+    "title": "Figure 4.7: Display external and internal nodes",
+    "section": "4.3.1\u20134.3.4 Scale Bars, Nodes, Labels, and Root Edges",
+    "context": "4. Phylogenetic Tree Visualization \u00b7 4.3.1\u20134.3.4 Scale Bars, Nodes, Labels, and Root Edges",
+    "href": "chapter4.html#fig-4-7",
+    "keywords": "Display external and internal nodes. geom_point() automatically adds symbolic points of all nodes (A). geom_nodepoint() adds symbolic points for internal nodes and geom_tippoint() adds symbolic points for external nodes (B). ggtree geom_point geom_nodepoint geom_tippoint plot_list"
+  },
+  {
+    "title": "Figure 4.8: Display tip labels",
+    "section": "4.3.1\u20134.3.4 Scale Bars, Nodes, Labels, and Root Edges",
+    "context": "4. Phylogenetic Tree Visualization \u00b7 4.3.1\u20134.3.4 Scale Bars, Nodes, Labels, and Root Edges",
+    "href": "chapter4.html#fig-4-8",
+    "keywords": "Display tip labels. geom_tiplab() supports displaying tip labels (A). For the circular, fan, or unrooted tree layouts, the labels can be rotated to fit the angle of the branches (B). For rectangular/dendrogram layout, tip labels can be displayed as y-axis labels (C). ggtree geom_tiplab geom_nodepoint plot_list"
+  },
+  {
+    "title": "Figure 4.9: Display root-edge",
+    "section": "4.3.1\u20134.3.4 Scale Bars, Nodes, Labels, and Root Edges",
+    "context": "4. Phylogenetic Tree Visualization \u00b7 4.3.1\u20134.3.4 Scale Bars, Nodes, Labels, and Root Edges",
+    "href": "chapter4.html#fig-4-9",
+    "keywords": "Display root-edge. geom_rootedge() supports displaying root-edge if the root edge was present (A). It shows nothing if there is no root-edge (B). Users can manually set the root edge for the tree (C) or specify the root edge length directly for plotting (D). read_tree ggtree geom_tiplab geom_rootedge plot_list"
+  },
+  {
+    "title": "4.3.5 Coloring Branches and Continuous Trait Transitions",
+    "section": "4. Phylogenetic Tree Visualization",
+    "context": "4. Phylogenetic Tree Visualization",
+    "href": "chapter4.html#color-continuous",
+    "keywords": "<p>Map node rates continuously along tree branches, reconstruct ancestral continuous states with <code>fastAnc()</code> for interpolated branch transitions (<code>continuous='colour'</code>), and render trait phenograms via <code>yscale='trait'</code>.</p>"
+  },
+  {
+    "title": "Figure 4.10: Color tree by continuous or discrete feature",
+    "section": "4.3.5 Coloring Branches and Continuous Trait Transitions",
+    "context": "4. Phylogenetic Tree Visualization \u00b7 4.3.5 Coloring Branches and Continuous Trait Transitions",
+    "href": "chapter4.html#fig-4-10",
+    "keywords": "Color tree by continuous or discrete feature. Edges are colored by values associated with the child nodes. read_beast ggtree scale_color_continuous theme"
+  },
+  {
+    "title": "Figure 4.11: Continuous state transition in edges",
+    "section": "4.3.5 Coloring Branches and Continuous Trait Transitions",
+    "context": "4. Phylogenetic Tree Visualization \u00b7 4.3.5 Coloring Branches and Continuous Trait Transitions",
+    "href": "chapter4.html#fig-4-11",
+    "keywords": "Continuous state transition in edges. Edges are colored by interpolated ancestral-to-offspring trait values reconstructed using fastAnc(). read_tree fastAnc nodeid full_join ggtree geom_tree geom_tiplab scale_color_gradientn"
+  },
+  {
+    "title": "Figure 4.12: Phenogram",
+    "section": "4.3.5 Coloring Branches and Continuous Trait Transitions",
+    "context": "4. Phylogenetic Tree Visualization \u00b7 4.3.5 Coloring Branches and Continuous Trait Transitions",
+    "href": "chapter4.html#fig-4-12",
+    "keywords": "Phenogram. Projecting the tree into a space defined by time (or genetic distance) on the horizontal axis and phenotype on the vertical dimension. fastAnc full_join ggtree scale_color_viridis_c theme_minimal"
+  },
+  {
+    "title": "4.3.6\u20134.3.7 Rescaling Branches and Customizing Themes",
+    "section": "4. Phylogenetic Tree Visualization",
+    "context": "4. Phylogenetic Tree Visualization",
+    "href": "chapter4.html#rescale-themes",
+    "keywords": "<p>Rescale branch lengths by any numeric node variable (substitution rate or <code>dN_vs_dS</code>) and customize background canvas colors through <code>theme_tree()</code> and theme modifiers.</p>"
+  },
+  {
+    "title": "Figure 4.13: Rescale tree branches",
+    "section": "4.3.6\u20134.3.7 Rescaling Branches and Customizing Themes",
+    "context": "4. Phylogenetic Tree Visualization \u00b7 4.3.6\u20134.3.7 Rescaling Branches and Customizing Themes",
+    "href": "chapter4.html#fig-4-13",
+    "keywords": "Rescale tree branches. A time-scaled tree inferred by BEAST (A) and its branches rescaled by substitution rate (B). A tree inferred by CodeML (C) and its branches rescaled by dN/dS values (D). read_beast read_codeml_mlc ggtree theme_tree2 labs plot_list"
+  },
+  {
+    "title": "Figure 4.14: Tree background and color themes",
+    "section": "4.3.6\u20134.3.7 Rescaling Branches and Customizing Themes",
+    "context": "4. Phylogenetic Tree Visualization \u00b7 4.3.6\u20134.3.7 Rescaling Branches and Customizing Themes",
+    "href": "chapter4.html#fig-4-14",
+    "keywords": "Tree themes. Background and foreground colors can be customized cleanly with theme_tree() and theme components. ggtree theme_tree rtree set_seed plot_list"
+  },
+  {
+    "title": "4.4 Visualizing a List of Trees (multiPhylo, TreeDataList, DensiTree)",
+    "section": "4. Phylogenetic Tree Visualization",
+    "context": "4. Phylogenetic Tree Visualization",
+    "href": "chapter4.html#multi-trees",
+    "keywords": "<p>Visualize multiple dated, bootstrapped, or annotated trees simultaneously via <code>facet_wrap('~.id')</code> with per-panel aesthetic filtering (<code>td_filter()</code>, <code>new_scale_colour()</code>), or stack ensembles in <code>ggdensitree()</code>.</p>"
+  },
+  {
+    "title": "Figure 4.15: Visualizing multiPhylo object",
+    "section": "4.4 Visualizing a List of Trees (multiPhylo, TreeDataList, DensiTree)",
+    "context": "4. Phylogenetic Tree Visualization \u00b7 4.4 Visualizing a List of Trees (multiPhylo, TreeDataList, DensiTree)",
+    "href": "chapter4.html#fig-4-15",
+    "keywords": "Visualizing multiPhylo object. The ggtree() function supports visualizing multiple trees stored in multiPhylo or TreeDataList objects using facet_wrap(). read_r8s ggtree facet_wrap theme_tree2"
+  },
+  {
+    "title": "Figure 4.16: Visualizing one hundred bootstrap trees simultaneously",
+    "section": "4.4 Visualizing a List of Trees (multiPhylo, TreeDataList, DensiTree)",
+    "context": "4. Phylogenetic Tree Visualization \u00b7 4.4 Visualizing a List of Trees (multiPhylo, TreeDataList, DensiTree)",
+    "href": "chapter4.html#fig-4-16",
+    "keywords": "Visualizing one hundred bootstrap trees simultaneously. read_tree ggtree facet_wrap"
+  },
+  {
+    "title": "Figure 4.17: Annotate one tree with values from different variables",
+    "section": "4.4 Visualizing a List of Trees (multiPhylo, TreeDataList, DensiTree)",
+    "context": "4. Phylogenetic Tree Visualization \u00b7 4.4 Visualizing a List of Trees (multiPhylo, TreeDataList, DensiTree)",
+    "href": "chapter4.html#fig-4-17",
+    "keywords": "Annotate one tree with values from different variables. Using subset aesthetic mapping (TREE1 panel) or td_filter() (TREE2 panel) to filter variables to be displayed on the specific panel with independent color scales. TreeDataList facet_wrap geom_tippoint td_filter new_scale_colour scale_colour_gradient scale_colour_viridis_c"
+  },
+  {
+    "title": "Figure 4.18: DensiTree",
+    "section": "4.4 Visualizing a List of Trees (multiPhylo, TreeDataList, DensiTree)",
+    "context": "4. Phylogenetic Tree Visualization \u00b7 4.4 Visualizing a List of Trees (multiPhylo, TreeDataList, DensiTree)",
+    "href": "chapter4.html#fig-4-18",
+    "keywords": "DensiTree. Trees are stacked on top of each other and the structures of the trees are rotated to ensure the consistency of the tip order. read_tree ggdensitree geom_tiplab hexpand"
+  },
+  {
+    "title": "5. Phylogenetic Tree Annotation",
+    "section": "5. Phylogenetic Tree Annotation",
+    "context": "Part II: Tree Visualization, Interpretation and Annotation",
+    "href": "chapter5.html",
+    "keywords": "Publication-quality phylogenies layer NHX attributes, clade brackets, shaded highlights, taxa links, uncertainty bars, and molecular selection statistics directly onto layout coordinates."
+  },
+  {
+    "title": "5.1 Manipulating Tree Annotation with Grammar of Graphics",
+    "section": "5. Phylogenetic Tree Annotation",
+    "context": "5. Phylogenetic Tree Annotation",
+    "href": "chapter5.html#grammar-nhx",
+    "keywords": "<p>All tree metadata columns (such as NHX species tags <code>S</code>, duplication flags <code>D</code>, and bootstrap values <code>B</code>) bind directly to <code>geom_tiplab()</code>, <code>geom_label()</code>, and <code>geom_text()</code> layers using midpoint coordinates (<code>x='branch'</code>).</p>"
+  },
+  {
+    "title": "Figure 5.1: Annotating tree using the grammar of graphics",
+    "section": "5.1 Manipulating Tree Annotation with Grammar of Graphics",
+    "context": "5. Phylogenetic Tree Annotation \u00b7 5.1 Manipulating Tree Annotation with Grammar of Graphics",
+    "href": "chapter5.html#fig-5-1",
+    "keywords": "Annotating tree using the grammar of graphics. The NHX tree was annotated using the grammar of graphics syntax by combining different layers using the + operator: species information on branches, duplication events on internal nodes, and bootstrap values near nodes. read_nhx ggtree geom_tiplab geom_label geom_text"
+  },
+  {
+    "title": "5.2.1\u20135.2.2 Labeling Clades and Associated Taxa",
+    "section": "5. Phylogenetic Tree Annotation",
+    "context": "5. Phylogenetic Tree Annotation",
+    "href": "chapter5.html#cladelab-strip",
+    "keywords": "<p><code>geom_cladelab()</code> places aligned bars, rotated text, boxed labels, or organism silhouettes (<code>geom='phylopic'</code>) beside monophyletic clades, while <code>geom_strip()</code> spans arbitrary taxa pairs.</p>"
+  },
+  {
+    "title": "Figure 5.2: Labeling clades",
+    "section": "5.2.1\u20135.2.2 Labeling Clades and Associated Taxa",
+    "context": "5. Phylogenetic Tree Annotation \u00b7 5.2.1\u20135.2.2 Labeling Clades and Associated Taxa",
+    "href": "chapter5.html#fig-5-2",
+    "keywords": "Labeling clades. Default (A); aligning and coloring clade bar and text (B); changing size and angle (C); and using geom_label() with background color in the text (D). ggtree geom_cladelab xlim plot_list"
+  },
+  {
+    "title": "Figure 5.3: Labeling clades using aesthetic mapping",
+    "section": "5.2.1\u20135.2.2 Labeling Clades and Associated Taxa",
+    "context": "5. Phylogenetic Tree Annotation \u00b7 5.2.1\u20135.2.2 Labeling Clades and Associated Taxa",
+    "href": "chapter5.html#fig-5-3",
+    "keywords": "Labeling clades using aesthetic mapping. geom_cladelab() supports aesthetic mapping to annotate clades (A), phylopic organism silhouettes (B), and mapping variables to customize colors or sizes of text and silhouettes (C). DataFrame geom_cladelab aes ggtree plot_list"
+  },
+  {
+    "title": "Figure 5.4: Labeling associated taxa",
+    "section": "5.2.1\u20135.2.2 Labeling Clades and Associated Taxa",
+    "context": "5. Phylogenetic Tree Annotation \u00b7 5.2.1\u20135.2.2 Labeling Clades and Associated Taxa",
+    "href": "chapter5.html#fig-5-4",
+    "keywords": "Labeling associated taxa. geom_cladelab() supports unrooted layouts for monophyletic clades (A). geom_strip() labels monophyletic, polyphyletic, and paraphyletic taxa spans (B). ggtree geom_cladelab geom_strip geom_tiplab plot_list"
+  },
+  {
+    "title": "5.2.3\u20135.2.4 Highlighting Clades and Linking Related Taxa",
+    "section": "5. Phylogenetic Tree Annotation",
+    "context": "5. Phylogenetic Tree Annotation",
+    "href": "chapter5.html#hilight-taxalink",
+    "keywords": "<p>Shade monophyletic groups across rectangular, circular, and unrooted layouts with <code>geom_hilight()</code> (<code>rect</code>, <code>roundrect</code>, <code>encircle</code>, <code>gradient</code>) and <code>geom_balance()</code>, and connect evolutionary partners using curved arrows from <code>geom_taxalink()</code>.</p>"
+  },
+  {
+    "title": "Figure 5.5: Highlight selected clades",
+    "section": "5.2.3\u20135.2.4 Highlighting Clades and Linking Related Taxa",
+    "context": "5. Phylogenetic Tree Annotation \u00b7 5.2.3\u20135.2.4 Highlighting Clades and Linking Related Taxa",
+    "href": "chapter5.html#fig-5-5",
+    "keywords": "Highlight selected clades. Rectangular layout (A), circular layout (B), unrooted layout with encircle and rect modes (C), neighboring subclades via geom_balance() (D), roundrect highlights with external data (E), and gradient fills from tree data (F). ggtree geom_hilight geom_balance read_nhx scale_fill_manual plot_list"
+  },
+  {
+    "title": "Figure 5.6: Linking related taxa",
+    "section": "5.2.3\u20135.2.4 Highlighting Clades and Linking Related Taxa",
+    "context": "5. Phylogenetic Tree Annotation \u00b7 5.2.3\u20135.2.4 Highlighting Clades and Linking Related Taxa",
+    "href": "chapter5.html#fig-5-6",
+    "keywords": "Linking related taxa. Rectangular layout (A), circular layout (B), and inward circular layout (C and D). Supports mapping data variables onto link sizes and colors (D). ggtree geom_taxalink geom_tiplab scale_size_continuous plot_list"
+  },
+  {
+    "title": "5.2.5\u20135.3 Evolutionary Uncertainty Intervals and Software Annotations",
+    "section": "5. Phylogenetic Tree Annotation",
+    "context": "5. Phylogenetic Tree Annotation",
+    "href": "chapter5.html#uncertainty-software",
+    "keywords": "<p>Overlay Bayesian or RelTime confidence intervals via <code>geom_range()</code> + <code>scale_x_range()</code>, and display BEAST, HyPhy, and CODEML amino-acid substitutions and <code>dN/dS</code> ratios directly on branches.</p>"
+  },
+  {
+    "title": "Figure 5.7: Displaying uncertainty of evolutionary inference",
+    "section": "5.2.5\u20135.3 Evolutionary Uncertainty Intervals and Software Annotations",
+    "context": "5. Phylogenetic Tree Annotation \u00b7 5.2.5\u20135.3 Evolutionary Uncertainty Intervals and Software Annotations",
+    "href": "chapter5.html#fig-5-7",
+    "keywords": "Displaying uncertainty of evolutionary inference. The center (mean value of the range (A) or estimated value (B)) is anchored to the tree nodes. A second x-axis via scale_x_range() provides range scaling (C). read_mega ggtree geom_range scale_x_range theme_tree2 plot_list"
+  },
+  {
+    "title": "Figure 5.8: Annotating BEAST tree with length_95%_HPD and posterior",
+    "section": "5.2.5\u20135.3 Evolutionary Uncertainty Intervals and Software Annotations",
+    "context": "5. Phylogenetic Tree Annotation \u00b7 5.2.5\u20135.3 Evolutionary Uncertainty Intervals and Software Annotations",
+    "href": "chapter5.html#fig-5-8",
+    "keywords": "Annotating BEAST tree with length_95%_HPD and posterior. Branch length credible intervals (95% HPD) are displayed as red horizontal bars and clade posterior values are shown on the middle of branches. read_beast ggtree geom_range geom_nodelab scale_color_continuous theme"
+  },
+  {
+    "title": "Figure 5.9: Annotating tree with amino acid substitutions from HyPhy",
+    "section": "5.2.5\u20135.3 Evolutionary Uncertainty Intervals and Software Annotations",
+    "context": "5. Phylogenetic Tree Annotation \u00b7 5.2.5\u20135.3 Evolutionary Uncertainty Intervals and Software Annotations",
+    "href": "chapter5.html#fig-5-9",
+    "keywords": "Annotating tree with amino acid substitutions determined by ancestral sequences inferred by HyPhy. Amino acid substitutions are displayed in the middle of branches. read_hyphy ggtree geom_text aes"
+  },
+  {
+    "title": "Figure 5.10: Annotating tree with amino acid substitution and dN/dS inferred by CODEML",
+    "section": "5.2.5\u20135.3 Evolutionary Uncertainty Intervals and Software Annotations",
+    "context": "5. Phylogenetic Tree Annotation \u00b7 5.2.5\u20135.3 Evolutionary Uncertainty Intervals and Software Annotations",
+    "href": "chapter5.html#fig-5-10",
+    "keywords": "Annotating tree with amino acid substitution and dN/dS inferred by CODEML. Branches are rescaled and colored by dN/dS values, and amino acid substitutions are displayed on the middle of branches. read_codeml ggtree scale_color_continuous squish geom_text theme_tree2"
+  },
+  {
+    "title": "6. Visual Exploration of Phylogenetic Trees",
+    "section": "6. Visual Exploration of Phylogenetic Trees",
+    "context": "Part II: Tree Visualization, Interpretation and Annotation",
+    "href": "chapter6.html",
+    "keywords": "Exploring large trees requires zooming onto focal clades, collapsing redundant subtrees, grouping OTUs, adjusting sister-node ordering, and rotating circular sectors without mutating underlying evolutionary relationships."
+  },
+  {
+    "title": "6.1\u20136.2 Viewing Selected Clades and Rescaling Vertical Span",
+    "section": "6. Visual Exploration of Phylogenetic Trees",
+    "context": "6. Visual Exploration of Phylogenetic Trees",
+    "href": "chapter6.html#view-scale",
+    "keywords": "<p><code>viewClade()</code> focuses the coordinate window onto any MRCA clade, while <code>scaleClade()</code> compresses or expands clade spacing vertically without altering branch lengths.</p>"
+  },
+  {
+    "title": "Figure 6.1: Viewing a selected clade of a tree",
+    "section": "6.1\u20136.2 Viewing Selected Clades and Rescaling Vertical Span",
+    "context": "6. Visual Exploration of Phylogenetic Trees \u00b7 6.1\u20136.2 Viewing Selected Clades and Rescaling Vertical Span",
+    "href": "chapter6.html#fig-6-1",
+    "keywords": "Viewing a selected clade of a tree. An example tree used to demonstrate how ggtree supports exploring or manipulating a phylogenetic tree visually (A), and viewing a selected clade defined by MRCA('I', 'L') via viewClade() (B). ggtree geom_tiplab viewClade MRCA plot_list"
+  },
+  {
+    "title": "Figure 6.2: Scaling selected clade",
+    "section": "6.1\u20136.2 Viewing Selected Clades and Rescaling Vertical Span",
+    "context": "6. Visual Exploration of Phylogenetic Trees \u00b7 6.1\u20136.2 Viewing Selected Clades and Rescaling Vertical Span",
+    "href": "chapter6.html#fig-6-2",
+    "keywords": "Scaling selected clade. Clades can be zoomed in (scale > 1) to highlight or zoomed out (scale < 1) via scaleClade() to save vertical space. groupClade ggtree scale_color_manual scaleClade plot_list"
+  },
+  {
+    "title": "6.3 Collapsing and Expanding Clades",
+    "section": "6. Visual Exploration of Phylogenetic Trees",
+    "context": "6. Visual Exploration of Phylogenetic Trees",
+    "href": "chapter6.html#collapse-expand",
+    "keywords": "<p><code>collapse()</code> hides subtrees or summarizes them as triangular wedges (<code>mode='max'</code>, <code>'min'</code>, or <code>'mixed'</code>) with full reversibility via <code>expand()</code>.</p>"
+  },
+  {
+    "title": "Figure 6.3: Collapsing selected clades and expanding collapsed clades",
+    "section": "6.3 Collapsing and Expanding Clades",
+    "context": "6. Visual Exploration of Phylogenetic Trees \u00b7 6.3 Collapsing and Expanding Clades",
+    "href": "chapter6.html#fig-6-3",
+    "keywords": "Collapsing selected clades and expanding collapsed clades. Selected clades can be collapsed (A) and expanded back cleanly via expand() (B). Green and red symbols mark the collapsed nodes. collapse expand geom_point2 groupClade plot_list"
+  },
+  {
+    "title": "Figure 6.4: Collapse clade as a triangle",
+    "section": "6.3 Collapsing and Expanding Clades",
+    "context": "6. Visual Exploration of Phylogenetic Trees \u00b7 6.3 Collapsing and Expanding Clades",
+    "href": "chapter6.html#fig-6-4",
+    "keywords": "Collapse clade as a triangle. 'max' takes the most distant tip (A), 'min' takes the closest tip (B), 'mixed' spans both closest and distant tips (C), custom triangle fill/border/alpha styling (D), and combining scaleClade() with collapse() (E). collapse scaleClade geom_tiplab groupClade plot_list"
+  },
+  {
+    "title": "6.4 Grouping OTUs on Clustering Trees",
+    "section": "6. Visual Exploration of Phylogenetic Trees",
+    "context": "6. Visual Exploration of Phylogenetic Trees",
+    "href": "chapter6.html#group-otu",
+    "keywords": "<p><code>dist()</code> and <code>bionj()</code> compute neighbor-joining trees directly from tabular traits, and <code>groupOTU()</code> assigns shared ancestral clade memberships across taxon sets.</p>"
+  },
+  {
+    "title": "Figure 6.5: Grouping OTUs",
+    "section": "6.4 Grouping OTUs on Clustering Trees",
+    "context": "6. Visual Exploration of Phylogenetic Trees \u00b7 6.4 Grouping OTUs on Clustering Trees",
+    "href": "chapter6.html#fig-6-5",
+    "keywords": "Grouping OTUs. A BioNJ clustering tree computed from Manhattan distances on the Iris dataset with species grouped via groupOTU() and colored by shared ancestry. DataFrame dist bionj ggtree groupOTU"
+  },
+  {
+    "title": "6.5\u20136.7 Rotating Clades, Opening Sectors, and Rotating Circular Trees",
+    "section": "6. Visual Exploration of Phylogenetic Trees",
+    "context": "6. Visual Exploration of Phylogenetic Trees",
+    "href": "chapter6.html#rotate-open",
+    "keywords": "<p>Reverse sibling order cleanly with <code>rotate()</code> and <code>flip()</code>, open closed circular trees into fans with <code>open_tree()</code>, and reorient entire polar trees using <code>rotate_tree()</code>.</p>"
+  },
+  {
+    "title": "Figure 6.6: Exploring tree structure via rotate and flip",
+    "section": "6.5\u20136.7 Rotating Clades, Opening Sectors, and Rotating Circular Trees",
+    "context": "6. Visual Exploration of Phylogenetic Trees \u00b7 6.5\u20136.7 Rotating Clades, Opening Sectors, and Rotating Circular Trees",
+    "href": "chapter6.html#fig-6-6",
+    "keywords": "Exploring tree structure. A clade (indicated by a dark green circle) in a tree (A) can be rotated by 180 degrees via rotate() (B), and the positions of its immediate descendant clades (red and blue) can be exchanged via flip() (C). groupClade geom_point2 rotate flip plot_list"
+  },
+  {
+    "title": "Figure 6.7: Transforming a tree to fan layout",
+    "section": "6.5\u20136.7 Rotating Clades, Opening Sectors, and Rotating Circular Trees",
+    "context": "6. Visual Exploration of Phylogenetic Trees \u00b7 6.5\u20136.7 Rotating Clades, Opening Sectors, and Rotating Circular Trees",
+    "href": "chapter6.html#fig-6-7",
+    "keywords": "Transforming a tree to a fan layout by opening a circular sector using open_tree(p, 180). open_tree geom_tiplab groupClade ggtree"
+  },
+  {
+    "title": "Figure 6.8: Rotating tree",
+    "section": "6.5\u20136.7 Rotating Clades, Opening Sectors, and Rotating Circular Trees",
+    "context": "6. Visual Exploration of Phylogenetic Trees \u00b7 6.5\u20136.7 Rotating Clades, Opening Sectors, and Rotating Circular Trees",
+    "href": "chapter6.html#fig-6-8",
+    "keywords": "Rotating tree. A circular or fan layout tree can be rotated by any specific angle using rotate_tree(). open_tree rotate_tree geom_tiplab ggtree"
+  },
+  {
+    "title": "Figure 6.9: Rotate selected clades",
+    "section": "6.5\u20136.7 Rotating Clades, Opening Sectors, and Rotating Circular Trees",
+    "context": "6. Visual Exploration of Phylogenetic Trees \u00b7 6.5\u20136.7 Rotating Clades, Opening Sectors, and Rotating Circular Trees",
+    "href": "chapter6.html#fig-6-9",
+    "keywords": "Rotate selected clades. Four internal nodes were selected to rotate independently (red symbols). rtree set_seed ggtree geom_tiplab rotate geom_point2 plot_list"
+  },
+  {
+    "title": "Figure 6.10: Open tree with different angles",
+    "section": "6.5\u20136.7 Rotating Clades, Opening Sectors, and Rotating Circular Trees",
+    "context": "6. Visual Exploration of Phylogenetic Trees \u00b7 6.5\u20136.7 Rotating Clades, Opening Sectors, and Rotating Circular Trees",
+    "href": "chapter6.html#fig-6-10",
+    "keywords": "Open tree with different angles (0 to 270 degrees) converting a circular layout into progressively narrower fans. rtree set_seed ggtree open_tree ggtitle plot_list"
+  },
+  {
+    "title": "Figure 6.11: Rotate tree with different angles",
+    "section": "6.5\u20136.7 Rotating Clades, Opening Sectors, and Rotating Circular Trees",
+    "context": "6. Visual Exploration of Phylogenetic Trees \u00b7 6.5\u20136.7 Rotating Clades, Opening Sectors, and Rotating Circular Trees",
+    "href": "chapter6.html#fig-6-11",
+    "keywords": "Rotate tree with different angles (0 to 270 degrees) spinning the circular layout while highlighting focal node 6. rtree set_seed ggtree geom_point2 rotate_tree ggtitle plot_list"
+  },
+  {
+    "title": "7. Plotting Tree with Data",
+    "section": "7. Plotting Tree with Data",
+    "context": "Part II: Tree Visualization, Interpretation and Annotation",
+    "href": "chapter7.html",
+    "keywords": "Modern phylogenomics integrates heterogeneous traits\u2014tip measurements, internal node support values, SNP alleles, sequence alignments, and arbitrary ggplot2 panels\u2014directly alongside tree tips with synchronized coordinate ordering."
+  },
+  {
+    "title": "7.1 Attaching External Tables via %<+%",
+    "section": "7. Plotting Tree with Data",
+    "context": "7. Plotting Tree with Data",
+    "href": "chapter7.html#attaching-data",
+    "keywords": "<p>Attach external tip and internal-node metadata frames via <code>%<+%</code> (or Python <code>%</code>) so discrete shapes, continuous fills, and point sizes map seamlessly across multiple layers.</p>"
+  },
+  {
+    "title": "Figure 7.1: Mapping tip and internal node data onto a mammal phylogeny via %<+%",
+    "section": "7.1 Attaching External Tables via %<+%",
+    "context": "7. Plotting Tree with Data \u00b7 7.1 Attaching External Tables via %<+%",
+    "href": "chapter7.html#fig-7-1",
+    "keywords": "Mammalian phylogeny annotated simultaneously with tip trophic habit/mass metadata (shape, color, size) and internal node vernacular names and posterior probabilities (filled labels) using the %<+% operator. read_tree read_table %<+% geom_tiplab geom_tippoint geom_label scale_size_continuous scale_fill_gradientn"
+  },
+  {
+    "title": "7.2 Aligning Panels with Tree Tips via geom_facet()",
+    "section": "7. Plotting Tree with Data",
+    "context": "7. Plotting Tree with Data",
+    "href": "chapter7.html#geom-facet",
+    "keywords": "<p><code>geom_facet()</code> aligns external datasets in horizontal panels paired row-for-row with tree tips using layers such as SNP <code>geom_point(shape='|')</code> and horizontal <code>geom_col</code> trait bars.</p>"
+  },
+  {
+    "title": "Figure 7.2: Visualizing SNPs and trait bars alongside a phylogeny via geom_facet()",
+    "section": "7.2 Aligning Panels with Tree Tips via geom_facet()",
+    "context": "7. Plotting Tree with Data \u00b7 7.2 Aligning Panels with Tree Tips via geom_facet()",
+    "href": "chapter7.html#fig-7-2",
+    "keywords": "Associating phylogenetic relationships (Tree) with strain SNP allele profiles (SNP panel) and summary trait bars (Trait panel) colored by geographic location using geom_facet(). read_tree read_table DataFrame ggtree geom_facet geom_point geom_col theme_tree2"
+  },
+  {
+    "title": "7.3 Matrix Heatmaps and Multiple Fill Scales",
+    "section": "7. Plotting Tree with Data",
+    "context": "7. Plotting Tree with Data",
+    "href": "chapter7.html#gheatmap",
+    "keywords": "<p><code>gheatmap()</code> aligns discrete or continuous matrices to rectangular or circular trees, while <code>new_scale_fill()</code> cleanly resets fill scales between concentric heatmaps.</p>"
+  },
+  {
+    "title": "Figure 7.3: Visualizing an H3N2 BEAST phylogeny with its 8-segment genotype matrix via gheatmap()",
+    "section": "7.3 Matrix Heatmaps and Multiple Fill Scales",
+    "context": "7. Plotting Tree with Data \u00b7 7.3 Matrix Heatmaps and Multiple Fill Scales",
+    "href": "chapter7.html#fig-7-3",
+    "keywords": "(A) Evolutionary tree scaled by substitutions per site paired with rotated column labels and a manual genotype palette. (B) Time-scaled BEAST phylogeny (mrsd='2013-01-01') with aligned dotted tip extensions and calendar x-axis via scale_x_ggtree(). read_beast read_table gheatmap scale_fill_manual scale_x_ggtree plot_list theme_tree2"
+  },
+  {
+    "title": "Figure 7.4: Stacking discrete and continuous circular heatmaps using new_scale_fill()",
+    "section": "7.3 Matrix Heatmaps and Multiple Fill Scales",
+    "context": "7. Plotting Tree with Data \u00b7 7.3 Matrix Heatmaps and Multiple Fill Scales",
+    "href": "chapter7.html#fig-7-4",
+    "keywords": "Circular phylogeny displaying a discrete inner matrix alongside an outer continuous matrix using independent viridis scales separated by new_scale_fill(). read_tree gheatmap new_scale_fill scale_fill_viridis_d scale_fill_viridis_c"
+  },
+  {
+    "title": "7.4 Visualizing Multiple Sequence Alignments via msaplot()",
+    "section": "7. Plotting Tree with Data",
+    "context": "7. Plotting Tree with Data",
+    "href": "chapter7.html#msaplot",
+    "keywords": "<p><code>msaplot()</code> reads FASTA sequences via <code>read_fasta()</code> and maps residue windows cleanly onto both rectangular and circular phylogenetic layouts.</p>"
+  },
+  {
+    "title": "Figure 7.5: Pairing a protein phylogeny with an amino-acid MSA in rectangular and circular layouts",
+    "section": "7.4 Visualizing Multiple Sequence Alignments via msaplot()",
+    "context": "7. Plotting Tree with Data \u00b7 7.4 Visualizing Multiple Sequence Alignments via msaplot()",
+    "href": "chapter7.html#fig-7-5",
+    "keywords": "(A) Full amino-acid alignment aligned to a rectangular tree via msaplot(). (B) Sequence window [120, 200] rendered radially inside circular tip labels. read_tree msaplot ggtree geom_tiplab plot_list xlim"
+  },
+  {
+    "title": "7.5 Tree-Aligned Composite Plots (aplot)",
+    "section": "7. Plotting Tree with Data",
+    "context": "7. Plotting Tree with Data",
+    "href": "chapter7.html#composite",
+    "keywords": "<p>Unlike naive <code>plot_grid()</code> stacking, composite methods <code>insert_left()</code> and <code>insert_right()</code> automatically reorder external <code>ggplot()</code> heatmaps and bar charts by tree tip y-coordinates.</p>"
+  },
+  {
+    "title": "Figure 7.6: Aligning ggplot2 panels to tree tips via insert_left() and insert_right()",
+    "section": "7.5 Tree-Aligned Composite Plots (aplot)",
+    "context": "7. Plotting Tree with Data \u00b7 7.5 Tree-Aligned Composite Plots (aplot)",
+    "href": "chapter7.html#fig-7-6",
+    "keywords": "(A) Naive side-by-side placement with plot_grid() leaves heatmap rows and bars unaligned to the tree. (B) Composite layout using insert_left() and insert_right() automatically reorders rows and drops non-tree categories to match tree tip order. rtree ggplot geom_tile geom_col plot_grid insert_left insert_right plot_list"
+  },
+  {
+    "title": "8. Annotating Tree with Silhouette Images and Sub-plots",
+    "section": "8. Annotating Tree with Silhouette Images and Sub-plots",
+    "context": "Part II: Tree Visualization, Interpretation and Annotation",
+    "href": "chapter8.html",
+    "keywords": "Photographic tip images, taxonomic silhouettes, ancestral probability subplots, and phylomoji icons communicate biological identity immediately alongside branch structure."
+  },
+  {
+    "title": "8.1 Annotating Trees with Images (geom_tiplab & geom_image)",
+    "section": "8. Annotating Tree with Silhouette Images and Sub-plots",
+    "context": "8. Annotating Tree with Silhouette Images and Sub-plots",
+    "href": "chapter8.html#frog-images",
+    "keywords": "<p>Map local JPEG/PNG image paths directly via <code>geom_tiplab(geom='image')</code> aligned to tips or embed standalone canvas badges using <code>geom_image()</code>.</p>"
+  },
+  {
+    "title": "Figure 8.1: Labelling frog family tips and canvas corner with JPEG photographs",
+    "section": "8.1 Annotating Trees with Images (geom_tiplab & geom_image)",
+    "context": "8. Annotating Tree with Silhouette Images and Sub-plots \u00b7 8.1 Annotating Trees with Images (geom_tiplab & geom_image)",
+    "href": "chapter8.html#fig-8-1",
+    "keywords": "Using geom_tiplab(geom='image') to align frog family photographs alongside boxed family labels and placing an illustrative icon in canvas space via geom_image(). read_tree geom_tiplab geom_image DataFrame xlim ylim"
+  },
+  {
+    "title": "8.2 PhyloPic Organism Silhouettes",
+    "section": "8. Annotating Tree with Silhouette Images and Sub-plots",
+    "context": "8. Annotating Tree with Silhouette Images and Sub-plots",
+    "href": "chapter8.html#phylopic",
+    "keywords": "<p>Resolve taxon names cleanly via <code>phylopic_uid()</code> and color vector silhouettes along discrete or continuous biological covariates such as body mass.</p>"
+  },
+  {
+    "title": "Figure 8.2: Annotating a hominoid phylogeny with colored PhyloPic silhouettes",
+    "section": "8.2 PhyloPic Organism Silhouettes",
+    "context": "8. Annotating Tree with Silhouette Images and Sub-plots \u00b7 8.2 PhyloPic Organism Silhouettes",
+    "href": "chapter8.html#fig-8-2",
+    "keywords": "Querying PhyloPic silhouette IDs via phylopic_uid(), joining body mass measurements, and coloring tip silhouettes along a continuous viridis scale. read_tree phylopic_uid geom_tiplab scale_color_viridis_c %<+%"
+  },
+  {
+    "title": "8.3 Ancestral State Reconstruction & Sub-plot Insets",
+    "section": "8. Annotating Tree with Silhouette Images and Sub-plots",
+    "context": "8. Annotating Tree with Silhouette Images and Sub-plots",
+    "href": "chapter8.html#insets",
+    "keywords": "<p>Compute marginal ancestral likelihoods with <code>ace(..., model='ER', type='discrete')</code>, construct <code>nodebar()</code> and <code>nodepie()</code> micro-charts (including mixed mixes), and overlay them using <code>geom_inset()</code>.</p>"
+  },
+  {
+    "title": "Figure 8.3: Annotating internal nodes with marginal likelihood bar (A) and pie (B) insets",
+    "section": "8.3 Ancestral State Reconstruction & Sub-plot Insets",
+    "context": "8. Annotating Tree with Silhouette Images and Sub-plots \u00b7 8.3 Ancestral State Reconstruction & Sub-plot Insets",
+    "href": "chapter8.html#fig-8-3",
+    "keywords": "Estimating ancestral Anolis ecomorph probabilities with ace(..., model='ER', type='discrete') and overlaying stacked bar charts (A) or pie charts (B) on internal branches and nodes via geom_inset(). getStates ace nodebar nodepie geom_inset plot_list"
+  },
+  {
+    "title": "Figure 8.4: Combining mixed pie and stacked bar subplots on internal nodes",
+    "section": "8.3 Ancestral State Reconstruction & Sub-plot Insets",
+    "context": "8. Annotating Tree with Silhouette Images and Sub-plots \u00b7 8.3 Ancestral State Reconstruction & Sub-plot Insets",
+    "href": "chapter8.html#fig-8-4",
+    "keywords": "Mixing nodepie() and nodebar() micro-charts inside a single geom_inset() dictionary on the Anolis ecomorph phylogeny. getStates ace nodebar nodepie geom_inset"
+  },
+  {
+    "title": "8.4 Phylomoji and Apple Color Emoji",
+    "section": "8. Annotating Tree with Silhouette Images and Sub-plots",
+    "context": "8. Annotating Tree with Silhouette Images and Sub-plots",
+    "href": "chapter8.html#phylomoji",
+    "keywords": "<p>Render tip labels, circular/fan leaves, and monochrome clade annotations using <code>parse='emoji'</code> on rectangular, rotated fan, and Apple Color Emoji trees.</p>"
+  },
+  {
+    "title": "Figure 8.5: Parsing tip labels as phylomoji alongside taxonomic pill labels",
+    "section": "8.4 Phylomoji and Apple Color Emoji",
+    "context": "8. Annotating Tree with Silhouette Images and Sub-plots \u00b7 8.4 Phylomoji and Apple Color Emoji",
+    "href": "chapter8.html#fig-8-5",
+    "keywords": "Tip identifiers mapped to emoji graphics with geom_tiplab(parse='emoji') paired with boxed taxonomic clade descriptions on a dashed tree. read_tree ggtree geom_tiplab DataFrame xlim ylim"
+  },
+  {
+    "title": "Figure 8.6: Rendering phylomoji radially across circular and rotated fan trees",
+    "section": "8.4 Phylomoji and Apple Color Emoji",
+    "context": "8. Annotating Tree with Silhouette Images and Sub-plots \u00b7 8.4 Phylomoji and Apple Color Emoji",
+    "href": "chapter8.html#fig-8-6",
+    "keywords": "(A) Closed circular layout, (B) open_tree(..., angle=200) rotated -90 degrees to form an upward fan, and (C) unrotated 200-degree fan layout. ggtree geom_tiplab open_tree rotate_tree plot_list"
+  },
+  {
+    "title": "Figure 8.7: Annotating clades with vector emoji icons via geom_cladelab(parse='emoji')",
+    "section": "8.4 Phylomoji and Apple Color Emoji",
+    "context": "8. Annotating Tree with Silhouette Images and Sub-plots \u00b7 8.4 Phylomoji and Apple Color Emoji",
+    "href": "chapter8.html#fig-8-7",
+    "keywords": "Using monochrome tinted vector emojis directly as aligned clade labels on a 30-taxon random phylogeny. rtree geom_cladelab scale_color_manual DataFrame"
+  },
+  {
+    "title": "Figure 8.8: Rendering full-color Apple Color Emoji tip icons directly inside SVG",
+    "section": "8.4 Phylomoji and Apple Color Emoji",
+    "context": "8. Annotating Tree with Silhouette Images and Sub-plots \u00b7 8.4 Phylomoji and Apple Color Emoji",
+    "href": "chapter8.html#fig-8-8",
+    "keywords": "Extracting native color glyphs from Apple Color Emoji and embedding them as crisp vector-aligned tip labels. read_tree ggtree geom_tiplab xlim ylim"
+  },
+  {
+    "title": "9. ggtree for Other Tree-like Objects",
+    "section": "9. ggtree for Other Tree-like Objects",
+    "context": "Part III: ggtree Extensions",
+    "href": "chapter9.html",
+    "keywords": "Phylogenetic trait containers, taxonomic hierarchies, microbiome abundance tables, agglomerative clustering dendrograms, directed k-ary graphs, and general parent-child edge lists fortify into a uniform tree coordinate grammar."
+  },
+  {
+    "title": "9.1 phylo4d, ade4 Phylog, and phyloseq Objects",
+    "section": "9. ggtree for Other Tree-like Objects",
+    "context": "9. ggtree for Other Tree-like Objects",
+    "href": "chapter9.html#phylobase-ade4",
+    "keywords": "<p><code>ggtree()</code> natively visualizes <code>phylo4</code>/<code>phylo4d</code> trait tables, <code>taxo2phylog()</code> rank hierarchies, and <code>phyloseq()</code> microbiome abundance staggers and <code>geom_density_ridges</code> facets.</p>"
+  },
+  {
+    "title": "Figure 9.1: Plotting phylo4d trait bubble matrices (A) and continuous trait heatmaps (B)",
+    "section": "9.1 phylo4d, ade4 Phylog, and phyloseq Objects",
+    "context": "9. ggtree for Other Tree-like Objects \u00b7 9.1 phylo4d, ade4 Phylog, and phyloseq Objects",
+    "href": "chapter9.html#fig-9-1",
+    "keywords": "(A) Reproducing phylobase's proportional open-circle trait display directly from a phylo4d object. (B) Presenting the same Geospiza morphometric traits as a continuous heatmap via gheatmap(). phylo4 phylo4d ggtree geom_tippoint scale_size_continuous gheatmap plot_list"
+  },
+  {
+    "title": "Figure 9.2: Visualizing a nested taxonomic phylog tree object",
+    "section": "9.1 phylo4d, ade4 Phylog, and phyloseq Objects",
+    "context": "9. ggtree for Other Tree-like Objects \u00b7 9.1 phylo4d, ade4 Phylog, and phyloseq Objects",
+    "href": "chapter9.html#fig-9-2",
+    "keywords": "Converting genus, family, and order hierarchy columns into a Phylog tree via as_taxo() and taxo2phylog(), labeling both species tips and internal taxonomic ranks. read_table as_taxo taxo2phylog ggtree geom_tiplab geom_nodelab hexpand"
+  },
+  {
+    "title": "Figure 9.3: Reproducing phyloseq::plot_tree() for Chlamydiae OTU abundances",
+    "section": "9.1 phylo4d, ade4 Phylog, and phyloseq Objects",
+    "context": "9. ggtree for Other Tree-like Objects \u00b7 9.1 phylo4d, ade4 Phylog, and phyloseq Objects",
+    "href": "chapter9.html#fig-9-3",
+    "keywords": "Staggering sample observations horizontally by tip via Phyloseq fortification and encoding log-transformed Abundance, Family shape, SampleType color, and Genus labels. read_tree read_table phyloseq ggtree geom_point geom_nodelab geom_tiplab scale_size_continuous log_trans"
+  },
+  {
+    "title": "Figure 9.4: Combining an Order-agglomerated phylogeny with abundance density ridgelines",
+    "section": "9.1 phylo4d, ade4 Phylog, and phyloseq Objects",
+    "context": "9. ggtree for Other Tree-like Objects \u00b7 9.1 phylo4d, ade4 Phylog, and phyloseq Objects",
+    "href": "chapter9.html#fig-9-4",
+    "keywords": "Coloring microbial tree tips by Phylum and pairing each tip with its sample abundance density ridgeline via geom_facet(..., geom=geom_density_ridges). read_tree read_table phyloseq ggtree geom_facet geom_density_ridges guide_legend"
+  },
+  {
+    "title": "9.2 Hierarchical Clustering Dendrograms (hclust & cutree)",
+    "section": "9. ggtree for Other Tree-like Objects",
+    "context": "9. ggtree for Other Tree-like Objects",
+    "href": "chapter9.html#hclust",
+    "keywords": "<p>Cluster distance matrices via <code>hclust()</code>, cut subtrees with <code>cutree()</code>, highlight clades via <code>groupClade()</code>, and orient top-down with <code>layout_dendrogram()</code>.</p>"
+  },
+  {
+    "title": "Figure 9.5: Visualizing a clustered mtcars dendrogram with groupClade and cylinder badges",
+    "section": "9.2 Hierarchical Clustering Dendrograms (hclust & cutree)",
+    "context": "9. ggtree for Other Tree-like Objects \u00b7 9.2 Hierarchical Clustering Dendrograms (hclust & cutree)",
+    "href": "chapter9.html#fig-9-5",
+    "keywords": "Hierarchical clustering dendrogram cut into k=4 groups via cutree(), colored by subtree with groupClade(), displayed top-down via layout_dendrogram(), and annotated with cylinder count badges. read_table dist hclust cutree MRCA groupClade layout_dendrogram theme_dendrogram scale_color_brewer"
+  },
+  {
+    "title": "9.3 Directed Tree Graphs (graph_tree)",
+    "section": "9. ggtree for Other Tree-like Objects",
+    "context": "9. ggtree for Other Tree-like Objects",
+    "href": "chapter9.html#treegraph",
+    "keywords": "<p>Convert directed k-ary <code>graph_tree()</code> graphs into slanted dendrograms with selective per-edge <code>arrow(length=unit(...))</code> arrowheads.</p>"
+  },
+  {
+    "title": "Figure 9.6: Visualizing a directed 3-ary tree graph with per-edge arrows",
+    "section": "9.3 Directed Tree Graphs (graph_tree)",
+    "context": "9. ggtree for Other Tree-like Objects \u00b7 9.3 Directed Tree Graphs (graph_tree)",
+    "href": "chapter9.html#fig-9-6",
+    "keywords": "Converting a directed 40-node ternary TreeGraph into a top-down slanted tree with selective terminal edge arrowheads and numbered leaf nodes. graph_tree ggtree arrow unit rep geom_point geom_tiplab layout_dendrogram"
+  },
+  {
+    "title": "9.4 Arbitrary Hierarchical Edge Lists",
+    "section": "9. ggtree for Other Tree-like Objects",
+    "context": "9. ggtree for Other Tree-like Objects",
+    "href": "chapter9.html#edgelist",
+    "keywords": "<p>Any two-column parent\u2013child table converts via <code>as_phylo()</code> into a hierarchical tree ready for circular layouts and covariate mapping.</p>"
+  },
+  {
+    "title": "Figure 9.7: Visualizing global GNI2014 country hierarchy as a circular tree via as_phylo()",
+    "section": "9.4 Arbitrary Hierarchical Edge Lists",
+    "context": "9. ggtree for Other Tree-like Objects \u00b7 9.4 Arbitrary Hierarchical Edge Lists",
+    "href": "chapter9.html#fig-9-7",
+    "keywords": "Converting continent-to-country parent-child edge lists into a Phylo tree, coloring branches and labels by continent, and sizing tip points by population. read_table DataFrame as_phylo ggtree geom_tippoint geom_tiplab xlim"
+  },
+  {
+    "title": "10. ggtreeExtra for Presenting Data on Circular Layout",
+    "section": "10. ggtreeExtra for Presenting Data on Circular Layout",
+    "context": "Part III: ggtree Extensions",
+    "href": "chapter10.html",
+    "keywords": "While <code>geom_facet()</code> excels in side-by-side rectangular panels, radial metagenomics, microbiome, and population-genomics datasets frequently arrange external data layers around circular or fan trees using <code>geom_fruit()</code>."
+  },
+  {
+    "title": "10.1 Introduction",
+    "section": "10. ggtreeExtra for Presenting Data on Circular Layout",
+    "context": "10. ggtreeExtra for Presenting Data on Circular Layout",
+    "href": "chapter10.html#fruit-intro",
+    "keywords": "<p>The <code>ggtreeExtra</code> grammar\u2014<code>geom_fruit()</code> alongside <code>geom_star()</code>, <code>new_scale_fill()</code>, and <code>new_scale_colour()</code>\u2014aligns boxplots, symbol rings, heatmaps, and barplots radially onto circular or rectangular phylogenies using a unified tidy API.</p>"
+  },
+  {
+    "title": "10.2 Aligning Graphs to the Tree Based on a Tree Structure",
+    "section": "10. ggtreeExtra for Presenting Data on Circular Layout",
+    "context": "10. ggtreeExtra for Presenting Data on Circular Layout",
+    "href": "chapter10.html#fruit-structure",
+    "keywords": "<p>Pair <code>ggtree(..., layout='fan', open_angle=10)</code> and <code>rotate_tree(..., -90)</code> with <code>geom_fruit(data=melt_simple, geom=geom_boxplot, mapping=aes(y='OTU', x='val', group='label', fill='Phylum'))</code> plus <code>axis_params</code> and <code>grid_params</code> to project abundance distributions radially per OTU.</p>"
+  },
+  {
+    "title": "Figure 10.1: Phylogenetic tree with OTU abundance distribution",
+    "section": "10.2 Aligning Graphs to the Tree Based on a Tree Structure",
+    "context": "10. ggtreeExtra for Presenting Data on Circular Layout \u00b7 10.2 Aligning Graphs to the Tree Based on a Tree Structure",
+    "href": "chapter10.html#fig-10-1",
+    "keywords": "Species abundance distribution was aligned to the tree and visualized as boxplots. The Phylum information was used to color symbolic points on the tree and also species abundance distributions. read_tree read_table ggtree aes geom_tippoint rotate_tree geom_fruit geom_boxplot scale_fill_discrete guide_legend theme"
+  },
+  {
+    "title": "10.3 Aligning Multiple Graphs to the Tree for Multi-dimensional Data",
+    "section": "10. ggtreeExtra for Presenting Data on Circular Layout",
+    "context": "10. ggtreeExtra for Presenting Data on Circular Layout",
+    "href": "chapter10.html#fruit-multi",
+    "keywords": "<p>Chain clade highlights (<code>geom_hilight</code>), curved italic clade labels (<code>geom_cladelab</code>), tip star glyphs (<code>geom_star</code>), body-site tile rings (<code>geom_fruit(geom=geom_tile, aes(alpha=...))</code>), and outer prevalence bars (<code>geom_fruit(geom=geom_bar)</code>)\u2014and switch seamlessly between circular and rectangular coordinates using <code>layout_rectangular()</code>.</p>"
+  },
+  {
+    "title": "Figure 10.2: Presenting microbiome data (abundance and location) on a phylogenetic tree",
+    "section": "10.3 Aligning Multiple Graphs to the Tree for Multi-dimensional Data",
+    "context": "10. ggtreeExtra for Presenting Data on Circular Layout \u00b7 10.3 Aligning Multiple Graphs to the Tree for Multi-dimensional Data",
+    "href": "chapter10.html#fig-10-2",
+    "keywords": "The tree was annotated with symbolic points, highlighted clades, and clade labels. Two geom_fruit() layers were used to visualize location and abundance information. read_tree read_table factor nodeid geom_hilight geom_cladelab geom_star scale_fill_manual scale_starshape_manual scale_size_continuous new_scale_fill geom_fruit geom_tile geom_bar scale_alpha_continuous geom_treescale guide_legend theme"
+  },
+  {
+    "title": "Figure 10.3: Illustration of using geom_fruit() in rectangular tree layout",
+    "section": "10.3 Aligning Multiple Graphs to the Tree for Multi-dimensional Data",
+    "context": "10. ggtreeExtra for Presenting Data on Circular Layout \u00b7 10.3 Aligning Multiple Graphs to the Tree for Multi-dimensional Data",
+    "href": "chapter10.html#fig-10-3",
+    "keywords": "The figure was produced by transforming Figure 10.2 using the rectangular layout. Transforming a rectangular layout tree to a circular layout tree is also supported. layout_rectangular geom_fruit geom_tile geom_bar geom_star theme"
+  },
+  {
+    "title": "10.4 Examples for Population Genetics",
+    "section": "10. ggtreeExtra for Presenting Data on Circular Layout",
+    "context": "10. ggtreeExtra for Presenting Data on Circular Layout",
+    "href": "chapter10.html#fruit-popgen",
+    "keywords": "<p>Combine lineage coloring via <code>groupOTU()</code>, dotted country tip connectors via <code>geom_tiplab(align=True)</code>, antifungal susceptibility heatmap rings, and point-mutation or haplotype spike rings (<code>geom_star(starshape=26)</code>) on large population cohorts such as <em>Candida auris</em> and 1,832 <em>S. Typhi</em> isolates.</p>"
+  },
+  {
+    "title": "Figure 10.4: Antifungal susceptibility and point mutations in drug targets in Candida auris",
+    "section": "10.4 Examples for Population Genetics",
+    "context": "10. ggtreeExtra for Presenting Data on Circular Layout \u00b7 10.4 Examples for Population Genetics",
+    "href": "chapter10.html#fig-10-4",
+    "keywords": "Antifungal susceptibility and point mutations in drug targets in Candida auris visualized with groupOTU(), aligned country tip labels, geom_fruit(geom=geom_tile), and geom_fruit(geom=geom_star). read_tree read_table groupOTU factor geom_tippoint geom_tiplab scale_colour_manual new_scale_colour new_scale_fill geom_fruit geom_tile geom_star scale_fill_manual scale_starshape_manual guide_legend theme"
+  },
+  {
+    "title": "Figure 10.5: Population structure of the 1,832 S. Typhi isolates",
+    "section": "10.4 Examples for Population Genetics",
+    "context": "10. ggtreeExtra for Presenting Data on Circular Layout \u00b7 10.4 Examples for Population Genetics",
+    "href": "chapter10.html#fig-10-5",
+    "keywords": "Circular phylogeny of 1,832 Salmonella Typhi isolates with tip country points, inward-pointing H58 haplotype radial spike symbols via geom_star(), and isolation year ring heatmap via geom_fruit(). read_tree read_table factor geom_tippoint scale_colour_manual geom_fruit geom_star geom_tile scale_fill_manual new_scale_fill guide_legend theme"
+  },
+  {
+    "title": "10.5 Summary",
+    "section": "10. ggtreeExtra for Presenting Data on Circular Layout",
+    "context": "10. ggtreeExtra for Presenting Data on Circular Layout",
+    "href": "chapter10.html#fruit-summary",
+    "keywords": "<p>Because <code>geom_fruit()</code> tracks cumulative radial offsets and coordinates dynamically with the underlying tree layout, multi-ring annotations remain aligned across rectangular, circular, and fan topologies.</p>"
+  },
+  {
+    "title": "11. Other ggtree Extensions",
+    "section": "11. Other ggtree Extensions",
+    "context": "Part III: ggtree Extensions",
+    "href": "chapter11.html",
+    "keywords": "Replicating Chapter 11 extensions in <code>ggtree-py</code>, including differential taxonomic clade cladograms via <code>ggdiffclade()</code> (ported from <em>MicrobiotaProcess</em>) and phylogenetic split networks via <code>read_nexus_networx()</code> + <code>ggsplitnet()</code> (ported from <em>phangorn</em> / <em>tanggle</em>)."
+  },
+  {
+    "title": "11.1 Visualizing Quantitative Data with Tree Structure (ggdiffclade)",
+    "section": "11. Other ggtree Extensions",
+    "context": "11. Other ggtree Extensions",
+    "href": "chapter11.html#microbiota-diffclade",
+    "keywords": "<p><code>ggdiffclade()</code> constructs a hierarchical taxonomy cladogram directly from taxonomic assignment tables, highlights statistically enriched lineages radially, and annotates macro phyla alongside alphabetical legend keys for finer clades.</p>"
+  },
+  {
+    "title": "Figure 11.1: Visualize differential taxonomy clade.",
+    "section": "11.1 Visualizing Quantitative Data with Tree Structure (ggdiffclade)",
+    "context": "11. Other ggtree Extensions \u00b7 11.1 Visualizing Quantitative Data with Tree Structure (ggdiffclade)",
+    "href": "chapter11.html#fig-11-1",
+    "keywords": "Visualize differential taxonomy clade. ggdiffclade scale_fill_manual guides guide_legend theme"
+  },
+  {
+    "title": "11.2 Visualizing Phylogenetic Network Using Tanggle (ggsplitnet)",
+    "section": "11. Other ggtree Extensions",
+    "context": "11. Other ggtree Extensions",
+    "href": "chapter11.html#phylo-network",
+    "keywords": "<p>Parses Nexus <code>NETWORK</code> split-network blocks with <code>read_nexus_networx()</code> and renders reticulate evolutionary edges via <code>ggsplitnet()</code> and <code>geom_splitnet()</code>.</p>"
+  },
+  {
+    "title": "Figure 11.2: Phylogenetic network.",
+    "section": "11.2 Visualizing Phylogenetic Network Using Tanggle (ggsplitnet)",
+    "context": "11. Other ggtree Extensions \u00b7 11.2 Visualizing Phylogenetic Network Using Tanggle (ggsplitnet)",
+    "href": "chapter11.html#fig-11-2",
+    "keywords": "Phylogenetic network. read_nexus_networx ggsplitnet geom_splitnet geom_tiplab2 rainbow"
+  },
+  {
+    "title": "12. ggtree Utilities",
+    "section": "12. ggtree Utilities",
+    "context": "Part III: ggtree Extensions",
+    "href": "chapter12.html",
+    "keywords": "Complete reproduction of all 11 Chapter 12 utility workflows in <code>ggtree-py</code>: facet proportion and label control, subset-aware geometric layers, dynamic layout transformations, per-panel axis limits, tidy filtering and unnesting, tip-order extraction, padded tip labels, and interactive SVG clade annotation."
+  },
+  {
+    "title": "12.1.1 facet_widths",
+    "section": "12. ggtree Utilities",
+    "context": "12. ggtree Utilities",
+    "href": "chapter12.html#facet-widths",
+    "keywords": "<p><code>facet_widths()</code> adjusts relative panel column widths consistently for both composite <code>ggtree + geom_facet</code> plates and standard multi-facet <code>ggplot</code> panels.</p>"
+  },
+  {
+    "title": "Figure 12.1: Adjust relative widths of ggplot facets.",
+    "section": "12.1.1 facet_widths",
+    "context": "12. ggtree Utilities \u00b7 12.1.1 facet_widths",
+    "href": "chapter12.html#fig-12-1",
+    "keywords": "Adjust relative widths of ggplot facets. The facet_widths() function works with ggtree (A) as well as ggplot (B). facet_widths geom_facet geom_bar facet_grid plot_list"
+  },
+  {
+    "title": "12.1.2 facet_labeller",
+    "section": "12. ggtree Utilities",
+    "context": "12. ggtree Utilities",
+    "href": "chapter12.html#facet-labeller",
+    "keywords": "<p><code>facet_labeller()</code> renames one or more facet strip headers and composes seamlessly with <code>facet_widths()</code>.</p>"
+  },
+  {
+    "title": "Figure 12.2: Rename facet labels.",
+    "section": "12.1.2 facet_labeller",
+    "context": "12. ggtree Utilities \u00b7 12.1.2 facet_labeller",
+    "href": "chapter12.html#fig-12-2",
+    "keywords": "Rename facet labels. Rename multiple labels simultaneously (A) or only for a specific one (B) are all supported. facet_labeller() can combine with facet_widths() to rename facet label and then adjust relative widths (B). facet_labeller facet_widths geom_facet geom_bar plot_list"
+  },
+  {
+    "title": "12.2 Geometric Layers",
+    "section": "12. ggtree Utilities",
+    "context": "12. ggtree Utilities",
+    "href": "chapter12.html#geom-layers-subset",
+    "keywords": "<p><code>geom_text2()</code> and <code>geom_label2()</code> evaluate row-level <code>subset</code> predicates identically in both Cartesian <code>ggplot</code> charts and phylogenetic trees.</p>"
+  },
+  {
+    "title": "Figure 12.3: Geometric layers that support subsetting.",
+    "section": "12.2 Geometric Layers",
+    "context": "12. ggtree Utilities \u00b7 12.2 Geometric Layers",
+    "href": "chapter12.html#fig-12-3",
+    "keywords": "Geometric layers that support subsetting. These layers work with ggplot2 (A) and ggtree (B). geom_text2 geom_label2 coord_cartesian theme_light plot_list"
+  },
+  {
+    "title": "12.3 Layout Utilities",
+    "section": "12. ggtree Utilities",
+    "context": "12. ggtree Utilities",
+    "href": "chapter12.html#layout-utilities",
+    "keywords": "<p>Layout modifiers (<code>layout_dendrogram()</code>, <code>layout_rectangular()</code>, <code>layout_circular()</code>, <code>layout_fan()</code>, <code>layout_inward_circular()</code>) recompute coordinate geometry dynamically without rebuilding tree layers.</p>"
+  },
+  {
+    "title": "Figure 12.4: Layout functions for transforming among different layouts.",
+    "section": "12.3 Layout Utilities",
+    "context": "12. ggtree Utilities \u00b7 12.3 Layout Utilities",
+    "href": "chapter12.html#fig-12-4",
+    "keywords": "Layout functions for transforming among different layouts. Default rectangular layout (A); transform rectangular to dendrogram layout (B); transform circular to rectangular layout (C); transform rectangular to circular layout (D); transform rectangular to fan layout (E); transform rectangular to inward circular layout (F). layout_dendrogram layout_rectangular layout_circular layout_fan layout_inward_circular plot_list"
+  },
+  {
+    "title": "12.4.1 Expand x Limit for a Specific Facet Panel",
+    "section": "12. ggtree Utilities",
+    "context": "12. ggtree Utilities",
+    "href": "chapter12.html#xlim-expand",
+    "keywords": "<p>Combine <code>xlim_tree()</code> and <code>xlim_expand(limits, panel)</code> to tune axis spans for individual <code>geom_facet()</code> or <code>facet_grid()</code> panels independently.</p>"
+  },
+  {
+    "title": "Figure 12.5: Setting xlim for user-specific facet panels.",
+    "section": "12.4.1 Expand x Limit for a Specific Facet Panel",
+    "context": "12. ggtree Utilities \u00b7 12.4.1 Expand x Limit for a Specific Facet Panel",
+    "href": "chapter12.html#fig-12-5",
+    "keywords": "Setting xlim for user-specific facet panels. Using xlim_tree() to set the Tree panel of the ggtree output (A) and xlim_expand() to set the Dot panel of the ggtree output (A) and the Virginica panel of the ggplot output (B). xlim_tree xlim_expand geom_facet facet_grid plot_list"
+  },
+  {
+    "title": "12.4.2 Expand Plot Limit by Ratio (hexpand / vexpand)",
+    "section": "12. ggtree Utilities",
+    "context": "12. ggtree Utilities",
+    "href": "chapter12.html#hexpand-vexpand",
+    "keywords": "<p><code>hexpand()</code> and <code>vexpand()</code> enlarge data bounds by a relative fraction in either direction (<code>direction=-1</code> expands left/bottom).</p>"
+  },
+  {
+    "title": "Figure 12.6: Expanding plot limits by a fraction of the x or y range.",
+    "section": "12.4.2 Expand Plot Limit by Ratio (hexpand / vexpand)",
+    "context": "12. ggtree Utilities \u00b7 12.4.2 Expand Plot Limit by Ratio (hexpand / vexpand)",
+    "href": "chapter12.html#fig-12-6",
+    "keywords": "Expanding plot limits by a fraction of the x or y range. Expand x limit at right-hand side by default (A), and expand x limit for left-hand side when direction = -1 and expand y limit at the upper side (B). hexpand vexpand geom_tiplab ggplot plot_list"
+  },
+  {
+    "title": "12.5.1 Filter Tree Data (td_filter)",
+    "section": "12. ggtree Utilities",
+    "context": "12. ggtree Utilities",
+    "href": "chapter12.html#td-filter",
+    "keywords": "<p>Pass <code>td_filter(...)</code> as layer <code>data</code> to restrict geometric layers to computed node subsets such as <code>offspring()</code> of an internal ancestor.</p>"
+  },
+  {
+    "title": "Figure 12.7: Filtering ggtree plot data in geom layers.",
+    "section": "12.5.1 Filter Tree Data (td_filter)",
+    "context": "12. ggtree Utilities \u00b7 12.5.1 Filter Tree Data (td_filter)",
+    "href": "chapter12.html#fig-12-7",
+    "keywords": "Filtering ggtree plot data in geom layers. Only selected tips (offspring of the node indicated by the blue circle point) were labeled. td_filter offspring geom_text geom_nodepoint"
+  },
+  {
+    "title": "12.5.2 Flatten List-Column Tree Data (td_unnest)",
+    "section": "12. ggtree Utilities",
+    "context": "12. ggtree Utilities",
+    "href": "chapter12.html#td-unnest",
+    "keywords": "<p>Use <code>nest()</code> to store multi-observation list columns per tip and <code>td_unnest()</code> (optionally composed with <code>_f=td_filter(...)</code>) to expand them during plotting.</p>"
+  },
+  {
+    "title": "Figure 12.8: Flattening ggtree plot data.",
+    "section": "12.5.2 Flatten List-Column Tree Data (td_unnest)",
+    "context": "12. ggtree Utilities \u00b7 12.5.2 Flatten List-Column Tree Data (td_unnest)",
+    "href": "chapter12.html#fig-12-8",
+    "keywords": "Flattening ggtree plot data. List-columns can be flattened by td_unnest() and two circle points were displayed on each tip simultaneously (A). Different tree data utilities can be combined to work together, e.g., filter data by td_filter(), and then flatten it by td_unnest()) (B). nest td_unnest td_filter scale_size plot_list"
+  },
+  {
+    "title": "12.6.1 Extract Tip Order (get_taxa_name)",
+    "section": "12. ggtree Utilities",
+    "context": "12. ggtree Utilities",
+    "href": "chapter12.html#get-taxa-name",
+    "keywords": "<p><code>get_taxa_name(p)</code> returns displayed tip labels in vertical top-to-bottom visual order matching the plotted tree topology.</p>"
+  },
+  {
+    "title": "Figure 12.9: An example tree for demonstrating get_taxa_name() function.",
+    "section": "12.6.1 Extract Tip Order (get_taxa_name)",
+    "context": "12. ggtree Utilities \u00b7 12.6.1 Extract Tip Order (get_taxa_name)",
+    "href": "chapter12.html#fig-12-9",
+    "keywords": "An example tree for demonstrating get_taxa_name() function. get_taxa_name geom_hilight geom_tiplab labs"
+  },
+  {
+    "title": "12.6.2 Padding Taxa Labels (label_pad)",
+    "section": "12. ggtree Utilities",
+    "context": "12. ggtree Utilities",
+    "href": "chapter12.html#label-pad",
+    "keywords": "<p><code>label_pad()</code> left-pads tip names with dots or spaces to uniform character width for crisp monospace right-alignment alongside <code>geom_tiplab(..., align=True)</code>.</p>"
+  },
+  {
+    "title": "Figure 12.10: Align tip label to the end.",
+    "section": "12.6.2 Padding Taxa Labels (label_pad)",
+    "context": "12. ggtree Utilities \u00b7 12.6.2 Padding Taxa Labels (label_pad)",
+    "href": "chapter12.html#fig-12-10",
+    "keywords": "Align tip label to the end. With a dotted line (A) and without a dotted line (B). label_pad geom_tiplab xlim plot_list"
+  },
+  {
+    "title": "12.7 Interactive ggtree Annotation (identify)",
+    "section": "12. ggtree Utilities",
+    "context": "12. ggtree Utilities",
+    "href": "chapter12.html#interactive-identify",
+    "keywords": "<p>Interactive clade highlighting, labeling, and hover inspection powered by embedded SVG tooltips (<code>geom_hilight_interactive</code>, <code>geom_cladelab_interactive</code>, <code>geom_point_interactive</code>, <code>geom_tiplab_interactive</code>). Hover over nodes, tips, or highlighted clades below to test live tooltips.</p>"
+  },
+  {
+    "title": "Figure 12.11: Interactive phylogenetic tree using identify() method.",
+    "section": "12.7 Interactive ggtree Annotation (identify)",
+    "context": "12. ggtree Utilities \u00b7 12.7 Interactive ggtree Annotation (identify)",
+    "href": "chapter12.html#fig-12-11",
+    "keywords": "Interactive phylogenetic tree using identify() method. Highlighting, labelling and rotating clades are all supported. identify geom_hilight_interactive geom_cladelab_interactive geom_point_interactive geom_tiplab_interactive"
+  },
+  {
+    "title": "13. Gallery of Reproducible Examples",
+    "section": "13. Gallery of Reproducible Examples",
+    "context": "Part IV: Miscellaneous Topics",
+    "href": "chapter13.html",
+    "keywords": "Reproducing all four published case studies from Chapter 13 of <em>Data Integration, Manipulation and Visualization of Phylogenetic Trees</em> in <code>ggtree-py</code>, spanning HPV58 sequence distances, discrete bootstrap symbols, groupOTU circular clade highlights, and BioNJ genome locus structures."
+  },
+  {
+    "title": "13.1 Visualizing Pairwise Nucleotide Sequence Distance with Phylogenetic Tree",
+    "section": "13. Gallery of Reproducible Examples",
+    "context": "13. Gallery of Reproducible Examples",
+    "href": "chapter13.html#hpv58-distance",
+    "keywords": "<p>Pairs the HPV58 complete-genome phylogeny with nested monophyletic/paraphyletic clade annotations (<code>geom_cladelab</code> and <code>geom_strip</code>), internal support markers, and an adjacent <code>Sequence Distance</code> facet panel plotting pairwise Hamming differences (%) via <code>geom_point()</code> and <code>geom_path()</code>.</p>"
+  },
+  {
+    "title": "Figure 13.1: HPV58 nucleotide sequence phylogeny with nested clade bars and pairwise Hamming distances",
+    "section": "13.1 Visualizing Pairwise Nucleotide Sequence Distance with Phylogenetic Tree",
+    "context": "13. Gallery of Reproducible Examples \u00b7 13.1 Visualizing Pairwise Nucleotide Sequence Distance with Phylogenetic Tree",
+    "href": "chapter13.html#fig-13-1",
+    "keywords": "Reproducing Figure 13.1 of treedata-book: HPV58 whole-genome ML phylogeny with nested monophyletic/paraphyletic clade annotations paired via geom_facet() with pairwise nucleotide sequence differences (%). read_tree read_fasta groupClade geom_cladelab geom_strip geom_facet geom_point geom_path"
+  },
+  {
+    "title": "13.2 Displaying Different Symbolic Points for Bootstrap Values",
+    "section": "13. Gallery of Reproducible Examples",
+    "context": "13. Gallery of Reproducible Examples",
+    "href": "chapter13.html#bootstrap-points",
+    "keywords": "<p>Parses <code>text_RMI_tree</code> via <code>read_newick(..., node_label='support')</code>, right-ladderizes the tree, bins internal support values with <code>cut(support, c(0, 700, 900, 1000))</code>, and encodes bootstrap intervals as white, grey, and black <code>shape=21</code> circles with an inset legend.</p>"
+  },
+  {
+    "title": "Figure 13.2: Categorical bootstrap intervals encoded as white/grey/black circular node symbols",
+    "section": "13.2 Displaying Different Symbolic Points for Bootstrap Values",
+    "context": "13. Gallery of Reproducible Examples \u00b7 13.2 Displaying Different Symbolic Points for Bootstrap Values",
+    "href": "chapter13.html#fig-13-2",
+    "keywords": "Reproducing Figure 13.2 of treedata-book: right-ladderized Newick tree parsed with read_newick(node_label='support') and internal bootstrap intervals mapped to shape=21 filled points. read_newick cut geom_point2 scale_fill_manual rootnode"
+  },
+  {
+    "title": "13.3 Highlighting Different Groups",
+    "section": "13. Gallery of Reproducible Examples",
+    "context": "13. Gallery of Reproducible Examples",
+    "href": "chapter13.html#group-highlights",
+    "keywords": "<p>Partitions avian (<code>^ch</code>) vs non-chicken lineages using <code>groupOTU()</code>, applies node rotations and swaps (<code>flip()</code>/<code>rotate()</code>), overlays four radial <code>geom_hilight()</code> sectors extending to radius <code>1.4</code>, and adds bootstrap &gt; 50 labels alongside curved subgroup <code>geom_cladelab()</code> annotations.</p>"
+  },
+  {
+    "title": "Figure 13.3: Circular phylogeny with groupOTU styling, radial clade highlights, and curved clade labels",
+    "section": "13.3 Highlighting Different Groups",
+    "context": "13. Gallery of Reproducible Examples \u00b7 13.3 Highlighting Different Groups",
+    "href": "chapter13.html#fig-13-3",
+    "keywords": "Reproducing Figure 13.3 of treedata-book: chicken (^ch) vs non-chicken lineages styled with groupOTU() color and linetype, node swaps via flip()/rotate(), radial geom_hilight() sectors, bootstrap > 50 labels, and curved clade annotations. groupOTU flip rotate geom_hilight geom_cladelab geom_nodelab"
+  },
+  {
+    "title": "13.4 Phylogenetic Tree with Genome Locus Structure",
+    "section": "13. Gallery of Reproducible Examples",
+    "context": "13. Gallery of Reproducible Examples",
+    "href": "chapter13.html#genome-locus",
+    "keywords": "<p>Reconstructs a <code>bionj()</code> tree from pairwise Jaccard gene-content distances across <code>example_genes</code> and pairs it cleanly via <code>geom_facet(..., geom=geom_motif, on='genE', label='gene', align='left')</code> with Brewer <code>Set3</code> fills.</p>"
+  },
+  {
+    "title": "Figure 13.4: BioNJ gene-content tree paired with aligned bacterial operon locus arrows",
+    "section": "13.4 Phylogenetic Tree with Genome Locus Structure",
+    "context": "13. Gallery of Reproducible Examples \u00b7 13.4 Phylogenetic Tree with Genome Locus Structure",
+    "href": "chapter13.html#fig-13-4",
+    "keywords": "Reproducing Figure 13.4 of treedata-book: BioNJ tree reconstructed from pairwise Jaccard gene-content distances across example_genes and paired via geom_facet(..., geom=geom_motif, on='genE', label='gene', align='left'). bionj read_table geom_facet geom_motif facet_widths scale_fill_brewer"
+  },
+  {
+    "title": "Appendix A. Frequently Asked Questions",
+    "section": "Appendix A. Frequently Asked Questions",
+    "context": "Appendix A: Frequently Asked Questions",
+    "href": "faq.html",
+    "keywords": "All 16 practical visual solutions adapted from Appendix A of <em>Data Integration, Manipulation and Visualization of Phylogenetic Trees</em>\u2014covering tip label clipping, plotmath/HTML rich text, label repulsion, custom branch colors/linetypes, axis breaks, and margin trimming."
+  },
+  {
+    "title": "A.4.1 Tip Label Truncated",
+    "section": "Appendix A. Frequently Asked Questions",
+    "context": "Appendix A. Frequently Asked Questions",
+    "href": "faq.html#faq-truncated-tip",
+    "keywords": "<p>Prevent long tip names from clipping at panel edges by widening limits with <code>xlim()</code> or disabling clipping via <code>coord_cartesian(clip='off')</code> with expanded right <code>plot_margin</code>.</p>"
+  },
+  {
+    "title": "Figure A.1: Allocating more spaces for truncated tip labels.",
+    "section": "A.4.1 Tip Label Truncated",
+    "context": "Appendix A. Frequently Asked Questions \u00b7 A.4.1 Tip Label Truncated",
+    "href": "faq.html#fig-A-1",
+    "keywords": "Allocating more spaces for truncated tip labels. Long tip labels may be truncated (A). One solution is to allocate more spaces for plot panel (B), and another solution is to allow plotting labels outside the plot panel (C). xlim coord_cartesian theme_tree2 margin plot_list"
+  },
+  {
+    "title": "A.4.2 Modify (Tip) Labels",
+    "section": "Appendix A. Frequently Asked Questions",
+    "context": "Appendix A. Frequently Asked Questions",
+    "href": "faq.html#faq-modify-labels",
+    "keywords": "<p>Substitute display tip labels cleanly using <code>rename_taxa()</code> or external metadata joins via <code>%</code> paired with <code>geom_tiplab(aes(label=...))</code>.</p>"
+  },
+  {
+    "title": "Figure A.2: Alternative tip labels.",
+    "section": "A.4.2 Modify (Tip) Labels",
+    "context": "Appendix A. Frequently Asked Questions \u00b7 A.4.2 Modify (Tip) Labels",
+    "href": "faq.html#fig-A-2",
+    "keywords": "Alternative tip labels. Original tip labels (A) and a modified version (B). rename_taxa geom_tiplab xlim plot_list"
+  },
+  {
+    "title": "A.4.3 Formatting (Tip) Labels (Plotmath & ggtext)",
+    "section": "Appendix A. Frequently Asked Questions",
+    "context": "Appendix A. Frequently Asked Questions",
+    "href": "faq.html#faq-format-labels",
+    "keywords": "<p>Render mixed italic/bold typography via R-style plotmath expressions (<code>parse=True</code>) or HTML/Markdown rich text labels via <code>geom_richtext(..., label_color=NA)</code>.</p>"
+  },
+  {
+    "title": "Figure A.3: Formatting labels.",
+    "section": "A.4.3 Formatting (Tip) Labels (Plotmath & ggtext)",
+    "context": "Appendix A. Frequently Asked Questions \u00b7 A.4.3 Formatting (Tip) Labels (Plotmath & ggtext)",
+    "href": "faq.html#fig-A-3",
+    "keywords": "Formatting labels. Formatting specific tip labels using plotmath expression (A), and Markdown/HTML (B). geom_tiplab geom_richtext td_filter hexpand plot_list"
+  },
+  {
+    "title": "A.4.4 Avoid Overlapping Text Labels (ggrepel)",
+    "section": "Appendix A. Frequently Asked Questions",
+    "context": "Appendix A. Frequently Asked Questions",
+    "href": "faq.html#faq-repel-labels",
+    "keywords": "<p>Use <code>geom_label_repel()</code> or <code>geom_text_repel()</code> to repel dense bootstrap annotations with leader segments and viridis fill scales.</p>"
+  },
+  {
+    "title": "Figure A.4: Repel labels.",
+    "section": "A.4.4 Avoid Overlapping Text Labels (ggrepel)",
+    "context": "Appendix A. Frequently Asked Questions \u00b7 A.4.4 Avoid Overlapping Text Labels (ggrepel)",
+    "href": "faq.html#fig-A-4",
+    "keywords": "Repel labels. Repel labels to avoid overlapping. read_raxml geom_label_repel geom_text_repel scale_fill_viridis_c"
+  },
+  {
+    "title": "A.4.5 Bootstrap Values from Newick Format",
+    "section": "Appendix A. Frequently Asked Questions",
+    "context": "Appendix A. Frequently Asked Questions",
+    "href": "faq.html#faq-newick-bootstrap",
+    "keywords": "<p>Filter numeric support values embedded inside Newick internal node strings using <code>subset='~is_na(as_numeric(label)) & (as_numeric(label) &gt; 80)'</code>.</p>"
+  },
+  {
+    "title": "Figure A.5: Bootstrap value stored in node label.",
+    "section": "A.4.5 Bootstrap Values from Newick Format",
+    "context": "Appendix A. Frequently Asked Questions \u00b7 A.4.5 Bootstrap Values from Newick Format",
+    "href": "faq.html#fig-A-5",
+    "keywords": "Bootstrap value stored in node label. read_tree geom_label2 as_numeric is_na"
+  },
+  {
+    "title": "A.5.1 Plot the Same Tree as plot.phylo()",
+    "section": "Appendix A. Frequently Asked Questions",
+    "context": "Appendix A. Frequently Asked Questions",
+    "href": "faq.html#faq-plot-phylo",
+    "keywords": "<p>Compare non-ladderized <code>plot_phylo(x)</code> and <code>ggtree(x, ladderize=False)</code> against default ladderized <code>ggtree(x)</code> output.</p>"
+  },
+  {
+    "title": "Figure A.6: Ladderized and non-ladderized tree.",
+    "section": "A.5.1 Plot the Same Tree as plot.phylo()",
+    "context": "Appendix A. Frequently Asked Questions \u00b7 A.5.1 Plot the Same Tree as plot.phylo()",
+    "href": "faq.html#fig-A-6",
+    "keywords": "Ladderized and non-ladderized tree. plot.phylo() displays non-ladderized tree (A), use ladderize = FALSE to display non-ladderized tree in ggtree() (B), ggtree() displays ladderized tree by default (C). plot_phylo ggtree ladderize geom_tiplab plot_list"
+  },
+  {
+    "title": "A.5.2 Specifying the Order of Tips (rotateConstr)",
+    "section": "Appendix A. Frequently Asked Questions",
+    "context": "Appendix A. Frequently Asked Questions",
+    "href": "faq.html#faq-rotate-constr",
+    "keywords": "<p>Enforce a desired bottom-to-top tip ordering with <code>rotateConstr()</code> and preserve it during rendering via <code>ladderize=False</code>.</p>"
+  },
+  {
+    "title": "Figure A.7: Specifying tree order.",
+    "section": "A.5.2 Specifying the Order of Tips (rotateConstr)",
+    "context": "Appendix A. Frequently Asked Questions \u00b7 A.5.2 Specifying the Order of Tips (rotateConstr)",
+    "href": "faq.html#fig-A-7",
+    "keywords": "Specifying tree order. The order of the input tree will be maintained in ggtree() when ladderize = FALSE. rotateConstr ggtree geom_tiplab hexpand"
+  },
+  {
+    "title": "A.5.3 Shrink Outlier Long Branch (scale_x_break)",
+    "section": "Appendix A. Frequently Asked Questions",
+    "context": "Appendix A. Frequently Asked Questions",
+    "href": "faq.html#faq-shrink-branch",
+    "keywords": "<p>Handle extreme outgroup branch lengths either by compressing coordinates in <code>p.data</code> or by introducing an axis gap via <code>scale_x_break([0.03, 0.09])</code>.</p>"
+  },
+  {
+    "title": "Figure A.8: Shrink outlier long branch.",
+    "section": "A.5.3 Shrink Outlier Long Branch (scale_x_break)",
+    "context": "Appendix A. Frequently Asked Questions \u00b7 A.5.3 Shrink Outlier Long Branch (scale_x_break)",
+    "href": "faq.html#fig-A-8",
+    "keywords": "Shrink outlier long branch. Original tree (A); reduced outgroup branch length (B); truncated tree plot (C). scale_x_break MRCA groupClade hexpand plot_list"
+  },
+  {
+    "title": "A.5.4 Attach a New Tip to a Tree (bind_tip)",
+    "section": "Appendix A. Frequently Asked Questions",
+    "context": "Appendix A. Frequently Asked Questions",
+    "href": "faq.html#faq-bind-tip",
+    "keywords": "<p>Insert a new taxon onto a chosen branch with <code>bind_tip()</code>, distinguish its dashed edge via <code>scale_linetype_manual()</code>, and overlay attachment uncertainty with <code>geom_errorbarh()</code>.</p>"
+  },
+  {
+    "title": "Figure A.9: Attaching a new tip to a tree.",
+    "section": "A.5.4 Attach a New Tip to a Tree (bind_tip)",
+    "context": "Appendix A. Frequently Asked Questions \u00b7 A.5.4 Attach a New Tip to a Tree (bind_tip)",
+    "href": "faq.html#fig-A-9",
+    "keywords": "Attaching a new tip to a tree. Different line types were employed to distinguish the newly introduced tip and an error bar was added to indicate the uncertainty of the added branch position. bind_tip as_tibble parent as_treedata geom_errorbarh scale_linetype_manual"
+  },
+  {
+    "title": "A.5.5 Arbitrarily Colored & Styled Branches",
+    "section": "Appendix A. Frequently Asked Questions",
+    "context": "Appendix A. Frequently Asked Questions",
+    "href": "faq.html#faq-arbitrary-style",
+    "keywords": "<p>Bind literal per-node color strings and numeric/named linetypes directly via identity mapping <code>aes(colour='I(colour)', linetype='I(lty)')</code> without generating extra legends.</p>"
+  },
+  {
+    "title": "Figure A.10: Change colors and line types of specific branches.",
+    "section": "A.5.5 Arbitrarily Colored & Styled Branches",
+    "context": "Appendix A. Frequently Asked Questions \u00b7 A.5.5 Arbitrarily Colored & Styled Branches",
+    "href": "faq.html#fig-A-10",
+    "keywords": "Change colors and line types of specific branches. I Nnode2 geom_label aes"
+  },
+  {
+    "title": "A.5.6 Add an Arbitrary Point on a Branch",
+    "section": "Appendix A. Frequently Asked Questions",
+    "context": "Appendix A. Frequently Asked Questions",
+    "href": "faq.html#faq-point-on-branch",
+    "keywords": "<p>Place markers along branches by offsetting <code>x</code> by an absolute constant or proportionally using <code>x - branch_length * frac</code> in <code>geom_nodepoint()</code>.</p>"
+  },
+  {
+    "title": "Figure A.11: Add an arbitrary point on a branch.",
+    "section": "A.5.6 Add an Arbitrary Point on a Branch",
+    "context": "Appendix A. Frequently Asked Questions \u00b7 A.5.6 Add an Arbitrary Point on a Branch",
+    "href": "faq.html#fig-A-11",
+    "keywords": "Add an arbitrary point on a branch. The position of the symbolic point can be adjusted by an absolute value (A) or in proportion to the branch length (B). geom_nodepoint aes plot_list"
+  },
+  {
+    "title": "A.6 Different X-Axis Labels for Facet Panels",
+    "section": "Appendix A. Frequently Asked Questions",
+    "context": "Appendix A. Frequently Asked Questions",
+    "href": "faq.html#faq-facet-x-titles",
+    "keywords": "<p>Pass a <code>.panel</code>-keyed DataFrame to <code>geom_text()</code> with negative <code>y</code>, <code>coord_cartesian(clip='off')</code>, and increased bottom margin to draw per-facet X-axis titles.</p>"
+  },
+  {
+    "title": "Figure A.12: X-axis titles for different facet panels.",
+    "section": "A.6 Different X-Axis Labels for Facet Panels",
+    "context": "Appendix A. Frequently Asked Questions \u00b7 A.6 Different X-Axis Labels for Facet Panels",
+    "href": "faq.html#fig-A-12",
+    "keywords": "X-axis titles for different facet panels. geom_facet theme_bw xlim_tree xlim_expand scale_y_continuous coord_cartesian"
+  },
+  {
+    "title": "A.7 Plot Something Behind the Phylogeny",
+    "section": "Appendix A. Frequently Asked Questions",
+    "context": "Appendix A. Frequently Asked Questions",
+    "href": "faq.html#faq-layer-order",
+    "keywords": "<p>Move clade highlights behind tree branches either by reversing <code>p.layers</code> or by building from <code>ggplot(x) + geom_hilight(...) + geom_tree()</code>.</p>"
+  },
+  {
+    "title": "Figure A.13: Add layers behind the tree structure.",
+    "section": "A.7 Plot Something Behind the Phylogeny",
+    "context": "Appendix A. Frequently Asked Questions \u00b7 A.7 Plot Something Behind the Phylogeny",
+    "href": "faq.html#fig-A-13",
+    "keywords": "Add layers behind the tree structure. A layer on top of the tree structure (A). Reverse layer order of A (B). Add layer behind the tree layer (C). geom_hilight ggplot geom_tree theme_tree plot_list"
+  },
+  {
+    "title": "A.8 Enlarge Center Space in Circular/Fan Tree",
+    "section": "Appendix A. Frequently Asked Questions",
+    "context": "Appendix A. Frequently Asked Questions",
+    "href": "faq.html#faq-circular-center",
+    "keywords": "<p>Open central radial whitespace in circular layouts using negative lower <code>xlim(-10, NA)</code> or by adding an extended <code>geom_rootedge(5)</code>.</p>"
+  },
+  {
+    "title": "Figure A.14: Enlarge center space in circular tree.",
+    "section": "A.8 Enlarge Center Space in Circular/Fan Tree",
+    "context": "Appendix A. Frequently Asked Questions \u00b7 A.8 Enlarge Center Space in Circular/Fan Tree",
+    "href": "faq.html#fig-A-14",
+    "keywords": "Enlarge center space in circular tree. Allocate more space by xlim (A) or long root branch (B). layout_circular xlim geom_rootedge plot_list"
+  },
+  {
+    "title": "A.9 Most Distant Tip as Origin of Timescale (revts)",
+    "section": "Appendix A. Frequently Asked Questions",
+    "context": "Appendix A. Frequently Asked Questions",
+    "href": "faq.html#faq-backward-time",
+    "keywords": "<p>Transform forward root-to-tip branch coordinates to backward time before present with <code>revts(p) + scale_x_continuous(labels=abs)</code>.</p>"
+  },
+  {
+    "title": "Figure A.15: Origin of the time scale.",
+    "section": "A.9 Most Distant Tip as Origin of Timescale (revts)",
+    "context": "Appendix A. Frequently Asked Questions \u00b7 A.9 Most Distant Tip as Origin of Timescale (revts)",
+    "href": "faq.html#fig-A-15",
+    "keywords": "Origin of the time scale. Forward: from the root to the tips (A). Backward: from the most distant tip to the root (B). revts scale_x_continuous theme_tree2 plot_list"
+  },
+  {
+    "title": "A.10 Remove Blank Margins (magick / image_trim)",
+    "section": "Appendix A. Frequently Asked Questions",
+    "context": "Appendix A. Frequently Asked Questions",
+    "href": "faq.html#faq-trim-space",
+    "keywords": "<p>Render circular graphics via <code>ggsave()</code>, auto-crop transparent margins using <code>image_read()</code> + <code>image_trim()</code>, and re-wrap with <code>image_ggplot()</code>.</p>"
+  },
+  {
+    "title": "Figure A.16: Trim extra white space for polar coordinates.",
+    "section": "A.10 Remove Blank Margins (magick / image_trim)",
+    "context": "Appendix A. Frequently Asked Questions \u00b7 A.10 Remove Blank Margins (magick / image_trim)",
+    "href": "faq.html#fig-A-16",
+    "keywords": "Trim extra white space for polar coordinates. Original plot (A). Trimmed version (B). ggsave image_read image_trim image_ggplot element_rect plot_list"
+  }
+]

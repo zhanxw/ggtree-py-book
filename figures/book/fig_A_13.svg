@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="880" height="360" viewBox="0 0 880 360">
+<rect width="880" height="360" fill="white"/>
+<g transform="translate(0,0)">
+<line x1="38.59" y1="315.82" x2="85.03" y2="315.82" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="72.12" y1="252.79" x2="118.28" y2="252.79" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="147.90" y1="189.76" x2="154.46" y2="189.76" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="208.71" y1="126.73" x2="213.39" y2="126.73" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="208.71" y1="63.70" x2="250.41" y2="63.70" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="38.59" y1="197.64" x2="72.12" y2="197.64" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="72.12" y1="142.48" x2="147.90" y2="142.48" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="147.90" y1="95.21" x2="208.71" y2="95.21" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="38.59" y1="256.73" x2="38.59" y2="315.82" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="72.12" y1="197.64" x2="72.12" y2="252.79" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="147.90" y1="142.48" x2="147.90" y2="189.76" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="208.71" y1="95.21" x2="208.71" y2="126.73" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="208.71" y1="95.21" x2="208.71" y2="63.70" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="38.59" y1="256.73" x2="38.59" y2="197.64" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="72.12" y1="197.64" x2="72.12" y2="142.48" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="147.90" y1="142.48" x2="147.90" y2="95.21" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<rect x="55.36" y="10.12" width="195.05" height="296.24" fill="steelblue" fill-opacity="1.00" stroke="none" stroke-width="0.00"/>
+
+<text x="10" y="18" font-family="sans-serif" font-size="13" font-weight="bold" fill="#111827">A</text>
+</g>
+<g transform="translate(293,0)">
+<rect x="55.36" y="10.12" width="195.05" height="296.24" fill="steelblue" fill-opacity="1.00" stroke="none" stroke-width="0.00"/>
+<line x1="38.59" y1="256.73" x2="38.59" y2="315.82" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="72.12" y1="197.64" x2="72.12" y2="252.79" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="147.90" y1="142.48" x2="147.90" y2="189.76" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="208.71" y1="95.21" x2="208.71" y2="126.73" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="208.71" y1="95.21" x2="208.71" y2="63.70" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="38.59" y1="256.73" x2="38.59" y2="197.64" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="72.12" y1="197.64" x2="72.12" y2="142.48" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="147.90" y1="142.48" x2="147.90" y2="95.21" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="38.59" y1="315.82" x2="85.03" y2="315.82" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="72.12" y1="252.79" x2="118.28" y2="252.79" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="147.90" y1="189.76" x2="154.46" y2="189.76" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="208.71" y1="126.73" x2="213.39" y2="126.73" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="208.71" y1="63.70" x2="250.41" y2="63.70" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="38.59" y1="197.64" x2="72.12" y2="197.64" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="72.12" y1="142.48" x2="147.90" y2="142.48" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="147.90" y1="95.21" x2="208.71" y2="95.21" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+
+<text x="10" y="18" font-family="sans-serif" font-size="13" font-weight="bold" fill="#111827">B</text>
+</g>
+<g transform="translate(586,0)">
+<rect x="55.48" y="10.12" width="195.89" height="296.24" fill="steelblue" fill-opacity="1.00" stroke="none" stroke-width="0.00"/>
+<line x1="38.64" y1="315.82" x2="85.27" y2="315.82" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="72.31" y1="252.79" x2="118.67" y2="252.79" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="148.41" y1="189.76" x2="155.00" y2="189.76" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="209.49" y1="126.73" x2="214.18" y2="126.73" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="209.49" y1="63.70" x2="251.36" y2="63.70" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="38.64" y1="197.64" x2="72.31" y2="197.64" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="72.31" y1="142.48" x2="148.41" y2="142.48" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="148.41" y1="95.21" x2="209.49" y2="95.21" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="38.64" y1="256.73" x2="38.64" y2="315.82" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="72.31" y1="197.64" x2="72.31" y2="252.79" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="148.41" y1="142.48" x2="148.41" y2="189.76" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="209.49" y1="95.21" x2="209.49" y2="126.73" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="209.49" y1="95.21" x2="209.49" y2="63.70" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="38.64" y1="256.73" x2="38.64" y2="197.64" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="72.31" y1="197.64" x2="72.31" y2="142.48" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="148.41" y1="142.48" x2="148.41" y2="95.21" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+
+<text x="10" y="18" font-family="sans-serif" font-size="13" font-weight="bold" fill="#111827">C</text>
+</g>
+</svg>

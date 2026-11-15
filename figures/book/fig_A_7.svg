@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="680" height="380" viewBox="0 0 680 380">
+<rect width="680" height="380" fill="white"/>
+<defs><clipPath id="ggtree_cart_clip_391137840"><rect x="28.00" y="0.00" width="664.00" height="380.00"/></clipPath></defs>
+<g clip-path="url(#ggtree_cart_clip_391137840)">
+<line x1="165.08" y1="108.55" x2="331.91" y2="108.55" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="165.08" y1="33.09" x2="187.61" y2="33.09" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="334.08" y1="334.91" x2="567.48" y2="334.91" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="334.08" y1="259.45" x2="516.17" y2="259.45" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="146.04" y1="184.00" x2="176.69" y2="184.00" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="57.33" y1="70.82" x2="165.08" y2="70.82" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="57.33" y1="240.59" x2="146.04" y2="240.59" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="146.04" y1="297.18" x2="334.08" y2="297.18" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="165.08" y1="70.82" x2="165.08" y2="108.55" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="165.08" y1="70.82" x2="165.08" y2="33.09" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="334.08" y1="297.18" x2="334.08" y2="334.91" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="334.08" y1="297.18" x2="334.08" y2="259.45" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="146.04" y1="240.59" x2="146.04" y2="184.00" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="57.33" y1="155.70" x2="57.33" y2="70.82" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="57.33" y1="155.70" x2="57.33" y2="240.59" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="146.04" y1="240.59" x2="146.04" y2="297.18" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<text x="335.91" y="111.95" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">t5</text>
+<text x="191.61" y="36.49" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">t3</text>
+<text x="571.48" y="338.31" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">t4</text>
+<text x="520.17" y="262.85" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">t2</text>
+<text x="180.69" y="187.40" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">t1</text>
+</g>
+</svg>

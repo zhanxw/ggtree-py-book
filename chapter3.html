@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>3. Exporting Tree with Data | Data Integration, Manipulation and Visualization of Phylogenetic Trees (ggtree-py)</title>
+  <link rel="stylesheet" href="assets/style.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-left">
+      <button type="button" class="sidebar-toggle" id="sidebar-toggle-btn" aria-label="Toggle Menu">&#9776;</button>
+      <a class="topbar-brand" href="index.html">
+        Data Integration, Manipulation and Visualization of Phylogenetic Trees
+        <span class="topbar-sub">(ggtree-py Edition)</span>
+      </a>
+    </div>
+    <div class="topbar-actions">
+      <a class="tool-btn" href="gallery.html">Gallery Index</a>
+      <button type="button" class="tool-btn" id="toggle-all-code-btn">Expand All Code</button>
+      <button type="button" class="tool-btn" id="theme-toggle-btn">Theme: Light</button>
+    </div>
+  </header>
+
+  <div class="book-shell">
+    <nav class="book-sidebar" id="book-sidebar" aria-label="Book Chapters">
+      <div class="sidebar-search-wrap">
+        <input type="search" class="sidebar-search" id="book-search-input" placeholder="Search chapters, figures, APIs..." autocomplete="off"/>
+        <div class="search-results" id="book-search-results"></div>
+      </div>
+      <div class="nav-part">Preface</div><ul class="nav-list">
+<li><a class="nav-link" href="index.html">Welcome &amp; Overview</a></li>
+</ul>
+<div class="nav-part">Part I: Tree Data I/O &amp; Manipulation</div><ul class="nav-list">
+<li><a class="nav-link" href="chapter1.html"><span class="nav-num">1.</span>Importing Tree with Data</a></li>
+<li><a class="nav-link" href="chapter2.html"><span class="nav-num">2.</span>Manipulating Tree with Data</a></li>
+<li><a class="nav-link active" href="chapter3.html"><span class="nav-num">3.</span>Exporting Trees with Data</a></li>
+</ul>
+<div class="nav-part">Part II: Visualization &amp; Annotation</div><ul class="nav-list">
+<li><a class="nav-link" href="chapter4.html"><span class="nav-num">4.</span>Phylogenetic Tree Visualization</a></li>
+<li><a class="nav-link" href="chapter5.html"><span class="nav-num">5.</span>Phylogenetic Tree Annotation</a></li>
+<li><a class="nav-link" href="chapter6.html"><span class="nav-num">6.</span>Visual Exploration of Trees</a></li>
+<li><a class="nav-link" href="chapter7.html"><span class="nav-num">7.</span>Plotting Tree with Data</a></li>
+<li><a class="nav-link" href="chapter8.html"><span class="nav-num">8.</span>Silhouettes &amp; Sub-plots</a></li>
+</ul>
+<div class="nav-part">Part III: ggtree Extensions</div><ul class="nav-list">
+<li><a class="nav-link" href="chapter9.html"><span class="nav-num">9.</span>Other Tree-like Structures</a></li>
+<li><a class="nav-link" href="chapter10.html"><span class="nav-num">10.</span>ggtreeExtra Circular Rings</a></li>
+<li><a class="nav-link" href="chapter11.html"><span class="nav-num">11.</span>Other ggtree Extensions</a></li>
+<li><a class="nav-link" href="chapter12.html"><span class="nav-num">12.</span>ggtree Utilities</a></li>
+</ul>
+<div class="nav-part">Part IV: Miscellaneous Topics</div><ul class="nav-list">
+<li><a class="nav-link" href="chapter13.html"><span class="nav-num">13.</span>Gallery of Examples</a></li>
+</ul>
+<div class="nav-part">Appendix &amp; Index</div><ul class="nav-list">
+<li><a class="nav-link" href="faq.html"><span class="nav-num">A.</span>Frequently Asked Questions</a></li>
+<li><a class="nav-link" href="api.html"><span class="nav-num">B.</span>ggtree-py API Reference</a></li>
+<li><a class="nav-link" href="gallery.html"><span class="nav-num">★</span>All Figures Gallery &amp; Index</a></li>
+</ul>
+    </nav>
+
+    <main class="book-main">
+      <article class="book-article">
+        <div class="part-kicker">Part I: Tree Data Input, Output and Manipulation</div>
+        <h1 class="chapter-title">3. Exporting Tree with Data</h1>
+<p>Preserving node- and branch-level annotations during serialization allows reproducible archival and sharing across downstream phylogenetic tools such as FigTree without losing associated metadata.</p>
+<h2 id="newick-export">3.1 Exporting Topologies via write_tree()</h2>
+<p><code>write_tree(phy, file=...)</code> emits standard parenthetical Newick strings preserving internal node labels, branch lengths, and optional root stem edges.</p>
+<h2 id="beast-jtree">3.2 Exporting Tree Data to BEAST Nexus &amp;amp; JSON</h2>
+<p><code>write_beast()</code> serializes any annotated <code>TreeData</code>—such as NHX species tags or PAML CodeML substitution statistics—into inline NEXUS <code>[&amp;...]</code> metadata comments that <code>read_beast()</code> restores cleanly into mappable branch attributes, whereas <code>write_jtree()</code> / <code>read_jtree()</code> exchanges structured JSON tree objects.</p>
+<div class="book-figure-card" id="fig-3-1">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_3_1.svg" alt="Figure 3.1: Round-trip BEAST Nexus export preserving NHX and CodeML annotations" loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure 3.1: Round-trip BEAST Nexus export preserving NHX and CodeML annotations.</strong> Both NHX (phyldog.nhx, panel A) and PAML CodeML (panel B) TreeData objects serialized via write_beast() and re-imported via read_beast(), preserving continuous branch attributes (S and dN) for ggtree mapping.</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">read_nhx</span><span class="api-pill">read_codeml</span><span class="api-pill">write_beast</span><span class="api-pill">read_beast</span><button type="button" class="copy-btn" data-code-target="code-blk-13">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-13"><span class="tok-kw">import</span> os
+<span class="tok-kw">import</span> tempfile
+
+nhx <span class="tok-op">=</span> <span class="tok-call">read_nhx</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;NHX&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;phyldog.nhx&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+mlc <span class="tok-op">=</span> <span class="tok-call">read_codeml</span><span class="tok-op">(</span>
+    <span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;treeio&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;PAML_Codeml&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;rst&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span>
+    <span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;treeio&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;PAML_Codeml&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;mlc&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span>
+<span class="tok-op">)</span>
+<span class="tok-kw">with</span> tempfile<span class="tok-op">.</span><span class="tok-call">TemporaryDirectory</span><span class="tok-op">(</span><span class="tok-op">)</span> <span class="tok-kw">as</span> d<span class="tok-op">:</span>
+    b1 <span class="tok-op">=</span> os<span class="tok-op">.</span>path<span class="tok-op">.</span><span class="tok-call">join</span><span class="tok-op">(</span>d<span class="tok-op">,</span> <span class="tok-str">&quot;nhx_beast.nexus&quot;</span><span class="tok-op">)</span>
+    b2 <span class="tok-op">=</span> os<span class="tok-op">.</span>path<span class="tok-op">.</span><span class="tok-call">join</span><span class="tok-op">(</span>d<span class="tok-op">,</span> <span class="tok-str">&quot;mlc_beast.nexus&quot;</span><span class="tok-op">)</span>
+    <span class="tok-call">write_beast</span><span class="tok-op">(</span>nhx<span class="tok-op">,</span> file<span class="tok-op">=</span>b1<span class="tok-op">)</span>
+    <span class="tok-call">write_beast</span><span class="tok-op">(</span>mlc<span class="tok-op">,</span> file<span class="tok-op">=</span>b2<span class="tok-op">)</span>
+    tr1 <span class="tok-op">=</span> <span class="tok-call">read_beast</span><span class="tok-op">(</span>b1<span class="tok-op">)</span>
+    tr2 <span class="tok-op">=</span> <span class="tok-call">read_beast</span><span class="tok-op">(</span>b2<span class="tok-op">)</span>
+
+p1 <span class="tok-op">=</span> <span class="tok-op">(</span>
+    <span class="tok-call">ggtree</span><span class="tok-op">(</span>tr1<span class="tok-op">,</span> <span class="tok-call">aes</span><span class="tok-op">(</span>color<span class="tok-op">=</span><span class="tok-str">&quot;S&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">scale_color_continuous</span><span class="tok-op">(</span>low<span class="tok-op">=</span><span class="tok-str">&quot;#132B43&quot;</span><span class="tok-op">,</span> high<span class="tok-op">=</span><span class="tok-str">&quot;#56B1F7&quot;</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span>size<span class="tok-op">=</span><span class="tok-num">2.8</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_treescale</span><span class="tok-op">(</span>x<span class="tok-op">=</span><span class="tok-num">0.05</span><span class="tok-op">,</span> y<span class="tok-op">=</span><span class="tok-num">2.0</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">hexpand</span><span class="tok-op">(</span><span class="tok-num">0.32</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+p2 <span class="tok-op">=</span> <span class="tok-op">(</span>
+    <span class="tok-call">ggtree</span><span class="tok-op">(</span>tr2<span class="tok-op">,</span> <span class="tok-call">aes</span><span class="tok-op">(</span>color<span class="tok-op">=</span><span class="tok-str">&quot;dN&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">scale_color_continuous</span><span class="tok-op">(</span>low<span class="tok-op">=</span><span class="tok-str">&quot;darkgreen&quot;</span><span class="tok-op">,</span> high<span class="tok-op">=</span><span class="tok-str">&quot;red&quot;</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span>size<span class="tok-op">=</span><span class="tok-num">3.0</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_treescale</span><span class="tok-op">(</span>x<span class="tok-op">=</span><span class="tok-num">0.2</span><span class="tok-op">,</span> y<span class="tok-op">=</span><span class="tok-num">1.5</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">hexpand</span><span class="tok-op">(</span><span class="tok-num">0.24</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+<span class="tok-call">plot_list</span><span class="tok-op">(</span>p1<span class="tok-op">,</span> p2<span class="tok-op">,</span> ncol<span class="tok-op">=</span><span class="tok-num">1</span><span class="tok-op">,</span> nrow<span class="tok-op">=</span><span class="tok-num">2</span><span class="tok-op">,</span> tag_levels<span class="tok-op">=</span><span class="tok-str">&quot;A&quot;</span><span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
+        <nav class="chapter-pager" aria-label="Chapter Navigation"><a class="pager-link" href="chapter2.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">2. Manipulating Tree with Data</span></a><a class="pager-link pager-next" href="chapter4.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">4. Phylogenetic Tree Visualization</span></a></nav>
+      </article>
+    </main>
+
+    <aside class="book-toc" aria-label="On this page">
+  <div class="toc-heading">On This Page</div>
+  <ul class="toc-list"><li><a class="" href="#newick-export">3.1 Exporting Topologies via write_tree()</a></li><li><a class="" href="#beast-jtree">3.2 Exporting Tree Data to BEAST Nexus &amp;amp; JSON</a></li><li><a class="toc-fig-link" href="#fig-3-1">Fig. 3.1: Round-trip BEAST Nexus export preserving NHX and CodeML annotations</a></li></ul>
+</aside>
+  </div>
+
+  <script src="assets/search_data.js"></script>
+  <script src="assets/book.js"></script>
+</body>
+</html>

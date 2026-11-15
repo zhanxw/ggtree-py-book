@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# Legacy non-book library doc files in local workspace
+/_config.yml
+/annotations_and_compositions.md
+/api_reference.md
+/gallery.md
+/getting_started.md
+/index.md
+/layouts_and_manipulation.md
+/r_to_python_migration.md
+/generate_doc_figures.py
+/figures/*.png
+!/figures/book/

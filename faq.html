@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Appendix A. Frequently Asked Questions | Data Integration, Manipulation and Visualization of Phylogenetic Trees (ggtree-py)</title>
+  <link rel="stylesheet" href="assets/style.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-left">
+      <button type="button" class="sidebar-toggle" id="sidebar-toggle-btn" aria-label="Toggle Menu">&#9776;</button>
+      <a class="topbar-brand" href="index.html">
+        Data Integration, Manipulation and Visualization of Phylogenetic Trees
+        <span class="topbar-sub">(ggtree-py Edition)</span>
+      </a>
+    </div>
+    <div class="topbar-actions">
+      <a class="tool-btn" href="gallery.html">Gallery Index</a>
+      <button type="button" class="tool-btn" id="toggle-all-code-btn">Expand All Code</button>
+      <button type="button" class="tool-btn" id="theme-toggle-btn">Theme: Light</button>
+    </div>
+  </header>
+
+  <div class="book-shell">
+    <nav class="book-sidebar" id="book-sidebar" aria-label="Book Chapters">
+      <div class="sidebar-search-wrap">
+        <input type="search" class="sidebar-search" id="book-search-input" placeholder="Search chapters, figures, APIs..." autocomplete="off"/>
+        <div class="search-results" id="book-search-results"></div>
+      </div>
+      <div class="nav-part">Preface</div><ul class="nav-list">
+<li><a class="nav-link" href="index.html">Welcome &amp; Overview</a></li>
+</ul>
+<div class="nav-part">Part I: Tree Data I/O &amp; Manipulation</div><ul class="nav-list">
+<li><a class="nav-link" href="chapter1.html"><span class="nav-num">1.</span>Importing Tree with Data</a></li>
+<li><a class="nav-link" href="chapter2.html"><span class="nav-num">2.</span>Manipulating Tree with Data</a></li>
+<li><a class="nav-link" href="chapter3.html"><span class="nav-num">3.</span>Exporting Trees with Data</a></li>
+</ul>
+<div class="nav-part">Part II: Visualization &amp; Annotation</div><ul class="nav-list">
+<li><a class="nav-link" href="chapter4.html"><span class="nav-num">4.</span>Phylogenetic Tree Visualization</a></li>
+<li><a class="nav-link" href="chapter5.html"><span class="nav-num">5.</span>Phylogenetic Tree Annotation</a></li>
+<li><a class="nav-link" href="chapter6.html"><span class="nav-num">6.</span>Visual Exploration of Trees</a></li>
+<li><a class="nav-link" href="chapter7.html"><span class="nav-num">7.</span>Plotting Tree with Data</a></li>
+<li><a class="nav-link" href="chapter8.html"><span class="nav-num">8.</span>Silhouettes &amp; Sub-plots</a></li>
+</ul>
+<div class="nav-part">Part III: ggtree Extensions</div><ul class="nav-list">
+<li><a class="nav-link" href="chapter9.html"><span class="nav-num">9.</span>Other Tree-like Structures</a></li>
+<li><a class="nav-link" href="chapter10.html"><span class="nav-num">10.</span>ggtreeExtra Circular Rings</a></li>
+<li><a class="nav-link" href="chapter11.html"><span class="nav-num">11.</span>Other ggtree Extensions</a></li>
+<li><a class="nav-link" href="chapter12.html"><span class="nav-num">12.</span>ggtree Utilities</a></li>
+</ul>
+<div class="nav-part">Part IV: Miscellaneous Topics</div><ul class="nav-list">
+<li><a class="nav-link" href="chapter13.html"><span class="nav-num">13.</span>Gallery of Examples</a></li>
+</ul>
+<div class="nav-part">Appendix &amp; Index</div><ul class="nav-list">
+<li><a class="nav-link active" href="faq.html"><span class="nav-num">A.</span>Frequently Asked Questions</a></li>
+<li><a class="nav-link" href="api.html"><span class="nav-num">B.</span>ggtree-py API Reference</a></li>
+<li><a class="nav-link" href="gallery.html"><span class="nav-num">★</span>All Figures Gallery &amp; Index</a></li>
+</ul>
+    </nav>
+
+    <main class="book-main">
+      <article class="book-article">
+        <div class="part-kicker">Appendix A: Frequently Asked Questions</div>
+        <h1 class="chapter-title">Appendix A. Frequently Asked Questions</h1>
+<p>All 16 practical visual solutions adapted from Appendix A of <em>Data Integration, Manipulation and Visualization of Phylogenetic Trees</em>—covering tip label clipping, plotmath/HTML rich text, label repulsion, custom branch colors/linetypes, axis breaks, and margin trimming.</p>
+<h2 id="faq-truncated-tip">A.4.1 Tip Label Truncated</h2>
+<p>Prevent long tip names from clipping at panel edges by widening limits with <code>xlim()</code> or disabling clipping via <code>coord_cartesian(clip='off')</code> with expanded right <code>plot_margin</code>.</p>
+<div class="book-figure-card" id="fig-A-1">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_A_1.svg" alt="Figure A.1: Allocating more spaces for truncated tip labels." loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure A.1: Allocating more spaces for truncated tip labels..</strong> Allocating more spaces for truncated tip labels. Long tip labels may be truncated (A). One solution is to allocate more spaces for plot panel (B), and another solution is to allow plotting labels outside the plot panel (C).</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">xlim</span><span class="api-pill">coord_cartesian</span><span class="api-pill">theme_tree2</span><span class="api-pill">margin</span><button type="button" class="copy-btn" data-code-target="code-blk-96">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-96"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
+    read_tree<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> geom_tiplab<span class="tok-op">,</span> xlim<span class="tok-op">,</span> coord_cartesian<span class="tok-op">,</span>
+    theme_tree2<span class="tok-op">,</span> margin<span class="tok-op">,</span> plot_list<span class="tok-op">,</span>
+<span class="tok-op">)</span>
+
+tree <span class="tok-op">=</span> <span class="tok-call">read_tree</span><span class="tok-op">(</span>
+    text<span class="tok-op">=</span><span class="tok-str">&quot;(Organism1.006G249400.1:0.03977,&quot;</span>
+         <span class="tok-str">&quot;(Organism2.022118m:0.01337,(Organism3.J34265.1:0.00284,&quot;</span>
+         <span class="tok-str">&quot;Organism4.G02633.1:0.00468)0.51:0.0104):0.02469);&quot;</span>
+<span class="tok-op">)</span>
+p <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>tree<span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span><span class="tok-op">)</span>
+p_b <span class="tok-op">=</span> p <span class="tok-op">+</span> <span class="tok-call">xlim</span><span class="tok-op">(</span><span class="tok-num">0</span><span class="tok-op">,</span> <span class="tok-num">0.08</span><span class="tok-op">)</span>
+p_c <span class="tok-op">=</span> p <span class="tok-op">+</span> <span class="tok-call">coord_cartesian</span><span class="tok-op">(</span>clip<span class="tok-op">=</span><span class="tok-str">&quot;off&quot;</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">theme_tree2</span><span class="tok-op">(</span>plot_margin<span class="tok-op">=</span><span class="tok-call">margin</span><span class="tok-op">(</span><span class="tok-num">6</span><span class="tok-op">,</span> <span class="tok-num">120</span><span class="tok-op">,</span> <span class="tok-num">6</span><span class="tok-op">,</span> <span class="tok-num">6</span><span class="tok-op">)</span><span class="tok-op">)</span>
+<span class="tok-call">plot_list</span><span class="tok-op">(</span>p<span class="tok-op">,</span> p_b<span class="tok-op">,</span> p_c<span class="tok-op">,</span> ncol<span class="tok-op">=</span><span class="tok-num">3</span><span class="tok-op">,</span> tag_levels<span class="tok-op">=</span><span class="tok-str">&quot;A&quot;</span><span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
+<h2 id="faq-modify-labels">A.4.2 Modify (Tip) Labels</h2>
+<p>Substitute display tip labels cleanly using <code>rename_taxa()</code> or external metadata joins via <code>%</code> paired with <code>geom_tiplab(aes(label=...))</code>.</p>
+<div class="book-figure-card" id="fig-A-2">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_A_2.svg" alt="Figure A.2: Alternative tip labels." loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure A.2: Alternative tip labels..</strong> Alternative tip labels. Original tip labels (A) and a modified version (B).</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">rename_taxa</span><span class="api-pill">geom_tiplab</span><span class="api-pill">xlim</span><span class="api-pill">plot_list</span><button type="button" class="copy-btn" data-code-target="code-blk-97">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-97"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> read_tree<span class="tok-op">,</span> data_frame<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> geom_tiplab<span class="tok-op">,</span> xlim<span class="tok-op">,</span> aes<span class="tok-op">,</span> NA<span class="tok-op">,</span> plot_list
+
+tree <span class="tok-op">=</span> <span class="tok-call">read_tree</span><span class="tok-op">(</span>text<span class="tok-op">=</span><span class="tok-str">&quot;((A, B), (C, D));&quot;</span><span class="tok-op">)</span>
+d <span class="tok-op">=</span> <span class="tok-call">data_frame</span><span class="tok-op">(</span>
+    label<span class="tok-op">=</span><span class="tok-op">[</span><span class="tok-str">&quot;A&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;B&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;C&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;D&quot;</span><span class="tok-op">]</span><span class="tok-op">,</span>
+    label2<span class="tok-op">=</span><span class="tok-op">[</span><span class="tok-str">&quot;sunflower&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;tree&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;snail&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;mushroom&quot;</span><span class="tok-op">]</span><span class="tok-op">,</span>
+<span class="tok-op">)</span>
+p <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>tree<span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">xlim</span><span class="tok-op">(</span>NA<span class="tok-op">,</span> <span class="tok-num">3</span><span class="tok-op">)</span>
+p1 <span class="tok-op">=</span> p <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span><span class="tok-op">)</span>
+p2 <span class="tok-op">=</span> p <span class="tok-op">%</span> d <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span>label<span class="tok-op">=</span><span class="tok-str">&quot;label2&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+<span class="tok-call">plot_list</span><span class="tok-op">(</span>p1<span class="tok-op">,</span> p2<span class="tok-op">,</span> ncol<span class="tok-op">=</span><span class="tok-num">2</span><span class="tok-op">,</span> tag_levels<span class="tok-op">=</span><span class="tok-str">&quot;A&quot;</span><span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
+<h2 id="faq-format-labels">A.4.3 Formatting (Tip) Labels (Plotmath &amp; ggtext)</h2>
+<p>Render mixed italic/bold typography via R-style plotmath expressions (<code>parse=True</code>) or HTML/Markdown rich text labels via <code>geom_richtext(..., label_color=NA)</code>.</p>
+<div class="book-figure-card" id="fig-A-3">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_A_3.svg" alt="Figure A.3: Formatting labels." loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure A.3: Formatting labels..</strong> Formatting labels. Formatting specific tip labels using plotmath expression (A), and Markdown/HTML (B).</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">geom_tiplab</span><span class="api-pill">geom_richtext</span><span class="api-pill">td_filter</span><span class="api-pill">hexpand</span><button type="button" class="copy-btn" data-code-target="code-blk-98">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-98"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
+    read_tree<span class="tok-op">,</span> data_frame<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> aes<span class="tok-op">,</span> xlim<span class="tok-op">,</span> NA<span class="tok-op">,</span> geom_tiplab<span class="tok-op">,</span>
+    geom_richtext<span class="tok-op">,</span> td_filter<span class="tok-op">,</span> hexpand<span class="tok-op">,</span> plot_list<span class="tok-op">,</span>
+<span class="tok-op">)</span>
+
+tree <span class="tok-op">=</span> <span class="tok-call">read_tree</span><span class="tok-op">(</span>text<span class="tok-op">=</span><span class="tok-str">&quot;((a,(b,c)),d);&quot;</span><span class="tok-op">)</span>
+genus <span class="tok-op">=</span> <span class="tok-op">[</span><span class="tok-str">&quot;Gorilla&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;Pan&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;Homo&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;Pongo&quot;</span><span class="tok-op">]</span>
+species <span class="tok-op">=</span> <span class="tok-op">[</span><span class="tok-str">&quot;gorilla&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;spp.&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;sapiens&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;pygmaeus&quot;</span><span class="tok-op">]</span>
+geo <span class="tok-op">=</span> <span class="tok-op">[</span><span class="tok-str">&quot;Africa&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;Africa&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;World&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;Asia&quot;</span><span class="tok-op">]</span>
+colors <span class="tok-op">=</span> <span class="tok-op">[</span><span class="tok-str">&quot;#E495A5&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;#ABB065&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;#39BEB1&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;#ACA4E2&quot;</span><span class="tok-op">]</span>
+d2 <span class="tok-op">=</span> <span class="tok-call">data_frame</span><span class="tok-op">(</span>
+    label<span class="tok-op">=</span>tree<span class="tok-op">.</span>tip_label<span class="tok-op">,</span>
+    genus<span class="tok-op">=</span>genus<span class="tok-op">,</span>
+    species<span class="tok-op">=</span>species<span class="tok-op">,</span>
+    geo<span class="tok-op">=</span>geo<span class="tok-op">,</span>
+    lab<span class="tok-op">=</span><span class="tok-op">[</span><span class="tok-str">f&quot;italic({g})~bolditalic({s})~({ge})&quot;</span> <span class="tok-kw">for</span> g<span class="tok-op">,</span> s<span class="tok-op">,</span> ge <span class="tok-kw">in</span> <span class="tok-call">zip</span><span class="tok-op">(</span>genus<span class="tok-op">,</span> species<span class="tok-op">,</span> geo<span class="tok-op">)</span><span class="tok-op">]</span><span class="tok-op">,</span>
+    color<span class="tok-op">=</span>colors<span class="tok-op">,</span>
+    name<span class="tok-op">=</span><span class="tok-op">[</span><span class="tok-str">f&quot;&lt;i style=&#x27;color:{c}&#x27;&gt;{g} **{s}**&lt;/i&gt; ({ge})&quot;</span> <span class="tok-kw">for</span> c<span class="tok-op">,</span> g<span class="tok-op">,</span> s<span class="tok-op">,</span> ge <span class="tok-kw">in</span> <span class="tok-call">zip</span><span class="tok-op">(</span>colors<span class="tok-op">,</span> genus<span class="tok-op">,</span> species<span class="tok-op">,</span> geo<span class="tok-op">)</span><span class="tok-op">]</span><span class="tok-op">,</span>
+<span class="tok-op">)</span>
+p1 <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>tree<span class="tok-op">)</span> <span class="tok-op">%</span> d2 <span class="tok-op">+</span> <span class="tok-call">xlim</span><span class="tok-op">(</span>NA<span class="tok-op">,</span> <span class="tok-num">6</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span>label<span class="tok-op">=</span><span class="tok-str">&quot;lab&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> parse<span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">)</span>
+p2 <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>tree<span class="tok-op">)</span> <span class="tok-op">%</span> d2 <span class="tok-op">+</span> <span class="tok-call">geom_richtext</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span>label<span class="tok-op">=</span><span class="tok-str">&quot;name&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> data<span class="tok-op">=</span><span class="tok-call">td_filter</span><span class="tok-op">(</span><span class="tok-str">&quot;isTip&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> label_color<span class="tok-op">=</span>NA<span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">hexpand</span><span class="tok-op">(</span><span class="tok-num">0.35</span><span class="tok-op">)</span>
+<span class="tok-call">plot_list</span><span class="tok-op">(</span>p1<span class="tok-op">,</span> p2<span class="tok-op">,</span> ncol<span class="tok-op">=</span><span class="tok-num">2</span><span class="tok-op">,</span> tag_levels<span class="tok-op">=</span><span class="tok-str">&quot;A&quot;</span><span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
+<h2 id="faq-repel-labels">A.4.4 Avoid Overlapping Text Labels (ggrepel)</h2>
+<p>Use <code>geom_label_repel()</code> or <code>geom_text_repel()</code> to repel dense bootstrap annotations with leader segments and viridis fill scales.</p>
+<div class="book-figure-card" id="fig-A-4">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_A_4.svg" alt="Figure A.4: Repel labels." loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure A.4: Repel labels..</strong> Repel labels. Repel labels to avoid overlapping.</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">read_raxml</span><span class="api-pill">geom_label_repel</span><span class="api-pill">geom_text_repel</span><span class="api-pill">scale_fill_viridis_c</span><button type="button" class="copy-btn" data-code-target="code-blk-99">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-99"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> read_raxml<span class="tok-op">,</span> system_file<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> geom_label_repel<span class="tok-op">,</span> aes<span class="tok-op">,</span> theme<span class="tok-op">,</span> scale_fill_viridis_c
+
+raxml_file <span class="tok-op">=</span> <span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;RAxML&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;RAxML_bipartitionsBranchLabels.H3&quot;</span><span class="tok-op">)</span>
+raxml <span class="tok-op">=</span> <span class="tok-call">read_raxml</span><span class="tok-op">(</span>raxml_file<span class="tok-op">)</span>
+p <span class="tok-op">=</span> <span class="tok-op">(</span>
+    <span class="tok-call">ggtree</span><span class="tok-op">(</span>raxml<span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_label_repel</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span>label<span class="tok-op">=</span><span class="tok-str">&quot;bootstrap&quot;</span><span class="tok-op">,</span> fill<span class="tok-op">=</span><span class="tok-str">&quot;bootstrap&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">theme</span><span class="tok-op">(</span>legend_position<span class="tok-op">=</span><span class="tok-op">[</span><span class="tok-num">0.1</span><span class="tok-op">,</span> <span class="tok-num">0.8</span><span class="tok-op">]</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">scale_fill_viridis_c</span><span class="tok-op">(</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+p
+</code></pre>
+  </details>
+</div>
+<h2 id="faq-newick-bootstrap">A.4.5 Bootstrap Values from Newick Format</h2>
+<p>Filter numeric support values embedded inside Newick internal node strings using <code>subset='~is_na(as_numeric(label)) & (as_numeric(label) &gt; 80)'</code>.</p>
+<div class="book-figure-card" id="fig-A-5">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_A_5.svg" alt="Figure A.5: Bootstrap value stored in node label." loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure A.5: Bootstrap value stored in node label..</strong> Bootstrap value stored in node label.</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">read_tree</span><span class="api-pill">geom_label2</span><span class="api-pill">as_numeric</span><span class="api-pill">is_na</span><button type="button" class="copy-btn" data-code-target="code-blk-100">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-100"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> read_tree<span class="tok-op">,</span> system_file<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> geom_label2<span class="tok-op">,</span> aes
+
+nwk <span class="tok-op">=</span> <span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;RAxML&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;RAxML_bipartitions.H3&quot;</span><span class="tok-op">)</span>
+tr <span class="tok-op">=</span> <span class="tok-call">read_tree</span><span class="tok-op">(</span>nwk<span class="tok-op">)</span>
+p <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>tr<span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">geom_label2</span><span class="tok-op">(</span>
+    <span class="tok-call">aes</span><span class="tok-op">(</span>label<span class="tok-op">=</span><span class="tok-str">&quot;label&quot;</span><span class="tok-op">,</span> subset<span class="tok-op">=</span><span class="tok-str">&quot;~is_na(as_numeric(label)) &amp; (as_numeric(label) &gt; 80)&quot;</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+p
+</code></pre>
+  </details>
+</div>
+<h2 id="faq-plot-phylo">A.5.1 Plot the Same Tree as plot.phylo()</h2>
+<p>Compare non-ladderized <code>plot_phylo(x)</code> and <code>ggtree(x, ladderize=False)</code> against default ladderized <code>ggtree(x)</code> output.</p>
+<div class="book-figure-card" id="fig-A-6">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_A_6.svg" alt="Figure A.6: Ladderized and non-ladderized tree." loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure A.6: Ladderized and non-ladderized tree..</strong> Ladderized and non-ladderized tree. plot.phylo() displays non-ladderized tree (A), use ladderize = FALSE to display non-ladderized tree in ggtree() (B), ggtree() displays ladderized tree by default (C).</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">plot_phylo</span><span class="api-pill">ggtree</span><span class="api-pill">ladderize</span><span class="api-pill">geom_tiplab</span><button type="button" class="copy-btn" data-code-target="code-blk-101">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-101"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> set_seed<span class="tok-op">,</span> rtree<span class="tok-op">,</span> plot_phylo<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> geom_tiplab<span class="tok-op">,</span> plot_list
+
+<span class="tok-call">set_seed</span><span class="tok-op">(</span><span class="tok-num">42</span><span class="tok-op">)</span>
+x <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">5</span><span class="tok-op">)</span>
+pa <span class="tok-op">=</span> <span class="tok-call">plot_phylo</span><span class="tok-op">(</span>x<span class="tok-op">)</span>
+pb <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>x<span class="tok-op">,</span> ladderize<span class="tok-op">=</span><span class="tok-kw">False</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span><span class="tok-op">)</span>
+pc <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>x<span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span><span class="tok-op">)</span>
+<span class="tok-call">plot_list</span><span class="tok-op">(</span>pa<span class="tok-op">,</span> pb<span class="tok-op">,</span> pc<span class="tok-op">,</span> ncol<span class="tok-op">=</span><span class="tok-num">3</span><span class="tok-op">,</span> tag_levels<span class="tok-op">=</span><span class="tok-str">&quot;A&quot;</span><span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
+<h2 id="faq-rotate-constr">A.5.2 Specifying the Order of Tips (rotateConstr)</h2>
+<p>Enforce a desired bottom-to-top tip ordering with <code>rotateConstr()</code> and preserve it during rendering via <code>ladderize=False</code>.</p>
+<div class="book-figure-card" id="fig-A-7">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_A_7.svg" alt="Figure A.7: Specifying tree order." loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure A.7: Specifying tree order..</strong> Specifying tree order. The order of the input tree will be maintained in ggtree() when ladderize = FALSE.</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">rotateConstr</span><span class="api-pill">ggtree</span><span class="api-pill">geom_tiplab</span><span class="api-pill">hexpand</span><button type="button" class="copy-btn" data-code-target="code-blk-102">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-102"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> set_seed<span class="tok-op">,</span> rtree<span class="tok-op">,</span> rotateConstr<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> geom_tiplab<span class="tok-op">,</span> hexpand
+
+<span class="tok-call">set_seed</span><span class="tok-op">(</span><span class="tok-num">42</span><span class="tok-op">)</span>
+x <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">5</span><span class="tok-op">)</span>
+y <span class="tok-op">=</span> <span class="tok-call">rotateConstr</span><span class="tok-op">(</span>x<span class="tok-op">,</span> <span class="tok-op">[</span><span class="tok-str">&quot;t4&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;t2&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;t5&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;t1&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;t3&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span>
+<span class="tok-call">ggtree</span><span class="tok-op">(</span>y<span class="tok-op">,</span> ladderize<span class="tok-op">=</span><span class="tok-kw">False</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">hexpand</span><span class="tok-op">(</span><span class="tok-num">0.15</span><span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
+<h2 id="faq-shrink-branch">A.5.3 Shrink Outlier Long Branch (scale_x_break)</h2>
+<p>Handle extreme outgroup branch lengths either by compressing coordinates in <code>p.data</code> or by introducing an axis gap via <code>scale_x_break([0.03, 0.09])</code>.</p>
+<div class="book-figure-card" id="fig-A-8">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_A_8.svg" alt="Figure A.8: Shrink outlier long branch." loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure A.8: Shrink outlier long branch..</strong> Shrink outlier long branch. Original tree (A); reduced outgroup branch length (B); truncated tree plot (C).</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">scale_x_break</span><span class="api-pill">MRCA</span><span class="api-pill">groupClade</span><span class="api-pill">hexpand</span><button type="button" class="copy-btn" data-code-target="code-blk-103">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-103"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
+    read_tree<span class="tok-op">,</span> system_file<span class="tok-op">,</span> MRCA<span class="tok-op">,</span> groupClade<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> aes<span class="tok-op">,</span>
+    geom_tiplab<span class="tok-op">,</span> theme<span class="tok-op">,</span> scale_x_break<span class="tok-op">,</span> hexpand<span class="tok-op">,</span> plot_list<span class="tok-op">,</span>
+<span class="tok-op">)</span>
+
+x <span class="tok-op">=</span> <span class="tok-call">read_tree</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;TDbook&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;tree_long_branch_example.nwk&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+m <span class="tok-op">=</span> <span class="tok-call">MRCA</span><span class="tok-op">(</span>x<span class="tok-op">,</span> <span class="tok-num">75</span><span class="tok-op">,</span> <span class="tok-num">76</span><span class="tok-op">)</span>
+y <span class="tok-op">=</span> <span class="tok-call">groupClade</span><span class="tok-op">(</span>x<span class="tok-op">,</span> m<span class="tok-op">)</span>
+p1 <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>y<span class="tok-op">,</span> <span class="tok-call">aes</span><span class="tok-op">(</span>linetype<span class="tok-op">=</span><span class="tok-str">&quot;group&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span>size<span class="tok-op">=</span><span class="tok-num">2</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">theme</span><span class="tok-op">(</span>legend_position<span class="tok-op">=</span><span class="tok-str">&quot;none&quot;</span><span class="tok-op">)</span>
+p <span class="tok-op">=</span> p1<span class="tok-op">.</span><span class="tok-call">copy</span><span class="tok-op">(</span><span class="tok-op">)</span>
+mean_x <span class="tok-op">=</span> <span class="tok-call">sum</span><span class="tok-op">(</span><span class="tok-call">float</span><span class="tok-op">(</span>v<span class="tok-op">)</span> <span class="tok-kw">for</span> v <span class="tok-kw">in</span> p<span class="tok-op">.</span>data<span class="tok-op">[</span><span class="tok-str">&quot;x&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-op">/</span> <span class="tok-call">len</span><span class="tok-op">(</span>p<span class="tok-op">.</span>data<span class="tok-op">)</span>
+p<span class="tok-op">.</span>data<span class="tok-op">[</span><span class="tok-str">&quot;x&quot;</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-op">[</span>mean_x <span class="tok-kw">if</span> <span class="tok-call">int</span><span class="tok-op">(</span>nd<span class="tok-op">)</span> <span class="tok-kw">in</span> <span class="tok-op">(</span><span class="tok-num">75</span><span class="tok-op">,</span> <span class="tok-num">76</span><span class="tok-op">)</span> <span class="tok-kw">else</span> xv <span class="tok-kw">for</span> nd<span class="tok-op">,</span> xv <span class="tok-kw">in</span> <span class="tok-call">zip</span><span class="tok-op">(</span>p<span class="tok-op">.</span>data<span class="tok-op">[</span><span class="tok-str">&quot;node&quot;</span><span class="tok-op">]</span><span class="tok-op">,</span> p<span class="tok-op">.</span>data<span class="tok-op">[</span><span class="tok-str">&quot;x&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span><span class="tok-op">]</span>
+p2 <span class="tok-op">=</span> p1 <span class="tok-op">+</span> <span class="tok-call">scale_x_break</span><span class="tok-op">(</span><span class="tok-op">[</span><span class="tok-num">0.03</span><span class="tok-op">,</span> <span class="tok-num">0.09</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">hexpand</span><span class="tok-op">(</span><span class="tok-num">0.05</span><span class="tok-op">)</span>
+<span class="tok-call">plot_list</span><span class="tok-op">(</span>p1<span class="tok-op">,</span> p<span class="tok-op">,</span> p2<span class="tok-op">,</span> ncol<span class="tok-op">=</span><span class="tok-num">3</span><span class="tok-op">,</span> tag_levels<span class="tok-op">=</span><span class="tok-str">&quot;A&quot;</span><span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
+<h2 id="faq-bind-tip">A.5.4 Attach a New Tip to a Tree (bind_tip)</h2>
+<p>Insert a new taxon onto a chosen branch with <code>bind_tip()</code>, distinguish its dashed edge via <code>scale_linetype_manual()</code>, and overlay attachment uncertainty with <code>geom_errorbarh()</code>.</p>
+<div class="book-figure-card" id="fig-A-9">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_A_9.svg" alt="Figure A.9: Attaching a new tip to a tree." loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure A.9: Attaching a new tip to a tree..</strong> Attaching a new tip to a tree. Different line types were employed to distinguish the newly introduced tip and an error bar was added to indicate the uncertainty of the added branch position.</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">bind_tip</span><span class="api-pill">as_tibble</span><span class="api-pill">parent</span><span class="api-pill">as_treedata</span><button type="button" class="copy-btn" data-code-target="code-blk-104">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-104"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
+    set_seed<span class="tok-op">,</span> rtree<span class="tok-op">,</span> bind_tip<span class="tok-op">,</span> as_tibble<span class="tok-op">,</span> parent<span class="tok-op">,</span> as_treedata<span class="tok-op">,</span>
+    ggtree<span class="tok-op">,</span> aes<span class="tok-op">,</span> geom_tiplab<span class="tok-op">,</span> geom_errorbarh<span class="tok-op">,</span> scale_linetype_manual<span class="tok-op">,</span>
+    theme<span class="tok-op">,</span> NA<span class="tok-op">,</span> hexpand<span class="tok-op">,</span>
+<span class="tok-op">)</span>
+
+<span class="tok-call">set_seed</span><span class="tok-op">(</span><span class="tok-num">1993</span><span class="tok-op">)</span>
+tr <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">5</span><span class="tok-op">)</span>
+tr2 <span class="tok-op">=</span> <span class="tok-call">bind_tip</span><span class="tok-op">(</span>tr<span class="tok-op">,</span> <span class="tok-str">&quot;U&quot;</span><span class="tok-op">,</span> edge_length<span class="tok-op">=</span><span class="tok-num">0.1</span><span class="tok-op">,</span> where<span class="tok-op">=</span><span class="tok-num">7</span><span class="tok-op">,</span> position<span class="tok-op">=</span><span class="tok-num">0.15</span><span class="tok-op">)</span>
+d <span class="tok-op">=</span> <span class="tok-call">as_tibble</span><span class="tok-op">(</span>tr2<span class="tok-op">)</span>
+u_par <span class="tok-op">=</span> <span class="tok-call">int</span><span class="tok-op">(</span><span class="tok-call">parent</span><span class="tok-op">(</span>d<span class="tok-op">,</span> <span class="tok-str">&quot;U&quot;</span><span class="tok-op">)</span><span class="tok-op">[</span><span class="tok-str">&quot;node&quot;</span><span class="tok-op">]</span><span class="tok-op">[</span><span class="tok-num">0</span><span class="tok-op">]</span><span class="tok-op">)</span>
+d<span class="tok-op">[</span><span class="tok-str">&quot;type&quot;</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-op">[</span><span class="tok-str">&quot;newly introduced&quot;</span> <span class="tok-kw">if</span> lbl <span class="tok-op">==</span> <span class="tok-str">&quot;U&quot;</span> <span class="tok-kw">else</span> <span class="tok-str">&quot;original&quot;</span> <span class="tok-kw">for</span> lbl <span class="tok-kw">in</span> d<span class="tok-op">[</span><span class="tok-str">&quot;label&quot;</span><span class="tok-op">]</span><span class="tok-op">]</span>
+d<span class="tok-op">[</span><span class="tok-str">&quot;sd&quot;</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-op">[</span><span class="tok-num">0.05</span> <span class="tok-kw">if</span> <span class="tok-call">int</span><span class="tok-op">(</span>nd<span class="tok-op">)</span> <span class="tok-op">==</span> u_par <span class="tok-kw">else</span> NA <span class="tok-kw">for</span> nd <span class="tok-kw">in</span> d<span class="tok-op">[</span><span class="tok-str">&quot;node&quot;</span><span class="tok-op">]</span><span class="tok-op">]</span>
+tr3 <span class="tok-op">=</span> <span class="tok-call">as_treedata</span><span class="tok-op">(</span>d<span class="tok-op">)</span>
+p <span class="tok-op">=</span> <span class="tok-op">(</span>
+    <span class="tok-call">ggtree</span><span class="tok-op">(</span>tr3<span class="tok-op">,</span> <span class="tok-call">aes</span><span class="tok-op">(</span>linetype<span class="tok-op">=</span><span class="tok-str">&quot;type&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_errorbarh</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span>xmin<span class="tok-op">=</span><span class="tok-str">&quot;x - sd&quot;</span><span class="tok-op">,</span> xmax<span class="tok-op">=</span><span class="tok-str">&quot;x + sd&quot;</span><span class="tok-op">,</span> y<span class="tok-op">=</span><span class="tok-str">&quot;y - 0.3&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> linetype<span class="tok-op">=</span><span class="tok-str">&quot;dashed&quot;</span><span class="tok-op">,</span> height<span class="tok-op">=</span><span class="tok-num">0.1</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">scale_linetype_manual</span><span class="tok-op">(</span>values<span class="tok-op">=</span><span class="tok-op">{</span><span class="tok-str">&quot;newly introduced&quot;</span><span class="tok-op">:</span> <span class="tok-str">&quot;dashed&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;original&quot;</span><span class="tok-op">:</span> <span class="tok-str">&quot;solid&quot;</span><span class="tok-op">}</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">hexpand</span><span class="tok-op">(</span><span class="tok-num">0.15</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">theme</span><span class="tok-op">(</span>legend_position<span class="tok-op">=</span><span class="tok-op">[</span><span class="tok-num">0.8</span><span class="tok-op">,</span> <span class="tok-num">0.2</span><span class="tok-op">]</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+p
+</code></pre>
+  </details>
+</div>
+<h2 id="faq-arbitrary-style">A.5.5 Arbitrarily Colored &amp; Styled Branches</h2>
+<p>Bind literal per-node color strings and numeric/named linetypes directly via identity mapping <code>aes(colour='I(colour)', linetype='I(lty)')</code> without generating extra legends.</p>
+<div class="book-figure-card" id="fig-A-10">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_A_10.svg" alt="Figure A.10: Change colors and line types of specific branches." loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure A.10: Change colors and line types of specific branches..</strong> Change colors and line types of specific branches.</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">I</span><span class="api-pill">Nnode2</span><span class="api-pill">geom_label</span><span class="api-pill">aes</span><button type="button" class="copy-btn" data-code-target="code-blk-105">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-105"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> set_seed<span class="tok-op">,</span> rtree<span class="tok-op">,</span> Nnode2<span class="tok-op">,</span> data_frame<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> geom_label<span class="tok-op">,</span> aes
+
+<span class="tok-call">set_seed</span><span class="tok-op">(</span><span class="tok-num">123</span><span class="tok-op">)</span>
+x <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">10</span><span class="tok-op">)</span>
+n_tot <span class="tok-op">=</span> <span class="tok-call">Nnode2</span><span class="tok-op">(</span>x<span class="tok-op">)</span>
+d <span class="tok-op">=</span> <span class="tok-call">data_frame</span><span class="tok-op">(</span>
+    node<span class="tok-op">=</span><span class="tok-call">list</span><span class="tok-op">(</span><span class="tok-call">range</span><span class="tok-op">(</span><span class="tok-num">1</span><span class="tok-op">,</span> n_tot <span class="tok-op">+</span> <span class="tok-num">1</span><span class="tok-op">)</span><span class="tok-op">)</span><span class="tok-op">,</span>
+    colour<span class="tok-op">=</span><span class="tok-op">[</span><span class="tok-str">&quot;red&quot;</span> <span class="tok-kw">if</span> i <span class="tok-kw">in</span> <span class="tok-op">(</span><span class="tok-num">2</span><span class="tok-op">,</span> <span class="tok-num">3</span><span class="tok-op">,</span> <span class="tok-num">14</span><span class="tok-op">,</span> <span class="tok-num">15</span><span class="tok-op">)</span> <span class="tok-kw">else</span> <span class="tok-str">&quot;black&quot;</span> <span class="tok-kw">for</span> i <span class="tok-kw">in</span> <span class="tok-call">range</span><span class="tok-op">(</span><span class="tok-num">1</span><span class="tok-op">,</span> n_tot <span class="tok-op">+</span> <span class="tok-num">1</span><span class="tok-op">)</span><span class="tok-op">]</span><span class="tok-op">,</span>
+<span class="tok-op">)</span>
+lty_map <span class="tok-op">=</span> <span class="tok-op">{</span><span class="tok-num">2</span><span class="tok-op">:</span> <span class="tok-num">2</span><span class="tok-op">,</span> <span class="tok-num">5</span><span class="tok-op">:</span> <span class="tok-num">3</span><span class="tok-op">,</span> <span class="tok-num">13</span><span class="tok-op">:</span> <span class="tok-num">2</span><span class="tok-op">,</span> <span class="tok-num">14</span><span class="tok-op">:</span> <span class="tok-num">4</span><span class="tok-op">}</span>
+d2 <span class="tok-op">=</span> <span class="tok-call">data_frame</span><span class="tok-op">(</span>
+    node<span class="tok-op">=</span><span class="tok-call">list</span><span class="tok-op">(</span><span class="tok-call">range</span><span class="tok-op">(</span><span class="tok-num">1</span><span class="tok-op">,</span> n_tot <span class="tok-op">+</span> <span class="tok-num">1</span><span class="tok-op">)</span><span class="tok-op">)</span><span class="tok-op">,</span>
+    lty<span class="tok-op">=</span><span class="tok-op">[</span>lty_map<span class="tok-op">.</span><span class="tok-call">get</span><span class="tok-op">(</span>i<span class="tok-op">,</span> <span class="tok-num">1</span><span class="tok-op">)</span> <span class="tok-kw">for</span> i <span class="tok-kw">in</span> <span class="tok-call">range</span><span class="tok-op">(</span><span class="tok-num">1</span><span class="tok-op">,</span> n_tot <span class="tok-op">+</span> <span class="tok-num">1</span><span class="tok-op">)</span><span class="tok-op">]</span><span class="tok-op">,</span>
+<span class="tok-op">)</span>
+p <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>x<span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">geom_label</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span>label<span class="tok-op">=</span><span class="tok-str">&quot;node&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+p <span class="tok-op">%</span> d <span class="tok-op">%</span> d2 <span class="tok-op">+</span> <span class="tok-call">aes</span><span class="tok-op">(</span>colour<span class="tok-op">=</span><span class="tok-str">&quot;I(colour)&quot;</span><span class="tok-op">,</span> linetype<span class="tok-op">=</span><span class="tok-str">&quot;I(lty)&quot;</span><span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
+<h2 id="faq-point-on-branch">A.5.6 Add an Arbitrary Point on a Branch</h2>
+<p>Place markers along branches by offsetting <code>x</code> by an absolute constant or proportionally using <code>x - branch_length * frac</code> in <code>geom_nodepoint()</code>.</p>
+<div class="book-figure-card" id="fig-A-11">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_A_11.svg" alt="Figure A.11: Add an arbitrary point on a branch." loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure A.11: Add an arbitrary point on a branch..</strong> Add an arbitrary point on a branch. The position of the symbolic point can be adjusted by an absolute value (A) or in proportion to the branch length (B).</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">geom_nodepoint</span><span class="api-pill">aes</span><span class="api-pill">plot_list</span><button type="button" class="copy-btn" data-code-target="code-blk-106">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-106"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> set_seed<span class="tok-op">,</span> rtree<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> geom_nodepoint<span class="tok-op">,</span> aes<span class="tok-op">,</span> plot_list
+
+<span class="tok-call">set_seed</span><span class="tok-op">(</span><span class="tok-num">2020</span> <span class="tok-op">-</span> <span class="tok-num">5</span> <span class="tok-op">-</span> <span class="tok-num">20</span><span class="tok-op">)</span>
+x <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">10</span><span class="tok-op">)</span>
+p <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>x<span class="tok-op">)</span>
+p1 <span class="tok-op">=</span> p <span class="tok-op">+</span> <span class="tok-call">geom_nodepoint</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span>subset<span class="tok-op">=</span><span class="tok-str">&quot;node == 13&quot;</span><span class="tok-op">,</span> x<span class="tok-op">=</span><span class="tok-str">&quot;x - 0.1&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">5</span><span class="tok-op">,</span> colour<span class="tok-op">=</span><span class="tok-str">&quot;firebrick&quot;</span><span class="tok-op">,</span> shape<span class="tok-op">=</span><span class="tok-num">21</span><span class="tok-op">)</span>
+p2 <span class="tok-op">=</span> <span class="tok-op">(</span>
+    p
+    <span class="tok-op">+</span> <span class="tok-call">geom_nodepoint</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span>subset<span class="tok-op">=</span><span class="tok-str">&quot;node == 13&quot;</span><span class="tok-op">,</span> x<span class="tok-op">=</span><span class="tok-str">&quot;x - branch_length * 0.2&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">3</span><span class="tok-op">,</span> colour<span class="tok-op">=</span><span class="tok-str">&quot;firebrick&quot;</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_nodepoint</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span>subset<span class="tok-op">=</span><span class="tok-str">&quot;node == 13&quot;</span><span class="tok-op">,</span> x<span class="tok-op">=</span><span class="tok-str">&quot;x - branch_length * 0.8&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">5</span><span class="tok-op">,</span> colour<span class="tok-op">=</span><span class="tok-str">&quot;steelblue&quot;</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+<span class="tok-call">plot_list</span><span class="tok-op">(</span>p1<span class="tok-op">,</span> p2<span class="tok-op">,</span> ncol<span class="tok-op">=</span><span class="tok-num">2</span><span class="tok-op">,</span> tag_levels<span class="tok-op">=</span><span class="tok-str">&quot;A&quot;</span><span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
+<h2 id="faq-facet-x-titles">A.6 Different X-Axis Labels for Facet Panels</h2>
+<p>Pass a <code>.panel</code>-keyed DataFrame to <code>geom_text()</code> with negative <code>y</code>, <code>coord_cartesian(clip='off')</code>, and increased bottom margin to draw per-facet X-axis titles.</p>
+<div class="book-figure-card" id="fig-A-12">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_A_12.svg" alt="Figure A.12: X-axis titles for different facet panels." loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure A.12: X-axis titles for different facet panels..</strong> X-axis titles for different facet panels.</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">geom_facet</span><span class="api-pill">theme_bw</span><span class="api-pill">xlim_tree</span><span class="api-pill">xlim_expand</span><button type="button" class="copy-btn" data-code-target="code-blk-107">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-107"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
+    set_seed<span class="tok-op">,</span> rtree<span class="tok-op">,</span> rnorm<span class="tok-op">,</span> data_frame<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> geom_tiplab<span class="tok-op">,</span>
+    geom_facet<span class="tok-op">,</span> geom_point<span class="tok-op">,</span> aes<span class="tok-op">,</span> theme_bw<span class="tok-op">,</span> xlim_tree<span class="tok-op">,</span> xlim_expand<span class="tok-op">,</span>
+    scale_y_continuous<span class="tok-op">,</span> geom_text<span class="tok-op">,</span> coord_cartesian<span class="tok-op">,</span> theme<span class="tok-op">,</span> margin<span class="tok-op">,</span>
+<span class="tok-op">)</span>
+
+<span class="tok-call">set_seed</span><span class="tok-op">(</span><span class="tok-num">2019</span> <span class="tok-op">-</span> <span class="tok-num">5</span> <span class="tok-op">-</span> <span class="tok-num">2</span><span class="tok-op">)</span>
+x <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">30</span><span class="tok-op">)</span>
+p <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>x<span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span><span class="tok-op">)</span>
+d_val <span class="tok-op">=</span> <span class="tok-call">data_frame</span><span class="tok-op">(</span>label<span class="tok-op">=</span>x<span class="tok-op">.</span>tip_label<span class="tok-op">,</span> value<span class="tok-op">=</span><span class="tok-call">rnorm</span><span class="tok-op">(</span><span class="tok-num">30</span><span class="tok-op">)</span><span class="tok-op">)</span>
+p2 <span class="tok-op">=</span> <span class="tok-op">(</span>
+    p
+    <span class="tok-op">+</span> <span class="tok-call">geom_facet</span><span class="tok-op">(</span>panel<span class="tok-op">=</span><span class="tok-str">&quot;Dot&quot;</span><span class="tok-op">,</span> data<span class="tok-op">=</span>d_val<span class="tok-op">,</span> geom<span class="tok-op">=</span>geom_point<span class="tok-op">,</span> mapping<span class="tok-op">=</span><span class="tok-call">aes</span><span class="tok-op">(</span>x<span class="tok-op">=</span><span class="tok-str">&quot;value&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">theme_bw</span><span class="tok-op">(</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">xlim_tree</span><span class="tok-op">(</span><span class="tok-num">5</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">xlim_expand</span><span class="tok-op">(</span><span class="tok-op">[</span><span class="tok-op">-</span><span class="tok-num">5</span><span class="tok-op">,</span> <span class="tok-num">5</span><span class="tok-op">]</span><span class="tok-op">,</span> <span class="tok-str">&quot;Dot&quot;</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+d_lbl <span class="tok-op">=</span> <span class="tok-call">data_frame</span><span class="tok-op">(</span><span class="tok-op">**</span><span class="tok-op">{</span><span class="tok-str">&quot;.panel&quot;</span><span class="tok-op">:</span> <span class="tok-op">[</span><span class="tok-str">&quot;Tree&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;Dot&quot;</span><span class="tok-op">]</span><span class="tok-op">,</span> <span class="tok-str">&quot;lab&quot;</span><span class="tok-op">:</span> <span class="tok-op">[</span><span class="tok-str">&quot;Distance&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;Dot Units&quot;</span><span class="tok-op">]</span><span class="tok-op">,</span> <span class="tok-str">&quot;x&quot;</span><span class="tok-op">:</span> <span class="tok-op">[</span><span class="tok-num">2.5</span><span class="tok-op">,</span> <span class="tok-num">0.0</span><span class="tok-op">]</span><span class="tok-op">,</span> <span class="tok-str">&quot;y&quot;</span><span class="tok-op">:</span> <span class="tok-op">[</span><span class="tok-op">-</span><span class="tok-num">2.0</span><span class="tok-op">,</span> <span class="tok-op">-</span><span class="tok-num">2.0</span><span class="tok-op">]</span><span class="tok-op">}</span><span class="tok-op">)</span>
+res <span class="tok-op">=</span> <span class="tok-op">(</span>
+    p2
+    <span class="tok-op">+</span> <span class="tok-call">scale_y_continuous</span><span class="tok-op">(</span>limits<span class="tok-op">=</span><span class="tok-op">[</span><span class="tok-num">0</span><span class="tok-op">,</span> <span class="tok-num">31</span><span class="tok-op">]</span><span class="tok-op">,</span> expand<span class="tok-op">=</span><span class="tok-op">[</span><span class="tok-num">0</span><span class="tok-op">,</span> <span class="tok-num">0</span><span class="tok-op">]</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_text</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span>label<span class="tok-op">=</span><span class="tok-str">&quot;lab&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> data<span class="tok-op">=</span>d_lbl<span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">coord_cartesian</span><span class="tok-op">(</span>clip<span class="tok-op">=</span><span class="tok-str">&quot;off&quot;</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">theme</span><span class="tok-op">(</span>plot_margin<span class="tok-op">=</span><span class="tok-call">margin</span><span class="tok-op">(</span><span class="tok-num">6</span><span class="tok-op">,</span> <span class="tok-num">6</span><span class="tok-op">,</span> <span class="tok-num">40</span><span class="tok-op">,</span> <span class="tok-num">6</span><span class="tok-op">)</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+res
+</code></pre>
+  </details>
+</div>
+<h2 id="faq-layer-order">A.7 Plot Something Behind the Phylogeny</h2>
+<p>Move clade highlights behind tree branches either by reversing <code>p.layers</code> or by building from <code>ggplot(x) + geom_hilight(...) + geom_tree()</code>.</p>
+<div class="book-figure-card" id="fig-A-13">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_A_13.svg" alt="Figure A.13: Add layers behind the tree structure." loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure A.13: Add layers behind the tree structure..</strong> Add layers behind the tree structure. A layer on top of the tree structure (A). Reverse layer order of A (B). Add layer behind the tree layer (C).</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">geom_hilight</span><span class="api-pill">ggplot</span><span class="api-pill">geom_tree</span><span class="api-pill">theme_tree</span><button type="button" class="copy-btn" data-code-target="code-blk-108">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-108"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> set_seed<span class="tok-op">,</span> rtree<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> ggplot<span class="tok-op">,</span> geom_hilight<span class="tok-op">,</span> geom_tree<span class="tok-op">,</span> theme_tree<span class="tok-op">,</span> plot_list
+
+<span class="tok-call">set_seed</span><span class="tok-op">(</span><span class="tok-num">1982</span><span class="tok-op">)</span>
+x <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">5</span><span class="tok-op">)</span>
+p1 <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>x<span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">geom_hilight</span><span class="tok-op">(</span>node<span class="tok-op">=</span><span class="tok-num">7</span><span class="tok-op">,</span> alpha<span class="tok-op">=</span><span class="tok-num">1</span><span class="tok-op">)</span>
+p2 <span class="tok-op">=</span> p1<span class="tok-op">.</span><span class="tok-call">copy</span><span class="tok-op">(</span><span class="tok-op">)</span>
+p2<span class="tok-op">.</span>layers <span class="tok-op">=</span> <span class="tok-call">list</span><span class="tok-op">(</span><span class="tok-call">reversed</span><span class="tok-op">(</span>p2<span class="tok-op">.</span>layers<span class="tok-op">)</span><span class="tok-op">)</span>
+p3 <span class="tok-op">=</span> <span class="tok-call">ggplot</span><span class="tok-op">(</span>x<span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">geom_hilight</span><span class="tok-op">(</span>node<span class="tok-op">=</span><span class="tok-num">7</span><span class="tok-op">,</span> alpha<span class="tok-op">=</span><span class="tok-num">1</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">geom_tree</span><span class="tok-op">(</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">theme_tree</span><span class="tok-op">(</span><span class="tok-op">)</span>
+<span class="tok-call">plot_list</span><span class="tok-op">(</span>p1<span class="tok-op">,</span> p2<span class="tok-op">,</span> p3<span class="tok-op">,</span> ncol<span class="tok-op">=</span><span class="tok-num">3</span><span class="tok-op">,</span> tag_levels<span class="tok-op">=</span><span class="tok-str">&quot;A&quot;</span><span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
+<h2 id="faq-circular-center">A.8 Enlarge Center Space in Circular/Fan Tree</h2>
+<p>Open central radial whitespace in circular layouts using negative lower <code>xlim(-10, NA)</code> or by adding an extended <code>geom_rootedge(5)</code>.</p>
+<div class="book-figure-card" id="fig-A-14">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_A_14.svg" alt="Figure A.14: Enlarge center space in circular tree." loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure A.14: Enlarge center space in circular tree..</strong> Enlarge center space in circular tree. Allocate more space by xlim (A) or long root branch (B).</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">layout_circular</span><span class="api-pill">xlim</span><span class="api-pill">geom_rootedge</span><span class="api-pill">plot_list</span><button type="button" class="copy-btn" data-code-target="code-blk-109">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-109"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> set_seed<span class="tok-op">,</span> rtree<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> xlim<span class="tok-op">,</span> NA<span class="tok-op">,</span> geom_rootedge<span class="tok-op">,</span> plot_list
+
+<span class="tok-call">set_seed</span><span class="tok-op">(</span><span class="tok-num">1982</span><span class="tok-op">)</span>
+tree <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">30</span><span class="tok-op">)</span>
+pa <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>tree<span class="tok-op">,</span> layout<span class="tok-op">=</span><span class="tok-str">&quot;circular&quot;</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">xlim</span><span class="tok-op">(</span><span class="tok-op">-</span><span class="tok-num">10</span><span class="tok-op">,</span> NA<span class="tok-op">)</span>
+pb <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>tree<span class="tok-op">,</span> layout<span class="tok-op">=</span><span class="tok-str">&quot;circular&quot;</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">geom_rootedge</span><span class="tok-op">(</span><span class="tok-num">5</span><span class="tok-op">)</span>
+<span class="tok-call">plot_list</span><span class="tok-op">(</span>pa<span class="tok-op">,</span> pb<span class="tok-op">,</span> tag_levels<span class="tok-op">=</span><span class="tok-str">&quot;A&quot;</span><span class="tok-op">,</span> ncol<span class="tok-op">=</span><span class="tok-num">2</span><span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
+<h2 id="faq-backward-time">A.9 Most Distant Tip as Origin of Timescale (revts)</h2>
+<p>Transform forward root-to-tip branch coordinates to backward time before present with <code>revts(p) + scale_x_continuous(labels=abs)</code>.</p>
+<div class="book-figure-card" id="fig-A-15">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_A_15.svg" alt="Figure A.15: Origin of the time scale." loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure A.15: Origin of the time scale..</strong> Origin of the time scale. Forward: from the root to the tips (A). Backward: from the most distant tip to the root (B).</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">revts</span><span class="api-pill">scale_x_continuous</span><span class="api-pill">theme_tree2</span><span class="api-pill">plot_list</span><button type="button" class="copy-btn" data-code-target="code-blk-110">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-110"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> set_seed<span class="tok-op">,</span> rtree<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> theme_tree2<span class="tok-op">,</span> revts<span class="tok-op">,</span> scale_x_continuous<span class="tok-op">,</span> plot_list
+
+<span class="tok-call">set_seed</span><span class="tok-op">(</span><span class="tok-num">123</span><span class="tok-op">)</span>
+tr <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">10</span><span class="tok-op">)</span>
+p <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>tr<span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">theme_tree2</span><span class="tok-op">(</span><span class="tok-op">)</span>
+p2 <span class="tok-op">=</span> <span class="tok-call">revts</span><span class="tok-op">(</span>p<span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">scale_x_continuous</span><span class="tok-op">(</span>labels<span class="tok-op">=</span>abs<span class="tok-op">)</span>
+<span class="tok-call">plot_list</span><span class="tok-op">(</span>p<span class="tok-op">,</span> p2<span class="tok-op">,</span> ncol<span class="tok-op">=</span><span class="tok-num">2</span><span class="tok-op">,</span> tag_levels<span class="tok-op">=</span><span class="tok-str">&quot;A&quot;</span><span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
+<h2 id="faq-trim-space">A.10 Remove Blank Margins (magick / image_trim)</h2>
+<p>Render circular graphics via <code>ggsave()</code>, auto-crop transparent margins using <code>image_read()</code> + <code>image_trim()</code>, and re-wrap with <code>image_ggplot()</code>.</p>
+<div class="book-figure-card" id="fig-A-16">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_A_16.svg" alt="Figure A.16: Trim extra white space for polar coordinates." loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure A.16: Trim extra white space for polar coordinates..</strong> Trim extra white space for polar coordinates. Original plot (A). Trimmed version (B).</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">ggsave</span><span class="api-pill">image_read</span><span class="api-pill">image_trim</span><span class="api-pill">image_ggplot</span><button type="button" class="copy-btn" data-code-target="code-blk-111">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-111"><span class="tok-kw">import</span> tempfile
+<span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
+    set_seed<span class="tok-op">,</span> rtree<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> ggsave<span class="tok-op">,</span> image_read<span class="tok-op">,</span> image_trim<span class="tok-op">,</span>
+    image_ggplot<span class="tok-op">,</span> theme<span class="tok-op">,</span> element_rect<span class="tok-op">,</span> NA<span class="tok-op">,</span> plot_list<span class="tok-op">,</span>
+<span class="tok-op">)</span>
+
+<span class="tok-call">set_seed</span><span class="tok-op">(</span><span class="tok-num">2021</span><span class="tok-op">)</span>
+tr <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">30</span><span class="tok-op">)</span>
+p <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>tr<span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">1</span><span class="tok-op">,</span> colour<span class="tok-op">=</span><span class="tok-str">&quot;purple&quot;</span><span class="tok-op">,</span> layout<span class="tok-op">=</span><span class="tok-str">&quot;circular&quot;</span><span class="tok-op">)</span>
+<span class="tok-kw">with</span> tempfile<span class="tok-op">.</span><span class="tok-call">NamedTemporaryFile</span><span class="tok-op">(</span>suffix<span class="tok-op">=</span><span class="tok-str">&quot;.png&quot;</span><span class="tok-op">)</span> <span class="tok-kw">as</span> tf<span class="tok-op">:</span>
+    <span class="tok-call">ggsave</span><span class="tok-op">(</span>filename<span class="tok-op">=</span>tf<span class="tok-op">.</span>name<span class="tok-op">,</span> plot<span class="tok-op">=</span>p<span class="tok-op">,</span> width<span class="tok-op">=</span><span class="tok-num">7</span><span class="tok-op">,</span> height<span class="tok-op">=</span><span class="tok-num">7</span><span class="tok-op">)</span>
+    x_img <span class="tok-op">=</span> <span class="tok-call">image_read</span><span class="tok-op">(</span>tf<span class="tok-op">.</span>name<span class="tok-op">,</span> density<span class="tok-op">=</span><span class="tok-num">300</span><span class="tok-op">)</span>
+    y_img <span class="tok-op">=</span> <span class="tok-call">image_trim</span><span class="tok-op">(</span>x_img<span class="tok-op">)</span>
+panel_border <span class="tok-op">=</span> <span class="tok-call">theme</span><span class="tok-op">(</span>panel_border<span class="tok-op">=</span><span class="tok-call">element_rect</span><span class="tok-op">(</span>colour<span class="tok-op">=</span><span class="tok-str">&quot;black&quot;</span><span class="tok-op">,</span> fill<span class="tok-op">=</span>NA<span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">2</span><span class="tok-op">)</span><span class="tok-op">)</span>
+xx <span class="tok-op">=</span> <span class="tok-call">image_ggplot</span><span class="tok-op">(</span>x_img<span class="tok-op">)</span> <span class="tok-op">+</span> panel_border
+yy <span class="tok-op">=</span> <span class="tok-call">image_ggplot</span><span class="tok-op">(</span>y_img<span class="tok-op">)</span> <span class="tok-op">+</span> panel_border
+<span class="tok-call">plot_list</span><span class="tok-op">(</span>xx<span class="tok-op">,</span> yy<span class="tok-op">,</span> tag_levels<span class="tok-op">=</span><span class="tok-str">&quot;A&quot;</span><span class="tok-op">,</span> ncol<span class="tok-op">=</span><span class="tok-num">2</span><span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
+        <nav class="chapter-pager" aria-label="Chapter Navigation"><a class="pager-link" href="chapter13.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">13. Gallery of Examples</span></a><a class="pager-link pager-next" href="api.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Appendix B: API Reference</span></a></nav>
+      </article>
+    </main>
+
+    <aside class="book-toc" aria-label="On this page">
+  <div class="toc-heading">On This Page</div>
+  <ul class="toc-list"><li><a class="" href="#faq-truncated-tip">A.4.1 Tip Label Truncated</a></li><li><a class="toc-fig-link" href="#fig-A-1">Fig. A.1: Allocating more spaces for truncated tip labels.</a></li><li><a class="" href="#faq-modify-labels">A.4.2 Modify (Tip) Labels</a></li><li><a class="toc-fig-link" href="#fig-A-2">Fig. A.2: Alternative tip labels.</a></li><li><a class="" href="#faq-format-labels">A.4.3 Formatting (Tip) Labels (Plotmath &amp; ggtext)</a></li><li><a class="toc-fig-link" href="#fig-A-3">Fig. A.3: Formatting labels.</a></li><li><a class="" href="#faq-repel-labels">A.4.4 Avoid Overlapping Text Labels (ggrepel)</a></li><li><a class="toc-fig-link" href="#fig-A-4">Fig. A.4: Repel labels.</a></li><li><a class="" href="#faq-newick-bootstrap">A.4.5 Bootstrap Values from Newick Format</a></li><li><a class="toc-fig-link" href="#fig-A-5">Fig. A.5: Bootstrap value stored in node label.</a></li><li><a class="" href="#faq-plot-phylo">A.5.1 Plot the Same Tree as plot.phylo()</a></li><li><a class="toc-fig-link" href="#fig-A-6">Fig. A.6: Ladderized and non-ladderized tree.</a></li><li><a class="" href="#faq-rotate-constr">A.5.2 Specifying the Order of Tips (rotateConstr)</a></li><li><a class="toc-fig-link" href="#fig-A-7">Fig. A.7: Specifying tree order.</a></li><li><a class="" href="#faq-shrink-branch">A.5.3 Shrink Outlier Long Branch (scale_x_break)</a></li><li><a class="toc-fig-link" href="#fig-A-8">Fig. A.8: Shrink outlier long branch.</a></li><li><a class="" href="#faq-bind-tip">A.5.4 Attach a New Tip to a Tree (bind_tip)</a></li><li><a class="toc-fig-link" href="#fig-A-9">Fig. A.9: Attaching a new tip to a tree.</a></li><li><a class="" href="#faq-arbitrary-style">A.5.5 Arbitrarily Colored &amp; Styled Branches</a></li><li><a class="toc-fig-link" href="#fig-A-10">Fig. A.10: Change colors and line types of specific branches.</a></li><li><a class="" href="#faq-point-on-branch">A.5.6 Add an Arbitrary Point on a Branch</a></li><li><a class="toc-fig-link" href="#fig-A-11">Fig. A.11: Add an arbitrary point on a branch.</a></li><li><a class="" href="#faq-facet-x-titles">A.6 Different X-Axis Labels for Facet Panels</a></li><li><a class="toc-fig-link" href="#fig-A-12">Fig. A.12: X-axis titles for different facet panels.</a></li><li><a class="" href="#faq-layer-order">A.7 Plot Something Behind the Phylogeny</a></li><li><a class="toc-fig-link" href="#fig-A-13">Fig. A.13: Add layers behind the tree structure.</a></li><li><a class="" href="#faq-circular-center">A.8 Enlarge Center Space in Circular/Fan Tree</a></li><li><a class="toc-fig-link" href="#fig-A-14">Fig. A.14: Enlarge center space in circular tree.</a></li><li><a class="" href="#faq-backward-time">A.9 Most Distant Tip as Origin of Timescale (revts)</a></li><li><a class="toc-fig-link" href="#fig-A-15">Fig. A.15: Origin of the time scale.</a></li><li><a class="" href="#faq-trim-space">A.10 Remove Blank Margins (magick / image_trim)</a></li><li><a class="toc-fig-link" href="#fig-A-16">Fig. A.16: Trim extra white space for polar coordinates.</a></li></ul>
+</aside>
+  </div>
+
+  <script src="assets/search_data.js"></script>
+  <script src="assets/book.js"></script>
+</body>
+</html>

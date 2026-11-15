@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="820" height="500" viewBox="0 0 820 500">
+<rect width="820" height="500" fill="white"/>
+<defs><clipPath id="ggtree_cart_clip_370018960"><rect x="28.00" y="0.00" width="804.00" height="500.00"/></clipPath></defs>
+<g clip-path="url(#ggtree_cart_clip_370018960)">
+<line x1="131.22" y1="367.27" x2="360.61" y2="367.27" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="207.69" y1="285.09" x2="360.61" y2="285.09" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="284.15" y1="120.73" x2="360.61" y2="120.73" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="284.15" y1="38.55" x2="360.61" y2="38.55" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="207.69" y1="202.91" x2="360.61" y2="202.91" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="54.76" y1="449.45" x2="360.61" y2="449.45" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="54.76" y1="278.24" x2="131.22" y2="278.24" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="131.22" y1="189.21" x2="207.69" y2="189.21" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="207.69" y1="79.64" x2="284.15" y2="79.64" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="131.22" y1="278.24" x2="131.22" y2="367.27" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="207.69" y1="189.21" x2="207.69" y2="285.09" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="284.15" y1="79.64" x2="284.15" y2="120.73" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="284.15" y1="79.64" x2="284.15" y2="38.55" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="207.69" y1="189.21" x2="207.69" y2="202.91" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="54.76" y1="363.85" x2="54.76" y2="449.45" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="54.76" y1="363.85" x2="54.76" y2="278.24" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="131.22" y1="278.24" x2="131.22" y2="189.21" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="207.69" y1="189.21" x2="207.69" y2="79.64" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<g transform="translate(552.68,358.17) scale(0.1820)"><path d="M 38 14 A 9 9 0 1 1 37.9 14 Z" fill="#297e8c" fill-opacity="1.00" stroke="none"/><path d="M 34 26 Q 48 22 58 30 C 66 40 66 58 58 70 L 72 86 L 63 88 L 48 72 L 32 88 L 24 84 L 36 62 L 24 82 L 16 78 L 28 48 L 16 32 L 22 26 Z" fill="#297e8c" fill-opacity="1.00" stroke="none"/></g>
+<g transform="translate(552.68,275.99) scale(0.1820)"><path d="M 70 16 C 78 14 84 22 82 32 L 78 40 C 66 30 40 30 22 46 L 14 86 L 24 86 L 28 66 C 36 66 44 66 52 64 L 56 86 L 67 86 L 66 58 L 78 86 L 87 86 L 78 48 Z" fill="#fde725" fill-opacity="1.00" stroke="none"/></g>
+<g transform="translate(552.68,111.63) scale(0.1820)"><path d="M 32 16 A 8 8 0 1 1 31.9 16 Z" fill="#2e738c" fill-opacity="1.00" stroke="none"/><path d="M 28 28 Q 38 24 46 32 L 58 50 L 72 60 L 78 86 L 70 86 L 63 64 L 48 58 L 40 86 L 32 86 L 36 52 L 24 78 L 17 75 L 26 42 Z" fill="#2e738c" fill-opacity="1.00" stroke="none"/></g>
+<g transform="translate(552.68,29.45) scale(0.1820)"><path d="M 74 22 A 9 8.5 0 1 1 73.9 22 Z" fill="#2f6e8b" fill-opacity="1.00" stroke="none"/><path d="M 70 19 Q 79 18 82 26 Q 80 35 72 36 L 64 46 C 52 38 34 40 24 52 L 18 86 L 26 86 L 32 62 C 38 64 44 64 52 60 L 56 86 L 64 86 L 63 54 L 76 74 L 84 72 L 73 46 Z" fill="#2f6e8b" fill-opacity="1.00" stroke="none"/></g>
+<g transform="translate(552.68,193.81) scale(0.1820)"><path d="M 53 6 A 8.5 8.5 0 1 1 52.9 6 Z" fill="#238c8c" fill-opacity="1.00" stroke="none"/><path d="M 44 22 Q 53 19 60 23 L 72 44 L 66 47 L 58 32 L 56 54 L 72 93 L 63 94 L 51 64 L 46 66 L 34 94 L 25 91 L 39 54 L 40 31 L 29 48 L 23 44 Z" fill="#238c8c" fill-opacity="1.00" stroke="none"/></g>
+<g transform="translate(552.68,440.35) scale(0.1820)"><path d="M 50 18 A 7.5 7.5 0 1 1 49.9 18 Z" fill="#440154" fill-opacity="1.00" stroke="none"/><path d="M 46 28 Q 50 26 54 28 L 74 8 L 80 12 L 58 34 L 56 56 L 64 88 L 57 88 L 50 62 L 43 88 L 36 88 L 44 56 L 42 34 L 20 12 L 26 8 Z" fill="#440154" fill-opacity="1.00" stroke="none"/></g>
+<text x="379.90" y="370.67" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">Pongo_abelii</text>
+<text x="379.90" y="288.49" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">Gorilla_gorilla_gorilla</text>
+<text x="379.90" y="124.13" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">Pan_paniscus</text>
+<text x="379.90" y="41.95" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">Pan_troglodytes</text>
+<text x="379.90" y="206.31" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">Homo_sapiens</text>
+<text x="379.90" y="452.85" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">Nomascus_leucogenys</text>
+</g>
+<text x="716.0" y="44.0" font-family="sans-serif" font-size="10.0" font-weight="bold" fill="#1F2937">body_mass</text>
+<defs><linearGradient id="gggrad_0_36_36810" x1="0" y1="1" x2="0" y2="0"><stop offset="0.0%" stop-color="#440154"/><stop offset="25.0%" stop-color="#3b528b"/><stop offset="50.0%" stop-color="#21918c"/><stop offset="75.0%" stop-color="#5ec962"/><stop offset="100.0%" stop-color="#fde725"/></linearGradient></defs>
+<rect x="716.0" y="54.0" width="12" height="72" fill="url(#gggrad_0_36_36810)" stroke="#9CA3AF" stroke-width="0.5"/>
+<text x="732.0" y="62.0" font-family="sans-serif" font-size="9" fill="#374151">114</text>
+<text x="732.0" y="125.0" font-family="sans-serif" font-size="9" fill="#374151">6</text>
+</svg>

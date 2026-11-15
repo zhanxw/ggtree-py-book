@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>2. Manipulating Tree with Data | Data Integration, Manipulation and Visualization of Phylogenetic Trees (ggtree-py)</title>
+  <link rel="stylesheet" href="assets/style.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-left">
+      <button type="button" class="sidebar-toggle" id="sidebar-toggle-btn" aria-label="Toggle Menu">&#9776;</button>
+      <a class="topbar-brand" href="index.html">
+        Data Integration, Manipulation and Visualization of Phylogenetic Trees
+        <span class="topbar-sub">(ggtree-py Edition)</span>
+      </a>
+    </div>
+    <div class="topbar-actions">
+      <a class="tool-btn" href="gallery.html">Gallery Index</a>
+      <button type="button" class="tool-btn" id="toggle-all-code-btn">Expand All Code</button>
+      <button type="button" class="tool-btn" id="theme-toggle-btn">Theme: Light</button>
+    </div>
+  </header>
+
+  <div class="book-shell">
+    <nav class="book-sidebar" id="book-sidebar" aria-label="Book Chapters">
+      <div class="sidebar-search-wrap">
+        <input type="search" class="sidebar-search" id="book-search-input" placeholder="Search chapters, figures, APIs..." autocomplete="off"/>
+        <div class="search-results" id="book-search-results"></div>
+      </div>
+      <div class="nav-part">Preface</div><ul class="nav-list">
+<li><a class="nav-link" href="index.html">Welcome &amp; Overview</a></li>
+</ul>
+<div class="nav-part">Part I: Tree Data I/O &amp; Manipulation</div><ul class="nav-list">
+<li><a class="nav-link" href="chapter1.html"><span class="nav-num">1.</span>Importing Tree with Data</a></li>
+<li><a class="nav-link active" href="chapter2.html"><span class="nav-num">2.</span>Manipulating Tree with Data</a></li>
+<li><a class="nav-link" href="chapter3.html"><span class="nav-num">3.</span>Exporting Trees with Data</a></li>
+</ul>
+<div class="nav-part">Part II: Visualization &amp; Annotation</div><ul class="nav-list">
+<li><a class="nav-link" href="chapter4.html"><span class="nav-num">4.</span>Phylogenetic Tree Visualization</a></li>
+<li><a class="nav-link" href="chapter5.html"><span class="nav-num">5.</span>Phylogenetic Tree Annotation</a></li>
+<li><a class="nav-link" href="chapter6.html"><span class="nav-num">6.</span>Visual Exploration of Trees</a></li>
+<li><a class="nav-link" href="chapter7.html"><span class="nav-num">7.</span>Plotting Tree with Data</a></li>
+<li><a class="nav-link" href="chapter8.html"><span class="nav-num">8.</span>Silhouettes &amp; Sub-plots</a></li>
+</ul>
+<div class="nav-part">Part III: ggtree Extensions</div><ul class="nav-list">
+<li><a class="nav-link" href="chapter9.html"><span class="nav-num">9.</span>Other Tree-like Structures</a></li>
+<li><a class="nav-link" href="chapter10.html"><span class="nav-num">10.</span>ggtreeExtra Circular Rings</a></li>
+<li><a class="nav-link" href="chapter11.html"><span class="nav-num">11.</span>Other ggtree Extensions</a></li>
+<li><a class="nav-link" href="chapter12.html"><span class="nav-num">12.</span>ggtree Utilities</a></li>
+</ul>
+<div class="nav-part">Part IV: Miscellaneous Topics</div><ul class="nav-list">
+<li><a class="nav-link" href="chapter13.html"><span class="nav-num">13.</span>Gallery of Examples</a></li>
+</ul>
+<div class="nav-part">Appendix &amp; Index</div><ul class="nav-list">
+<li><a class="nav-link" href="faq.html"><span class="nav-num">A.</span>Frequently Asked Questions</a></li>
+<li><a class="nav-link" href="api.html"><span class="nav-num">B.</span>ggtree-py API Reference</a></li>
+<li><a class="nav-link" href="gallery.html"><span class="nav-num">★</span>All Figures Gallery &amp; Index</a></li>
+</ul>
+    </nav>
+
+    <main class="book-main">
+      <article class="book-article">
+        <div class="part-kicker">Part I: Tree Data Input, Output and Manipulation</div>
+        <h1 class="chapter-title">2. Manipulating Tree with Data</h1>
+<p>Integrating evolutionary inference outputs and external experimental metadata should never require fragile row-reordering hacks. <code>ggtree-py</code> implements <code>tidytree</code> tidy verbs, tree-data merging, rerooting, rescaling, subsetting, and multi-tree co-plotting helpers.</p>
+<h2 id="merge-tree">2.1 Combining Tree Data with merge_tree()</h2>
+<p>Separate analyses run on the same taxon topology—such as a dated BEAST tree and a CodeML selection run—can be combined with <code>merge_tree()</code> so joint distributions of rates, <code>dN</code>, <code>dS</code>, and <code>dN/dS</code> can be explored cleanly via <code>fortify()</code>, <code>gather()</code>, and <code>geom_hex()</code>.</p>
+<div class="book-figure-card" id="fig-2-1">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_2_1.svg" alt="Figure 2.1: Joint distribution of BEAST evolutionary rate vs. CodeML dN/dS, dN, and dS" loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure 2.1: Joint distribution of BEAST evolutionary rate vs. CodeML dN/dS, dN, and dS.</strong> Correlating BEAST branch substitution rates with CodeML synonymous (dS), non-synonymous (dN), and dN/dS ratios after combining outputs via merge_tree() and reshaping with gather().</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">read_beast</span><span class="api-pill">read_codeml</span><span class="api-pill">merge_tree</span><span class="api-pill">fortify</span><button type="button" class="copy-btn" data-code-target="code-blk-5">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-5">beast_tree <span class="tok-op">=</span> <span class="tok-call">read_beast</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;MCC_FluA_H3.tree&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+codeml_tree <span class="tok-op">=</span> <span class="tok-call">read_codeml</span><span class="tok-op">(</span>
+    <span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;rst&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span>
+    <span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;mlc&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span>
+<span class="tok-op">)</span>
+merged_tree <span class="tok-op">=</span> <span class="tok-call">merge_tree</span><span class="tok-op">(</span>beast_tree<span class="tok-op">,</span> codeml_tree<span class="tok-op">)</span>
+raw <span class="tok-op">=</span> <span class="tok-call">fortify</span><span class="tok-op">(</span>merged_tree<span class="tok-op">)</span>
+recs <span class="tok-op">=</span> <span class="tok-op">[</span>
+    r <span class="tok-kw">for</span> r <span class="tok-kw">in</span> raw<span class="tok-op">.</span><span class="tok-call">to_records</span><span class="tok-op">(</span><span class="tok-op">)</span>
+    <span class="tok-kw">if</span> <span class="tok-call">isinstance</span><span class="tok-op">(</span>r<span class="tok-op">.</span><span class="tok-call">get</span><span class="tok-op">(</span><span class="tok-str">&quot;dN_vs_dS&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> <span class="tok-op">(</span>int<span class="tok-op">,</span> float<span class="tok-op">)</span><span class="tok-op">)</span>
+    <span class="tok-kw">and</span> <span class="tok-call">isinstance</span><span class="tok-op">(</span>r<span class="tok-op">.</span><span class="tok-call">get</span><span class="tok-op">(</span><span class="tok-str">&quot;rate&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> <span class="tok-op">(</span>int<span class="tok-op">,</span> float<span class="tok-op">)</span><span class="tok-op">)</span>
+    <span class="tok-kw">and</span> <span class="tok-num">0.0</span> <span class="tok-op">&lt;=</span> <span class="tok-call">float</span><span class="tok-op">(</span>r<span class="tok-op">[</span><span class="tok-str">&quot;dN_vs_dS&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-op">&lt;=</span> <span class="tok-num">1.5</span>
+<span class="tok-op">]</span>
+df <span class="tok-op">=</span> <span class="tok-call">DataFrame</span><span class="tok-op">(</span><span class="tok-op">{</span>
+    <span class="tok-str">&quot;rate&quot;</span><span class="tok-op">:</span> <span class="tok-op">[</span><span class="tok-call">float</span><span class="tok-op">(</span>r<span class="tok-op">[</span><span class="tok-str">&quot;rate&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-kw">for</span> r <span class="tok-kw">in</span> recs<span class="tok-op">]</span><span class="tok-op">,</span>
+    <span class="tok-str">&quot;dN_vs_dS&quot;</span><span class="tok-op">:</span> <span class="tok-op">[</span><span class="tok-call">float</span><span class="tok-op">(</span>r<span class="tok-op">[</span><span class="tok-str">&quot;dN_vs_dS&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-kw">for</span> r <span class="tok-kw">in</span> recs<span class="tok-op">]</span><span class="tok-op">,</span>
+    <span class="tok-str">&quot;dN&quot;</span><span class="tok-op">:</span> <span class="tok-op">[</span><span class="tok-call">float</span><span class="tok-op">(</span>r<span class="tok-op">[</span><span class="tok-str">&quot;dN&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-kw">if</span> r<span class="tok-op">.</span><span class="tok-call">get</span><span class="tok-op">(</span><span class="tok-str">&quot;dN&quot;</span><span class="tok-op">)</span> <span class="tok-kw">is</span> <span class="tok-kw">not</span> <span class="tok-kw">None</span> <span class="tok-kw">else</span> <span class="tok-call">float</span><span class="tok-op">(</span><span class="tok-str">&quot;nan&quot;</span><span class="tok-op">)</span> <span class="tok-kw">for</span> r <span class="tok-kw">in</span> recs<span class="tok-op">]</span><span class="tok-op">,</span>
+    <span class="tok-str">&quot;dS&quot;</span><span class="tok-op">:</span> <span class="tok-op">[</span><span class="tok-call">float</span><span class="tok-op">(</span>r<span class="tok-op">[</span><span class="tok-str">&quot;dS&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-kw">if</span> r<span class="tok-op">.</span><span class="tok-call">get</span><span class="tok-op">(</span><span class="tok-str">&quot;dS&quot;</span><span class="tok-op">)</span> <span class="tok-kw">is</span> <span class="tok-kw">not</span> <span class="tok-kw">None</span> <span class="tok-kw">else</span> <span class="tok-call">float</span><span class="tok-op">(</span><span class="tok-str">&quot;nan&quot;</span><span class="tok-op">)</span> <span class="tok-kw">for</span> r <span class="tok-kw">in</span> recs<span class="tok-op">]</span><span class="tok-op">,</span>
+<span class="tok-op">}</span><span class="tok-op">)</span>
+df_long <span class="tok-op">=</span> <span class="tok-call">gather</span><span class="tok-op">(</span>df<span class="tok-op">,</span> <span class="tok-str">&quot;type&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;value&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;dN_vs_dS&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;dN&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;dS&quot;</span><span class="tok-op">)</span>
+remap <span class="tok-op">=</span> <span class="tok-op">{</span><span class="tok-str">&quot;dN_vs_dS&quot;</span><span class="tok-op">:</span> <span class="tok-str">&quot;dN/dS&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;dN&quot;</span><span class="tok-op">:</span> <span class="tok-str">&quot;dN&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;dS&quot;</span><span class="tok-op">:</span> <span class="tok-str">&quot;dS&quot;</span><span class="tok-op">}</span>
+df_long<span class="tok-op">[</span><span class="tok-str">&quot;type&quot;</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-call">factor</span><span class="tok-op">(</span>
+    <span class="tok-op">[</span>remap<span class="tok-op">.</span><span class="tok-call">get</span><span class="tok-op">(</span><span class="tok-call">str</span><span class="tok-op">(</span>v<span class="tok-op">)</span><span class="tok-op">,</span> <span class="tok-call">str</span><span class="tok-op">(</span>v<span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-kw">for</span> v <span class="tok-kw">in</span> df_long<span class="tok-op">[</span><span class="tok-str">&quot;type&quot;</span><span class="tok-op">]</span><span class="tok-op">.</span><span class="tok-call">tolist</span><span class="tok-op">(</span><span class="tok-op">)</span><span class="tok-op">]</span><span class="tok-op">,</span>
+    levels<span class="tok-op">=</span><span class="tok-op">[</span><span class="tok-str">&quot;dN/dS&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;dN&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;dS&quot;</span><span class="tok-op">]</span><span class="tok-op">,</span>
+<span class="tok-op">)</span>
+p <span class="tok-op">=</span> <span class="tok-op">(</span>
+    <span class="tok-call">ggplot</span><span class="tok-op">(</span>df_long<span class="tok-op">,</span> <span class="tok-call">aes</span><span class="tok-op">(</span><span class="tok-str">&quot;rate&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;value&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_hex</span><span class="tok-op">(</span>bins<span class="tok-op">=</span><span class="tok-num">22</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">facet_wrap</span><span class="tok-op">(</span><span class="tok-str">&quot;~type&quot;</span><span class="tok-op">,</span> scales<span class="tok-op">=</span><span class="tok-str">&quot;free_y&quot;</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">xlab</span><span class="tok-op">(</span><span class="tok-str">&quot;rate&quot;</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">ylab</span><span class="tok-op">(</span><span class="tok-str">&quot;&quot;</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+p
+</code></pre>
+  </details>
+</div>
+<h2 id="join-reroot">2.2 Joining External Tables &amp;amp; Rerooting Trees</h2>
+<p>Using <code>left_join()</code> merges tip and internal-node attribute tables (resolving duplicate columns with suffixes like <code>.x</code> and <code>.y</code>), while <code>root(trda, outgroup=..., edgelabel=True)</code> reroots topologies while keeping edge and node annotations properly synchronized.</p>
+<div class="book-figure-card" id="fig-2-2">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_2_2.svg" alt="Figure 2.2: Joining tip/node metadata and rerooting a phylogeny with root()" loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure 2.2: Joining tip/node metadata and rerooting a phylogeny with root().</strong> Comparison of a carnivoran tree joined with tip and internal-node annotations before (A) and after (B) rerooting on Suricata_suricatta via root(..., edgelabel=True), keeping clade labels, posterior support fills, and tip traits aligned.</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">read_tree</span><span class="api-pill">read_table</span><span class="api-pill">left_join</span><span class="api-pill">root</span><button type="button" class="copy-btn" data-code-target="code-blk-6">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-6">tr_boots <span class="tok-op">=</span> <span class="tok-call">read_tree</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;TDbook&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;tree_boots.nwk&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+df_tip <span class="tok-op">=</span> <span class="tok-call">read_table</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;TDbook&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;df_tip_data.tsv&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> header<span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span> sep<span class="tok-op">=</span><span class="tok-str">&quot;\t&quot;</span><span class="tok-op">)</span>
+df_inode <span class="tok-op">=</span> <span class="tok-call">read_table</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;TDbook&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;df_inode_data.tsv&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> header<span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span> sep<span class="tok-op">=</span><span class="tok-str">&quot;\t&quot;</span><span class="tok-op">)</span>
+
+trda <span class="tok-op">=</span> <span class="tok-call">left_join</span><span class="tok-op">(</span>tr_boots<span class="tok-op">,</span> df_tip<span class="tok-op">,</span> by<span class="tok-op">=</span><span class="tok-op">{</span><span class="tok-str">&quot;label&quot;</span><span class="tok-op">:</span> <span class="tok-str">&quot;Newick_label&quot;</span><span class="tok-op">}</span><span class="tok-op">)</span>
+trda <span class="tok-op">=</span> <span class="tok-call">left_join</span><span class="tok-op">(</span>trda<span class="tok-op">,</span> df_inode<span class="tok-op">,</span> by<span class="tok-op">=</span><span class="tok-op">{</span><span class="tok-str">&quot;label&quot;</span><span class="tok-op">:</span> <span class="tok-str">&quot;newick_label&quot;</span><span class="tok-op">}</span><span class="tok-op">)</span>
+trda2 <span class="tok-op">=</span> <span class="tok-call">root</span><span class="tok-op">(</span>trda<span class="tok-op">,</span> outgroup<span class="tok-op">=</span><span class="tok-str">&quot;Suricata_suricatta&quot;</span><span class="tok-op">,</span> edgelabel<span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">)</span>
+
+<span class="tok-kw">def</span> <span class="tok-call">_build_panel</span><span class="tok-op">(</span>td<span class="tok-op">,</span> x_hi<span class="tok-op">:</span> float<span class="tok-op">,</span> show_legend<span class="tok-op">:</span> bool<span class="tok-op">)</span><span class="tok-op">:</span>
+    p <span class="tok-op">=</span> <span class="tok-op">(</span>
+        <span class="tok-call">ggtree</span><span class="tok-op">(</span>td<span class="tok-op">)</span>
+        <span class="tok-op">+</span> <span class="tok-call">geom_nodelab</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span>x<span class="tok-op">=</span><span class="tok-str">&quot;branch&quot;</span><span class="tok-op">,</span> label<span class="tok-op">=</span><span class="tok-str">&quot;bootstrap&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> nudge_y<span class="tok-op">=</span><span class="tok-num">0.36</span><span class="tok-op">,</span> hjust<span class="tok-op">=</span><span class="tok-num">0.5</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">2.7</span><span class="tok-op">)</span>
+        <span class="tok-op">+</span> <span class="tok-call">geom_tippoint</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span>shape<span class="tok-op">=</span><span class="tok-str">&quot;trophic_habit&quot;</span><span class="tok-op">,</span> color<span class="tok-op">=</span><span class="tok-str">&quot;trophic_habit&quot;</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-str">&quot;mass_in_kg&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+        <span class="tok-op">+</span> <span class="tok-call">scale_size_continuous</span><span class="tok-op">(</span>range<span class="tok-op">=</span><span class="tok-op">(</span><span class="tok-num">2.0</span><span class="tok-op">,</span> <span class="tok-num">5.2</span><span class="tok-op">)</span><span class="tok-op">)</span>
+        <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span>offset<span class="tok-op">=</span><span class="tok-num">0.14</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">2.9</span><span class="tok-op">)</span>
+        <span class="tok-op">+</span> <span class="tok-call">geom_nodelab</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span>label<span class="tok-op">=</span><span class="tok-str">&quot;vernacularName.y&quot;</span><span class="tok-op">,</span> fill<span class="tok-op">=</span><span class="tok-str">&quot;posterior&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> geom<span class="tok-op">=</span><span class="tok-str">&quot;label&quot;</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">2.6</span><span class="tok-op">)</span>
+        <span class="tok-op">+</span> <span class="tok-call">scale_fill_gradientn</span><span class="tok-op">(</span>colors<span class="tok-op">=</span><span class="tok-op">[</span><span class="tok-str">&quot;#EDF8B1&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;#7FCDBB&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;#2C7FB8&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span>
+        <span class="tok-op">+</span> <span class="tok-call">xlim</span><span class="tok-op">(</span><span class="tok-op">-</span><span class="tok-num">0.1</span><span class="tok-op">,</span> x_hi<span class="tok-op">)</span>
+    <span class="tok-op">)</span>
+    <span class="tok-kw">if</span> <span class="tok-kw">not</span> show_legend<span class="tok-op">:</span>
+        p <span class="tok-op">=</span> p <span class="tok-op">+</span> <span class="tok-call">theme</span><span class="tok-op">(</span>legend_position<span class="tok-op">=</span><span class="tok-str">&quot;none&quot;</span><span class="tok-op">)</span>
+    <span class="tok-kw">return</span> p
+
+<span class="tok-call">plot_list</span><span class="tok-op">(</span><span class="tok-call">_build_panel</span><span class="tok-op">(</span>trda<span class="tok-op">,</span> <span class="tok-num">4.8</span><span class="tok-op">,</span> <span class="tok-kw">False</span><span class="tok-op">)</span><span class="tok-op">,</span> <span class="tok-call">_build_panel</span><span class="tok-op">(</span>trda2<span class="tok-op">,</span> <span class="tok-num">5.8</span><span class="tok-op">,</span> <span class="tok-kw">True</span><span class="tok-op">)</span><span class="tok-op">,</span> ncol<span class="tok-op">=</span><span class="tok-num">2</span><span class="tok-op">,</span> tag_levels<span class="tok-op">=</span><span class="tok-str">&quot;A&quot;</span><span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
+<h2 id="rescale-tree">2.3 Rescaling Tree Branches</h2>
+<p><code>rescale_tree(merged_tree, branch_length='dN')</code> replaces raw branch lengths with any numeric annotation column (such as <code>dN</code> or evolutionary <code>rate</code>), enabling side-by-side evolutionary comparisons.</p>
+<div class="book-figure-card" id="fig-2-3">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_2_3.svg" alt="Figure 2.3: Rescaling branch lengths using CodeML dN and BEAST evolutionary rate" loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure 2.3: Rescaling branch lengths using CodeML dN and BEAST evolutionary rate.</strong> The merged Flu A H3 tree plotted with original divergence times (A), rescaled by synonymous-normalized non-synonymous substitutions dN (B), and rescaled by BEAST molecular clock rate (C) via rescale_tree().</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">merge_tree</span><span class="api-pill">rescale_tree</span><span class="api-pill">ggtree</span><span class="api-pill">theme_tree2</span><button type="button" class="copy-btn" data-code-target="code-blk-7">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-7">beast_tree <span class="tok-op">=</span> <span class="tok-call">read_beast</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;MCC_FluA_H3.tree&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+codeml_tree <span class="tok-op">=</span> <span class="tok-call">read_codeml</span><span class="tok-op">(</span>
+    <span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;rst&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span>
+    <span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;mlc&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span>
+<span class="tok-op">)</span>
+merged_tree <span class="tok-op">=</span> <span class="tok-call">merge_tree</span><span class="tok-op">(</span>beast_tree<span class="tok-op">,</span> codeml_tree<span class="tok-op">)</span>
+p1 <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>merged_tree<span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">theme_tree2</span><span class="tok-op">(</span><span class="tok-op">)</span>
+p2 <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span><span class="tok-call">rescale_tree</span><span class="tok-op">(</span>merged_tree<span class="tok-op">,</span> <span class="tok-str">&quot;dN&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">theme_tree2</span><span class="tok-op">(</span><span class="tok-op">)</span>
+p3 <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span><span class="tok-call">rescale_tree</span><span class="tok-op">(</span>merged_tree<span class="tok-op">,</span> <span class="tok-str">&quot;rate&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">theme_tree2</span><span class="tok-op">(</span><span class="tok-op">)</span>
+<span class="tok-call">plot_list</span><span class="tok-op">(</span>p1<span class="tok-op">,</span> p2<span class="tok-op">,</span> p3<span class="tok-op">,</span> ncol<span class="tok-op">=</span><span class="tok-num">3</span><span class="tok-op">,</span> tag_levels<span class="tok-op">=</span><span class="tok-str">&quot;A&quot;</span><span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
+<h2 id="drop-subset">2.4 Subsetting and Pruning Trees</h2>
+<p><code>drop_tip()</code> prunes unwanted taxa while remapping associated <code>TreeData</code> attributes cleanly. For large phylogenies, <code>tree_subset()</code> isolates local focal neighborhoods by tip label or internal node ID—tracking ancestry groups, preserved node data, and optional <code>root_edge</code> stems via <code>geom_rootedge()</code>.</p>
+<div class="book-figure-card" id="fig-2-4">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_2_4.svg" alt="Figure 2.4: Pruning taxa from an NHX TreeData object while preserving node tags" loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure 2.4: Pruning taxa from an NHX TreeData object while preserving node tags.</strong> Original phyldog NHX tree with three target tips highlighted in red (A) compared against the pruned subtree obtained via drop_tip(nhx, to_drop) (B).</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">read_nhx</span><span class="api-pill">drop_tip</span><span class="api-pill">ggtree</span><span class="api-pill">scale_color_manual</span><button type="button" class="copy-btn" data-code-target="code-blk-8">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-8">nhx <span class="tok-op">=</span> <span class="tok-call">read_nhx</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;NHX&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;phyldog.nhx&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+to_drop <span class="tok-op">=</span> <span class="tok-op">[</span>
+    <span class="tok-str">&quot;Physonect_sp_@2066767&quot;</span><span class="tok-op">,</span>
+    <span class="tok-str">&quot;Lychnagalma_utricularia@2253871&quot;</span><span class="tok-op">,</span>
+    <span class="tok-str">&quot;Kephyes_ovata@2606431&quot;</span><span class="tok-op">,</span>
+<span class="tok-op">]</span>
+p1 <span class="tok-op">=</span> <span class="tok-op">(</span>
+    <span class="tok-call">ggtree</span><span class="tok-op">(</span>nhx<span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span>color<span class="tok-op">=</span><span class="tok-str">&quot;label %in% to_drop&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">2.8</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">scale_color_manual</span><span class="tok-op">(</span>values<span class="tok-op">=</span><span class="tok-op">[</span><span class="tok-str">&quot;black&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;red&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">xlim</span><span class="tok-op">(</span><span class="tok-num">0</span><span class="tok-op">,</span> <span class="tok-num">0.85</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+nhx_reduced <span class="tok-op">=</span> <span class="tok-call">drop_tip</span><span class="tok-op">(</span>nhx<span class="tok-op">,</span> to_drop<span class="tok-op">)</span>
+p2 <span class="tok-op">=</span> <span class="tok-op">(</span>
+    <span class="tok-call">ggtree</span><span class="tok-op">(</span>nhx_reduced<span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span>size<span class="tok-op">=</span><span class="tok-num">2.8</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">xlim</span><span class="tok-op">(</span><span class="tok-num">0</span><span class="tok-op">,</span> <span class="tok-num">0.85</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+<span class="tok-call">plot_list</span><span class="tok-op">(</span>p1<span class="tok-op">,</span> p2<span class="tok-op">,</span> ncol<span class="tok-op">=</span><span class="tok-num">2</span><span class="tok-op">,</span> tag_levels<span class="tok-op">=</span><span class="tok-str">&quot;A&quot;</span><span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
+<div class="book-figure-card" id="fig-2-5">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_2_5.svg" alt="Figure 2.5: Subsetting around a focal tip with preserved annotations and root-edge placement" loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure 2.5: Subsetting around a focal tip with preserved annotations and root-edge placement.</strong> Full Flu A H3 BEAST tree (A); 4-level subset around A/Swine/HK/168/2012 highlighting the focal lineage (B); subset annotated with preserved rate values (C); positioned at its ancestral root coordinate (D); and rendered with geom_rootedge() on the original time scale (E).</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">read_beast</span><span class="api-pill">tree_subset</span><span class="api-pill">ggtree</span><span class="api-pill">geom_rootedge</span><button type="button" class="copy-btn" data-code-target="code-blk-9">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-9">beast_tree <span class="tok-op">=</span> <span class="tok-call">read_beast</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;MCC_FluA_H3.tree&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+tree2 <span class="tok-op">=</span> <span class="tok-call">tree_subset</span><span class="tok-op">(</span>beast_tree<span class="tok-op">,</span> <span class="tok-str">&quot;A/Swine/HK/168/2012&quot;</span><span class="tok-op">,</span> levels_back<span class="tok-op">=</span><span class="tok-num">4</span><span class="tok-op">)</span>
+p1 <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>beast_tree<span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span>offset<span class="tok-op">=</span><span class="tok-num">0.05</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">1.8</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">xlim</span><span class="tok-op">(</span><span class="tok-num">0</span><span class="tok-op">,</span> <span class="tok-num">40</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">theme_tree2</span><span class="tok-op">(</span><span class="tok-op">)</span>
+p2 <span class="tok-op">=</span> <span class="tok-op">(</span>
+    <span class="tok-call">ggtree</span><span class="tok-op">(</span>tree2<span class="tok-op">,</span> <span class="tok-call">aes</span><span class="tok-op">(</span>color<span class="tok-op">=</span><span class="tok-str">&quot;group&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">scale_color_manual</span><span class="tok-op">(</span>values<span class="tok-op">=</span><span class="tok-op">[</span><span class="tok-str">&quot;black&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;red&quot;</span><span class="tok-op">]</span><span class="tok-op">,</span> guide<span class="tok-op">=</span><span class="tok-str">&quot;none&quot;</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span>offset<span class="tok-op">=</span><span class="tok-num">0.2</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">2.4</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">xlim</span><span class="tok-op">(</span><span class="tok-num">0</span><span class="tok-op">,</span> <span class="tok-num">4.5</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">theme_tree2</span><span class="tok-op">(</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+p3 <span class="tok-op">=</span> <span class="tok-op">(</span>
+    p2
+    <span class="tok-op">+</span> <span class="tok-call">geom_point</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span>fill<span class="tok-op">=</span><span class="tok-str">&quot;rate&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> color<span class="tok-op">=</span><span class="tok-str">&quot;black&quot;</span><span class="tok-op">,</span> shape<span class="tok-op">=</span><span class="tok-num">21</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">3.4</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">scale_fill_continuous</span><span class="tok-op">(</span>low<span class="tok-op">=</span><span class="tok-str">&quot;blue&quot;</span><span class="tok-op">,</span> high<span class="tok-op">=</span><span class="tok-str">&quot;red&quot;</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">xlim</span><span class="tok-op">(</span><span class="tok-num">0</span><span class="tok-op">,</span> <span class="tok-num">5.2</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">theme</span><span class="tok-op">(</span>legend_position<span class="tok-op">=</span><span class="tok-str">&quot;right&quot;</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+p4 <span class="tok-op">=</span> <span class="tok-op">(</span>
+    <span class="tok-call">ggtree</span><span class="tok-op">(</span>tree2<span class="tok-op">,</span> <span class="tok-call">aes</span><span class="tok-op">(</span>color<span class="tok-op">=</span><span class="tok-str">&quot;group&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> root_position<span class="tok-op">=</span>tree2<span class="tok-op">.</span>root_edge<span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span>size<span class="tok-op">=</span><span class="tok-num">2.4</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">xlim</span><span class="tok-op">(</span><span class="tok-num">18</span><span class="tok-op">,</span> <span class="tok-num">24</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">scale_color_manual</span><span class="tok-op">(</span>values<span class="tok-op">=</span><span class="tok-op">[</span><span class="tok-str">&quot;black&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;red&quot;</span><span class="tok-op">]</span><span class="tok-op">,</span> guide<span class="tok-op">=</span><span class="tok-str">&quot;none&quot;</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">theme_tree2</span><span class="tok-op">(</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+p5 <span class="tok-op">=</span> p4 <span class="tok-op">+</span> <span class="tok-call">geom_rootedge</span><span class="tok-op">(</span>rootedge<span class="tok-op">=</span>tree2<span class="tok-op">.</span>root_edge<span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">xlim</span><span class="tok-op">(</span><span class="tok-num">0</span><span class="tok-op">,</span> <span class="tok-num">50</span><span class="tok-op">)</span>
+<span class="tok-call">plot_list</span><span class="tok-op">(</span>p1<span class="tok-op">,</span> p2<span class="tok-op">,</span> p3<span class="tok-op">,</span> p4<span class="tok-op">,</span> p5<span class="tok-op">,</span> design<span class="tok-op">=</span><span class="tok-str">&quot;AABBCC\nAADDEE&quot;</span><span class="tok-op">,</span> tag_levels<span class="tok-op">=</span><span class="tok-str">&quot;A&quot;</span><span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
+<div class="book-figure-card" id="fig-2-6">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_2_6.svg" alt="Figure 2.6: Extracting clade neighborhoods by internal node ID and taxonomic group" loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure 2.6: Extracting clade neighborhoods by internal node ID and taxonomic group.</strong> Clade extraction at internal node 121 with levels_back=0 (A) and levels_back=2 (B); highlighting Plecotus bats via groupOTU() in a 916-tip chiroptera phylogeny (C); and zooming into the Plecotus clade via MRCA() and tree_subset() (D).</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">read_beast</span><span class="api-pill">read_tree</span><span class="api-pill">MRCA</span><span class="api-pill">tree_subset</span><button type="button" class="copy-btn" data-code-target="code-blk-10">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-10">beast_tree <span class="tok-op">=</span> <span class="tok-call">read_beast</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;MCC_FluA_H3.tree&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+clade <span class="tok-op">=</span> <span class="tok-call">tree_subset</span><span class="tok-op">(</span>beast_tree<span class="tok-op">,</span> <span class="tok-num">121</span><span class="tok-op">,</span> levels_back<span class="tok-op">=</span><span class="tok-num">0</span><span class="tok-op">)</span>
+clade2 <span class="tok-op">=</span> <span class="tok-call">tree_subset</span><span class="tok-op">(</span>beast_tree<span class="tok-op">,</span> <span class="tok-num">121</span><span class="tok-op">,</span> levels_back<span class="tok-op">=</span><span class="tok-num">2</span><span class="tok-op">)</span>
+p1 <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>clade<span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span>size<span class="tok-op">=</span><span class="tok-num">2.1</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">hexpand</span><span class="tok-op">(</span><span class="tok-num">0.55</span><span class="tok-op">)</span>
+p2 <span class="tok-op">=</span> <span class="tok-op">(</span>
+    <span class="tok-call">ggtree</span><span class="tok-op">(</span>clade2<span class="tok-op">,</span> <span class="tok-call">aes</span><span class="tok-op">(</span>color<span class="tok-op">=</span><span class="tok-str">&quot;group&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span>size<span class="tok-op">=</span><span class="tok-num">1.9</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">scale_color_manual</span><span class="tok-op">(</span>values<span class="tok-op">=</span><span class="tok-op">[</span><span class="tok-str">&quot;black&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;red&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">hexpand</span><span class="tok-op">(</span><span class="tok-num">0.55</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+
+chiroptera <span class="tok-op">=</span> <span class="tok-call">read_tree</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;TDbook&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;chiroptera.nwk&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+plecotus_tips <span class="tok-op">=</span> <span class="tok-op">[</span>t <span class="tok-kw">for</span> t <span class="tok-kw">in</span> chiroptera<span class="tok-op">.</span>tip_label <span class="tok-kw">if</span> <span class="tok-str">&quot;Plecotus&quot;</span> <span class="tok-kw">in</span> t<span class="tok-op">]</span>
+ch_grp <span class="tok-op">=</span> <span class="tok-call">groupOTU</span><span class="tok-op">(</span>chiroptera<span class="tok-op">,</span> plecotus_tips<span class="tok-op">)</span>
+plec_clade <span class="tok-op">=</span> <span class="tok-call">MRCA</span><span class="tok-op">(</span>chiroptera<span class="tok-op">,</span> plecotus_tips<span class="tok-op">)</span>
+sub_plec <span class="tok-op">=</span> <span class="tok-call">tree_subset</span><span class="tok-op">(</span>chiroptera<span class="tok-op">,</span> plec_clade<span class="tok-op">,</span> levels_back<span class="tok-op">=</span><span class="tok-num">0</span><span class="tok-op">)</span>
+p3 <span class="tok-op">=</span> <span class="tok-op">(</span>
+    <span class="tok-call">ggtree</span><span class="tok-op">(</span>ch_grp<span class="tok-op">,</span> <span class="tok-call">aes</span><span class="tok-op">(</span>color<span class="tok-op">=</span><span class="tok-str">&quot;group&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">0.35</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">scale_color_manual</span><span class="tok-op">(</span>values<span class="tok-op">=</span><span class="tok-op">[</span><span class="tok-str">&quot;black&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;red&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">theme</span><span class="tok-op">(</span>legend_position<span class="tok-op">=</span><span class="tok-str">&quot;none&quot;</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+p4 <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>sub_plec<span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span>size<span class="tok-op">=</span><span class="tok-num">2.8</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">xlim</span><span class="tok-op">(</span><span class="tok-num">0</span><span class="tok-op">,</span> <span class="tok-num">6.0</span><span class="tok-op">)</span>
+<span class="tok-call">plot_list</span><span class="tok-op">(</span>p1<span class="tok-op">,</span> p2<span class="tok-op">,</span> p3<span class="tok-op">,</span> p4<span class="tok-op">,</span> ncol<span class="tok-op">=</span><span class="tok-num">2</span><span class="tok-op">,</span> nrow<span class="tok-op">=</span><span class="tok-num">2</span><span class="tok-op">,</span> tag_levels<span class="tok-op">=</span><span class="tok-str">&quot;A&quot;</span><span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
+<h2 id="multi-tree">2.5 Visualizing Multiple Trees Together</h2>
+<p>Shifted or mirrored fortified tree frames (<code>fortify(tr)</code>) can be layered into a single canvas via <code>geom_tree(data=d2, layout=...)</code> alongside dual independent highlight scales (<code>new_scale_fill()</code>), shadowtext labels, and cross-tree correspondence lines.</p>
+<div class="book-figure-card" id="fig-2-7">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_2_7.svg" alt="Figure 2.7: Mirrored two-tree co-phylogeny with highlighted clades and tip connectors" loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure 2.7: Mirrored two-tree co-phylogeny with highlighted clades and tip connectors.</strong> Two facing 30-tip trees rendered using roundrect (left) and mirrored ellipse (right) layouts, each carrying independent discrete clade highlight scales separated by new_scale_fill(), shadowtext tip labels, and tip links.</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">rtree</span><span class="api-pill">ggtree</span><span class="api-pill">geom_tree</span><span class="api-pill">geom_hilight</span><button type="button" class="copy-btn" data-code-target="code-blk-11">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-11"><span class="tok-call">set_seed</span><span class="tok-op">(</span><span class="tok-num">1024</span><span class="tok-op">)</span>
+x <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">30</span><span class="tok-op">)</span>
+y <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">30</span><span class="tok-op">)</span>
+p1 <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>x<span class="tok-op">,</span> layout<span class="tok-op">=</span><span class="tok-str">&quot;roundrect&quot;</span><span class="tok-op">)</span>
+d1 <span class="tok-op">=</span> <span class="tok-call">fortify</span><span class="tok-op">(</span>x<span class="tok-op">)</span>
+d2 <span class="tok-op">=</span> <span class="tok-call">fortify</span><span class="tok-op">(</span>y<span class="tok-op">)</span>
+max_d1 <span class="tok-op">=</span> <span class="tok-call">max</span><span class="tok-op">(</span>d1<span class="tok-op">[</span><span class="tok-str">&quot;x&quot;</span><span class="tok-op">]</span><span class="tok-op">.</span><span class="tok-call">tolist</span><span class="tok-op">(</span><span class="tok-op">)</span><span class="tok-op">)</span>
+max_d2 <span class="tok-op">=</span> <span class="tok-call">max</span><span class="tok-op">(</span>d2<span class="tok-op">[</span><span class="tok-str">&quot;x&quot;</span><span class="tok-op">]</span><span class="tok-op">.</span><span class="tok-call">tolist</span><span class="tok-op">(</span><span class="tok-op">)</span><span class="tok-op">)</span>
+d2<span class="tok-op">[</span><span class="tok-str">&quot;x&quot;</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-op">[</span>max_d2 <span class="tok-op">-</span> <span class="tok-call">float</span><span class="tok-op">(</span>vx<span class="tok-op">)</span> <span class="tok-op">+</span> max_d1 <span class="tok-op">+</span> <span class="tok-num">1.8</span> <span class="tok-kw">for</span> vx <span class="tok-kw">in</span> d2<span class="tok-op">[</span><span class="tok-str">&quot;x&quot;</span><span class="tok-op">]</span><span class="tok-op">.</span><span class="tok-call">tolist</span><span class="tok-op">(</span><span class="tok-op">)</span><span class="tok-op">]</span>
+tip1 <span class="tok-op">=</span> <span class="tok-op">[</span>r <span class="tok-kw">for</span> r <span class="tok-kw">in</span> d1<span class="tok-op">.</span><span class="tok-call">to_records</span><span class="tok-op">(</span><span class="tok-op">)</span> <span class="tok-kw">if</span> r<span class="tok-op">.</span><span class="tok-call">get</span><span class="tok-op">(</span><span class="tok-str">&quot;isTip&quot;</span><span class="tok-op">)</span><span class="tok-op">]</span>
+tip2 <span class="tok-op">=</span> <span class="tok-op">[</span>r <span class="tok-kw">for</span> r <span class="tok-kw">in</span> d2<span class="tok-op">.</span><span class="tok-call">to_records</span><span class="tok-op">(</span><span class="tok-op">)</span> <span class="tok-kw">if</span> r<span class="tok-op">.</span><span class="tok-call">get</span><span class="tok-op">(</span><span class="tok-str">&quot;isTip&quot;</span><span class="tok-op">)</span><span class="tok-op">]</span>
+dd <span class="tok-op">=</span> <span class="tok-call">DataFrame</span><span class="tok-op">(</span><span class="tok-op">{</span>
+    <span class="tok-str">&quot;label&quot;</span><span class="tok-op">:</span> <span class="tok-op">[</span><span class="tok-call">str</span><span class="tok-op">(</span>r<span class="tok-op">[</span><span class="tok-str">&quot;label&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-kw">for</span> r <span class="tok-kw">in</span> tip1<span class="tok-op">]</span> <span class="tok-op">+</span> <span class="tok-op">[</span><span class="tok-call">str</span><span class="tok-op">(</span>r<span class="tok-op">[</span><span class="tok-str">&quot;label&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-kw">for</span> r <span class="tok-kw">in</span> tip2<span class="tok-op">]</span><span class="tok-op">,</span>
+    <span class="tok-str">&quot;x&quot;</span><span class="tok-op">:</span> <span class="tok-op">[</span><span class="tok-call">float</span><span class="tok-op">(</span>r<span class="tok-op">[</span><span class="tok-str">&quot;x&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-kw">for</span> r <span class="tok-kw">in</span> tip1<span class="tok-op">]</span> <span class="tok-op">+</span> <span class="tok-op">[</span><span class="tok-call">float</span><span class="tok-op">(</span>r<span class="tok-op">[</span><span class="tok-str">&quot;x&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-kw">for</span> r <span class="tok-kw">in</span> tip2<span class="tok-op">]</span><span class="tok-op">,</span>
+    <span class="tok-str">&quot;y&quot;</span><span class="tok-op">:</span> <span class="tok-op">[</span><span class="tok-call">float</span><span class="tok-op">(</span>r<span class="tok-op">[</span><span class="tok-str">&quot;y&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-kw">for</span> r <span class="tok-kw">in</span> tip1<span class="tok-op">]</span> <span class="tok-op">+</span> <span class="tok-op">[</span><span class="tok-call">float</span><span class="tok-op">(</span>r<span class="tok-op">[</span><span class="tok-str">&quot;y&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-kw">for</span> r <span class="tok-kw">in</span> tip2<span class="tok-op">]</span><span class="tok-op">,</span>
+<span class="tok-op">}</span><span class="tok-op">)</span>
+p <span class="tok-op">=</span> <span class="tok-op">(</span>
+    p1
+    <span class="tok-op">+</span> <span class="tok-call">geom_hilight</span><span class="tok-op">(</span>mapping<span class="tok-op">=</span><span class="tok-call">aes</span><span class="tok-op">(</span>subset<span class="tok-op">=</span><span class="tok-str">&quot;node %in% c(38, 48, 58, 36)&quot;</span><span class="tok-op">,</span> fill<span class="tok-op">=</span><span class="tok-str">&quot;as.factor(node)&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">labs</span><span class="tok-op">(</span>fill<span class="tok-op">=</span><span class="tok-str">&quot;clades for tree in left&quot;</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">new_scale_fill</span><span class="tok-op">(</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_hilight</span><span class="tok-op">(</span>data<span class="tok-op">=</span>d2<span class="tok-op">,</span> mapping<span class="tok-op">=</span><span class="tok-call">aes</span><span class="tok-op">(</span>subset<span class="tok-op">=</span><span class="tok-str">&quot;node %in% c(38, 48, 58)&quot;</span><span class="tok-op">,</span> fill<span class="tok-op">=</span><span class="tok-str">&quot;as.factor(node)&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">labs</span><span class="tok-op">(</span>fill<span class="tok-op">=</span><span class="tok-str">&quot;clades for tree in right&quot;</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_tree</span><span class="tok-op">(</span>data<span class="tok-op">=</span>d2<span class="tok-op">,</span> layout<span class="tok-op">=</span><span class="tok-str">&quot;ellipse&quot;</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_line</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span><span class="tok-str">&quot;x&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;y&quot;</span><span class="tok-op">,</span> group<span class="tok-op">=</span><span class="tok-str">&quot;label&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> data<span class="tok-op">=</span>dd<span class="tok-op">,</span> color<span class="tok-op">=</span><span class="tok-str">&quot;#9CA3AF&quot;</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span>color<span class="tok-op">=</span><span class="tok-str">&quot;white&quot;</span><span class="tok-op">,</span> geom<span class="tok-op">=</span><span class="tok-str">&quot;shadowtext&quot;</span><span class="tok-op">,</span> bg_colour<span class="tok-op">=</span><span class="tok-str">&quot;#CA6767&quot;</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">2.9</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span>data<span class="tok-op">=</span>d2<span class="tok-op">,</span> hjust<span class="tok-op">=</span><span class="tok-num">1</span><span class="tok-op">,</span> color<span class="tok-op">=</span><span class="tok-str">&quot;white&quot;</span><span class="tok-op">,</span> geom<span class="tok-op">=</span><span class="tok-str">&quot;shadowtext&quot;</span><span class="tok-op">,</span> bg_colour<span class="tok-op">=</span><span class="tok-str">&quot;#CA6767&quot;</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">2.9</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+p
+</code></pre>
+  </details>
+</div>
+<div class="book-figure-card" id="fig-2-8">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_2_8.svg" alt="Figure 2.8: Comparing three phylogenetic trees side-by-side with tip linkage" loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure 2.8: Comparing three phylogenetic trees side-by-side with tip linkage.</strong> Three 15-tip phylogenies arranged sequentially in a single coordinate space with translucent tip-correspondence lines colored by whether node indices belong to tips (node &lt;= 15).</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">rtree</span><span class="api-pill">fortify</span><span class="api-pill">ggtree</span><span class="api-pill">geom_tree</span><button type="button" class="copy-btn" data-code-target="code-blk-12">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-12"><span class="tok-call">set_seed</span><span class="tok-op">(</span><span class="tok-num">2020</span><span class="tok-op">)</span>
+x <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">15</span><span class="tok-op">)</span>
+y <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">15</span><span class="tok-op">)</span>
+z <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">15</span><span class="tok-op">)</span>
+d1 <span class="tok-op">=</span> <span class="tok-call">fortify</span><span class="tok-op">(</span>x<span class="tok-op">)</span>
+d2 <span class="tok-op">=</span> <span class="tok-call">fortify</span><span class="tok-op">(</span>y<span class="tok-op">)</span>
+d3 <span class="tok-op">=</span> <span class="tok-call">fortify</span><span class="tok-op">(</span>z<span class="tok-op">)</span>
+shift2 <span class="tok-op">=</span> <span class="tok-call">max</span><span class="tok-op">(</span>d1<span class="tok-op">[</span><span class="tok-str">&quot;x&quot;</span><span class="tok-op">]</span><span class="tok-op">.</span><span class="tok-call">tolist</span><span class="tok-op">(</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-num">2.4</span>
+d2<span class="tok-op">[</span><span class="tok-str">&quot;x&quot;</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-op">[</span><span class="tok-call">float</span><span class="tok-op">(</span>vx<span class="tok-op">)</span> <span class="tok-op">+</span> shift2 <span class="tok-kw">for</span> vx <span class="tok-kw">in</span> d2<span class="tok-op">[</span><span class="tok-str">&quot;x&quot;</span><span class="tok-op">]</span><span class="tok-op">.</span><span class="tok-call">tolist</span><span class="tok-op">(</span><span class="tok-op">)</span><span class="tok-op">]</span>
+shift3 <span class="tok-op">=</span> <span class="tok-call">max</span><span class="tok-op">(</span>d2<span class="tok-op">[</span><span class="tok-str">&quot;x&quot;</span><span class="tok-op">]</span><span class="tok-op">.</span><span class="tok-call">tolist</span><span class="tok-op">(</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-num">2.4</span>
+d3<span class="tok-op">[</span><span class="tok-str">&quot;x&quot;</span><span class="tok-op">]</span> <span class="tok-op">=</span> <span class="tok-op">[</span><span class="tok-call">float</span><span class="tok-op">(</span>vx<span class="tok-op">)</span> <span class="tok-op">+</span> shift3 <span class="tok-kw">for</span> vx <span class="tok-kw">in</span> d3<span class="tok-op">[</span><span class="tok-str">&quot;x&quot;</span><span class="tok-op">]</span><span class="tok-op">.</span><span class="tok-call">tolist</span><span class="tok-op">(</span><span class="tok-op">)</span><span class="tok-op">]</span>
+tips <span class="tok-op">=</span> <span class="tok-op">[</span>r <span class="tok-kw">for</span> r <span class="tok-kw">in</span> <span class="tok-op">(</span>d1<span class="tok-op">.</span><span class="tok-call">to_records</span><span class="tok-op">(</span><span class="tok-op">)</span> <span class="tok-op">+</span> d2<span class="tok-op">.</span><span class="tok-call">to_records</span><span class="tok-op">(</span><span class="tok-op">)</span> <span class="tok-op">+</span> d3<span class="tok-op">.</span><span class="tok-call">to_records</span><span class="tok-op">(</span><span class="tok-op">)</span><span class="tok-op">)</span> <span class="tok-kw">if</span> r<span class="tok-op">.</span><span class="tok-call">get</span><span class="tok-op">(</span><span class="tok-str">&quot;isTip&quot;</span><span class="tok-op">)</span><span class="tok-op">]</span>
+dd <span class="tok-op">=</span> <span class="tok-call">DataFrame</span><span class="tok-op">(</span><span class="tok-op">{</span>
+    <span class="tok-str">&quot;label&quot;</span><span class="tok-op">:</span> <span class="tok-op">[</span><span class="tok-call">str</span><span class="tok-op">(</span>r<span class="tok-op">[</span><span class="tok-str">&quot;label&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-kw">for</span> r <span class="tok-kw">in</span> tips<span class="tok-op">]</span><span class="tok-op">,</span>
+    <span class="tok-str">&quot;x&quot;</span><span class="tok-op">:</span> <span class="tok-op">[</span><span class="tok-call">float</span><span class="tok-op">(</span>r<span class="tok-op">[</span><span class="tok-str">&quot;x&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-kw">for</span> r <span class="tok-kw">in</span> tips<span class="tok-op">]</span><span class="tok-op">,</span>
+    <span class="tok-str">&quot;y&quot;</span><span class="tok-op">:</span> <span class="tok-op">[</span><span class="tok-call">float</span><span class="tok-op">(</span>r<span class="tok-op">[</span><span class="tok-str">&quot;y&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-kw">for</span> r <span class="tok-kw">in</span> tips<span class="tok-op">]</span><span class="tok-op">,</span>
+    <span class="tok-str">&quot;node&quot;</span><span class="tok-op">:</span> <span class="tok-op">[</span><span class="tok-call">int</span><span class="tok-op">(</span>r<span class="tok-op">[</span><span class="tok-str">&quot;node&quot;</span><span class="tok-op">]</span><span class="tok-op">)</span> <span class="tok-kw">for</span> r <span class="tok-kw">in</span> tips<span class="tok-op">]</span><span class="tok-op">,</span>
+<span class="tok-op">}</span><span class="tok-op">)</span>
+p <span class="tok-op">=</span> <span class="tok-op">(</span>
+    <span class="tok-call">ggtree</span><span class="tok-op">(</span>x<span class="tok-op">,</span> layout<span class="tok-op">=</span><span class="tok-str">&quot;roundrect&quot;</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_tree</span><span class="tok-op">(</span>data<span class="tok-op">=</span>d2<span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_tree</span><span class="tok-op">(</span>data<span class="tok-op">=</span>d3<span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_line</span><span class="tok-op">(</span><span class="tok-call">aes</span><span class="tok-op">(</span><span class="tok-str">&quot;x&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;y&quot;</span><span class="tok-op">,</span> group<span class="tok-op">=</span><span class="tok-str">&quot;label&quot;</span><span class="tok-op">,</span> color<span class="tok-op">=</span><span class="tok-str">&quot;node &lt; 15&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> data<span class="tok-op">=</span>dd<span class="tok-op">,</span> alpha<span class="tok-op">=</span><span class="tok-num">0.35</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span>size<span class="tok-op">=</span><span class="tok-num">2.9</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span>data<span class="tok-op">=</span>d2<span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">2.9</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span>data<span class="tok-op">=</span>d3<span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">2.9</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">hexpand</span><span class="tok-op">(</span><span class="tok-num">0.08</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+p
+</code></pre>
+  </details>
+</div>
+        <nav class="chapter-pager" aria-label="Chapter Navigation"><a class="pager-link" href="chapter1.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">1. Importing Tree with Data</span></a><a class="pager-link pager-next" href="chapter3.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">3. Exporting Trees with Data</span></a></nav>
+      </article>
+    </main>
+
+    <aside class="book-toc" aria-label="On this page">
+  <div class="toc-heading">On This Page</div>
+  <ul class="toc-list"><li><a class="" href="#merge-tree">2.1 Combining Tree Data with merge_tree()</a></li><li><a class="toc-fig-link" href="#fig-2-1">Fig. 2.1: Joint distribution of BEAST evolutionary rate vs. CodeML dN/dS, dN, and dS</a></li><li><a class="" href="#join-reroot">2.2 Joining External Tables &amp;amp; Rerooting Trees</a></li><li><a class="toc-fig-link" href="#fig-2-2">Fig. 2.2: Joining tip/node metadata and rerooting a phylogeny with root()</a></li><li><a class="" href="#rescale-tree">2.3 Rescaling Tree Branches</a></li><li><a class="toc-fig-link" href="#fig-2-3">Fig. 2.3: Rescaling branch lengths using CodeML dN and BEAST evolutionary rate</a></li><li><a class="" href="#drop-subset">2.4 Subsetting and Pruning Trees</a></li><li><a class="toc-fig-link" href="#fig-2-4">Fig. 2.4: Pruning taxa from an NHX TreeData object while preserving node tags</a></li><li><a class="toc-fig-link" href="#fig-2-5">Fig. 2.5: Subsetting around a focal tip with preserved annotations and root-edge placement</a></li><li><a class="toc-fig-link" href="#fig-2-6">Fig. 2.6: Extracting clade neighborhoods by internal node ID and taxonomic group</a></li><li><a class="" href="#multi-tree">2.5 Visualizing Multiple Trees Together</a></li><li><a class="toc-fig-link" href="#fig-2-7">Fig. 2.7: Mirrored two-tree co-phylogeny with highlighted clades and tip connectors</a></li><li><a class="toc-fig-link" href="#fig-2-8">Fig. 2.8: Comparing three phylogenetic trees side-by-side with tip linkage</a></li></ul>
+</aside>
+  </div>
+
+  <script src="assets/search_data.js"></script>
+  <script src="assets/book.js"></script>
+</body>
+</html>

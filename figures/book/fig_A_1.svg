@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="940" height="380" viewBox="0 0 940 380">
+<rect width="940" height="380" fill="white"/>
+<g transform="translate(0,0)">
+<line x1="34.77" y1="334.91" x2="170.23" y2="334.91" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="118.87" y1="234.30" x2="164.40" y2="234.30" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="154.29" y1="133.70" x2="163.96" y2="133.70" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="154.29" y1="33.09" x2="170.23" y2="33.09" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="34.77" y1="158.85" x2="118.87" y2="158.85" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="118.87" y1="83.39" x2="154.29" y2="83.39" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="34.77" y1="246.88" x2="34.77" y2="334.91" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="118.87" y1="158.85" x2="118.87" y2="234.30" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="154.29" y1="83.39" x2="154.29" y2="133.70" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="154.29" y1="83.39" x2="154.29" y2="33.09" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="34.77" y1="246.88" x2="34.77" y2="158.85" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="118.87" y1="158.85" x2="118.87" y2="83.39" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<text x="174.23" y="338.31" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">Organism1.006G249400.1</text>
+<text x="168.40" y="237.70" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">Organism2.022118m</text>
+<text x="167.96" y="137.10" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">Organism3.J34265.1</text>
+<text x="174.23" y="36.49" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">Organism4.G02633.1</text>
+
+<text x="10" y="18" font-family="sans-serif" font-size="13" font-weight="bold" fill="#111827">A</text>
+</g>
+<g transform="translate(313,0)">
+<defs><clipPath id="ggtree_cart_clip_383604768"><rect x="28.00" y="0.00" width="297.00" height="380.00"/></clipPath></defs>
+<g clip-path="url(#ggtree_cart_clip_383604768)">
+<line x1="28.00" y1="334.91" x2="102.07" y2="334.91" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="73.99" y1="234.30" x2="98.89" y2="234.30" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="93.36" y1="133.70" x2="98.64" y2="133.70" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="93.36" y1="33.09" x2="102.07" y2="33.09" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="28.00" y1="158.85" x2="73.99" y2="158.85" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="73.99" y1="83.39" x2="93.36" y2="83.39" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="28.00" y1="246.88" x2="28.00" y2="334.91" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="73.99" y1="158.85" x2="73.99" y2="234.30" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="93.36" y1="83.39" x2="93.36" y2="133.70" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="93.36" y1="83.39" x2="93.36" y2="33.09" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="28.00" y1="246.88" x2="28.00" y2="158.85" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="73.99" y1="158.85" x2="73.99" y2="83.39" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<text x="106.07" y="338.31" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">Organism1.006G249400.1</text>
+<text x="102.89" y="237.70" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">Organism2.022118m</text>
+<text x="102.64" y="137.10" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">Organism3.J34265.1</text>
+<text x="106.07" y="36.49" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">Organism4.G02633.1</text>
+</g>
+
+<text x="10" y="18" font-family="sans-serif" font-size="13" font-weight="bold" fill="#111827">B</text>
+</g>
+<g transform="translate(626,0)">
+<line x1="35.59" y1="323.45" x2="187.41" y2="323.45" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="129.84" y1="226.48" x2="180.88" y2="226.48" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="169.54" y1="129.52" x2="180.39" y2="129.52" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="169.54" y1="32.55" x2="187.41" y2="32.55" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="35.59" y1="153.76" x2="129.84" y2="153.76" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="129.84" y1="81.03" x2="169.54" y2="81.03" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="35.59" y1="238.61" x2="35.59" y2="323.45" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="129.84" y1="153.76" x2="129.84" y2="226.48" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="169.54" y1="81.03" x2="169.54" y2="129.52" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="169.54" y1="81.03" x2="169.54" y2="32.55" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="35.59" y1="238.61" x2="35.59" y2="153.76" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="129.84" y1="153.76" x2="129.84" y2="81.03" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<text x="191.41" y="326.85" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">Organism1.006G249400.1</text>
+<text x="184.88" y="229.88" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">Organism2.022118m</text>
+<text x="184.39" y="132.92" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">Organism3.J34265.1</text>
+<text x="191.41" y="35.95" text-anchor="start" font-family="sans-serif" font-size="10" fill="#222222">Organism4.G02633.1</text>
+<line x1="28.00" y1="344.00" x2="195.00" y2="344.00" stroke="#1F2937" stroke-width="1.2"/>
+<line x1="35.59" y1="344.00" x2="35.59" y2="348.00" stroke="#1F2937" stroke-width="1"/>
+<text x="35.59" y="359.00" text-anchor="middle" font-family="sans-serif" font-size="9.5" fill="#374151">0</text>
+<line x1="73.76" y1="344.00" x2="73.76" y2="348.00" stroke="#1F2937" stroke-width="1"/>
+<text x="73.76" y="359.00" text-anchor="middle" font-family="sans-serif" font-size="9.5" fill="#374151">0.01</text>
+<line x1="111.94" y1="344.00" x2="111.94" y2="348.00" stroke="#1F2937" stroke-width="1"/>
+<text x="111.94" y="359.00" text-anchor="middle" font-family="sans-serif" font-size="9.5" fill="#374151">0.02</text>
+<line x1="150.11" y1="344.00" x2="150.11" y2="348.00" stroke="#1F2937" stroke-width="1"/>
+<text x="150.11" y="359.00" text-anchor="middle" font-family="sans-serif" font-size="9.5" fill="#374151">0.03</text>
+<line x1="188.29" y1="344.00" x2="188.29" y2="348.00" stroke="#1F2937" stroke-width="1"/>
+<text x="188.29" y="359.00" text-anchor="middle" font-family="sans-serif" font-size="9.5" fill="#374151">0.04</text>
+
+<text x="10" y="18" font-family="sans-serif" font-size="13" font-weight="bold" fill="#111827">C</text>
+</g>
+</svg>
