@@ -5,7 +5,7 @@
 
 ---
 
-This repository hosts the complete Python edition of Guangchuang Yu's [*treedata-book*](https://yulab-smu.top/treedata-book/), powered by [**ggtree-py**](https://github.com/zhanxw/ggtree.py) (`v0.1.2` on [PyPI](https://pypi.org/project/ggtree-py/)), a Python port of the R/Bioconductor [`ggtree`](https://github.com/YuLab-SMU/ggtree) package (`v4.3.2`).
+This repository hosts the complete Python edition of Guangchuang Yu's [*treedata-book*](https://yulab-smu.top/treedata-book/), powered by [**ggtree-py**](https://github.com/zhanxw/ggtree-py) (`v0.1.4` on [PyPI](https://pypi.org/project/ggtree-py/)), a Python port of the R/Bioconductor [`ggtree`](https://github.com/YuLab-SMU/ggtree) package (`v4.3.2`).
 
 ## Contents
 
