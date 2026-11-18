@@ -7,7 +7,7 @@
     "keywords": "ggtree-py install quickstart treedata-book parts overview"
   },
   {
-    "title": "All Figures Gallery & Master Index (111 figures)",
+    "title": "All Figures Gallery & Master Index (112 figures)",
     "section": "Gallery",
     "context": "Visual Gallery \u00b7 Master Table",
     "href": "gallery.html",
@@ -1145,7 +1145,7 @@
     "section": "13. Gallery of Reproducible Examples",
     "context": "Part IV: Miscellaneous Topics",
     "href": "chapter13.html",
-    "keywords": "Reproducing all four published case studies from Chapter 13 of <em>Data Integration, Manipulation and Visualization of Phylogenetic Trees</em> in <code>ggtree-py</code>, spanning HPV58 sequence distances, discrete bootstrap symbols, groupOTU circular clade highlights, and BioNJ genome locus structures."
+    "keywords": "Reproducing the four published case studies from Chapter 13 of <em>Data Integration, Manipulation and Visualization of Phylogenetic Trees</em> plus a phylogeographic circular-map showcase in <code>ggtree-py</code>\u2014spanning HPV58 sequence distances, discrete bootstrap symbols, groupOTU circular clade highlights, BioNJ genome locus structures, and an inward circular SARS-CoV-2 phylogeny wrapped around a NearsidePerspective map of Europe."
   },
   {
     "title": "13.1 Visualizing Pairwise Nucleotide Sequence Distance with Phylogenetic Tree",
@@ -1202,6 +1202,20 @@
     "context": "13. Gallery of Reproducible Examples \u00b7 13.4 Phylogenetic Tree with Genome Locus Structure",
     "href": "chapter13.html#fig-13-4",
     "keywords": "Reproducing Figure 13.4 of treedata-book: BioNJ tree reconstructed from pairwise Jaccard gene-content distances across example_genes and paired via geom_facet(..., geom=geom_motif, on='genE', label='gene', align='left'). bionj read_table geom_facet geom_motif facet_widths scale_fill_brewer"
+  },
+  {
+    "title": "13.5 Inward Circular Phylogeny Wrapped Around a Geographic Map",
+    "section": "13. Gallery of Reproducible Examples",
+    "context": "13. Gallery of Reproducible Examples",
+    "href": "chapter13.html#circular-phylogeography",
+    "keywords": "<p>Re-implements Figure 1 of Potter et al. (2026, <a href=\"https://doi.org/10.64898/2026.09.20.752947\" target=\"_blank\" rel=\"noopener noreferrer\"><em>baltic</em></a>; SARS-CoV-2 lineage B.1.620 data from Dudas et al., 2021, CC-BY) purely in <code>ggtree-py</code>: combines <code>ggtree(..., layout='inward_circular', open_angle=21.0, xlim=51.92)</code> and <code>rotate_tree(..., 102.3)</code> with compound NearsidePerspective Europe map polygons (<code>geom_polygon</code> with <code>subgroup</code> holes), 20 concentric dotted mutation rings, 77 shouldered tip-to-map <code>geom_path()</code> connectors, size-tiered sampling locations, and white-haloed country legends.</p>"
+  },
+  {
+    "title": "Figure 13.5: SARS-CoV-2 lineage B.1.620 inward circular phylogeny wrapped around a NearsidePerspective Europe map",
+    "section": "13.5 Inward Circular Phylogeny Wrapped Around a Geographic Map",
+    "context": "13. Gallery of Reproducible Examples \u00b7 13.5 Inward Circular Phylogeny Wrapped Around a Geographic Map",
+    "href": "chapter13.html#fig-13-5",
+    "keywords": "Reproducing Figure 1 of Potter et al. (2026, baltic; data from Dudas et al., 2021, CC-BY): 114-tip SARS-CoV-2 B.1.620 divergence tree in inward_circular layout with a 21\u00b0 scale gap, 20 dotted mutation rings, NearsidePerspective Europe globe polygons with sea/lake holes, 77 shouldered tip-to-location connectors, and haloed country legends. ggtree rotate_tree geom_polygon geom_path geom_tippoint geom_point geom_segment geom_text scale_fill_manual scale_color_manual scale_size_continuous theme_void"
   },
   {
     "title": "Appendix A. Frequently Asked Questions",

@@ -303,3 +303,164 @@ def _fig_13_4():
         + theme(strip_text=element_blank())
     )
     return facet_widths(p, widths=[1, 2])
+
+
+@register_figure(
+    fig_id="fig_13_5",
+    num="13.5",
+    chapter=13,
+    part=PART_IV,
+    section="13.5 Inward Circular Phylogeny Wrapped Around a Geographic Map",
+    title="SARS-CoV-2 lineage B.1.620 inward circular phylogeny wrapped around a NearsidePerspective Europe map",
+    caption="Reproducing Figure 1 of Potter et al. (2026, baltic; data from Dudas et al., 2021, CC-BY): 114-tip SARS-CoV-2 B.1.620 divergence tree in inward_circular layout with a 21° scale gap, 20 dotted mutation rings, NearsidePerspective Europe globe polygons with sea/lake holes, 77 shouldered tip-to-location connectors, and haloed country legends.",
+    apis=[
+        "ggtree", "rotate_tree", "geom_polygon", "geom_path", "geom_tippoint",
+        "geom_point", "geom_segment", "geom_text", "scale_fill_manual",
+        "scale_color_manual", "scale_size_continuous", "theme_void",
+    ],
+    size=(960, 960),
+)
+def _fig_13_5():
+    import csv
+    import json
+    import math
+    from ggtree import (
+        DataFrame, aes, geom_path, geom_point, geom_polygon, geom_segment,
+        geom_text, geom_tippoint, ggtree, margin, read_tree, reorder_phylo,
+        rotate_tree, scale_color_manual, scale_fill_manual,
+        scale_size_continuous, system_file, theme, theme_void,
+    )
+
+    palette = {
+        "Lithuania": "#e1c72f", "Czech Republic": "#74c476", "Germany": "#31a354",
+        "Switzerland": "#386cb0", "France": "#016450", "Italy": "#93c2e6",
+        "Sweden": "#5a5a5a", "Portugal": "#5a5a5a",
+        "Central African Republic": "#e34a33", "Equatorial Guinea": "#fc8d59",
+        "Gabon": "#fc8d59", "South Korea": "#d2b9a2", "USA": "#8856a7", "Canada": "#8b7c94",
+    }
+
+    tree = reorder_phylo(read_tree(system_file("extdata", "baltic_fig1", "B.1.620.nwk")), "cladewise")
+    with open(system_file("extdata", "baltic_fig1", "europe_globe.json"), encoding="utf-8") as fh:
+        globe = json.load(fh)
+    cal, gc = globe["calibration"], globe["globe_circle"]
+    t_root_x, r0_ax, inward_lim = -float(cal["max_tip_height"]), float(cal["r0_ax"]), float(cal["inward_lim"])
+    dr_mut, rot, deg_per_y = float(cal["dr_per_mut"]), float(cal["rotate_angle_deg"]), float(cal["deg_per_y"])
+
+    def to_polar(ax_x, ax_y):
+        r_ax = math.hypot(ax_x, ax_y)
+        theta_ccw = (math.degrees(math.atan2(ax_y, ax_x)) - rot) % 360.0 + rot
+        return t_root_x + inward_lim * (1.0 - r_ax / r0_ax), 1.0 + (theta_ccw - rot) / deg_per_y
+
+    def cw_polar(mut, ang_cw):
+        r_ax = r0_ax - mut * dr_mut
+        rad = math.radians(ang_cw)
+        return to_polar(r_ax * math.sin(rad), r_ax * math.cos(rad))
+
+    tip_rows, conn_rows = [], []
+    with open(system_file("extdata", "baltic_fig1", "tip_metadata.tsv"), encoding="utf-8", newline="") as fh:
+        for r in csv.DictReader(fh, delimiter="\t"):
+            tip_rows.append({"label": r["label"], "country": r["country"]})
+            if int(r["has_connector"]) == 1:
+                gid = f"conn_{r['cw_index']}"
+                for px, py in (
+                    (float(r["ax_x"]), float(r["ax_y"])),
+                    (float(r["shoulder_ax_x"]), float(r["shoulder_ax_y"])),
+                    (float(r["map_ax_x"]), float(r["map_ax_y"])),
+                ):
+                    xg, yg = to_polar(px, py)
+                    conn_rows.append({"x": xg, "y": yg, "group": gid, "country": r["country"]})
+
+    cx, cy, gr = float(gc["cx"]), float(gc["cy"]), float(gc["r"])
+    ocean_df = DataFrame([
+        dict(zip(("x", "y"), to_polar(cx + gr * math.cos(2 * math.pi * i / 240), cy + gr * math.sin(2 * math.pi * i / 240))), group="ocean", subgroup="ocean_0")
+        for i in range(240)
+    ])
+    rim_df = DataFrame([
+        dict(zip(("x", "y"), to_polar(cx + gr * math.cos(2 * math.pi * (i % 240) / 240), cy + gr * math.sin(2 * math.pi * (i % 240) / 240))), group="rim")
+        for i in range(241)
+    ])
+
+    def poly_df(groups, prefix):
+        out = []
+        for gi, subs in enumerate(groups):
+            for si, pts in enumerate(subs):
+                for ax_x, ax_y in pts:
+                    xg, yg = to_polar(ax_x, ax_y)
+                    out.append({"x": xg, "y": yg, "group": f"{prefix}_{gi}", "subgroup": f"{prefix}_{gi}_{si}"})
+        return DataFrame(out)
+
+    land_df = poly_df(globe["land"], "land")
+    lakes_df = poly_df(globe["lakes"], "lake")
+    borders_df = DataFrame([
+        dict(zip(("x", "y"), to_polar(ax_x, ax_y)), group=f"b_{bi}")
+        for bi, pts in enumerate(globe["borders"]) for ax_x, ax_y in pts
+    ])
+
+    major_rows, minor_rows = [], []
+    for m in range(20):
+        dst = major_rows if m % 5 == 0 else minor_rows
+        for i in range(141):
+            xg, yg = cw_polar(float(m), 352.8 * i / 140)
+            dst.append({"x": xg, "y": yg, "group": f"r_{m}"})
+
+    x0, y0 = cw_polar(0.0, 0.0)
+    x1, y1 = cw_polar(19.0, 0.0)
+    bar_df = DataFrame([{"x": x0, "y": y0, "xend": x1, "yend": y1}])
+    tick_ang = 360.0 - math.degrees(0.0042 * math.pi)
+    tick_rows, txt_rows = [], []
+    for m in (0, 5, 10, 15):
+        tx0, ty0 = cw_polar(float(m), tick_ang)
+        tx1, ty1 = cw_polar(float(m), 0.0)
+        tick_rows.append({"x": tx0, "y": ty0, "xend": tx1, "yend": ty1})
+        nx, ny = to_polar(-0.052, r0_ax - m * dr_mut)
+        txt_rows.append({"x": nx, "y": ny, "label": str(m), "angle": 0.0, "hjust": 1.0, "vjust": 0.5, "fontsize_px": 21.0})
+    mx, my = to_polar(0.020, r0_ax - 10.0 * dr_mut)
+    txt_rows.append({"x": mx, "y": my, "label": "mutations", "angle": 90.0, "hjust": 0.5, "vjust": 1.0, "fontsize_px": 23.0})
+
+    loc_df = DataFrame([
+        dict(zip(("x", "y"), to_polar(float(loc["ax_x"]), float(loc["ax_y"]))), country=loc["country"], pt_size=math.sqrt(float(loc["size_tier"])))
+        for loc in globe["locations"]
+    ])
+
+    leg_rows = []
+    for u, v0, step, hj, names in (
+        (0.0, 0.01, 0.026, 0.0, ["Lithuania", "Czech Republic", "Germany", "France", "Italy", "Switzerland"]),
+        (0.99, 0.99, -0.026, 1.0, ["Sweden", "Portugal"]),
+        (0.0, 0.99, -0.026, 0.0, ["Central African Republic", "Equatorial Guinea", "Gabon", "South Korea", "USA", "Canada"]),
+    ):
+        for idx, name in enumerate(names):
+            xg, yg = to_polar(-3.18 + u * 6.36, -3.18 + (v0 + idx * step) * 6.36)
+            leg_rows.append({"x": xg, "y": yg, "label": name, "country": name, "hjust": hj, "vjust": 0.5, "angle": 0.0, "fontsize_px": 27.5})
+
+    p = rotate_tree(
+        ggtree(
+            tree, layout="inward_circular", open_angle=float(cal["open_angle_deg"]),
+            xlim=inward_lim, ladderize=False, color="#000000", size=1.95,
+            lineend="round", linejoin="round",
+        ),
+        rot,
+    )
+    p.attrs["polar_r_factor"] = 0.489
+    p = (
+        (p % DataFrame(tip_rows))
+        + geom_polygon(aes(x="x", y="y", group="group", subgroup="subgroup"), data=ocean_df, inherit_aes=False, fill="#f5f5f5", color="none", alpha=1.0, zorder=-6)
+        + geom_polygon(aes(x="x", y="y", group="group", subgroup="subgroup"), data=land_df, inherit_aes=False, fill="#c2c4bd", color="#ffffff", size=0.35, alpha=1.0, zorder=-5)
+        + geom_polygon(aes(x="x", y="y", group="group", subgroup="subgroup"), data=lakes_df, inherit_aes=False, fill="#f5f5f5", color="none", alpha=1.0, zorder=-4)
+        + geom_path(aes(x="x", y="y", group="group"), data=borders_df, inherit_aes=False, color="#ffffff", size=0.65, lineend="round", linejoin="round", zorder=-3)
+        + geom_path(aes(x="x", y="y", group="group"), data=rim_df, inherit_aes=False, color="#000000", size=0.58, zorder=-2)
+        + geom_path(aes(x="x", y="y", group="group"), data=DataFrame(minor_rows), inherit_aes=False, color="#adadad", size=0.55, linetype="dotted", dasharray="0.9,1.5", lineend="round", zorder=-1)
+        + geom_path(aes(x="x", y="y", group="group"), data=DataFrame(major_rows), inherit_aes=False, color="#000000", size=0.60, linetype="dotted", dasharray="0.9,1.5", lineend="round", zorder=-1)
+        + geom_segment(aes(x="x", y="y", xend="xend", yend="yend"), data=bar_df, inherit_aes=False, color="#000000", size=1.45, lineend="square", zorder=2)
+        + geom_segment(aes(x="x", y="y", xend="xend", yend="yend"), data=DataFrame(tick_rows), inherit_aes=False, color="#000000", size=1.45, lineend="square", zorder=2)
+        + geom_text(aes(x="x", y="y", label="label", hjust="hjust", vjust="vjust", angle="angle"), data=DataFrame(txt_rows), inherit_aes=False, color="#000000", bg_colour="#ffffff", bg_r=2.8, zorder=15)
+        + geom_path(aes(x="x", y="y", group="group", color="country"), data=DataFrame(conn_rows), inherit_aes=False, size=1.30, lineend="round", linejoin="round", zorder=10)
+        + geom_tippoint(aes(fill="country"), shape=21, color="#000000", size=3.7, stroke=1.15, zorder=12)
+        + geom_point(aes(x="x", y="y", fill="country", size="pt_size"), data=loc_df, inherit_aes=False, shape=21, color="#000000", stroke=0.90, zorder=14)
+        + geom_text(aes(x="x", y="y", label="label", hjust="hjust", vjust="vjust", angle="angle", color="country"), data=DataFrame(leg_rows), inherit_aes=False, bg_colour="#ffffff", bg_r=2.8, zorder=16)
+        + scale_fill_manual(values=palette)
+        + scale_color_manual(values=palette)
+        + scale_size_continuous(range=(2.4, 4.05))
+        + theme_void()
+        + theme(legend_position="none", plot_margin=margin(8, 8, 8, 8))
+    )
+    return p

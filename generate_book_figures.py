@@ -47,6 +47,7 @@ from book_chapters.ch13 import (  # noqa: F401,E402
     _fig_13_2,
     _fig_13_3,
     _fig_13_4,
+    _fig_13_5,
 )
 
 

@@ -1,165 +1,165 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="920" height="480" viewBox="0 0 920 480">
 <rect width="920" height="480" fill="white"/>
-<line x1="28.00" y1="430.36" x2="211.76" y2="430.36" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
-<line x1="73.94" y1="262.05" x2="211.76" y2="262.05" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
-<line x1="165.82" y1="205.95" x2="211.76" y2="205.95" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
-<line x1="165.82" y1="149.84" x2="211.76" y2="149.84" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
-<line x1="165.82" y1="93.74" x2="211.76" y2="93.74" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
-<line x1="165.82" y1="37.64" x2="211.76" y2="37.64" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
-<line x1="165.82" y1="374.26" x2="211.76" y2="374.26" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
-<line x1="165.82" y1="318.16" x2="211.76" y2="318.16" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
-<line x1="28.00" y1="191.92" x2="73.94" y2="191.92" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
-<line x1="73.94" y1="121.79" x2="119.88" y2="121.79" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
-<line x1="119.88" y1="177.90" x2="165.82" y2="177.90" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
-<line x1="119.88" y1="65.69" x2="165.82" y2="65.69" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
-<line x1="28.00" y1="346.21" x2="165.82" y2="346.21" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
-<line x1="28.00" y1="322.83" x2="28.00" y2="430.36" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
-<line x1="73.94" y1="191.92" x2="73.94" y2="262.05" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
-<line x1="165.82" y1="177.90" x2="165.82" y2="205.95" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
-<line x1="165.82" y1="177.90" x2="165.82" y2="149.84" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
-<line x1="165.82" y1="65.69" x2="165.82" y2="93.74" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
-<line x1="165.82" y1="65.69" x2="165.82" y2="37.64" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
-<line x1="165.82" y1="346.21" x2="165.82" y2="374.26" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
-<line x1="165.82" y1="346.21" x2="165.82" y2="318.16" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
-<line x1="28.00" y1="322.83" x2="28.00" y2="191.92" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
-<line x1="73.94" y1="191.92" x2="73.94" y2="121.79" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
-<line x1="119.88" y1="121.79" x2="119.88" y2="177.90" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
-<line x1="119.88" y1="121.79" x2="119.88" y2="65.69" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
-<line x1="28.00" y1="322.83" x2="28.00" y2="346.21" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
-<text x="215.76" y="433.42" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222">Genome6</text>
-<text x="215.76" y="265.11" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222">Genome4</text>
-<text x="215.76" y="209.01" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222">Genome1</text>
-<text x="215.76" y="152.90" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222">Genome5</text>
-<text x="215.76" y="96.80" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222">Genome7</text>
-<text x="215.76" y="40.70" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222">Genome8</text>
-<text x="215.76" y="377.32" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222">Genome2</text>
-<text x="215.76" y="321.22" text-anchor="start" font-family="sans-serif" font-size="9" fill="#222222">Genome3</text>
-<line x1="332.36" y1="205.95" x2="736.33" y2="205.95" stroke="#9CA3AF" stroke-width="1.2"/>
-<line x1="319.64" y1="374.26" x2="595.67" y2="374.26" stroke="#9CA3AF" stroke-width="1.2"/>
-<line x1="327.66" y1="318.16" x2="592.18" y2="318.16" stroke="#9CA3AF" stroke-width="1.2"/>
-<line x1="330.60" y1="262.05" x2="546.92" y2="262.05" stroke="#9CA3AF" stroke-width="1.2"/>
-<line x1="331.18" y1="149.84" x2="740.02" y2="149.84" stroke="#9CA3AF" stroke-width="1.2"/>
-<line x1="326.48" y1="430.36" x2="590.29" y2="430.36" stroke="#9CA3AF" stroke-width="1.2"/>
-<line x1="431.03" y1="93.74" x2="777.98" y2="93.74" stroke="#9CA3AF" stroke-width="1.2"/>
-<line x1="430.78" y1="37.64" x2="779.03" y2="37.64" stroke="#9CA3AF" stroke-width="1.2"/>
-<polygon points="332.36,198.69 397.71,198.69 397.71,193.63 412.56,205.95 397.71,218.27 397.71,213.21 332.36,213.21" fill="#8DD3C7" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="369.86" y="208.79" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genA</text>
-<polygon points="412.64,198.69 436.11,198.69 436.11,193.63 448.75,205.95 436.11,218.27 436.11,213.21 412.64,213.21" fill="#FFFFB3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="428.48" y="208.79" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genB</text>
-<polygon points="449.38,198.69 462.04,198.69 462.04,193.63 468.86,205.95 462.04,218.27 462.04,213.21 449.38,213.21" fill="#BEBADA" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="457.93" y="208.79" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genC</text>
-<polygon points="468.90,198.69 478.29,198.69 478.29,193.63 483.35,205.95 478.29,218.27 478.29,213.21 468.90,213.21" fill="#FB8072" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<polygon points="483.94,198.69 514.39,198.69 514.39,193.63 529.24,205.95 514.39,218.27 514.39,213.21 483.94,213.21" fill="#80B1D3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="503.99" y="208.79" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genE</text>
-<polygon points="529.58,198.69 539.54,198.69 539.54,193.63 544.90,205.95 539.54,218.27 539.54,213.21 529.58,213.21" fill="#FDB462" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<polygon points="642.57,198.69 648.35,198.69 648.35,193.63 651.47,205.95 648.35,218.27 648.35,213.21 642.57,213.21" fill="#D9D9D9" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<polygon points="651.34,198.69 680.04,198.69 680.04,193.63 694.89,205.95 680.04,218.27 680.04,213.21 651.34,213.21" fill="#BC80BD" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="670.52" y="208.79" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protD</text>
-<polygon points="694.93,198.69 721.84,198.69 721.84,193.63 736.33,205.95 721.84,218.27 721.84,213.21 694.93,213.21" fill="#CCEBC5" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="713.09" y="208.79" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protE</text>
-<polygon points="545.87,198.69 625.33,198.69 625.33,193.63 640.18,205.95 625.33,218.27 625.33,213.21 545.87,213.21" fill="#FFED6F" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="590.42" y="208.79" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protF</text>
-<polygon points="319.64,367.00 388.13,367.00 388.13,361.94 402.98,374.26 388.13,386.58 388.13,381.52 319.64,381.52" fill="#8DD3C7" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="358.71" y="377.10" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genA</text>
-<polygon points="402.86,367.00 426.16,367.00 426.16,361.94 438.72,374.26 426.16,386.58 426.16,381.52 402.86,381.52" fill="#FFFFB3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="418.59" y="377.10" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genB</text>
-<polygon points="447.66,367.00 459.91,367.00 459.91,361.94 466.51,374.26 459.91,386.58 459.91,381.52 447.66,381.52" fill="#BEBADA" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="455.93" y="377.10" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genC</text>
-<polygon points="467.98,367.00 478.27,367.00 478.27,361.94 483.81,374.26 478.27,386.58 478.27,381.52 467.98,381.52" fill="#FB8072" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<polygon points="483.94,367.00 514.39,367.00 514.39,361.94 529.24,374.26 514.39,386.58 514.39,381.52 483.94,381.52" fill="#80B1D3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="503.99" y="377.10" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genE</text>
-<polygon points="530.42,367.00 540.46,367.00 540.46,361.94 545.87,374.26 540.46,386.58 540.46,381.52 530.42,381.52" fill="#FDB462" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<polygon points="545.58,367.00 554.88,367.00 554.88,361.94 559.89,374.26 554.88,386.58 554.88,381.52 545.58,381.52" fill="#B3DE69" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<polygon points="568.00,367.00 585.98,367.00 585.98,361.94 595.67,374.26 585.98,386.58 585.98,381.52 568.00,381.52" fill="#FCCDE5" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="580.14" y="377.10" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protB</text>
-<polygon points="327.66,310.90 396.15,310.90 396.15,305.84 411.00,318.16 396.15,330.48 396.15,325.42 327.66,325.42" fill="#8DD3C7" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="366.73" y="320.99" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genA</text>
-<polygon points="410.88,310.90 434.18,310.90 434.18,305.84 446.73,318.16 434.18,330.48 434.18,325.42 410.88,325.42" fill="#FFFFB3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="426.61" y="320.99" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genB</text>
-<polygon points="447.41,310.90 459.66,310.90 459.66,305.84 466.26,318.16 459.66,330.48 459.66,325.42 447.41,325.42" fill="#BEBADA" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="455.68" y="320.99" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genC</text>
-<polygon points="467.98,310.90 478.35,310.90 478.35,305.84 483.94,318.16 478.35,330.48 478.35,325.42 467.98,325.42" fill="#FB8072" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<polygon points="483.94,310.90 514.39,310.90 514.39,305.84 529.24,318.16 514.39,330.48 514.39,325.42 483.94,325.42" fill="#80B1D3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="503.99" y="320.99" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genE</text>
-<polygon points="530.80,310.90 540.92,310.90 540.92,305.84 546.37,318.16 540.92,330.48 540.92,325.42 530.80,325.42" fill="#FDB462" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<polygon points="550.15,310.90 559.46,310.90 559.46,305.84 564.47,318.16 559.46,330.48 559.46,325.42 550.15,325.42" fill="#B3DE69" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<polygon points="565.39,310.90 582.81,310.90 582.81,305.84 592.18,318.16 582.81,330.48 582.81,325.42 565.39,325.42" fill="#FCCDE5" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="577.15" y="320.99" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protB</text>
-<polygon points="330.60,254.79 395.94,254.79 395.94,249.73 410.79,262.05 395.94,274.37 395.94,269.31 330.60,269.31" fill="#8DD3C7" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="368.10" y="264.89" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genA</text>
-<polygon points="411.30,254.79 434.77,254.79 434.77,249.73 447.41,262.05 434.77,274.37 434.77,269.31 411.30,269.31" fill="#FFFFB3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="427.14" y="264.89" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genB</text>
-<polygon points="449.46,254.79 461.80,254.79 461.80,249.73 468.44,262.05 461.80,274.37 461.80,269.31 449.46,269.31" fill="#BEBADA" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="457.79" y="264.89" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genC</text>
-<polygon points="468.44,254.79 477.91,254.79 477.91,249.73 483.01,262.05 477.91,274.37 477.91,269.31 468.44,269.31" fill="#FB8072" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<polygon points="483.94,254.79 514.27,254.79 514.27,249.73 529.12,262.05 514.27,274.37 514.27,269.31 483.94,269.31" fill="#80B1D3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="503.93" y="264.89" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genE</text>
-<polygon points="529.58,254.79 540.85,254.79 540.85,249.73 546.92,262.05 540.85,274.37 540.85,269.31 529.58,269.31" fill="#FDB462" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<polygon points="331.18,142.58 397.03,142.58 397.03,137.52 411.88,149.84 397.03,162.16 397.03,157.10 331.18,157.10" fill="#8DD3C7" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="368.94" y="152.68" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genA</text>
-<polygon points="411.88,142.58 435.93,142.58 435.93,137.52 448.88,149.84 435.93,162.16 435.93,157.10 411.88,157.10" fill="#FFFFB3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="428.11" y="152.68" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genB</text>
-<polygon points="449.34,142.58 462.08,142.58 462.08,137.52 468.95,149.84 462.08,162.16 462.08,157.10 449.34,157.10" fill="#BEBADA" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="457.94" y="152.68" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genC</text>
-<polygon points="468.65,142.58 478.21,142.58 478.21,137.52 483.35,149.84 478.21,162.16 478.21,157.10 468.65,157.10" fill="#FB8072" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<polygon points="483.94,142.58 514.39,142.58 514.39,137.52 529.24,149.84 514.39,162.16 514.39,157.10 483.94,157.10" fill="#80B1D3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="503.99" y="152.68" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genE</text>
-<polygon points="529.49,142.58 542.57,142.58 542.57,137.52 549.61,149.84 542.57,162.16 542.57,157.10 529.49,157.10" fill="#FDB462" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="538.32" y="152.68" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genF</text>
-<polygon points="646.43,142.58 652.22,142.58 652.22,137.52 655.33,149.84 652.22,162.16 652.22,157.10 646.43,157.10" fill="#D9D9D9" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<polygon points="655.21,142.58 684.02,142.58 684.02,137.52 698.87,149.84 684.02,162.16 684.02,157.10 655.21,157.10" fill="#BC80BD" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="674.44" y="152.68" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protD</text>
-<polygon points="698.75,142.58 725.58,142.58 725.58,137.52 740.02,149.84 725.58,162.16 725.58,157.10 698.75,157.10" fill="#CCEBC5" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="716.86" y="152.68" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protE</text>
-<polygon points="550.45,142.58 630.53,142.58 630.53,137.52 645.38,149.84 630.53,162.16 630.53,157.10 550.45,157.10" fill="#FFED6F" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="595.32" y="152.68" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protF</text>
-<polygon points="326.48,423.10 393.09,423.10 393.09,418.04 407.94,430.36 393.09,442.68 393.09,437.62 326.48,437.62" fill="#8DD3C7" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="364.61" y="433.20" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genA</text>
-<polygon points="408.23,423.10 432.03,423.10 432.03,418.04 444.85,430.36 432.03,442.68 432.03,437.62 408.23,437.62" fill="#FFFFB3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="424.30" y="433.20" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genB</text>
-<polygon points="446.32,423.10 460.78,423.10 460.78,418.04 468.57,430.36 460.78,442.68 460.78,437.62 446.32,437.62" fill="#BEBADA" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="456.08" y="433.20" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genC</text>
-<polygon points="468.27,423.10 478.73,423.10 478.73,418.04 484.36,430.36 478.73,442.68 478.73,437.62 468.27,437.62" fill="#FB8072" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<polygon points="483.94,423.10 514.52,423.10 514.52,418.04 529.37,430.36 514.52,442.68 514.52,437.62 483.94,437.62" fill="#80B1D3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="504.05" y="433.20" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genE</text>
-<polygon points="530.67,423.10 541.61,423.10 541.61,418.04 547.51,430.36 541.61,442.68 541.61,437.62 530.67,437.62" fill="#FDB462" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<polygon points="547.21,423.10 556.52,423.10 556.52,418.04 561.53,430.36 556.52,442.68 556.52,437.62 547.21,437.62" fill="#B3DE69" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<polygon points="562.62,423.10 580.61,423.10 580.61,418.04 590.29,430.36 580.61,442.68 580.61,437.62 562.62,437.62" fill="#FCCDE5" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="574.76" y="433.20" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protB</text>
-<polygon points="431.03,86.48 441.89,86.48 441.89,81.42 447.74,93.74 441.89,106.06 441.89,101.00 431.03,101.00" fill="#FFFFB3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<polygon points="448.08,86.48 460.99,86.48 460.99,81.42 467.94,93.74 460.99,106.06 460.99,101.00 448.08,101.00" fill="#BEBADA" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="456.79" y="96.58" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genC</text>
-<polygon points="468.40,86.48 478.69,86.48 478.69,81.42 484.23,93.74 478.69,106.06 478.69,101.00 468.40,101.00" fill="#FB8072" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<polygon points="483.94,86.48 514.52,86.48 514.52,81.42 529.37,93.74 514.52,106.06 514.52,101.00 483.94,101.00" fill="#80B1D3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="504.05" y="96.58" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genE</text>
-<polygon points="530.59,86.48 540.30,86.48 540.30,81.42 545.53,93.74 540.30,106.06 540.30,101.00 530.59,101.00" fill="#FDB462" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<polygon points="545.58,86.48 554.88,86.48 554.88,81.42 559.89,93.74 554.88,106.06 554.88,101.00 545.58,101.00" fill="#B3DE69" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<polygon points="560.52,86.48 578.35,86.48 578.35,81.42 587.94,93.74 578.35,106.06 578.35,101.00 560.52,101.00" fill="#FCCDE5" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="572.55" y="96.58" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protB</text>
-<polygon points="680.61,86.48 687.13,86.48 687.13,81.42 690.64,93.74 687.13,106.06 687.13,101.00 680.61,101.00" fill="#D9D9D9" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<polygon points="691.44,86.48 720.76,86.48 720.76,81.42 735.61,93.74 720.76,106.06 720.76,101.00 691.44,101.00" fill="#BC80BD" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="710.93" y="96.58" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protD</text>
-<polygon points="736.45,86.48 763.45,86.48 763.45,81.42 777.98,93.74 763.45,106.06 763.45,101.00 736.45,101.00" fill="#CCEBC5" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="754.67" y="96.58" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protE</text>
-<polygon points="586.18,86.48 665.63,86.48 665.63,81.42 680.48,93.74 665.63,106.06 665.63,101.00 586.18,101.00" fill="#FFED6F" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="630.73" y="96.58" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protF</text>
-<polygon points="430.78,30.38 441.81,30.38 441.81,25.32 447.74,37.64 441.81,49.96 441.81,44.90 430.78,44.90" fill="#FFFFB3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<polygon points="448.04,30.38 460.95,30.38 460.95,25.32 467.90,37.64 460.95,49.96 460.95,44.90 448.04,44.90" fill="#BEBADA" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="456.75" y="40.48" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genC</text>
-<polygon points="468.40,30.38 478.69,30.38 478.69,25.32 484.23,37.64 478.69,49.96 478.69,44.90 468.40,44.90" fill="#FB8072" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<polygon points="483.94,30.38 514.52,30.38 514.52,25.32 529.37,37.64 514.52,49.96 514.52,44.90 483.94,44.90" fill="#80B1D3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="504.05" y="40.48" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genE</text>
-<polygon points="530.46,30.38 540.18,30.38 540.18,25.32 545.41,37.64 540.18,49.96 540.18,44.90 530.46,44.90" fill="#FDB462" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<polygon points="545.45,30.38 554.76,30.38 554.76,25.32 559.77,37.64 554.76,49.96 554.76,44.90 545.45,44.90" fill="#B3DE69" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<polygon points="560.40,30.38 578.22,30.38 578.22,25.32 587.82,37.64 578.22,49.96 578.22,44.90 560.40,44.90" fill="#FCCDE5" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="572.43" y="40.48" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protB</text>
-<polygon points="680.48,30.38 686.84,30.38 686.84,25.32 690.27,37.64 686.84,49.96 686.84,44.90 680.48,44.90" fill="#D9D9D9" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<polygon points="691.74,30.38 721.06,30.38 721.06,25.32 735.91,37.64 721.06,49.96 721.06,44.90 691.74,44.90" fill="#BC80BD" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="711.22" y="40.48" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protD</text>
-<polygon points="737.50,30.38 764.50,30.38 764.50,25.32 779.03,37.64 764.50,49.96 764.50,44.90 737.50,44.90" fill="#CCEBC5" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="755.72" y="40.48" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protE</text>
-<polygon points="586.05,30.38 665.51,30.38 665.51,25.32 680.36,37.64 665.51,49.96 665.51,44.90 586.05,44.90" fill="#FFED6F" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
-<text x="630.61" y="40.48" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protF</text>
+<line x1="28.00" y1="441.82" x2="211.76" y2="441.82" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="73.94" y1="268.83" x2="211.76" y2="268.83" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="165.82" y1="211.17" x2="211.76" y2="211.17" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="165.82" y1="153.51" x2="211.76" y2="153.51" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="165.82" y1="95.84" x2="211.76" y2="95.84" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="165.82" y1="38.18" x2="211.76" y2="38.18" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="165.82" y1="384.16" x2="211.76" y2="384.16" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="165.82" y1="326.49" x2="211.76" y2="326.49" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="28.00" y1="196.75" x2="73.94" y2="196.75" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="73.94" y1="124.68" x2="119.88" y2="124.68" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="119.88" y1="182.34" x2="165.82" y2="182.34" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="119.88" y1="67.01" x2="165.82" y2="67.01" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="28.00" y1="355.32" x2="165.82" y2="355.32" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="28.00" y1="331.30" x2="28.00" y2="441.82" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="73.94" y1="196.75" x2="73.94" y2="268.83" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="165.82" y1="182.34" x2="165.82" y2="211.17" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="165.82" y1="182.34" x2="165.82" y2="153.51" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="165.82" y1="67.01" x2="165.82" y2="95.84" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="165.82" y1="67.01" x2="165.82" y2="38.18" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="165.82" y1="355.32" x2="165.82" y2="384.16" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="165.82" y1="355.32" x2="165.82" y2="326.49" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="28.00" y1="331.30" x2="28.00" y2="196.75" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="73.94" y1="196.75" x2="73.94" y2="124.68" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="119.88" y1="124.68" x2="119.88" y2="182.34" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="119.88" y1="124.68" x2="119.88" y2="67.01" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<line x1="28.00" y1="331.30" x2="28.00" y2="355.32" stroke="black" stroke-width="0.90" stroke-opacity="1.00"/>
+<text x="215.76" y="444.88" text-anchor="start" font-family="sans-serif" font-size="9.0" fill="#222222">Genome6</text>
+<text x="215.76" y="271.89" text-anchor="start" font-family="sans-serif" font-size="9.0" fill="#222222">Genome4</text>
+<text x="215.76" y="214.23" text-anchor="start" font-family="sans-serif" font-size="9.0" fill="#222222">Genome1</text>
+<text x="215.76" y="156.57" text-anchor="start" font-family="sans-serif" font-size="9.0" fill="#222222">Genome5</text>
+<text x="215.76" y="98.90" text-anchor="start" font-family="sans-serif" font-size="9.0" fill="#222222">Genome7</text>
+<text x="215.76" y="41.24" text-anchor="start" font-family="sans-serif" font-size="9.0" fill="#222222">Genome8</text>
+<text x="215.76" y="387.22" text-anchor="start" font-family="sans-serif" font-size="9.0" fill="#222222">Genome2</text>
+<text x="215.76" y="329.55" text-anchor="start" font-family="sans-serif" font-size="9.0" fill="#222222">Genome3</text>
+<line x1="332.36" y1="211.17" x2="736.33" y2="211.17" stroke="#9CA3AF" stroke-width="1.2"/>
+<line x1="319.64" y1="384.16" x2="595.67" y2="384.16" stroke="#9CA3AF" stroke-width="1.2"/>
+<line x1="327.66" y1="326.49" x2="592.18" y2="326.49" stroke="#9CA3AF" stroke-width="1.2"/>
+<line x1="330.60" y1="268.83" x2="546.92" y2="268.83" stroke="#9CA3AF" stroke-width="1.2"/>
+<line x1="331.18" y1="153.51" x2="740.02" y2="153.51" stroke="#9CA3AF" stroke-width="1.2"/>
+<line x1="326.48" y1="441.82" x2="590.29" y2="441.82" stroke="#9CA3AF" stroke-width="1.2"/>
+<line x1="431.03" y1="95.84" x2="777.98" y2="95.84" stroke="#9CA3AF" stroke-width="1.2"/>
+<line x1="430.78" y1="38.18" x2="779.03" y2="38.18" stroke="#9CA3AF" stroke-width="1.2"/>
+<polygon points="332.36,203.91 397.71,203.91 397.71,198.85 412.56,211.17 397.71,223.49 397.71,218.43 332.36,218.43" fill="#8DD3C7" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="369.86" y="214.01" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genA</text>
+<polygon points="412.64,203.91 436.11,203.91 436.11,198.85 448.75,211.17 436.11,223.49 436.11,218.43 412.64,218.43" fill="#FFFFB3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="428.48" y="214.01" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genB</text>
+<polygon points="449.38,203.91 462.04,203.91 462.04,198.85 468.86,211.17 462.04,223.49 462.04,218.43 449.38,218.43" fill="#BEBADA" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="457.93" y="214.01" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genC</text>
+<polygon points="468.90,203.91 478.29,203.91 478.29,198.85 483.35,211.17 478.29,223.49 478.29,218.43 468.90,218.43" fill="#FB8072" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<polygon points="483.94,203.91 514.39,203.91 514.39,198.85 529.24,211.17 514.39,223.49 514.39,218.43 483.94,218.43" fill="#80B1D3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="503.99" y="214.01" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genE</text>
+<polygon points="529.58,203.91 539.54,203.91 539.54,198.85 544.90,211.17 539.54,223.49 539.54,218.43 529.58,218.43" fill="#FDB462" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<polygon points="642.57,203.91 648.35,203.91 648.35,198.85 651.47,211.17 648.35,223.49 648.35,218.43 642.57,218.43" fill="#D9D9D9" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<polygon points="651.34,203.91 680.04,203.91 680.04,198.85 694.89,211.17 680.04,223.49 680.04,218.43 651.34,218.43" fill="#BC80BD" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="670.52" y="214.01" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protD</text>
+<polygon points="694.93,203.91 721.84,203.91 721.84,198.85 736.33,211.17 721.84,223.49 721.84,218.43 694.93,218.43" fill="#CCEBC5" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="713.09" y="214.01" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protE</text>
+<polygon points="545.87,203.91 625.33,203.91 625.33,198.85 640.18,211.17 625.33,223.49 625.33,218.43 545.87,218.43" fill="#FFED6F" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="590.42" y="214.01" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protF</text>
+<polygon points="319.64,376.90 388.13,376.90 388.13,371.84 402.98,384.16 388.13,396.48 388.13,391.42 319.64,391.42" fill="#8DD3C7" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="358.71" y="386.99" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genA</text>
+<polygon points="402.86,376.90 426.16,376.90 426.16,371.84 438.72,384.16 426.16,396.48 426.16,391.42 402.86,391.42" fill="#FFFFB3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="418.59" y="386.99" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genB</text>
+<polygon points="447.66,376.90 459.91,376.90 459.91,371.84 466.51,384.16 459.91,396.48 459.91,391.42 447.66,391.42" fill="#BEBADA" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="455.93" y="386.99" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genC</text>
+<polygon points="467.98,376.90 478.27,376.90 478.27,371.84 483.81,384.16 478.27,396.48 478.27,391.42 467.98,391.42" fill="#FB8072" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<polygon points="483.94,376.90 514.39,376.90 514.39,371.84 529.24,384.16 514.39,396.48 514.39,391.42 483.94,391.42" fill="#80B1D3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="503.99" y="386.99" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genE</text>
+<polygon points="530.42,376.90 540.46,376.90 540.46,371.84 545.87,384.16 540.46,396.48 540.46,391.42 530.42,391.42" fill="#FDB462" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<polygon points="545.58,376.90 554.88,376.90 554.88,371.84 559.89,384.16 554.88,396.48 554.88,391.42 545.58,391.42" fill="#B3DE69" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<polygon points="568.00,376.90 585.98,376.90 585.98,371.84 595.67,384.16 585.98,396.48 585.98,391.42 568.00,391.42" fill="#FCCDE5" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="580.14" y="386.99" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protB</text>
+<polygon points="327.66,319.23 396.15,319.23 396.15,314.17 411.00,326.49 396.15,338.81 396.15,333.75 327.66,333.75" fill="#8DD3C7" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="366.73" y="329.33" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genA</text>
+<polygon points="410.88,319.23 434.18,319.23 434.18,314.17 446.73,326.49 434.18,338.81 434.18,333.75 410.88,333.75" fill="#FFFFB3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="426.61" y="329.33" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genB</text>
+<polygon points="447.41,319.23 459.66,319.23 459.66,314.17 466.26,326.49 459.66,338.81 459.66,333.75 447.41,333.75" fill="#BEBADA" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="455.68" y="329.33" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genC</text>
+<polygon points="467.98,319.23 478.35,319.23 478.35,314.17 483.94,326.49 478.35,338.81 478.35,333.75 467.98,333.75" fill="#FB8072" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<polygon points="483.94,319.23 514.39,319.23 514.39,314.17 529.24,326.49 514.39,338.81 514.39,333.75 483.94,333.75" fill="#80B1D3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="503.99" y="329.33" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genE</text>
+<polygon points="530.80,319.23 540.92,319.23 540.92,314.17 546.37,326.49 540.92,338.81 540.92,333.75 530.80,333.75" fill="#FDB462" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<polygon points="550.15,319.23 559.46,319.23 559.46,314.17 564.47,326.49 559.46,338.81 559.46,333.75 550.15,333.75" fill="#B3DE69" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<polygon points="565.39,319.23 582.81,319.23 582.81,314.17 592.18,326.49 582.81,338.81 582.81,333.75 565.39,333.75" fill="#FCCDE5" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="577.15" y="329.33" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protB</text>
+<polygon points="330.60,261.57 395.94,261.57 395.94,256.51 410.79,268.83 395.94,281.15 395.94,276.09 330.60,276.09" fill="#8DD3C7" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="368.10" y="271.67" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genA</text>
+<polygon points="411.30,261.57 434.77,261.57 434.77,256.51 447.41,268.83 434.77,281.15 434.77,276.09 411.30,276.09" fill="#FFFFB3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="427.14" y="271.67" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genB</text>
+<polygon points="449.46,261.57 461.80,261.57 461.80,256.51 468.44,268.83 461.80,281.15 461.80,276.09 449.46,276.09" fill="#BEBADA" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="457.79" y="271.67" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genC</text>
+<polygon points="468.44,261.57 477.91,261.57 477.91,256.51 483.01,268.83 477.91,281.15 477.91,276.09 468.44,276.09" fill="#FB8072" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<polygon points="483.94,261.57 514.27,261.57 514.27,256.51 529.12,268.83 514.27,281.15 514.27,276.09 483.94,276.09" fill="#80B1D3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="503.93" y="271.67" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genE</text>
+<polygon points="529.58,261.57 540.85,261.57 540.85,256.51 546.92,268.83 540.85,281.15 540.85,276.09 529.58,276.09" fill="#FDB462" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<polygon points="331.18,146.25 397.03,146.25 397.03,141.19 411.88,153.51 397.03,165.83 397.03,160.77 331.18,160.77" fill="#8DD3C7" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="368.94" y="156.35" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genA</text>
+<polygon points="411.88,146.25 435.93,146.25 435.93,141.19 448.88,153.51 435.93,165.83 435.93,160.77 411.88,160.77" fill="#FFFFB3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="428.11" y="156.35" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genB</text>
+<polygon points="449.34,146.25 462.08,146.25 462.08,141.19 468.95,153.51 462.08,165.83 462.08,160.77 449.34,160.77" fill="#BEBADA" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="457.94" y="156.35" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genC</text>
+<polygon points="468.65,146.25 478.21,146.25 478.21,141.19 483.35,153.51 478.21,165.83 478.21,160.77 468.65,160.77" fill="#FB8072" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<polygon points="483.94,146.25 514.39,146.25 514.39,141.19 529.24,153.51 514.39,165.83 514.39,160.77 483.94,160.77" fill="#80B1D3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="503.99" y="156.35" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genE</text>
+<polygon points="529.49,146.25 542.57,146.25 542.57,141.19 549.61,153.51 542.57,165.83 542.57,160.77 529.49,160.77" fill="#FDB462" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="538.32" y="156.35" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genF</text>
+<polygon points="646.43,146.25 652.22,146.25 652.22,141.19 655.33,153.51 652.22,165.83 652.22,160.77 646.43,160.77" fill="#D9D9D9" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<polygon points="655.21,146.25 684.02,146.25 684.02,141.19 698.87,153.51 684.02,165.83 684.02,160.77 655.21,160.77" fill="#BC80BD" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="674.44" y="156.35" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protD</text>
+<polygon points="698.75,146.25 725.58,146.25 725.58,141.19 740.02,153.51 725.58,165.83 725.58,160.77 698.75,160.77" fill="#CCEBC5" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="716.86" y="156.35" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protE</text>
+<polygon points="550.45,146.25 630.53,146.25 630.53,141.19 645.38,153.51 630.53,165.83 630.53,160.77 550.45,160.77" fill="#FFED6F" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="595.32" y="156.35" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protF</text>
+<polygon points="326.48,434.56 393.09,434.56 393.09,429.50 407.94,441.82 393.09,454.14 393.09,449.08 326.48,449.08" fill="#8DD3C7" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="364.61" y="444.66" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genA</text>
+<polygon points="408.23,434.56 432.03,434.56 432.03,429.50 444.85,441.82 432.03,454.14 432.03,449.08 408.23,449.08" fill="#FFFFB3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="424.30" y="444.66" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genB</text>
+<polygon points="446.32,434.56 460.78,434.56 460.78,429.50 468.57,441.82 460.78,454.14 460.78,449.08 446.32,449.08" fill="#BEBADA" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="456.08" y="444.66" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genC</text>
+<polygon points="468.27,434.56 478.73,434.56 478.73,429.50 484.36,441.82 478.73,454.14 478.73,449.08 468.27,449.08" fill="#FB8072" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<polygon points="483.94,434.56 514.52,434.56 514.52,429.50 529.37,441.82 514.52,454.14 514.52,449.08 483.94,449.08" fill="#80B1D3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="504.05" y="444.66" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genE</text>
+<polygon points="530.67,434.56 541.61,434.56 541.61,429.50 547.51,441.82 541.61,454.14 541.61,449.08 530.67,449.08" fill="#FDB462" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<polygon points="547.21,434.56 556.52,434.56 556.52,429.50 561.53,441.82 556.52,454.14 556.52,449.08 547.21,449.08" fill="#B3DE69" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<polygon points="562.62,434.56 580.61,434.56 580.61,429.50 590.29,441.82 580.61,454.14 580.61,449.08 562.62,449.08" fill="#FCCDE5" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="574.76" y="444.66" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protB</text>
+<polygon points="431.03,88.58 441.89,88.58 441.89,83.52 447.74,95.84 441.89,108.16 441.89,103.10 431.03,103.10" fill="#FFFFB3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<polygon points="448.08,88.58 460.99,88.58 460.99,83.52 467.94,95.84 460.99,108.16 460.99,103.10 448.08,103.10" fill="#BEBADA" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="456.79" y="98.68" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genC</text>
+<polygon points="468.40,88.58 478.69,88.58 478.69,83.52 484.23,95.84 478.69,108.16 478.69,103.10 468.40,103.10" fill="#FB8072" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<polygon points="483.94,88.58 514.52,88.58 514.52,83.52 529.37,95.84 514.52,108.16 514.52,103.10 483.94,103.10" fill="#80B1D3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="504.05" y="98.68" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genE</text>
+<polygon points="530.59,88.58 540.30,88.58 540.30,83.52 545.53,95.84 540.30,108.16 540.30,103.10 530.59,103.10" fill="#FDB462" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<polygon points="545.58,88.58 554.88,88.58 554.88,83.52 559.89,95.84 554.88,108.16 554.88,103.10 545.58,103.10" fill="#B3DE69" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<polygon points="560.52,88.58 578.35,88.58 578.35,83.52 587.94,95.84 578.35,108.16 578.35,103.10 560.52,103.10" fill="#FCCDE5" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="572.55" y="98.68" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protB</text>
+<polygon points="680.61,88.58 687.13,88.58 687.13,83.52 690.64,95.84 687.13,108.16 687.13,103.10 680.61,103.10" fill="#D9D9D9" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<polygon points="691.44,88.58 720.76,88.58 720.76,83.52 735.61,95.84 720.76,108.16 720.76,103.10 691.44,103.10" fill="#BC80BD" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="710.93" y="98.68" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protD</text>
+<polygon points="736.45,88.58 763.45,88.58 763.45,83.52 777.98,95.84 763.45,108.16 763.45,103.10 736.45,103.10" fill="#CCEBC5" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="754.67" y="98.68" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protE</text>
+<polygon points="586.18,88.58 665.63,88.58 665.63,83.52 680.48,95.84 665.63,108.16 665.63,103.10 586.18,103.10" fill="#FFED6F" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="630.73" y="98.68" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protF</text>
+<polygon points="430.78,30.92 441.81,30.92 441.81,25.86 447.74,38.18 441.81,50.50 441.81,45.44 430.78,45.44" fill="#FFFFB3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<polygon points="448.04,30.92 460.95,30.92 460.95,25.86 467.90,38.18 460.95,50.50 460.95,45.44 448.04,45.44" fill="#BEBADA" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="456.75" y="41.02" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genC</text>
+<polygon points="468.40,30.92 478.69,30.92 478.69,25.86 484.23,38.18 478.69,50.50 478.69,45.44 468.40,45.44" fill="#FB8072" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<polygon points="483.94,30.92 514.52,30.92 514.52,25.86 529.37,38.18 514.52,50.50 514.52,45.44 483.94,45.44" fill="#80B1D3" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="504.05" y="41.02" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">genE</text>
+<polygon points="530.46,30.92 540.18,30.92 540.18,25.86 545.41,38.18 540.18,50.50 540.18,45.44 530.46,45.44" fill="#FDB462" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<polygon points="545.45,30.92 554.76,30.92 554.76,25.86 559.77,38.18 554.76,50.50 554.76,45.44 545.45,45.44" fill="#B3DE69" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<polygon points="560.40,30.92 578.22,30.92 578.22,25.86 587.82,38.18 578.22,50.50 578.22,45.44 560.40,45.44" fill="#FCCDE5" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="572.43" y="41.02" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protB</text>
+<polygon points="680.48,30.92 686.84,30.92 686.84,25.86 690.27,38.18 686.84,50.50 686.84,45.44 680.48,45.44" fill="#D9D9D9" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<polygon points="691.74,30.92 721.06,30.92 721.06,25.86 735.91,38.18 721.06,50.50 721.06,45.44 691.74,45.44" fill="#BC80BD" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="711.22" y="41.02" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protD</text>
+<polygon points="737.50,30.92 764.50,30.92 764.50,25.86 779.03,38.18 764.50,50.50 764.50,45.44 737.50,45.44" fill="#CCEBC5" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="755.72" y="41.02" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protE</text>
+<polygon points="586.05,30.92 665.51,30.92 665.51,25.86 680.36,38.18 665.51,50.50 665.51,45.44 586.05,45.44" fill="#FFED6F" fill-opacity="0.92" stroke="#1F2937" stroke-width="0.65"/>
+<text x="630.61" y="41.02" text-anchor="middle" font-family="sans-serif" font-size="8.3" fill="#111827">protF</text>
 <text x="816.0" y="44.0" font-family="sans-serif" font-size="10.0" font-weight="bold" fill="#1F2937">gene</text>
 <rect x="816.0" y="54.0" width="10.0" height="10.0" fill="#8DD3C7" stroke="#9CA3AF" stroke-width="0.4"/>
 <text x="830.5" y="62.5" font-family="sans-serif" font-size="9.0" fill="#374151">genA</text>

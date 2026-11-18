@@ -801,9 +801,11 @@ def build_chapter_spec() -> Dict[int, Dict[str, Any]]:
             "part": "Part IV: Miscellaneous Topics",
             "title": "13. Gallery of Reproducible Examples",
             "intro": (
-                "Reproducing all four published case studies from Chapter 13 of <em>Data Integration, Manipulation "
-                "and Visualization of Phylogenetic Trees</em> in <code>ggtree-py</code>, spanning HPV58 sequence distances, "
-                "discrete bootstrap symbols, groupOTU circular clade highlights, and BioNJ genome locus structures."
+                "Reproducing the four published case studies from Chapter 13 of <em>Data Integration, Manipulation "
+                "and Visualization of Phylogenetic Trees</em> plus a phylogeographic circular-map showcase in "
+                "<code>ggtree-py</code>—spanning HPV58 sequence distances, discrete bootstrap symbols, groupOTU "
+                "circular clade highlights, BioNJ genome locus structures, and an inward circular SARS-CoV-2 "
+                "phylogeny wrapped around a NearsidePerspective map of Europe."
             ),
             "sections": [
                 (
@@ -839,6 +841,18 @@ def build_chapter_spec() -> Dict[int, Dict[str, Any]]:
                     "<code>example_genes</code> and pairs it cleanly via <code>geom_facet(..., geom=geom_motif, on='genE', "
                     "label='gene', align='left')</code> with Brewer <code>Set3</code> fills.</p>",
                     "fig_13_4",
+                ),
+                (
+                    "circular-phylogeography",
+                    "13.5 Inward Circular Phylogeny Wrapped Around a Geographic Map",
+                    "<p>Re-implements Figure 1 of Potter et al. (2026, <a href=\"https://doi.org/10.64898/2026.09.20.752947\" "
+                    "target=\"_blank\" rel=\"noopener noreferrer\"><em>baltic</em></a>; SARS-CoV-2 lineage B.1.620 data from "
+                    "Dudas et al., 2021, CC-BY) purely in <code>ggtree-py</code>: combines <code>ggtree(..., "
+                    "layout='inward_circular', open_angle=21.0, xlim=51.92)</code> and <code>rotate_tree(..., 102.3)</code> "
+                    "with compound NearsidePerspective Europe map polygons (<code>geom_polygon</code> with <code>subgroup</code> "
+                    "holes), 20 concentric dotted mutation rings, 77 shouldered tip-to-map <code>geom_path()</code> connectors, "
+                    "size-tiered sampling locations, and white-haloed country legends.</p>",
+                    "fig_13_5",
                 ),
             ],
         },
@@ -1068,7 +1082,7 @@ def render_page_shell(
 
 
 def build_index_page(figs: List[Dict[str, Any]]) -> str:
-    featured_ids = ["fig_1_2", "fig_7_3", "fig_13_4", "fig_10_2"]
+    featured_ids = ["fig_1_2", "fig_7_3", "fig_13_4", "fig_10_2", "fig_13_5"]
     by_id = {f["id"]: f for f in figs}
     featured_html = "".join(render_figure_card(by_id[fid]) for fid in featured_ids if fid in by_id)
 
