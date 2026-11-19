@@ -87,6 +87,29 @@
     "code": "pmltree = read_jtree(system_file(\"extdata\", \"TDbook\", \"pmltree.jtree\"))\np = (\n    ggtree(pmltree)\n    + geom_text(aes(x=\"branch\", label=\"AA_subs\"), vjust=-0.5, size=2.3)\n    + hexpand(0.18)\n)\np\n"
   },
   {
+    "id": "fig_1_5",
+    "num": "1.5",
+    "chapter": 1,
+    "part": "Part I: Tree Data Input, Output and Manipulation",
+    "section": "1.5 Importing Nextstrain Auspice JSON Trees",
+    "title": "Nextstrain Auspice v2 Zika phylogeny: divergence vs calendar-year time tree",
+    "caption": "Zika Nextstrain Auspice v2 JSON imported via read_auspice_json() (and directly via ggtree(path)), comparing root-to-tip genetic divergence (panel A) with calendar-year time scaling via branch_length='num_date' (panel B) colored by region.",
+    "apis": [
+      "read_auspice_json",
+      "read_nextstrain_json",
+      "ggtree",
+      "plot_list",
+      "theme_tree2",
+      "system_file"
+    ],
+    "width": 960,
+    "height": 500,
+    "interactive": false,
+    "svg_path": "figures/book/fig_1_5.svg",
+    "png_path": "figures/book/fig_1_5.png",
+    "code": "zika_json = system_file(\"extdata\", \"nextstrain.json\", \"minimal_v2.json\")\nzika_td = read_auspice_json(zika_json, include_geo=True)\nregion_cols = {\n    \"Southeast Asia\": \"#1B9E77\",\n    \"Oceania\": \"#7570B3\",\n    \"South America\": \"#E7298A\",\n    \"North America\": \"#D95F02\",\n}\np_div = (\n    ggtree(zika_json, aes(color=\"region\"))\n    + geom_tippoint(size=2.1)\n    + geom_tiplab(size=2.0, offset=0.00018)\n    + scale_color_manual(values=region_cols, name=\"Region\")\n    + hexpand(0.32)\n    + theme_tree2(legend_position=(0.18, 0.84))\n    + xlab(\"Divergence (substitutions / site)\")\n)\np_time = (\n    ggtree(zika_td, aes(color=\"region\"), branch_length=\"num_date\")\n    + geom_tippoint(size=2.1)\n    + geom_tiplab(size=2.0, offset=0.14)\n    + scale_color_manual(values=region_cols, name=\"Region\")\n    + hexpand(0.30)\n    + theme_tree2(legend_position=\"none\")\n    + xlab(\"Calendar Year (num_date)\")\n)\nplot_list(p_div, p_time, ncol=2, tag_levels=\"A\")\n"
+  },
+  {
     "id": "fig_2_1",
     "num": "2.1",
     "chapter": 2,

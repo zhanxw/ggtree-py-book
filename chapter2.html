@@ -75,9 +75,9 @@
   <details class="code-fold">
     <summary>
       <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
-      <span class="summary-actions"><span class="api-pill">read_beast</span><span class="api-pill">read_codeml</span><span class="api-pill">merge_tree</span><span class="api-pill">fortify</span><button type="button" class="copy-btn" data-code-target="code-blk-5">Copy</button></span>
+      <span class="summary-actions"><span class="api-pill">read_beast</span><span class="api-pill">read_codeml</span><span class="api-pill">merge_tree</span><span class="api-pill">fortify</span><button type="button" class="copy-btn" data-code-target="code-blk-6">Copy</button></span>
     </summary>
-    <pre><code id="code-blk-5">beast_tree <span class="tok-op">=</span> <span class="tok-call">read_beast</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;MCC_FluA_H3.tree&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+    <pre><code id="code-blk-6">beast_tree <span class="tok-op">=</span> <span class="tok-call">read_beast</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;MCC_FluA_H3.tree&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
 codeml_tree <span class="tok-op">=</span> <span class="tok-call">read_codeml</span><span class="tok-op">(</span>
     <span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;rst&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span>
     <span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;mlc&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span>
@@ -124,9 +124,9 @@ p
   <details class="code-fold">
     <summary>
       <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
-      <span class="summary-actions"><span class="api-pill">read_tree</span><span class="api-pill">read_table</span><span class="api-pill">left_join</span><span class="api-pill">root</span><button type="button" class="copy-btn" data-code-target="code-blk-6">Copy</button></span>
+      <span class="summary-actions"><span class="api-pill">read_tree</span><span class="api-pill">read_table</span><span class="api-pill">left_join</span><span class="api-pill">root</span><button type="button" class="copy-btn" data-code-target="code-blk-7">Copy</button></span>
     </summary>
-    <pre><code id="code-blk-6">tr_boots <span class="tok-op">=</span> <span class="tok-call">read_tree</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;TDbook&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;tree_boots.nwk&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+    <pre><code id="code-blk-7">tr_boots <span class="tok-op">=</span> <span class="tok-call">read_tree</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;TDbook&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;tree_boots.nwk&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
 df_tip <span class="tok-op">=</span> <span class="tok-call">read_table</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;TDbook&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;df_tip_data.tsv&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> header<span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span> sep<span class="tok-op">=</span><span class="tok-str">&quot;\t&quot;</span><span class="tok-op">)</span>
 df_inode <span class="tok-op">=</span> <span class="tok-call">read_table</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;TDbook&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;df_inode_data.tsv&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> header<span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span> sep<span class="tok-op">=</span><span class="tok-str">&quot;\t&quot;</span><span class="tok-op">)</span>
 
@@ -164,9 +164,9 @@ trda2 <span class="tok-op">=</span> <span class="tok-call">root</span><span clas
   <details class="code-fold">
     <summary>
       <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
-      <span class="summary-actions"><span class="api-pill">merge_tree</span><span class="api-pill">rescale_tree</span><span class="api-pill">ggtree</span><span class="api-pill">theme_tree2</span><button type="button" class="copy-btn" data-code-target="code-blk-7">Copy</button></span>
+      <span class="summary-actions"><span class="api-pill">merge_tree</span><span class="api-pill">rescale_tree</span><span class="api-pill">ggtree</span><span class="api-pill">theme_tree2</span><button type="button" class="copy-btn" data-code-target="code-blk-8">Copy</button></span>
     </summary>
-    <pre><code id="code-blk-7">beast_tree <span class="tok-op">=</span> <span class="tok-call">read_beast</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;MCC_FluA_H3.tree&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+    <pre><code id="code-blk-8">beast_tree <span class="tok-op">=</span> <span class="tok-call">read_beast</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;MCC_FluA_H3.tree&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
 codeml_tree <span class="tok-op">=</span> <span class="tok-call">read_codeml</span><span class="tok-op">(</span>
     <span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;rst&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span>
     <span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;mlc&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span>
@@ -190,9 +190,9 @@ p3 <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class
   <details class="code-fold">
     <summary>
       <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
-      <span class="summary-actions"><span class="api-pill">read_nhx</span><span class="api-pill">drop_tip</span><span class="api-pill">ggtree</span><span class="api-pill">scale_color_manual</span><button type="button" class="copy-btn" data-code-target="code-blk-8">Copy</button></span>
+      <span class="summary-actions"><span class="api-pill">read_nhx</span><span class="api-pill">drop_tip</span><span class="api-pill">ggtree</span><span class="api-pill">scale_color_manual</span><button type="button" class="copy-btn" data-code-target="code-blk-9">Copy</button></span>
     </summary>
-    <pre><code id="code-blk-8">nhx <span class="tok-op">=</span> <span class="tok-call">read_nhx</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;NHX&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;phyldog.nhx&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+    <pre><code id="code-blk-9">nhx <span class="tok-op">=</span> <span class="tok-call">read_nhx</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;NHX&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;phyldog.nhx&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
 to_drop <span class="tok-op">=</span> <span class="tok-op">[</span>
     <span class="tok-str">&quot;Physonect_sp_@2066767&quot;</span><span class="tok-op">,</span>
     <span class="tok-str">&quot;Lychnagalma_utricularia@2253871&quot;</span><span class="tok-op">,</span>
@@ -223,9 +223,9 @@ p2 <span class="tok-op">=</span> <span class="tok-op">(</span>
   <details class="code-fold">
     <summary>
       <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
-      <span class="summary-actions"><span class="api-pill">read_beast</span><span class="api-pill">tree_subset</span><span class="api-pill">ggtree</span><span class="api-pill">geom_rootedge</span><button type="button" class="copy-btn" data-code-target="code-blk-9">Copy</button></span>
+      <span class="summary-actions"><span class="api-pill">read_beast</span><span class="api-pill">tree_subset</span><span class="api-pill">ggtree</span><span class="api-pill">geom_rootedge</span><button type="button" class="copy-btn" data-code-target="code-blk-10">Copy</button></span>
     </summary>
-    <pre><code id="code-blk-9">beast_tree <span class="tok-op">=</span> <span class="tok-call">read_beast</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;MCC_FluA_H3.tree&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+    <pre><code id="code-blk-10">beast_tree <span class="tok-op">=</span> <span class="tok-call">read_beast</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;MCC_FluA_H3.tree&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
 tree2 <span class="tok-op">=</span> <span class="tok-call">tree_subset</span><span class="tok-op">(</span>beast_tree<span class="tok-op">,</span> <span class="tok-str">&quot;A/Swine/HK/168/2012&quot;</span><span class="tok-op">,</span> levels_back<span class="tok-op">=</span><span class="tok-num">4</span><span class="tok-op">)</span>
 p1 <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>beast_tree<span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span>offset<span class="tok-op">=</span><span class="tok-num">0.05</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">1.8</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">xlim</span><span class="tok-op">(</span><span class="tok-num">0</span><span class="tok-op">,</span> <span class="tok-num">40</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">theme_tree2</span><span class="tok-op">(</span><span class="tok-op">)</span>
 p2 <span class="tok-op">=</span> <span class="tok-op">(</span>
@@ -263,9 +263,9 @@ p5 <span class="tok-op">=</span> p4 <span class="tok-op">+</span> <span class="t
   <details class="code-fold">
     <summary>
       <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
-      <span class="summary-actions"><span class="api-pill">read_beast</span><span class="api-pill">read_tree</span><span class="api-pill">MRCA</span><span class="api-pill">tree_subset</span><button type="button" class="copy-btn" data-code-target="code-blk-10">Copy</button></span>
+      <span class="summary-actions"><span class="api-pill">read_beast</span><span class="api-pill">read_tree</span><span class="api-pill">MRCA</span><span class="api-pill">tree_subset</span><button type="button" class="copy-btn" data-code-target="code-blk-11">Copy</button></span>
     </summary>
-    <pre><code id="code-blk-10">beast_tree <span class="tok-op">=</span> <span class="tok-call">read_beast</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;MCC_FluA_H3.tree&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+    <pre><code id="code-blk-11">beast_tree <span class="tok-op">=</span> <span class="tok-call">read_beast</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;MCC_FluA_H3.tree&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
 clade <span class="tok-op">=</span> <span class="tok-call">tree_subset</span><span class="tok-op">(</span>beast_tree<span class="tok-op">,</span> <span class="tok-num">121</span><span class="tok-op">,</span> levels_back<span class="tok-op">=</span><span class="tok-num">0</span><span class="tok-op">)</span>
 clade2 <span class="tok-op">=</span> <span class="tok-call">tree_subset</span><span class="tok-op">(</span>beast_tree<span class="tok-op">,</span> <span class="tok-num">121</span><span class="tok-op">,</span> levels_back<span class="tok-op">=</span><span class="tok-num">2</span><span class="tok-op">)</span>
 p1 <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>clade<span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span>size<span class="tok-op">=</span><span class="tok-num">2.1</span><span class="tok-op">)</span> <span class="tok-op">+</span> <span class="tok-call">hexpand</span><span class="tok-op">(</span><span class="tok-num">0.55</span><span class="tok-op">)</span>
@@ -302,9 +302,9 @@ p4 <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class
   <details class="code-fold">
     <summary>
       <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
-      <span class="summary-actions"><span class="api-pill">rtree</span><span class="api-pill">ggtree</span><span class="api-pill">geom_tree</span><span class="api-pill">geom_hilight</span><button type="button" class="copy-btn" data-code-target="code-blk-11">Copy</button></span>
+      <span class="summary-actions"><span class="api-pill">rtree</span><span class="api-pill">ggtree</span><span class="api-pill">geom_tree</span><span class="api-pill">geom_hilight</span><button type="button" class="copy-btn" data-code-target="code-blk-12">Copy</button></span>
     </summary>
-    <pre><code id="code-blk-11"><span class="tok-call">set_seed</span><span class="tok-op">(</span><span class="tok-num">1024</span><span class="tok-op">)</span>
+    <pre><code id="code-blk-12"><span class="tok-call">set_seed</span><span class="tok-op">(</span><span class="tok-num">1024</span><span class="tok-op">)</span>
 x <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">30</span><span class="tok-op">)</span>
 y <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">30</span><span class="tok-op">)</span>
 p1 <span class="tok-op">=</span> <span class="tok-call">ggtree</span><span class="tok-op">(</span>x<span class="tok-op">,</span> layout<span class="tok-op">=</span><span class="tok-str">&quot;roundrect&quot;</span><span class="tok-op">)</span>
@@ -345,9 +345,9 @@ p
   <details class="code-fold">
     <summary>
       <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
-      <span class="summary-actions"><span class="api-pill">rtree</span><span class="api-pill">fortify</span><span class="api-pill">ggtree</span><span class="api-pill">geom_tree</span><button type="button" class="copy-btn" data-code-target="code-blk-12">Copy</button></span>
+      <span class="summary-actions"><span class="api-pill">rtree</span><span class="api-pill">fortify</span><span class="api-pill">ggtree</span><span class="api-pill">geom_tree</span><button type="button" class="copy-btn" data-code-target="code-blk-13">Copy</button></span>
     </summary>
-    <pre><code id="code-blk-12"><span class="tok-call">set_seed</span><span class="tok-op">(</span><span class="tok-num">2020</span><span class="tok-op">)</span>
+    <pre><code id="code-blk-13"><span class="tok-call">set_seed</span><span class="tok-op">(</span><span class="tok-num">2020</span><span class="tok-op">)</span>
 x <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">15</span><span class="tok-op">)</span>
 y <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">15</span><span class="tok-op">)</span>
 z <span class="tok-op">=</span> <span class="tok-call">rtree</span><span class="tok-op">(</span><span class="tok-num">15</span><span class="tok-op">)</span>

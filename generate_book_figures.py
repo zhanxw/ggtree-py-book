@@ -56,9 +56,6 @@ def generate_all(chapters: Optional[Set[int]] = None) -> List[Dict[str, Any]]:
     # Remove retired figure assets from earlier layouts
     valid_ids = {entry["id"] for entry in FIGURES}
     for ext in ("svg", "png"):
-        stale = FIG_DIR / f"fig_1_5.{ext}"
-        if stale.exists():
-            stale.unlink()
         if chapters is None:
             for p in FIG_DIR.glob(f"fig_*.{ext}"):
                 if p.stem not in valid_ids:

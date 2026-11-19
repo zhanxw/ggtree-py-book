@@ -105,3 +105,47 @@ def _fig_1_4():
         + hexpand(0.18)
     )
     return p
+
+
+@register_figure(
+    fig_id="fig_1_5",
+    num="1.5",
+    chapter=1,
+    part=PART_I,
+    section="1.5 Importing Nextstrain Auspice JSON Trees",
+    title="Nextstrain Auspice v2 Zika phylogeny: divergence vs calendar-year time tree",
+    caption=(
+        "Zika Nextstrain Auspice v2 JSON imported via read_auspice_json() (and directly via ggtree(path)), "
+        "comparing root-to-tip genetic divergence (panel A) with calendar-year time scaling via branch_length='num_date' (panel B) colored by region."
+    ),
+    apis=["read_auspice_json", "read_nextstrain_json", "ggtree", "plot_list", "theme_tree2", "system_file"],
+    size=(960, 500),
+)
+def _fig_1_5():
+    zika_json = system_file("extdata", "nextstrain.json", "minimal_v2.json")
+    zika_td = read_auspice_json(zika_json, include_geo=True)
+    region_cols = {
+        "Southeast Asia": "#1B9E77",
+        "Oceania": "#7570B3",
+        "South America": "#E7298A",
+        "North America": "#D95F02",
+    }
+    p_div = (
+        ggtree(zika_json, aes(color="region"))
+        + geom_tippoint(size=2.1)
+        + geom_tiplab(size=2.0, offset=0.00018)
+        + scale_color_manual(values=region_cols, name="Region")
+        + hexpand(0.32)
+        + theme_tree2(legend_position=(0.18, 0.84))
+        + xlab("Divergence (substitutions / site)")
+    )
+    p_time = (
+        ggtree(zika_td, aes(color="region"), branch_length="num_date")
+        + geom_tippoint(size=2.1)
+        + geom_tiplab(size=2.0, offset=0.14)
+        + scale_color_manual(values=region_cols, name="Region")
+        + hexpand(0.30)
+        + theme_tree2(legend_position="none")
+        + xlab("Calendar Year (num_date)")
+    )
+    return plot_list(p_div, p_time, ncol=2, tag_levels="A")

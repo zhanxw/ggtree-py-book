@@ -7,7 +7,7 @@
     "keywords": "ggtree-py install quickstart treedata-book parts overview"
   },
   {
-    "title": "All Figures Gallery & Master Index (112 figures)",
+    "title": "All Figures Gallery & Master Index (113 figures)",
     "section": "Gallery",
     "context": "Visual Gallery \u00b7 Master Table",
     "href": "gallery.html",
@@ -18,7 +18,7 @@
     "section": "API",
     "context": "Complete Function Cross-Reference",
     "href": "api.html",
-    "keywords": "read_tree read_beast read_codeml read_raxml gheatmap msaplot geom_fruit geom_motif geom_phylopic"
+    "keywords": "read_tree read_beast read_codeml read_raxml read_auspice_json read_nextstrain_json auspice nextstrain gheatmap msaplot geom_fruit geom_motif geom_phylopic"
   },
   {
     "title": "1. Importing Tree with Data",
@@ -32,7 +32,7 @@
     "section": "1. Importing Tree with Data",
     "context": "1. Importing Tree with Data",
     "href": "chapter1.html#overview",
-    "keywords": "<p>Standard readers in <code>ggtree-py</code> mirror both <code>ape</code> and <code>treeio</code>: plain Newick/Nexus files return a lightweight <code>Phylo</code> (or <code>MultiPhylo</code>), whereas BEAST, NHX, EPA/pplacer, jtree, RAxML, and CodeML parsers return a unified <code>TreeData</code> object ready for <code>aes()</code> aesthetic mapping.</p>"
+    "keywords": "<p>Standard readers in <code>ggtree-py</code> mirror both <code>ape</code> and <code>treeio</code>: plain Newick/Nexus files return a lightweight <code>Phylo</code> (or <code>MultiPhylo</code>), whereas BEAST, NHX, EPA/pplacer, jtree, RAxML, CodeML, and Nextstrain Auspice JSON parsers return a unified <code>TreeData</code> object ready for <code>aes()</code> aesthetic mapping.</p>"
   },
   {
     "title": "1.2 Understanding Phylogenetic Tree Structure",
@@ -60,7 +60,7 @@
     "section": "1. Importing Tree with Data",
     "context": "1. Importing Tree with Data",
     "href": "chapter1.html#treeio-import",
-    "keywords": "<p>Evolutionary analyses save annotations across heterogeneous file conventions\u2014inline <code>[&amp;...]</code> BEAST tags, colon-delimited NHX attributes, PAML CodeML <code>rst</code>/<code>mlc</code> files, and JSON placements. <code>treeio</code> normalizes these parsers into common <code>Phylo</code> and <code>TreeData</code> containers seamlessly consumable by <code>tidytree</code> and <code>ggtree</code>.</p>"
+    "keywords": "<p>Evolutionary analyses save annotations across heterogeneous file conventions\u2014inline <code>[&amp;...]</code> BEAST tags, colon-delimited NHX attributes, PAML CodeML <code>rst</code>/<code>mlc</code> files, Nextstrain Auspice JSON, and JSON placements. <code>treeio</code> normalizes these parsers into common <code>Phylo</code> and <code>TreeData</code> containers seamlessly consumable by <code>tidytree</code> and <code>ggtree</code>.</p>"
   },
   {
     "title": "Figure 1.3: Overview of treeio data integration and conversion workflow",
@@ -82,6 +82,20 @@
     "context": "1. Importing Tree with Data \u00b7 1.4 Extracting Data from Tree Object",
     "href": "chapter1.html#fig-1-4",
     "keywords": "Tree imported from jtree format via read_jtree() with reconstructed amino-acid substitution tags (AA_subs) rendered directly above each internal and terminal branch. read_jtree ggtree geom_text geom_tiplab system_file"
+  },
+  {
+    "title": "1.5 Importing Nextstrain Auspice JSON Trees",
+    "section": "1. Importing Tree with Data",
+    "context": "1. Importing Tree with Data",
+    "href": "chapter1.html#auspice-json",
+    "keywords": "<p>Nextstrain builds export rich phylogenetic JSON files (Auspice v1 and v2) containing topology, <code>node_attrs</code> (e.g., <code>country</code>, <code>region</code>, cumulative genetic divergence <code>div</code>, and decimal-year <code>num_date</code> with optional confidence intervals), <code>branch_attrs</code> (nucleotide/protein <code>mutations</code> and clade <code>labels</code>), and <code>meta</code> color/geographic definitions. Parse Auspice JSON explicitly with <code>read_auspice_json()</code> / <code>read_nextstrain_json()</code> (or R-style <code>read.nextstrain.json()</code>), or pass an Auspice <code>.json</code> file path, <code>pathlib.Path</code>, inline JSON string, or parsed <code>dict</code> directly into <code>ggtree()</code>, <code>fortify()</code>, <code>as_phylo()</code>, or <code>as_treedata()</code>. Switch effortlessly between root-to-tip divergence and calendar-year time scales using <code>branch_length='div'</code> vs <code>branch_length='num_date'</code>.</p>"
+  },
+  {
+    "title": "Figure 1.5: Nextstrain Auspice v2 Zika phylogeny: divergence vs calendar-year time tree",
+    "section": "1.5 Importing Nextstrain Auspice JSON Trees",
+    "context": "1. Importing Tree with Data \u00b7 1.5 Importing Nextstrain Auspice JSON Trees",
+    "href": "chapter1.html#fig-1-5",
+    "keywords": "Zika Nextstrain Auspice v2 JSON imported via read_auspice_json() (and directly via ggtree(path)), comparing root-to-tip genetic divergence (panel A) with calendar-year time scaling via branch_length='num_date' (panel B) colored by region. read_auspice_json read_nextstrain_json ggtree plot_list theme_tree2 system_file"
   },
   {
     "title": "2. Manipulating Tree with Data",

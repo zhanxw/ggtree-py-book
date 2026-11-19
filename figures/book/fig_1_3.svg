@@ -11,13 +11,14 @@
 <text x="103.0" y="66.0" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="13" fill="#111827">Software output</text>
 <text x="103.0" y="82.2" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="13" fill="#111827">(tree + analysis result)</text>
 <rect x="33.0" y="98.0" width="140.0" height="140.0" fill="#D3D3D3" stroke="#111827" stroke-width="1.0"/>
-<text x="103.0" y="125.5" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12.5" fill="#111827">ASTRAL, BEAST,</text>
-<text x="103.0" y="141.1" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12.5" fill="#111827">CodeML, EPA,</text>
-<text x="103.0" y="156.8" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12.5" fill="#111827">Hyphy, IQ-TREE,</text>
-<text x="103.0" y="172.4" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12.5" fill="#111827">MEGA, MrBayes,</text>
-<text x="103.0" y="188.0" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12.5" fill="#111827">PHYLDOG, pplacer,</text>
-<text x="103.0" y="203.6" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12.5" fill="#111827">RevBayes, r8s,</text>
-<text x="103.0" y="219.2" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12.5" fill="#111827">RAxML, jtree</text>
+<text x="103.0" y="119.7" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12.0" fill="#111827">ASTRAL, BEAST,</text>
+<text x="103.0" y="134.7" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12.0" fill="#111827">CodeML, EPA,</text>
+<text x="103.0" y="149.7" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12.0" fill="#111827">Hyphy, IQ-TREE,</text>
+<text x="103.0" y="164.7" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12.0" fill="#111827">MEGA, MrBayes,</text>
+<text x="103.0" y="179.7" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12.0" fill="#111827">PHYLDOG, pplacer,</text>
+<text x="103.0" y="194.7" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12.0" fill="#111827">RevBayes, r8s,</text>
+<text x="103.0" y="209.7" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12.0" fill="#111827">RAxML, jtree,</text>
+<text x="103.0" y="224.7" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12.0" fill="#111827">Nextstrain</text>
 <rect x="25.0" y="256.0" width="156.0" height="272.0" fill="white" stroke="#111827" stroke-width="1.0" stroke-dasharray="5,3"/>
 <text x="103.0" y="274.0" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="13" fill="#111827">Tree file</text>
 <rect x="33.0" y="288.0" width="140.0" height="36.0" fill="#D3D3D3" stroke="#111827" stroke-width="1.0"/>

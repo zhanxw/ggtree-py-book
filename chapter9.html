@@ -75,9 +75,9 @@
   <details class="code-fold">
     <summary>
       <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
-      <span class="summary-actions"><span class="api-pill">phylo4</span><span class="api-pill">phylo4d</span><span class="api-pill">ggtree</span><span class="api-pill">geom_tippoint</span><button type="button" class="copy-btn" data-code-target="code-blk-67">Copy</button></span>
+      <span class="summary-actions"><span class="api-pill">phylo4</span><span class="api-pill">phylo4d</span><span class="api-pill">ggtree</span><span class="api-pill">geom_tippoint</span><button type="button" class="copy-btn" data-code-target="code-blk-68">Copy</button></span>
     </summary>
-    <pre><code id="code-blk-67"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
+    <pre><code id="code-blk-68"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
     read_tree<span class="tok-op">,</span> read_table<span class="tok-op">,</span> system_file<span class="tok-op">,</span> DataFrame<span class="tok-op">,</span> seq<span class="tok-op">,</span> phylo4<span class="tok-op">,</span> phylo4d<span class="tok-op">,</span>
     ggtree<span class="tok-op">,</span> aes<span class="tok-op">,</span> geom_tippoint<span class="tok-op">,</span> geom_text<span class="tok-op">,</span> geom_tiplab<span class="tok-op">,</span> scale_size_continuous<span class="tok-op">,</span>
     xlim<span class="tok-op">,</span> theme<span class="tok-op">,</span> vexpand<span class="tok-op">,</span> gheatmap<span class="tok-op">,</span> hexpand<span class="tok-op">,</span> plot_list<span class="tok-op">,</span>
@@ -125,9 +125,9 @@ p2 <span class="tok-op">=</span> <span class="tok-op">(</span>
   <details class="code-fold">
     <summary>
       <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
-      <span class="summary-actions"><span class="api-pill">read_table</span><span class="api-pill">as_taxo</span><span class="api-pill">taxo2phylog</span><span class="api-pill">ggtree</span><button type="button" class="copy-btn" data-code-target="code-blk-68">Copy</button></span>
+      <span class="summary-actions"><span class="api-pill">read_table</span><span class="api-pill">as_taxo</span><span class="api-pill">taxo2phylog</span><span class="api-pill">ggtree</span><button type="button" class="copy-btn" data-code-target="code-blk-69">Copy</button></span>
     </summary>
-    <pre><code id="code-blk-68"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> read_table<span class="tok-op">,</span> system_file<span class="tok-op">,</span> as_taxo<span class="tok-op">,</span> taxo2phylog<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> geom_tiplab<span class="tok-op">,</span> geom_nodelab<span class="tok-op">,</span> hexpand
+    <pre><code id="code-blk-69"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> read_table<span class="tok-op">,</span> system_file<span class="tok-op">,</span> as_taxo<span class="tok-op">,</span> taxo2phylog<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> geom_tiplab<span class="tok-op">,</span> geom_nodelab<span class="tok-op">,</span> hexpand
 
 taxo_df <span class="tok-op">=</span> <span class="tok-call">read_table</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;TDbook&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;taxo_eg.tsv&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> sep<span class="tok-op">=</span><span class="tok-str">&quot;\t&quot;</span><span class="tok-op">,</span> header<span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">)</span>
 tax_phy <span class="tok-op">=</span> <span class="tok-call">taxo2phylog</span><span class="tok-op">(</span><span class="tok-call">as_taxo</span><span class="tok-op">(</span>taxo_df<span class="tok-op">)</span><span class="tok-op">)</span>
@@ -145,9 +145,9 @@ p
   <details class="code-fold">
     <summary>
       <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
-      <span class="summary-actions"><span class="api-pill">read_tree</span><span class="api-pill">read_table</span><span class="api-pill">phyloseq</span><span class="api-pill">ggtree</span><button type="button" class="copy-btn" data-code-target="code-blk-69">Copy</button></span>
+      <span class="summary-actions"><span class="api-pill">read_tree</span><span class="api-pill">read_table</span><span class="api-pill">phyloseq</span><span class="api-pill">ggtree</span><button type="button" class="copy-btn" data-code-target="code-blk-70">Copy</button></span>
     </summary>
-    <pre><code id="code-blk-69"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
+    <pre><code id="code-blk-70"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
     read_tree<span class="tok-op">,</span> read_table<span class="tok-op">,</span> system_file<span class="tok-op">,</span> phyloseq<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> aes<span class="tok-op">,</span>
     geom_nodelab<span class="tok-op">,</span> geom_point<span class="tok-op">,</span> geom_tiplab<span class="tok-op">,</span> scale_size_continuous<span class="tok-op">,</span> log_trans<span class="tok-op">,</span>
     theme<span class="tok-op">,</span> hexpand<span class="tok-op">,</span>
@@ -201,9 +201,9 @@ p
   <details class="code-fold">
     <summary>
       <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
-      <span class="summary-actions"><span class="api-pill">read_tree</span><span class="api-pill">read_table</span><span class="api-pill">phyloseq</span><span class="api-pill">ggtree</span><button type="button" class="copy-btn" data-code-target="code-blk-70">Copy</button></span>
+      <span class="summary-actions"><span class="api-pill">read_tree</span><span class="api-pill">read_table</span><span class="api-pill">phyloseq</span><span class="api-pill">ggtree</span><button type="button" class="copy-btn" data-code-target="code-blk-71">Copy</button></span>
     </summary>
-    <pre><code id="code-blk-70"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
+    <pre><code id="code-blk-71"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
     read_tree<span class="tok-op">,</span> read_table<span class="tok-op">,</span> DataFrame<span class="tok-op">,</span> system_file<span class="tok-op">,</span> phyloseq<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> aes<span class="tok-op">,</span>
     geom_tippoint<span class="tok-op">,</span> geom_facet<span class="tok-op">,</span> geom_density_ridges<span class="tok-op">,</span> guides<span class="tok-op">,</span> guide_legend<span class="tok-op">,</span>
 <span class="tok-op">)</span>
@@ -246,9 +246,9 @@ p
   <details class="code-fold">
     <summary>
       <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
-      <span class="summary-actions"><span class="api-pill">read_table</span><span class="api-pill">dist</span><span class="api-pill">hclust</span><span class="api-pill">cutree</span><button type="button" class="copy-btn" data-code-target="code-blk-71">Copy</button></span>
+      <span class="summary-actions"><span class="api-pill">read_table</span><span class="api-pill">dist</span><span class="api-pill">hclust</span><span class="api-pill">cutree</span><button type="button" class="copy-btn" data-code-target="code-blk-72">Copy</button></span>
     </summary>
-    <pre><code id="code-blk-71"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
+    <pre><code id="code-blk-72"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
     read_table<span class="tok-op">,</span> DataFrame<span class="tok-op">,</span> system_file<span class="tok-op">,</span> dist<span class="tok-op">,</span> hclust<span class="tok-op">,</span> cutree<span class="tok-op">,</span> MRCA<span class="tok-op">,</span>
     groupClade<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> aes<span class="tok-op">,</span> layout_dendrogram<span class="tok-op">,</span> geom_tippoint<span class="tok-op">,</span> geom_tiplab<span class="tok-op">,</span>
     scale_color_brewer<span class="tok-op">,</span> theme_dendrogram<span class="tok-op">,</span> theme<span class="tok-op">,</span> margin<span class="tok-op">,</span>
@@ -289,9 +289,9 @@ p_out
   <details class="code-fold">
     <summary>
       <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
-      <span class="summary-actions"><span class="api-pill">graph_tree</span><span class="api-pill">ggtree</span><span class="api-pill">arrow</span><span class="api-pill">unit</span><button type="button" class="copy-btn" data-code-target="code-blk-72">Copy</button></span>
+      <span class="summary-actions"><span class="api-pill">graph_tree</span><span class="api-pill">ggtree</span><span class="api-pill">arrow</span><span class="api-pill">unit</span><button type="button" class="copy-btn" data-code-target="code-blk-73">Copy</button></span>
     </summary>
-    <pre><code id="code-blk-72"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> graph_tree<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> arrow<span class="tok-op">,</span> unit<span class="tok-op">,</span> rep<span class="tok-op">,</span> geom_point<span class="tok-op">,</span> geom_tiplab<span class="tok-op">,</span> layout_dendrogram
+    <pre><code id="code-blk-73"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> graph_tree<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> arrow<span class="tok-op">,</span> unit<span class="tok-op">,</span> rep<span class="tok-op">,</span> geom_point<span class="tok-op">,</span> geom_tiplab<span class="tok-op">,</span> layout_dendrogram
 
 g <span class="tok-op">=</span> <span class="tok-call">graph_tree</span><span class="tok-op">(</span><span class="tok-num">40</span><span class="tok-op">,</span> <span class="tok-num">3</span><span class="tok-op">)</span>
 arrow_size <span class="tok-op">=</span> <span class="tok-call">unit</span><span class="tok-op">(</span><span class="tok-call">rep</span><span class="tok-op">(</span><span class="tok-op">[</span><span class="tok-num">0</span><span class="tok-op">,</span> <span class="tok-num">3</span><span class="tok-op">]</span><span class="tok-op">,</span> times<span class="tok-op">=</span><span class="tok-op">[</span><span class="tok-num">27</span><span class="tok-op">,</span> <span class="tok-num">13</span><span class="tok-op">]</span><span class="tok-op">)</span><span class="tok-op">,</span> <span class="tok-str">&quot;mm&quot;</span><span class="tok-op">)</span>
@@ -316,9 +316,9 @@ p
   <details class="code-fold">
     <summary>
       <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
-      <span class="summary-actions"><span class="api-pill">read_table</span><span class="api-pill">DataFrame</span><span class="api-pill">as_phylo</span><span class="api-pill">ggtree</span><button type="button" class="copy-btn" data-code-target="code-blk-73">Copy</button></span>
+      <span class="summary-actions"><span class="api-pill">read_table</span><span class="api-pill">DataFrame</span><span class="api-pill">as_phylo</span><span class="api-pill">ggtree</span><button type="button" class="copy-btn" data-code-target="code-blk-74">Copy</button></span>
     </summary>
-    <pre><code id="code-blk-73"><span class="tok-kw">import</span> re
+    <pre><code id="code-blk-74"><span class="tok-kw">import</span> re
 <span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> read_table<span class="tok-op">,</span> DataFrame<span class="tok-op">,</span> system_file<span class="tok-op">,</span> as_phylo<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> aes<span class="tok-op">,</span> geom_tippoint<span class="tok-op">,</span> geom_tiplab<span class="tok-op">,</span> xlim
 
 gni <span class="tok-op">=</span> <span class="tok-call">read_table</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;TDbook&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;GNI2014.tsv&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> sep<span class="tok-op">=</span><span class="tok-str">&quot;\t&quot;</span><span class="tok-op">,</span> header<span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">)</span>

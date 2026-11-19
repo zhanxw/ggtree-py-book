@@ -65,7 +65,7 @@
         <h1 class="chapter-title">1. Importing Tree with Data</h1>
 <p>Phylogenetic trees rarely exist in isolation: evolutionary analyses pair branching topologies with divergence times, posterior probabilities, substitution rates, placement counts, or gene-level selection statistics. In <code>ggtree-py</code>, <code>Phylo</code> holds core ape-compatible structure (<code>edge</code>, <code>tip_label</code>, <code>edge_length</code>, <code>node_label</code>), while <code>TreeData</code> binds rich node- and branch-indexed annotations in <code>td.data</code> and <code>td.extraInfo</code>.</p>
 <h2 id="overview">1.1 Overview</h2>
-<p>Standard readers in <code>ggtree-py</code> mirror both <code>ape</code> and <code>treeio</code>: plain Newick/Nexus files return a lightweight <code>Phylo</code> (or <code>MultiPhylo</code>), whereas BEAST, NHX, EPA/pplacer, jtree, RAxML, and CodeML parsers return a unified <code>TreeData</code> object ready for <code>aes()</code> aesthetic mapping.</p>
+<p>Standard readers in <code>ggtree-py</code> mirror both <code>ape</code> and <code>treeio</code>: plain Newick/Nexus files return a lightweight <code>Phylo</code> (or <code>MultiPhylo</code>), whereas BEAST, NHX, EPA/pplacer, jtree, RAxML, CodeML, and Nextstrain Auspice JSON parsers return a unified <code>TreeData</code> object ready for <code>aes()</code> aesthetic mapping.</p>
 <h2 id="tree-structure">1.2 Understanding Phylogenetic Tree Structure</h2>
 <p>A phylogenetic tree comprises tips (leaves), internal nodes representing ancestral lineages, a root node, and branch lengths encoding evolutionary divergence or time. <code>read_tree()</code> parses Newick strings from files or inline <code>text=...</code> arguments, and layers such as <code>geom_tippoint()</code>, <code>geom_nodepoint()</code>, <code>geom_rootpoint()</code>, and <code>geom_label()</code> inspect these structural elements directly.</p>
 <div class="book-figure-card" id="fig-1-1">
@@ -122,7 +122,7 @@ p
   </details>
 </div>
 <h2 id="treeio-import">1.3 Importing Tree with treeio</h2>
-<p>Evolutionary analyses save annotations across heterogeneous file conventions—inline <code>[&amp;...]</code> BEAST tags, colon-delimited NHX attributes, PAML CodeML <code>rst</code>/<code>mlc</code> files, and JSON placements. <code>treeio</code> normalizes these parsers into common <code>Phylo</code> and <code>TreeData</code> containers seamlessly consumable by <code>tidytree</code> and <code>ggtree</code>.</p>
+<p>Evolutionary analyses save annotations across heterogeneous file conventions—inline <code>[&amp;...]</code> BEAST tags, colon-delimited NHX attributes, PAML CodeML <code>rst</code>/<code>mlc</code> files, Nextstrain Auspice JSON, and JSON placements. <code>treeio</code> normalizes these parsers into common <code>Phylo</code> and <code>TreeData</code> containers seamlessly consumable by <code>tidytree</code> and <code>ggtree</code>.</p>
 <div class="book-figure-card" id="fig-1-3">
   
   <figure class="book-figure">
@@ -161,13 +161,56 @@ p
 </code></pre>
   </details>
 </div>
+<h2 id="auspice-json">1.5 Importing Nextstrain Auspice JSON Trees</h2>
+<p>Nextstrain builds export rich phylogenetic JSON files (Auspice v1 and v2) containing topology, <code>node_attrs</code> (e.g., <code>country</code>, <code>region</code>, cumulative genetic divergence <code>div</code>, and decimal-year <code>num_date</code> with optional confidence intervals), <code>branch_attrs</code> (nucleotide/protein <code>mutations</code> and clade <code>labels</code>), and <code>meta</code> color/geographic definitions. Parse Auspice JSON explicitly with <code>read_auspice_json()</code> / <code>read_nextstrain_json()</code> (or R-style <code>read.nextstrain.json()</code>), or pass an Auspice <code>.json</code> file path, <code>pathlib.Path</code>, inline JSON string, or parsed <code>dict</code> directly into <code>ggtree()</code>, <code>fortify()</code>, <code>as_phylo()</code>, or <code>as_treedata()</code>. Switch effortlessly between root-to-tip divergence and calendar-year time scales using <code>branch_length='div'</code> vs <code>branch_length='num_date'</code>.</p>
+<div class="book-figure-card" id="fig-1-5">
+  
+  <figure class="book-figure">
+    <div class="figure-media"><img src="figures/book/fig_1_5.svg" alt="Figure 1.5: Nextstrain Auspice v2 Zika phylogeny: divergence vs calendar-year time tree" loading="lazy"/></div>
+    <figcaption class="figure-caption"><strong>Figure 1.5: Nextstrain Auspice v2 Zika phylogeny: divergence vs calendar-year time tree.</strong> Zika Nextstrain Auspice v2 JSON imported via read_auspice_json() (and directly via ggtree(path)), comparing root-to-tip genetic divergence (panel A) with calendar-year time scaling via branch_length=&#x27;num_date&#x27; (panel B) colored by region.</figcaption>
+  </figure>
+  <details class="code-fold">
+    <summary>
+      <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
+      <span class="summary-actions"><span class="api-pill">read_auspice_json</span><span class="api-pill">read_nextstrain_json</span><span class="api-pill">ggtree</span><span class="api-pill">plot_list</span><button type="button" class="copy-btn" data-code-target="code-blk-5">Copy</button></span>
+    </summary>
+    <pre><code id="code-blk-5">zika_json <span class="tok-op">=</span> <span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;nextstrain.json&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;minimal_v2.json&quot;</span><span class="tok-op">)</span>
+zika_td <span class="tok-op">=</span> <span class="tok-call">read_auspice_json</span><span class="tok-op">(</span>zika_json<span class="tok-op">,</span> include_geo<span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">)</span>
+region_cols <span class="tok-op">=</span> <span class="tok-op">{</span>
+    <span class="tok-str">&quot;Southeast Asia&quot;</span><span class="tok-op">:</span> <span class="tok-str">&quot;#1B9E77&quot;</span><span class="tok-op">,</span>
+    <span class="tok-str">&quot;Oceania&quot;</span><span class="tok-op">:</span> <span class="tok-str">&quot;#7570B3&quot;</span><span class="tok-op">,</span>
+    <span class="tok-str">&quot;South America&quot;</span><span class="tok-op">:</span> <span class="tok-str">&quot;#E7298A&quot;</span><span class="tok-op">,</span>
+    <span class="tok-str">&quot;North America&quot;</span><span class="tok-op">:</span> <span class="tok-str">&quot;#D95F02&quot;</span><span class="tok-op">,</span>
+<span class="tok-op">}</span>
+p_div <span class="tok-op">=</span> <span class="tok-op">(</span>
+    <span class="tok-call">ggtree</span><span class="tok-op">(</span>zika_json<span class="tok-op">,</span> <span class="tok-call">aes</span><span class="tok-op">(</span>color<span class="tok-op">=</span><span class="tok-str">&quot;region&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_tippoint</span><span class="tok-op">(</span>size<span class="tok-op">=</span><span class="tok-num">2.1</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span>size<span class="tok-op">=</span><span class="tok-num">2.0</span><span class="tok-op">,</span> offset<span class="tok-op">=</span><span class="tok-num">0.00018</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">scale_color_manual</span><span class="tok-op">(</span>values<span class="tok-op">=</span>region_cols<span class="tok-op">,</span> name<span class="tok-op">=</span><span class="tok-str">&quot;Region&quot;</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">hexpand</span><span class="tok-op">(</span><span class="tok-num">0.32</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">theme_tree2</span><span class="tok-op">(</span>legend_position<span class="tok-op">=</span><span class="tok-op">(</span><span class="tok-num">0.18</span><span class="tok-op">,</span> <span class="tok-num">0.84</span><span class="tok-op">)</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">xlab</span><span class="tok-op">(</span><span class="tok-str">&quot;Divergence (substitutions / site)&quot;</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+p_time <span class="tok-op">=</span> <span class="tok-op">(</span>
+    <span class="tok-call">ggtree</span><span class="tok-op">(</span>zika_td<span class="tok-op">,</span> <span class="tok-call">aes</span><span class="tok-op">(</span>color<span class="tok-op">=</span><span class="tok-str">&quot;region&quot;</span><span class="tok-op">)</span><span class="tok-op">,</span> branch_length<span class="tok-op">=</span><span class="tok-str">&quot;num_date&quot;</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_tippoint</span><span class="tok-op">(</span>size<span class="tok-op">=</span><span class="tok-num">2.1</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span>size<span class="tok-op">=</span><span class="tok-num">2.0</span><span class="tok-op">,</span> offset<span class="tok-op">=</span><span class="tok-num">0.14</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">scale_color_manual</span><span class="tok-op">(</span>values<span class="tok-op">=</span>region_cols<span class="tok-op">,</span> name<span class="tok-op">=</span><span class="tok-str">&quot;Region&quot;</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">hexpand</span><span class="tok-op">(</span><span class="tok-num">0.30</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">theme_tree2</span><span class="tok-op">(</span>legend_position<span class="tok-op">=</span><span class="tok-str">&quot;none&quot;</span><span class="tok-op">)</span>
+    <span class="tok-op">+</span> <span class="tok-call">xlab</span><span class="tok-op">(</span><span class="tok-str">&quot;Calendar Year (num_date)&quot;</span><span class="tok-op">)</span>
+<span class="tok-op">)</span>
+<span class="tok-call">plot_list</span><span class="tok-op">(</span>p_div<span class="tok-op">,</span> p_time<span class="tok-op">,</span> ncol<span class="tok-op">=</span><span class="tok-num">2</span><span class="tok-op">,</span> tag_levels<span class="tok-op">=</span><span class="tok-str">&quot;A&quot;</span><span class="tok-op">)</span>
+</code></pre>
+  </details>
+</div>
         <nav class="chapter-pager" aria-label="Chapter Navigation"><a class="pager-link" href="index.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Preface &amp; Overview</span></a><a class="pager-link pager-next" href="chapter2.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">2. Manipulating Tree with Data</span></a></nav>
       </article>
     </main>
 
     <aside class="book-toc" aria-label="On this page">
   <div class="toc-heading">On This Page</div>
-  <ul class="toc-list"><li><a class="" href="#overview">1.1 Overview</a></li><li><a class="" href="#tree-structure">1.2 Understanding Phylogenetic Tree Structure</a></li><li><a class="toc-fig-link" href="#fig-1-1">Fig. 1.1: Phylogenetic tree components: tips, internal nodes, root, and branch lengths</a></li><li><a class="toc-fig-link" href="#fig-1-2">Fig. 1.2: Random Newick tree with aligned tip labels and branch-length labels</a></li><li><a class="" href="#treeio-import">1.3 Importing Tree with treeio</a></li><li><a class="toc-fig-link" href="#fig-1-3">Fig. 1.3: Overview of treeio data integration and conversion workflow</a></li><li><a class="" href="#extract-data">1.4 Extracting Data from Tree Object</a></li><li><a class="toc-fig-link" href="#fig-1-4">Fig. 1.4: Visualizing jtree amino-acid substitutions stored along branches</a></li></ul>
+  <ul class="toc-list"><li><a class="" href="#overview">1.1 Overview</a></li><li><a class="" href="#tree-structure">1.2 Understanding Phylogenetic Tree Structure</a></li><li><a class="toc-fig-link" href="#fig-1-1">Fig. 1.1: Phylogenetic tree components: tips, internal nodes, root, and branch lengths</a></li><li><a class="toc-fig-link" href="#fig-1-2">Fig. 1.2: Random Newick tree with aligned tip labels and branch-length labels</a></li><li><a class="" href="#treeio-import">1.3 Importing Tree with treeio</a></li><li><a class="toc-fig-link" href="#fig-1-3">Fig. 1.3: Overview of treeio data integration and conversion workflow</a></li><li><a class="" href="#extract-data">1.4 Extracting Data from Tree Object</a></li><li><a class="toc-fig-link" href="#fig-1-4">Fig. 1.4: Visualizing jtree amino-acid substitutions stored along branches</a></li><li><a class="" href="#auspice-json">1.5 Importing Nextstrain Auspice JSON Trees</a></li><li><a class="toc-fig-link" href="#fig-1-5">Fig. 1.5: Nextstrain Auspice v2 Zika phylogeny: divergence vs calendar-year time tree</a></li></ul>
 </aside>
   </div>
 

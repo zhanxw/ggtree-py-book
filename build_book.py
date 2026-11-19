@@ -244,7 +244,7 @@ def build_chapter_spec() -> Dict[int, Dict[str, Any]]:
                     "1.1 Overview",
                     "<p>Standard readers in <code>ggtree-py</code> mirror both <code>ape</code> and <code>treeio</code>: "
                     "plain Newick/Nexus files return a lightweight <code>Phylo</code> (or <code>MultiPhylo</code>), "
-                    "whereas BEAST, NHX, EPA/pplacer, jtree, RAxML, and CodeML parsers return a "
+                    "whereas BEAST, NHX, EPA/pplacer, jtree, RAxML, CodeML, and Nextstrain Auspice JSON parsers return a "
                     "unified <code>TreeData</code> object ready for <code>aes()</code> aesthetic mapping.</p>",
                     None,
                 ),
@@ -263,7 +263,7 @@ def build_chapter_spec() -> Dict[int, Dict[str, Any]]:
                     "1.3 Importing Tree with treeio",
                     "<p>Evolutionary analyses save annotations across heterogeneous file conventions—inline "
                     "<code>[&amp;...]</code> BEAST tags, colon-delimited NHX attributes, PAML CodeML <code>rst</code>/<code>mlc</code> "
-                    "files, and JSON placements. <code>treeio</code> normalizes these parsers into common "
+                    "files, Nextstrain Auspice JSON, and JSON placements. <code>treeio</code> normalizes these parsers into common "
                     "<code>Phylo</code> and <code>TreeData</code> containers seamlessly consumable by <code>tidytree</code> and <code>ggtree</code>.</p>",
                     "fig_1_3",
                 ),
@@ -274,6 +274,22 @@ def build_chapter_spec() -> Dict[int, Dict[str, Any]]:
                     "node and branch attributes such as <code>AA_subs</code> from <code>read_jtree()</code> become directly "
                     "mappable columns inside <code>aes()</code>.</p>",
                     "fig_1_4",
+                ),
+                (
+                    "auspice-json",
+                    "1.5 Importing Nextstrain Auspice JSON Trees",
+                    "<p>Nextstrain builds export rich phylogenetic JSON files (Auspice v1 and v2) containing topology, "
+                    "<code>node_attrs</code> (e.g., <code>country</code>, <code>region</code>, cumulative genetic divergence "
+                    "<code>div</code>, and decimal-year <code>num_date</code> with optional confidence intervals), "
+                    "<code>branch_attrs</code> (nucleotide/protein <code>mutations</code> and clade <code>labels</code>), and "
+                    "<code>meta</code> color/geographic definitions. Parse Auspice JSON explicitly with "
+                    "<code>read_auspice_json()</code> / <code>read_nextstrain_json()</code> (or R-style "
+                    "<code>read.nextstrain.json()</code>), or pass an Auspice <code>.json</code> file path, "
+                    "<code>pathlib.Path</code>, inline JSON string, or parsed <code>dict</code> directly into "
+                    "<code>ggtree()</code>, <code>fortify()</code>, <code>as_phylo()</code>, or <code>as_treedata()</code>. "
+                    "Switch effortlessly between root-to-tip divergence and calendar-year time scales using "
+                    "<code>branch_length='div'</code> vs <code>branch_length='num_date'</code>.</p>",
+                    "fig_1_5",
                 ),
             ],
         },
@@ -1102,7 +1118,7 @@ p.save("flu_h3_tree.svg", width=8, height=6)"""
     r_ver = html.escape(getattr(gg, "__r_ggtree_version__", "4.3.2"))
     main_html = f"""
 <h1 class="chapter-title">Data Integration, Manipulation and Visualization of Phylogenetic Trees</h1>
-<p>Welcome to the complete Python edition of Guangchuang Yu's <a href="https://yulab-smu.top/treedata-book/" target="_blank" rel="noopener noreferrer"><em>treedata-book</em></a>, powered by <strong>ggtree-py</strong> (v{py_ver}; <a href="https://github.com/zhanxw/ggtree-py" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="https://pypi.org/project/ggtree-py/" target="_blank" rel="noopener noreferrer">PyPI</a>), a Python port of the R/Bioconductor <a href="https://github.com/YuLab-SMU/ggtree" target="_blank" rel="noopener noreferrer"><code>ggtree</code></a> package (v{r_ver}). This interactive online book reproduces all major workflows across Newick/Nexus, BEAST, RAxML, PAML CodeML, EPA/pplacer, <code>gheatmap</code>, <code>msaplot</code>, <code>geom_facet</code>, <code>geom_motif</code>, vector PhyloPic silhouettes, circular <code>geom_fruit</code> rings, and hover-interactive SVG tooltips—running purely in Python with zero external runtime dependencies beyond NumPy.</p>
+<p>Welcome to the complete Python edition of Guangchuang Yu's <a href="https://yulab-smu.top/treedata-book/" target="_blank" rel="noopener noreferrer"><em>treedata-book</em></a>, powered by <strong>ggtree-py</strong> (v{py_ver}; <a href="https://github.com/zhanxw/ggtree-py" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="https://pypi.org/project/ggtree-py/" target="_blank" rel="noopener noreferrer">PyPI</a>), a Python port of the R/Bioconductor <a href="https://github.com/YuLab-SMU/ggtree" target="_blank" rel="noopener noreferrer"><code>ggtree</code></a> package (v{r_ver}). This interactive online book reproduces all major workflows across Newick/Nexus, BEAST, RAxML, PAML CodeML, EPA/pplacer, Nextstrain Auspice JSON, <code>gheatmap</code>, <code>msaplot</code>, <code>geom_facet</code>, <code>geom_motif</code>, vector PhyloPic silhouettes, circular <code>geom_fruit</code> rings, and hover-interactive SVG tooltips—running purely in Python with zero external runtime dependencies beyond NumPy.</p>
 
 <div class="callout">
   <strong>Interactive Code &amp; Visual Gallery:</strong> Every figure card in Chapters 1–13 and Appendix A pairs a vector plot directly with its exact self-contained Python code (collapsed by default right under the caption). Use <strong>Expand All Code</strong> in the top bar or browse all {len(figs)} reproducible examples at once in the <a href="gallery.html"><strong>All Figures Gallery &amp; Master Index</strong></a>.
@@ -1112,7 +1128,7 @@ p.save("flu_h3_tree.svg", width=8, height=6)"""
 <div class="parts-grid">
   <div class="part-card">
     <h3>Part I: Tree Data I/O &amp; Manipulation</h3>
-    <p>Parsing Newick, BEAST, RAxML, CodeML, and <code>.jplace</code> data structures; joining trait metadata with <code>%</code>; tidy manipulation and tree export.</p>
+    <p>Parsing Newick, BEAST, RAxML, CodeML, Nextstrain Auspice JSON, and <code>.jplace</code> data structures; joining trait metadata with <code>%</code>; tidy manipulation and tree export.</p>
     <ul>
       <li><a href="chapter1.html">Ch. 1 Importing Tree with Data</a></li>
       <li><a href="chapter2.html">Ch. 2 Manipulating Tree with Data</a></li>
@@ -1235,6 +1251,7 @@ def build_api_page(figs: List[Dict[str, Any]]) -> str:
                 ("read_codeml / read_codeml_mlc", "Parse PAML CodeML rst & mlc selection/ancestral substitution files", "tree.py"),
                 ("read_raxml", "Parse RAxML bipartitions & bootstrap support trees", "tree.py"),
                 ("read_jplace", "Parse EPA/pplacer JSON placements with nplace read counts", "tree.py"),
+                ("read_auspice_json / read_nextstrain_json", "Parse Nextstrain Auspice v1/v2 JSON trees with divergence/date branch lengths, node_attrs, branch_attrs, and geo metadata", "tree.py"),
                 ("read_nhx / read_fasta", "Parse NHX extended trees and FASTA sequence alignments", "tree.py"),
                 ("write_tree / write_beast / write_jtree / read_jtree", "Serialize Phylo or TreeData across Newick, BEAST NEXUS, and jtree JSON", "tree.py"),
                 ("drop_tip / keep_tip / merge_tree", "Prune taxa preserving annotations, or merge compatible TreeData objects", "tree.py"),
@@ -1423,7 +1440,7 @@ def build_all() -> None:
             "section": "API",
             "context": "Complete Function Cross-Reference",
             "href": "api.html",
-            "keywords": "read_tree read_beast read_codeml read_raxml gheatmap msaplot geom_fruit geom_motif geom_phylopic",
+            "keywords": "read_tree read_beast read_codeml read_raxml read_auspice_json read_nextstrain_json auspice nextstrain gheatmap msaplot geom_fruit geom_motif geom_phylopic",
         },
     ]
 

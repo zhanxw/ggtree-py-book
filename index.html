@@ -64,17 +64,17 @@
         <div class="part-kicker">Welcome · Preface</div>
         
 <h1 class="chapter-title">Data Integration, Manipulation and Visualization of Phylogenetic Trees</h1>
-<p>Welcome to the complete Python edition of Guangchuang Yu's <a href="https://yulab-smu.top/treedata-book/" target="_blank" rel="noopener noreferrer"><em>treedata-book</em></a>, powered by <strong>ggtree-py</strong> (v0.1.4; <a href="https://github.com/zhanxw/ggtree-py" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="https://pypi.org/project/ggtree-py/" target="_blank" rel="noopener noreferrer">PyPI</a>), a Python port of the R/Bioconductor <a href="https://github.com/YuLab-SMU/ggtree" target="_blank" rel="noopener noreferrer"><code>ggtree</code></a> package (v4.3.2). This interactive online book reproduces all major workflows across Newick/Nexus, BEAST, RAxML, PAML CodeML, EPA/pplacer, <code>gheatmap</code>, <code>msaplot</code>, <code>geom_facet</code>, <code>geom_motif</code>, vector PhyloPic silhouettes, circular <code>geom_fruit</code> rings, and hover-interactive SVG tooltips—running purely in Python with zero external runtime dependencies beyond NumPy.</p>
+<p>Welcome to the complete Python edition of Guangchuang Yu's <a href="https://yulab-smu.top/treedata-book/" target="_blank" rel="noopener noreferrer"><em>treedata-book</em></a>, powered by <strong>ggtree-py</strong> (v0.1.4; <a href="https://github.com/zhanxw/ggtree-py" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="https://pypi.org/project/ggtree-py/" target="_blank" rel="noopener noreferrer">PyPI</a>), a Python port of the R/Bioconductor <a href="https://github.com/YuLab-SMU/ggtree" target="_blank" rel="noopener noreferrer"><code>ggtree</code></a> package (v4.3.2). This interactive online book reproduces all major workflows across Newick/Nexus, BEAST, RAxML, PAML CodeML, EPA/pplacer, Nextstrain Auspice JSON, <code>gheatmap</code>, <code>msaplot</code>, <code>geom_facet</code>, <code>geom_motif</code>, vector PhyloPic silhouettes, circular <code>geom_fruit</code> rings, and hover-interactive SVG tooltips—running purely in Python with zero external runtime dependencies beyond NumPy.</p>
 
 <div class="callout">
-  <strong>Interactive Code &amp; Visual Gallery:</strong> Every figure card in Chapters 1–13 and Appendix A pairs a vector plot directly with its exact self-contained Python code (collapsed by default right under the caption). Use <strong>Expand All Code</strong> in the top bar or browse all 112 reproducible examples at once in the <a href="gallery.html"><strong>All Figures Gallery &amp; Master Index</strong></a>.
+  <strong>Interactive Code &amp; Visual Gallery:</strong> Every figure card in Chapters 1–13 and Appendix A pairs a vector plot directly with its exact self-contained Python code (collapsed by default right under the caption). Use <strong>Expand All Code</strong> in the top bar or browse all 113 reproducible examples at once in the <a href="gallery.html"><strong>All Figures Gallery &amp; Master Index</strong></a>.
 </div>
 
 <h2 id="book-structure">Structure of the Book</h2>
 <div class="parts-grid">
   <div class="part-card">
     <h3>Part I: Tree Data I/O &amp; Manipulation</h3>
-    <p>Parsing Newick, BEAST, RAxML, CodeML, and <code>.jplace</code> data structures; joining trait metadata with <code>%</code>; tidy manipulation and tree export.</p>
+    <p>Parsing Newick, BEAST, RAxML, CodeML, Nextstrain Auspice JSON, and <code>.jplace</code> data structures; joining trait metadata with <code>%</code>; tidy manipulation and tree export.</p>
     <ul>
       <li><a href="chapter1.html">Ch. 1 Importing Tree with Data</a></li>
       <li><a href="chapter2.html">Ch. 2 Manipulating Tree with Data</a></li>
@@ -105,14 +105,14 @@
     <ul>
       <li><a href="chapter13.html">Ch. 13 Gallery of Examples</a></li>
       <li><a href="faq.html">Appendix A: FAQ</a> &amp; <a href="api.html">Appendix B: API</a></li>
-      <li><a href="gallery.html">&#9733; Complete Visual Figure Gallery (112 Figures)</a></li>
+      <li><a href="gallery.html">&#9733; Complete Visual Figure Gallery (113 Figures)</a></li>
     </ul>
   </div>
 </div>
 
 <h2 id="quick-start">Quick Start in Python</h2>
 <p>Every snippet across this book uses native Python syntax closely paralleling R's <code>ggplot2</code> + <code>ggtree</code> grammar:</p>
-<div class="standalone-code"><div class="standalone-code-head"><span>Quick Example (Python)</span><button type="button" class="copy-btn" data-code-target="code-blk-118">Copy</button></div><pre><code id="code-blk-118"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> read_beast<span class="tok-op">,</span> system_file<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> aes<span class="tok-op">,</span> geom_range<span class="tok-op">,</span> geom_tiplab<span class="tok-op">,</span> theme_tree2<span class="tok-op">,</span> hexpand
+<div class="standalone-code"><div class="standalone-code-head"><span>Quick Example (Python)</span><button type="button" class="copy-btn" data-code-target="code-blk-119">Copy</button></div><pre><code id="code-blk-119"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> read_beast<span class="tok-op">,</span> system_file<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> aes<span class="tok-op">,</span> geom_range<span class="tok-op">,</span> geom_tiplab<span class="tok-op">,</span> theme_tree2<span class="tok-op">,</span> hexpand
 
 beast <span class="tok-op">=</span> <span class="tok-call">read_beast</span><span class="tok-op">(</span><span class="tok-call">system_file</span><span class="tok-op">(</span><span class="tok-str">&quot;extdata&quot;</span><span class="tok-op">,</span> <span class="tok-str">&quot;MCC_FluA_H3.tree&quot;</span><span class="tok-op">)</span><span class="tok-op">)</span>
 p <span class="tok-op">=</span> <span class="tok-op">(</span>
@@ -134,9 +134,9 @@ p<span class="tok-op">.</span><span class="tok-call">save</span><span class="tok
   <details class="code-fold">
     <summary>
       <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
-      <span class="summary-actions"><span class="api-pill">read_tree</span><span class="api-pill">ggtree</span><span class="api-pill">geom_tiplab</span><span class="api-pill">geom_label</span><button type="button" class="copy-btn" data-code-target="code-blk-113">Copy</button></span>
+      <span class="summary-actions"><span class="api-pill">read_tree</span><span class="api-pill">ggtree</span><span class="api-pill">geom_tiplab</span><span class="api-pill">geom_label</span><button type="button" class="copy-btn" data-code-target="code-blk-114">Copy</button></span>
     </summary>
-    <pre><code id="code-blk-113">tr <span class="tok-op">=</span> <span class="tok-call">read_tree</span><span class="tok-op">(</span>text<span class="tok-op">=</span><span class="tok-str">&quot;((t2:0.04,t1:0.34):0.89,(t5:0.37,(t4:0.03,t3:0.67):0.9):0.59);&quot;</span><span class="tok-op">)</span>
+    <pre><code id="code-blk-114">tr <span class="tok-op">=</span> <span class="tok-call">read_tree</span><span class="tok-op">(</span>text<span class="tok-op">=</span><span class="tok-str">&quot;((t2:0.04,t1:0.34):0.89,(t5:0.37,(t4:0.03,t3:0.67):0.9):0.59);&quot;</span><span class="tok-op">)</span>
 p <span class="tok-op">=</span> <span class="tok-op">(</span>
     <span class="tok-call">ggtree</span><span class="tok-op">(</span>tr<span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">2</span><span class="tok-op">)</span>
     <span class="tok-op">+</span> <span class="tok-call">geom_tiplab</span><span class="tok-op">(</span>align<span class="tok-op">=</span><span class="tok-kw">True</span><span class="tok-op">,</span> linetype<span class="tok-op">=</span><span class="tok-str">&quot;dotted&quot;</span><span class="tok-op">,</span> linesize<span class="tok-op">=</span><span class="tok-num">0.5</span><span class="tok-op">,</span> size<span class="tok-op">=</span><span class="tok-num">4.2</span><span class="tok-op">)</span>
@@ -155,9 +155,9 @@ p
   <details class="code-fold">
     <summary>
       <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
-      <span class="summary-actions"><span class="api-pill">read_beast</span><span class="api-pill">read_table</span><span class="api-pill">gheatmap</span><span class="api-pill">scale_fill_manual</span><button type="button" class="copy-btn" data-code-target="code-blk-114">Copy</button></span>
+      <span class="summary-actions"><span class="api-pill">read_beast</span><span class="api-pill">read_table</span><span class="api-pill">gheatmap</span><span class="api-pill">scale_fill_manual</span><button type="button" class="copy-btn" data-code-target="code-blk-115">Copy</button></span>
     </summary>
-    <pre><code id="code-blk-114"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
+    <pre><code id="code-blk-115"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
     read_beast<span class="tok-op">,</span> read_table<span class="tok-op">,</span> system_file<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> geom_treescale<span class="tok-op">,</span>
     geom_tiplab<span class="tok-op">,</span> gheatmap<span class="tok-op">,</span> scale_fill_manual<span class="tok-op">,</span> scale_x_ggtree<span class="tok-op">,</span>
     theme_tree2<span class="tok-op">,</span> plot_list<span class="tok-op">,</span>
@@ -190,9 +190,9 @@ p2 <span class="tok-op">=</span> <span class="tok-call">gheatmap</span><span cla
   <details class="code-fold">
     <summary>
       <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
-      <span class="summary-actions"><span class="api-pill">bionj</span><span class="api-pill">read_table</span><span class="api-pill">geom_facet</span><span class="api-pill">geom_motif</span><button type="button" class="copy-btn" data-code-target="code-blk-115">Copy</button></span>
+      <span class="summary-actions"><span class="api-pill">bionj</span><span class="api-pill">read_table</span><span class="api-pill">geom_facet</span><span class="api-pill">geom_motif</span><button type="button" class="copy-btn" data-code-target="code-blk-116">Copy</button></span>
     </summary>
-    <pre><code id="code-blk-115"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
+    <pre><code id="code-blk-116"><span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
     read_table<span class="tok-op">,</span> system_file<span class="tok-op">,</span> bionj<span class="tok-op">,</span> ggtree<span class="tok-op">,</span> aes<span class="tok-op">,</span> geom_tiplab<span class="tok-op">,</span> xlim_tree<span class="tok-op">,</span>
     geom_facet<span class="tok-op">,</span> geom_motif<span class="tok-op">,</span> scale_fill_brewer<span class="tok-op">,</span> theme<span class="tok-op">,</span> element_blank<span class="tok-op">,</span> facet_widths<span class="tok-op">,</span>
 <span class="tok-op">)</span>
@@ -243,9 +243,9 @@ p <span class="tok-op">=</span> <span class="tok-op">(</span>
   <details class="code-fold">
     <summary>
       <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
-      <span class="summary-actions"><span class="api-pill">read_tree</span><span class="api-pill">read_table</span><span class="api-pill">factor</span><span class="api-pill">nodeid</span><button type="button" class="copy-btn" data-code-target="code-blk-116">Copy</button></span>
+      <span class="summary-actions"><span class="api-pill">read_tree</span><span class="api-pill">read_table</span><span class="api-pill">factor</span><span class="api-pill">nodeid</span><button type="button" class="copy-btn" data-code-target="code-blk-117">Copy</button></span>
     </summary>
-    <pre><code id="code-blk-116"><span class="tok-kw">import</span> re
+    <pre><code id="code-blk-117"><span class="tok-kw">import</span> re
 <span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
     system_file<span class="tok-op">,</span> read_tree<span class="tok-op">,</span> read_table<span class="tok-op">,</span> factor<span class="tok-op">,</span> nodeid<span class="tok-op">,</span> DataFrame<span class="tok-op">,</span>
     ggtree<span class="tok-op">,</span> aes<span class="tok-op">,</span> geom_hilight<span class="tok-op">,</span> geom_cladelab<span class="tok-op">,</span> geom_star<span class="tok-op">,</span>
@@ -357,9 +357,9 @@ p
   <details class="code-fold">
     <summary>
       <span class="summary-left"><span class="summary-caret">&#9654;</span> Show / Hide Python Code</span>
-      <span class="summary-actions"><span class="api-pill">ggtree</span><span class="api-pill">rotate_tree</span><span class="api-pill">geom_polygon</span><span class="api-pill">geom_path</span><button type="button" class="copy-btn" data-code-target="code-blk-117">Copy</button></span>
+      <span class="summary-actions"><span class="api-pill">ggtree</span><span class="api-pill">rotate_tree</span><span class="api-pill">geom_polygon</span><span class="api-pill">geom_path</span><button type="button" class="copy-btn" data-code-target="code-blk-118">Copy</button></span>
     </summary>
-    <pre><code id="code-blk-117"><span class="tok-kw">import</span> csv
+    <pre><code id="code-blk-118"><span class="tok-kw">import</span> csv
 <span class="tok-kw">import</span> json
 <span class="tok-kw">import</span> math
 <span class="tok-kw">from</span> ggtree <span class="tok-kw">import</span> <span class="tok-op">(</span>
